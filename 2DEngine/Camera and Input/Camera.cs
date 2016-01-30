@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _2DEngine
 {
@@ -19,10 +14,10 @@ namespace _2DEngine
     }
 
     /// <summary>
-    /// A singleton class used as an in game camera.
+    /// A static class used as an in game camera.
     /// This will also allow us to not render objects if they are not contained within the camera viewport
     /// </summary>
-    public class Camera
+    public static class Camera
     {
         #region Properties and Fields
 
@@ -31,33 +26,35 @@ namespace _2DEngine
         /// This should remain private and instead, to change the camera mode, the appropriate functions 'SetFree', 'SetFixed', 'SetFollow'
         /// should be called.  This is because extra parameters are required for each mode.
         /// </summary>
-        private CameraMode CameraMode { get; set; }
+        private static CameraMode CameraMode { get; set; }
 
         /// <summary>
         /// The position of the Camera - corresponds to where the top left of the screen is.  Again we should not be able to set this outside of this class.
         /// Ways to change the camera position are determined by the CameraMode, and also by a parameter passed in when changing mode ONLY.
         /// </summary>
-        public Vector2 Position { get; private set; }
+        public static Vector2 Position { get; private set; }
 
         /// <summary>
         /// A value to determine how fast the camera should move in Free mode.  This should be freely available for alteration.
         /// </summary>
-        public float PanSpeed { get; set; }
+        public static float PanSpeed { get; set; }
 
         /// <summary>
         /// A value only to be altered and seen by this class, used to determine the zoom of the camera.
         /// This value can be changed in Free or Follow mode by keyboard input ONLY.
         /// </summary>
-        private float Zoom { get; set; }
+        private static float Zoom { get; set; }
 
         /// <summary>
         /// This represents the current transformation of the camera calculated from the position and zoom.
         /// It is used as a parameter to SpriteBatch.Begin() to give the impression of a camera when drawing objects
         /// </summary>
-        public Matrix TransformationMatrix
+        public static Matrix TransformationMatrix
         {
             get
             {
+                Debug.Assert(IsInitialised);
+
                 // This could be done with usual operators - *, + etc., but this is an optimisation
                 return Matrix.Multiply(Matrix.CreateTranslation(Position.X, Position.Y, 0), Matrix.CreateScale(Zoom));
             }
@@ -68,41 +65,34 @@ namespace _2DEngine
         /// This will be used in determining whether an object is visible or not.
         /// It will need to be set up once, or when our screen size changes.
         /// </summary>
-        public Rectangle ViewportRectangle
+        public static Rectangle ViewportRectangle
         {
             get;
             private set;
         }
 
         /// <summary>
-        /// We will only have once Camera so we will make a static instance that can be accessed anywhere in our code via Camera.Instance.
+        /// A bool just to track whether we have called Initialise.  This will be checked in Update and HandleInput
         /// </summary>
-        private static Camera singleton;
-        public static Camera Instance
-        {
-            get
-            {
-                if (singleton == null)
-                {
-                    singleton = new Camera();
-                }
-
-                return singleton;
-            }
-        }
+        private static bool IsInitialised { get; set; }
 
         #endregion
 
         /// <summary>
-        /// Make the Constructor private so that we just use the static Instance instead.
+        /// Initialises the Camera properties
         /// </summary>
-        private Camera()
+        public static void Initialise()
         {
+            // Check to see whether we have already initialised the camera
+            if (IsInitialised) { return; }
+
             CameraMode = CameraMode.kFixed;
             Position = Vector2.Zero;
             PanSpeed = 300;
             Zoom = 1;
             ViewportRectangle = new Rectangle(0, 0, ScreenManager.Instance.Viewport.Width, ScreenManager.Instance.Viewport.Height);
+
+            IsInitialised = true;
         }
 
         #region Camera Position and Zoom Update Functions
@@ -111,8 +101,10 @@ namespace _2DEngine
         /// Updates the camera position based on what mode we are in - should be called every frame
         /// </summary>
         /// <param name="elapsedSeconds"></param>
-        public void Update(float elapsedSeconds)
+        public static void Update(float elapsedSeconds)
         {
+            Debug.Assert(IsInitialised);
+
             // Only the follow mode requires no user input to update
             if (CameraMode != CameraMode.kFollow) { return; }
 
@@ -123,8 +115,10 @@ namespace _2DEngine
         /// Updates the camera position based on what mode we are in and any appropriate user input - should be called every frame
         /// </summary>
         /// <param name="elapsedGameTime"></param>
-        public void HandleInput(float elapsedGameTime)
+        public static void HandleInput(float elapsedGameTime)
         {
+            Debug.Assert(IsInitialised);
+
             // If we are in fixed camera mode, we should not update anything
             if (CameraMode == CameraMode.kFixed) { return; }
 
@@ -145,8 +139,10 @@ namespace _2DEngine
         /// Since the camera position corresponds to the top left, this involves removed half the screen dimensions from the inputted position.
         /// </summary>
         /// <param name="focusPosition">The position that we wish to have in the centre of the screen</param>
-        public void FocusOnPosition(Vector2 focusPosition)
+        public static void FocusOnPosition(Vector2 focusPosition)
         {
+            Debug.Assert(IsInitialised);
+
             Position = focusPosition - new Vector2(ViewportRectangle.Width, ViewportRectangle.Height) * 0.5f;
         }
 
@@ -155,8 +151,10 @@ namespace _2DEngine
         /// </summary>
         /// <param name="screenPosition">The position on the screen between (0, 0) and (screen width, screen height)</param>
         /// <returns>The game space coordinates corresponding to the inputted screen position</returns>
-        public Vector2 ScreenToGameCoords(Vector2 screenPosition)
+        public static Vector2 ScreenToGameCoords(Vector2 screenPosition)
         {
+            Debug.Assert(IsInitialised);
+
             // This could be done using ordinary mathematical operators - +, / etc. but this is an optimisation
             return Vector2.Divide(Vector2.Add(Position, screenPosition), Zoom);
         }
@@ -166,8 +164,10 @@ namespace _2DEngine
         /// </summary>
         /// <param name="gamePosition">The position in game space.</param>
         /// <returns>The screen space coordinates corresponding to the inputted game position</returns>
-        public Vector2 GameToScreenCoords(Vector2 gamePosition)
+        public static Vector2 GameToScreenCoords(Vector2 gamePosition)
         {
+            Debug.Assert(IsInitialised);
+
             // This could be done using ordinary mathematical operators - +, / etc. but this is an optimisation
             return Vector2.Subtract(Vector2.Multiply(gamePosition, Zoom), Position);
         }
@@ -179,7 +179,7 @@ namespace _2DEngine
         /// <summary>
         /// Sets the CameraMode to free
         /// </summary>
-        public void SetFree()
+        public static void SetFree()
         {
             CameraMode = CameraMode.kFree;
         }
@@ -188,7 +188,7 @@ namespace _2DEngine
         /// Sets the CameraMode to free and the camera's position to the inputted value.
         /// </summary>
         /// <param name="resetPosition">The new value of the camera's position</param>
-        public void SetFree(Vector2 resetPosition)
+        public static void SetFree(Vector2 resetPosition)
         {
             CameraMode = CameraMode.kFree;
             Position = resetPosition;
@@ -197,7 +197,7 @@ namespace _2DEngine
         /// <summary>
         /// Sets the CameraMode to fixed
         /// </summary>
-        public void SetFixed()
+        public static void SetFixed()
         {
             CameraMode = CameraMode.kFixed;
         }
@@ -206,7 +206,7 @@ namespace _2DEngine
         /// Sets the CameraMode to Fixed and the camera's position to the inputted value
         /// </summary>
         /// <param name="resetPosition">The new value of the camera's position</param>
-        public void SetFixed(Vector2 resetPosition)
+        public static void SetFixed(Vector2 resetPosition)
         {
             CameraMode = CameraMode.kFixed;
             Position = resetPosition;

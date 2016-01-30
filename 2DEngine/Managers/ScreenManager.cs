@@ -1,10 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace _2DEngine
 {
@@ -46,6 +43,16 @@ namespace _2DEngine
         /// </summary>
         public Viewport Viewport { get; private set; }
 
+        /// <summary>
+        /// A wrapper property to return the Viewport's width and height
+        /// </summary>
+        public Vector2 ScreenDimensions { get; private set; }
+
+        /// <summary>
+        /// A wrapper property to return the centre of the screen
+        /// </summary>
+        public Vector2 ScreenCentre { get; private set; }
+
         #endregion
 
         /// <summary>
@@ -55,30 +62,6 @@ namespace _2DEngine
             base()
         {
         }
-
-        #region Virtual Functions
-
-        public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
-        {
-            base.HandleInput(elapsedGameTime, mousePosition);
-
-            // Check to see whether we should handle input
-            if (!ShouldHandleInput) { return; }
-
-            Camera.Instance.HandleInput(elapsedGameTime);
-        }
-
-        public override void Update(float elapsedGameTime)
-        {
-            base.Update(elapsedGameTime);
-
-            // Check to see whether we should update
-            if (!ShouldUpdate) { return; }
-
-            Camera.Instance.Update(elapsedGameTime);
-        }
-
-        #endregion
 
         #region Utility Functions
 
@@ -91,11 +74,14 @@ namespace _2DEngine
         public void Setup(SpriteBatch spriteBatch, Viewport viewport)
         {
             // Check that we have called this before loading and initialising
-            Debug.Assert(!IsLoaded);
-            Debug.Assert(!IsInitialised);
+            Debug.Assert(!ShouldLoad);
+            Debug.Assert(!ShouldInitialise);
 
             SpriteBatch = spriteBatch;
             Viewport = viewport;
+
+            ScreenDimensions = new Vector2(viewport.Width, viewport.Height);
+            ScreenCentre = new Vector2(viewport.Width * 0.5f, viewport.Height * 0.5f);
         }
 
         #endregion

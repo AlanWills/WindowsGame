@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
@@ -41,15 +38,15 @@ namespace _2DEngine
         /// </summary>
         public override void LoadContent()
         {
-            base.LoadContent();
-            
             // Check to see whether we have already called LoadContent
-            if (IsLoaded) { return; }
+            if (!ShouldLoad) { return; }
 
             foreach (T obj in ObjectsToAdd)
             {
                 obj.LoadContent();
             }
+
+            base.LoadContent();
         }
 
         /// <summary>
@@ -58,15 +55,15 @@ namespace _2DEngine
         /// </summary>
         public override void Initialise()
         {
-            base.Initialise();
-
             // Check to see whether we have already called Initialise
-            if (IsInitialised) { return; }
+            if (!ShouldInitialise) { return; }
 
             foreach (T obj in ObjectsToAdd)
             {
                 obj.Initialise();
             }
+
+            base.Initialise();
         }
 
         /// <summary>

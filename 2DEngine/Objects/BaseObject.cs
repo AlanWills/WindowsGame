@@ -1,0 +1,199 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
+
+namespace _2DEngine
+{
+    /// <summary>
+    /// The base class for any UI or game objects in our game.
+    /// Marked as abstract, because we should not be able to create an instance of this class.
+    /// Instead we should create a UIObject or GameObject
+    /// </summary>
+    public abstract class BaseObject : Component
+    {
+        #region Properties and Fields
+
+        /// <summary>
+        /// A string to store the texture asset for this object
+        /// </summary>
+        protected string TextureAsset { get; set; }
+
+        /// <summary>
+        /// The texture for this object - override if we have different textures that need to be drawn at different times
+        /// </summary>
+        protected virtual Texture2D Texture { get; private set; }
+
+        /// <summary>
+        /// This is a cached vector that will only be set once.  Used in the draw method to indicate the dimensions of the texture.
+        /// Will be set when the texture is loaded ONLY.
+        /// </summary>
+        private Vector2 TextureDimensions { get; set; }
+
+        /// <summary>
+        /// This is a cached vector that will only be set once.  Used in the draw method to indicate the centre of the texture.
+        /// Will be set when the texture is loaded ONLY.
+        /// </summary>
+        protected virtual Vector2 TextureCentre { get; private set; }
+
+        /// <summary>
+        /// An object which we can parent this object off of.  Positions and rotations are then relative to this object
+        /// </summary>
+        public BaseObject Parent { get; set; }
+
+        /// <summary>
+        /// The local offset from the parent.
+        /// </summary>
+        public Vector2 LocalPosition { get; set; }
+
+        /// <summary>
+        /// The local rotation from the parent's rotation - this value is bound between -PI and PI
+        /// </summary>
+        private float localRotation;
+        public float LocalRotation
+        {
+            get { return localRotation; }
+            set
+            {
+                // Wrap the angle between -PI and PI
+                localRotation = MathHelper.WrapAngle(value);
+            }
+        }
+
+        /// <summary>
+        /// The world space position, calculated recursively using the parent's WorldPosition
+        /// </summary>
+        public Vector2 WorldPosition
+        {
+            get
+            {
+                // If we have no parent, return the local position
+                if (Parent == null) { return LocalPosition; }
+
+                // This syntax is for optimisation
+                return Vector2.Add(Parent.WorldPosition, Vector2.Transform(LocalPosition, Matrix.CreateRotationZ(WorldRotation)));
+            }
+        }
+
+        /// <summary>
+        /// The world space rotation, calculated recursively using the parent's WorldRotation.
+        /// This value will be between -PI and PI
+        /// </summary>
+        public float WorldRotation
+        {
+            get
+            {
+                // If we have no parent, return the local rotation
+                if (Parent == null) { return LocalRotation; }
+
+                // Wrap the angle between -PI and PI
+                return MathHelper.WrapAngle(Parent.WorldRotation + LocalRotation);
+            }
+        }
+
+        /// <summary>
+        /// The size of this object.  By default this will be the size of the Texture.
+        /// </summary>
+        public Vector2 Size { get; set; }
+
+        /// <summary>
+        /// The colour of the object - by default this is set to white, so that white in the png will appear transparent
+        /// </summary>
+        public Color Colour { get; set; }
+
+        /// <summary>
+        /// The opacity of the object - between 0 and 1.  A value of 0 makes the texture completely transparent, and 1 completely opaque
+        /// </summary>
+        public float Opacity { get; set; }
+
+        #endregion
+
+        public BaseObject(Vector2 localPosition, string textureAsset) :
+            base()
+        {
+            LocalPosition = localPosition;
+            TextureAsset = textureAsset;
+            Colour = Color.White;
+            Opacity = 1;
+        }
+
+        public BaseObject(Vector2 size, Vector2 localPosition, string textureAsset) :
+            this(localPosition, textureAsset)
+        {
+            Size = size;
+        }
+
+        #region Virtual Functions
+
+        /// <summary>
+        /// Load the texture from the texture asset using the AssetManager
+        /// </summary>
+        public override void LoadContent()
+        {
+            // Check to see whether we should load
+            if (!ShouldLoad) { return; }
+
+            if (!string.IsNullOrEmpty(TextureAsset))
+            {
+                // Load the texture from the AssetManager
+                Texture = AssetManager.GetTexture(TextureAsset);
+
+                Debug.Assert(Texture != null);
+            }
+
+            if (Texture != null)
+            {
+                TextureDimensions = new Vector2(Texture.Bounds.Width, Texture.Bounds.Height);
+                TextureCentre = new Vector2(Texture.Bounds.Center.X, Texture.Bounds.Center.Y);
+            }
+
+            base.LoadContent();
+        }
+
+        /// <summary>
+        /// Set up the size if it has not been set already
+        /// </summary>
+        public override void Initialise()
+        {
+            if (!ShouldInitialise) { return; }
+
+            // If our size is zero (i.e. uninitialised) we use the texture's size (if it is not null)
+            if (Size == Vector2.Zero && Texture != null)
+            {
+                Size = new Vector2(Texture.Bounds.Width, Texture.Bounds.Height);
+            }
+
+            base.Initialise();
+        }
+
+        /// <summary>
+        /// Draws the object's texture.
+        /// If we wish to create an object, but not draw it, change it's ShouldDraw property
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="spriteFont"></param>
+        public override void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        {
+            base.Draw(spriteBatch, spriteFont);
+
+            // If we should draw, we return
+            if (!ShouldDraw) { return; }
+
+            // If we are drawing this object, it should have a valid texture
+            // If we wish to create an object but not draw it, simply change it's ShouldDraw property
+            Debug.Assert(Texture != null);
+            spriteBatch.Draw(
+                Texture,
+                WorldPosition,
+                null,
+                null,
+                TextureCentre,
+                WorldRotation,
+                Vector2.Divide(Size, TextureDimensions),
+                Colour * Opacity,
+                SpriteEffects.None,
+                0);
+        }
+
+        #endregion
+    }
+}

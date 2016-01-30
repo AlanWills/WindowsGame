@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _2DEngine
 {
@@ -25,43 +20,62 @@ namespace _2DEngine
     {
         #region
 
-        // A bool to hold whether LoadContent has been called
-        // This is an optimization to stop LoadContent being called multiple times
-        protected bool IsLoaded { get; private set; }
+        /// <summary>
+        /// A bool to hold whether LoadContent has been called
+        /// This is an optimization to stop LoadContent being called multiple times
+        /// </summary>
+        protected bool ShouldLoad { get; private set; }
 
-        // A bool to hold whether Initialise has been called
-        // This is an optimization to stop Initialise being called multiple times
-        protected bool IsInitialised { get; private set; }
+        /// <summary>
+        /// A bool to hold whether Initialise has been called
+        /// This is an optimization to stop Initialise being called multiple times
+        /// </summary>
+        protected bool ShouldInitialise { get; private set; }
 
-        // A bool to indicate whether Begun has been called on the object
-        // This should only be done once and the first update loop that is called on this object
+        /// <summary>
+        /// A bool to indicate whether Begun has been called on the object
+        /// This should only be done once and the first update loop that is called on this object
+        /// </summary>
         protected bool IsBegun { get; private set; }
 
-        // A bool used to clear up this component - if set to false it will be removed from the manager it is in automatically
+        /// <summary>
+        /// A bool used to clear up this component - if set to false it will be removed from the manager it is in automatically
+        /// </summary>
         public bool IsAlive { get; private set; }
 
-        // A bool used to indicate whether we should call HandleInput on this object
+        /// <summary>
+        /// A bool used to indicate whether we should call HandleInput on this object
+        /// </summary>
         public bool ShouldHandleInput { get; set; }
 
-        // A bool used to indicate whether we should call Update on this object
+        /// <summary>
+        /// A bool used to indicate whether we should call Update on this object
+        /// </summary>
         public bool ShouldUpdate { get; set; }
 
-        // A bool used to indicate whether we should call Draw on this object
+        /// <summary>
+        /// A bool used to indicate whether we should call Draw on this object
+        /// </summary>
         public bool ShouldDraw { get; set; }
+
+        /// <summary>
+        /// A name identifier
+        /// </summary>
+        public string Name { get; set; }
 
         #endregion
 
-        // Constructor
+        /// <summary>
+        /// Constructor - sets the component to handle input, update and draw
+        /// </summary>
         public Component()
         {
-            IsLoaded = false;
-            IsInitialised = false;
+            ShouldLoad = true;
+            ShouldInitialise = true;
             IsBegun = false;
 
             IsAlive = true;
-            ShouldHandleInput = true;
-            ShouldUpdate = true;
-            ShouldDraw = true;
+            Show();
         }
 
         #region Virtual Functions
@@ -71,23 +85,15 @@ namespace _2DEngine
         /// </summary>
         public virtual void LoadContent()
         {
-            IsLoaded = true;
-
-            // This may seem completely pointless, but it is to emphasise the fact that this check
-            // Needs to be done for every single class that inherits of of Component
-            if (IsLoaded) { return; }
+            ShouldLoad = false;
         }
 
         /// <summary>
-        /// Set up class properties
+        /// Sets up class properties
         /// </summary>
         public virtual void Initialise()
         {
-            IsInitialised = true;
-
-            // This may seem completely pointless, but it is to emphasise the fact that this check
-            // Needs to be done for every single class that inherits of of Component
-            if (IsInitialised) { return; }
+            ShouldInitialise = false;
         }
 
         /// <summary>
@@ -96,8 +102,8 @@ namespace _2DEngine
         public virtual void Begin()
         {
             // Check that we have loaded and initialised this object
-            Debug.Assert(IsLoaded);
-            Debug.Assert(IsInitialised);
+            Debug.Assert(ShouldLoad);
+            Debug.Assert(ShouldInitialise);
 
             IsBegun = true;
         }
@@ -148,6 +154,31 @@ namespace _2DEngine
         public virtual void Die()
         {
             IsAlive = false;
+            Hide();
+        }
+
+        #endregion
+
+        #region Utility Functions
+
+        /// <summary>
+        /// Sets the component to handle input, update and draw
+        /// </summary>
+        public void Show()
+        {
+            ShouldHandleInput = true;
+            ShouldUpdate = true;
+            ShouldDraw = true;
+        }
+
+        /// <summary>
+        /// Sets the component to not handle input, update or draw
+        /// </summary>
+        public void Hide()
+        {
+            ShouldHandleInput = false;
+            ShouldUpdate = false;
+            ShouldDraw = false;
         }
 
         #endregion

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace _2DEngine
+﻿namespace _2DEngine
 {
     public class BaseScreen : Component
     {
@@ -14,5 +9,6 @@ namespace _2DEngine
         }
 
         // Do three drawing steps here rather than in screen manager
+        // Draw mouse
     }
 }

@@ -52,6 +52,8 @@ namespace WindowsGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //AssetManager.LoadAssets(Content);
+
             ScreenManager.Instance.Setup(spriteBatch, GraphicsDevice.Viewport);
             ScreenManager.Instance.LoadContent();
         }
@@ -74,10 +76,22 @@ namespace WindowsGame
         {
             base.Update(gameTime);
 
+            // This has to be milliseconds because 'Seconds' is an int, so will be rounded down to 0
+            float elapsedGameTime = gameTime.ElapsedGameTime.Milliseconds / 1000f;
+
+            // Update keyboard and mouse first
+            GameKeyboard.Update();
+            GameMouse.Instance.Update(elapsedGameTime);
+
+            // Handle input
+
+            Camera.HandleInput(elapsedGameTime);
             //ScreenManager.Instance.HandleInput(gameTime);
 
-            // This has to be milliseconds because 'Seconds' is an int, so will be rounded down to 0
-            ScreenManager.Instance.Update(gameTime.ElapsedGameTime.Milliseconds / 1000f);
+            // Then update
+
+            Camera.Update(elapsedGameTime);
+            ScreenManager.Instance.Update(elapsedGameTime);
         }
 
         /// <summary>
