@@ -7,7 +7,7 @@ namespace _2DEngine
     /// A simple class which represents an image and overlayed text.
     /// Auto fits around the text.
     /// </summary>
-    public class TextBox : UIObject
+    public class DialogBox : UIObject
     {
         #region Properties and Fields
 
@@ -24,7 +24,7 @@ namespace _2DEngine
 
         #endregion
 
-        public TextBox(string text, Vector2 localPosition, string textureAsset = AssetManager.DefaultTextBoxTextureAsset, float lifeTime = float.MaxValue) :
+        public DialogBox(string text, Vector2 localPosition, string textureAsset = AssetManager.DefaultTextBoxTextureAsset, float lifeTime = float.MaxValue) :
             base(localPosition, textureAsset, lifeTime)
         {
             // Set the text to be in the centre of the text box

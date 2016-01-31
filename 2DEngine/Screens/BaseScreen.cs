@@ -1,16 +1,16 @@
-﻿using _2DGameEngine;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace _2DEngine
 {
     /// <summary>
-    /// A base class for all screens in our game.
+    /// A base abstract class for all screens in our game.
     /// Contains three managers, for the GameObjects, In Game UIObjects and Screen UIObjects.
-    /// Is responsible for drawing the mouse
+    /// Is responsible for drawing the mouse.
+    /// An instance of this class cannot be created because it is too general
     /// </summary>
-    public class BaseScreen : Component
+    public abstract class BaseScreen : Component
     {
         #region Properties and Fields
 
@@ -28,6 +28,11 @@ namespace _2DEngine
         /// A Manager for the Screen (camera independent) UI Objects in our screen
         /// </summary>
         private ObjectManager<UIObject> ScreenUIObjects { get; set; }
+
+        /// <summary>
+        /// Each screen has a script manager which contains scripts specific to that screen
+        /// </summary>
+        private ScriptManager ScriptManager { get; set; }
 
         /// <summary>
         /// A string for the background image.  Simply set this string in LoadContent before base.LoadContent is called
@@ -57,6 +62,8 @@ namespace _2DEngine
             ScreenUIObjects = new ObjectManager<UIObject>();
 
             MusicQueueType = QueueType.WaitForCurrent;
+
+            ScriptManager = new ScriptManager(this);
         }
 
         // Do three drawing steps here rather than in screen manager
@@ -95,7 +102,8 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Calls Initialise on the three Managers
+        /// Calls Initialise on the three Managers and ScriptManager.
+        /// Adds Initial Scripts to the ScriptManager
         /// </summary>
         public override void Initialise()
         {
@@ -105,8 +113,18 @@ namespace _2DEngine
             InGameUIObjects.Initialise();
             ScreenUIObjects.Initialise();
 
+            AddInitialScripts();
+
+            ScriptManager.LoadContent();
+            ScriptManager.Initialise();
+
             base.Initialise();
         }
+
+        /// <summary>
+        /// Adds Initial Scripts after all the Initialisation for this screen has been performed. 
+        /// </summary>
+        public virtual void AddInitialScripts() { }
 
         /// <summary>
         /// Queues up any music for this screen
@@ -127,6 +145,10 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
+            // See if we should continue or whether the ScriptManager is preventing us
+            ScriptManager.HandleInput(elapsedGameTime, mousePosition);
+            ShouldHandleInput = ScriptManager.ShouldUpdateGame;
+
             // Check to see if we should handle input
             if (!ShouldHandleInput) { return; }
 
@@ -142,6 +164,10 @@ namespace _2DEngine
         public override void Update(float elapsedGameTime)
         {
             base.Update(elapsedGameTime);
+
+            // See if we should continue or whether the ScriptManager is preventing us
+            ScriptManager.Update(elapsedGameTime);
+            ShouldUpdate = ScriptManager.ShouldUpdateGame;
 
             // Check to see if we should update
             if (!ShouldUpdate) { return; }
@@ -319,6 +345,18 @@ namespace _2DEngine
         public void Transition(BaseScreen screenToTransitionTo, bool load = true, bool initialise = true)
         {
             ScreenManager.Instance.Transition(this, screenToTransitionTo, load, initialise);
+        }
+
+        /// <summary>
+        /// Adds a script to the ScriptManager
+        /// </summary>
+        /// <param name="script"></param>
+        /// <param name="load">Calls Load on the Script</param>
+        /// <param name="initialise">Calls Initialise on the Script</param>
+        protected void AddScript(Script script, Script previousScript = null, bool load = false, bool initialise = false)
+        {
+            script.PreviousScript = null;
+            ScriptManager.AddObject(script);
         }
 
         #endregion

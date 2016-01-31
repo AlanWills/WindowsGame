@@ -52,9 +52,7 @@ namespace WindowsGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //AssetManager.LoadAssets(Content);
-
-            ScreenManager.Instance.Setup(spriteBatch, GraphicsDevice.Viewport);
+            ScreenManager.Instance.Setup(spriteBatch, GraphicsDevice.Viewport, Content);
             ScreenManager.Instance.LoadContent();
         }
 

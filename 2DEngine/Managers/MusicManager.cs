@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 using System.IO;
 
-namespace _2DGameEngine
+namespace _2DEngine
 {
     public enum QueueType { WaitForCurrent, PlayImmediately }
 

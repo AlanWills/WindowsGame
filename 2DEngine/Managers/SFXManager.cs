@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace _2DGameEngine.Managers
+namespace _2DEngine
 {
-    public class SFXManager
+    public static class SFXManager
     {
         #region Const File Paths
 
@@ -16,7 +16,7 @@ namespace _2DGameEngine.Managers
 
         #region Properties and Fields
 
-        public Dictionary<string, SoundEffect> SoundEffects
+        public static Dictionary<string, SoundEffect> SoundEffects
         {
             get;
             private set;
@@ -24,14 +24,9 @@ namespace _2DGameEngine.Managers
 
         #endregion
 
-        public SFXManager()
-        {
-            SoundEffects = new Dictionary<string, SoundEffect>();
-        }
-
         #region Methods
 
-        public void LoadContent(ContentManager content)
+        public static void LoadAssets(ContentManager content)
         {
             SoundEffects = new Dictionary<string, SoundEffect>();
 
@@ -58,7 +53,7 @@ namespace _2DGameEngine.Managers
             catch { }
         }
 
-        public SoundEffect GetSoundEffect(string sfxName)
+        public static SoundEffect GetSoundEffect(string sfxName)
         {
             Debug.Assert(SoundEffects.ContainsKey(sfxName));
             return SoundEffects[sfxName];

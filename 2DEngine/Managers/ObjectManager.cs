@@ -157,7 +157,7 @@ namespace _2DEngine
         /// <param name="objectToAdd">The object we wish to add</param>
         /// <param name="load">A flag to indicate whether we wish to call LoadContent on this object before adding - false by default.</param>
         /// <param name="initialise">A flag to indicate whether we wish to call Initialise on this object before adding - false by default.</param>
-        public void AddObject(T objectToAdd, bool load = false, bool initialise = false)
+        public virtual void AddObject(T objectToAdd, bool load = false, bool initialise = false)
         {
             if (load)
             {

@@ -39,6 +39,12 @@ namespace _2DEngine
         public SpriteBatch SpriteBatch { get; private set; }
 
         /// <summary>
+        /// The device we can use to load content.
+        /// Not really used as we use the AssetManager to obtain all of our Content instead.
+        /// </summary>
+        public ContentManager Content { get; private set; }
+
+        /// <summary>
         /// The Viewport for our game window - can be used to access screen dimensions
         /// </summary>
         public Viewport Viewport { get; private set; }
@@ -138,7 +144,7 @@ namespace _2DEngine
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch from our Game1 class</param>
         /// <param name="viewport">The Viewport corresponding to the window</param>
-        public void Setup(SpriteBatch spriteBatch, Viewport viewport)
+        public void Setup(SpriteBatch spriteBatch, Viewport viewport, ContentManager content)
         {
             // Check that we have called this before loading and initialising
             Debug.Assert(ShouldLoad);
@@ -152,7 +158,8 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Remove one screen and add another
+        /// Remove one screen and add another.
+        /// If we are transitioning to a gameplay screen, we add a loading screen first (unless we are going from a loading screen).
         /// </summary>
         /// <param name="transitionFrom">The screen to remove</param>
         /// <param name="transitionTo">The screen to add</param>
@@ -160,7 +167,15 @@ namespace _2DEngine
         /// <param name="initialise">Whether we should call Initialise on the screen to add</param>
         public void Transition(BaseScreen transitionFrom, BaseScreen transitionTo, bool load = true, bool initialise = true)
         {
-            AddObject(transitionTo, load, initialise);
+            if (transitionTo.Is<GameplayScreen>() && !transitionFrom.Is<LoadingScreen>())
+            {
+                AddObject(new LoadingScreen(transitionTo.As<GameplayScreen>()), load, initialise);
+            }
+            else
+            {
+                AddObject(transitionTo, load, initialise);
+            }
+
             transitionFrom.Die();
         }
 

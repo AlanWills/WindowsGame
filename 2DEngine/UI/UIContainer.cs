@@ -2,8 +2,9 @@
 {
     /// <summary>
     /// A class which is designed to contain UIObjects.  Useful for Menus and custom UI.
+    /// Marked as abstract because we do not want to create an instance of this class since it does not inherit from BaseObject
     /// </summary>
-    public class UIContainer : ObjectManager<UIObject>
+    public abstract class UIContainer : ObjectManager<UIObject>
     {
         #region Properties and Fields
 
@@ -28,6 +29,10 @@
         /// Adds an initial UI to the container
         /// </summary>
         public virtual void AddInitialUI() { }
+
+        #endregion
+
+        #region Utility Functions
 
         #endregion
     }
