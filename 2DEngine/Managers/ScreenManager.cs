@@ -84,6 +84,19 @@ namespace _2DEngine
             ScreenCentre = new Vector2(viewport.Width * 0.5f, viewport.Height * 0.5f);
         }
 
+        /// <summary>
+        /// Remove one screen and add another
+        /// </summary>
+        /// <param name="transitionFrom">The screen to remove</param>
+        /// <param name="transitionTo">The screen to add</param>
+        /// <param name="load">Whether we should call LoadContent on the screen to add</param>
+        /// <param name="initialise">Whether we should call Initialise on the screen to add</param>
+        public void Transition(BaseScreen transitionFrom, BaseScreen transitionTo, bool load = true, bool initialise = true)
+        {
+            AddObject(transitionTo, load, initialise);
+            transitionFrom.Die();
+        }
+
         #endregion
     }
 }
