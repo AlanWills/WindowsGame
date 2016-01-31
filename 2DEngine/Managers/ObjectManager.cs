@@ -158,7 +158,7 @@ namespace _2DEngine
         /// <param name="objectToAdd">The object we wish to add</param>
         /// <param name="load">A flag to indicate whether we wish to call LoadContent on this object before adding - false by default.</param>
         /// <param name="initialise">A flag to indicate whether we wish to call Initialise on this object before adding - false by default.</param>
-        void AddObject(T objectToAdd, bool load = false, bool initialise = false)
+        public void AddObject(T objectToAdd, bool load = false, bool initialise = false)
         {
             if (load)
             {
@@ -175,7 +175,7 @@ namespace _2DEngine
         /// Removes an object from this manager
         /// </summary>
         /// <param name="objectToRemove">The object we wish to remove</param>
-        void RemoveObject(T objectToRemove)
+        public void RemoveObject(T objectToRemove)
         {
             Debug.Assert(objectToRemove != null);
 
@@ -193,14 +193,35 @@ namespace _2DEngine
             List<K> objects = new List<K>();
             foreach (T obj in ActiveObjects)
             {
-                K castedObj = (K)obj;
-                if (castedObj != null)
+                if (obj.Is<K>())
                 {
-                    objects.Add(castedObj);
+                    objects.Add(obj.As<K>());
                 }
             }
 
             return objects;
+        }
+
+        /// <summary>
+        /// Finds an object of the inputted name and casts to the inputted type K.
+        /// First searches the ActiveObjects and then the ObjectsToAdd
+        /// </summary>
+        /// <typeparam name="K">The type we wish to return the found object as</typeparam>
+        /// <param name="name">The name of the object we wish to find</param>
+        /// <returns>Returns the object casted to K or null</returns>
+        public K FindObject<K>(string name) where K : T
+        {
+            K obj = null;
+            obj = ActiveObjects.Find(x => x.Name == name).As<K>();
+
+            if (obj != null) { return obj; }
+
+            obj = ObjectsToAdd.Find(x => x.Name == name).As<K>();
+
+            // Really we shouldn't be returning null, because we assume we are trying to find something we know exists
+            Debug.Assert(obj != null);
+
+            return obj;
         }
 
         #endregion

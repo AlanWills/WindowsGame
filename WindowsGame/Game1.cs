@@ -86,7 +86,7 @@ namespace WindowsGame
             // Handle input
 
             Camera.HandleInput(elapsedGameTime);
-            //ScreenManager.Instance.HandleInput(gameTime);
+            ScreenManager.Instance.HandleInput(elapsedGameTime, GameMouse.Instance.WorldPosition);
 
             // Then update
 
@@ -104,7 +104,7 @@ namespace WindowsGame
 
             base.Draw(gameTime);
 
-            //ScreenManager.Instance.Draw(spriteBatch, spriteFont);
+            ScreenManager.Instance.Draw(spriteBatch, null);
         }
     }
 }

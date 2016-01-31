@@ -181,6 +181,27 @@ namespace _2DEngine
             ShouldDraw = false;
         }
 
+
+        /// <summary>
+        /// Casts this to the inputted type
+        /// </summary>
+        /// <typeparam name="T">The type we wish to cast to</typeparam>
+        /// <returns>this as T or nullptr if not castable</returns>
+        public T As<T>() where T : Component
+        {
+            return this as T;
+        }
+
+        /// <summary>
+        /// Checks to see whether this is castable to the inputted type
+        /// </summary>
+        /// <typeparam name="T">The type we wish to cast to</typeparam>
+        /// <returns>Returns true if this is castable to T</returns>
+        public bool Is<T>() where T : Component
+        {
+            return this is T;
+        }
+
         #endregion
     }
 }
