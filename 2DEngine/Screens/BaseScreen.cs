@@ -73,7 +73,7 @@ namespace _2DEngine
         {
             if (string.IsNullOrEmpty(BackgroundDataAsset))
             {
-                AddScreenUIObject(new UIObject(GetScreenDimensions(), GetScreenCentre(), BackgroundDataAsset));
+                AddScreenUIObject(new Image(GetScreenDimensions(), GetScreenCentre(), BackgroundDataAsset));
             }
         }
 

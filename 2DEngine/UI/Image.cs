@@ -11,9 +11,28 @@ namespace _2DEngine
     /// </summary>
     public class Image : UIObject
     {
+        /// <summary>
+        /// A float that can be used to represent how much we should scale the texture, rather than manually inputting a size.
+        /// Doesn't have to be set, in which case it defaults to 1.
+        /// </summary>
+        private float Scale { get; set; }
+
+        public Image(Vector2 localPosition, string textureAsset, float lifeTime = float.MaxValue) :
+            base(localPosition, textureAsset, lifeTime)
+        {
+            Scale = 1;
+        }
+
+        public Image(float scale, Vector2 localPosition, string textureAsset, float lifeTime = float.MaxValue) :
+            base(Vector2.Zero, localPosition, textureAsset, lifeTime)
+        {
+            Scale = scale;
+        }
+
         public Image(Vector2 size, Vector2 localPosition, string textureAsset, float lifeTime = float.MaxValue) :
             base(size, localPosition, textureAsset, lifeTime)
         {
+            Scale = 1;
         }
 
         #region Virtual Functions
@@ -26,8 +45,7 @@ namespace _2DEngine
             // Check to see whether we should Initialise
             if (!ShouldInitialise) { return; }
 
-            // The size must be set to a non zero value and the texture not null
-            Debug.Assert(Size != Vector2.Zero);
+            // Texture cannot be null
             Debug.Assert(Texture != null);
 
             float aspectRatio = Texture.Bounds.Height / Texture.Bounds.Width;
@@ -36,6 +54,10 @@ namespace _2DEngine
             Size = new Vector2(Size.X, Size.X * aspectRatio);
 
             base.Initialise();
+
+            // Multiply by the scale after the base.Initialise call.  
+            // This is because, we still may have Size = Vector2.Zero before the call, but afterwards it will not be
+            Size *= Scale;
         }
 
         #endregion

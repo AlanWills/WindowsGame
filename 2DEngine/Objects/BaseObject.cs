@@ -105,6 +105,17 @@ namespace _2DEngine
         /// </summary>
         public float Opacity { get; set; }
 
+        /// <summary>
+        /// A bool to indicate whether we should add a collider during initialisation.
+        /// Some objects (like text) do not need a collider - this is an optimisation step.
+        /// </summary>
+        public bool HasCollider { get; set; }
+
+        /// <summary>
+        /// The collider associated with this object.  Also, is responsible for mouse interactions.
+        /// </summary>
+        public Collider Collider { get; private set; }
+
         #endregion
 
         public BaseObject(Vector2 localPosition, string textureAsset) :
@@ -114,6 +125,7 @@ namespace _2DEngine
             TextureAsset = textureAsset;
             Colour = Color.White;
             Opacity = 1;
+            HasCollider = true;
         }
 
         public BaseObject(Vector2 size, Vector2 localPosition, string textureAsset) :
@@ -150,7 +162,8 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Set up the size if it has not been set already
+        /// Set up the size if it has not been set already.
+        /// Adds the collider if it should.
         /// </summary>
         public override void Initialise()
         {
@@ -162,7 +175,49 @@ namespace _2DEngine
                 Size = new Vector2(Texture.Bounds.Width, Texture.Bounds.Height);
             }
 
+            // Adds the collider if the flag is true
+            if (HasCollider) { AddCollider(); }
+
             base.Initialise();
+        }
+
+        protected virtual void AddCollider()
+        {
+            Collider = new RectangleCollider(this);
+        }
+
+        /// <summary>
+        /// Update the collider's mouse state variables
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
+        public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
+        {
+            base.HandleInput(elapsedGameTime, mousePosition);
+
+            if (HasCollider)
+            {
+                Debug.Assert(Collider != null);
+                Collider.HandleInput(mousePosition);
+            }
+        }
+
+        /// <summary>
+        /// Updates the object's collider if it has one
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        public override void Update(float elapsedGameTime)
+        {
+            base.Update(elapsedGameTime);
+
+            if (!ShouldUpdate) { return; }
+
+            if (HasCollider)
+            {
+                // Update the collider position and state variables
+                Debug.Assert(Collider != null);
+                Collider.Update();
+            }
         }
 
         /// <summary>

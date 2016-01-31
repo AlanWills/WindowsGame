@@ -75,7 +75,10 @@ namespace _2DEngine
             IsBegun = false;
 
             IsAlive = true;
-            Show();
+            // Don't call Show here - because we are in a constructor and it is a virtual function, it can have bad knock on effects
+            ShouldHandleInput = true;
+            ShouldUpdate = true;
+            ShouldDraw = true;
         }
 
         #region Virtual Functions
@@ -102,8 +105,8 @@ namespace _2DEngine
         public virtual void Begin()
         {
             // Check that we have loaded and initialised this object
-            Debug.Assert(ShouldLoad);
-            Debug.Assert(ShouldInitialise);
+            Debug.Assert(!ShouldLoad);
+            Debug.Assert(!ShouldInitialise);
 
             IsBegun = true;
         }
@@ -161,7 +164,8 @@ namespace _2DEngine
         #region Utility Functions
 
         /// <summary>
-        /// Sets the component to handle input, update and draw
+        /// Sets the component to handle input, update and draw.
+        /// DON'T call this during a constructor
         /// </summary>
         public virtual void Show()
         {

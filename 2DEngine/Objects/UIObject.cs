@@ -4,9 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 namespace _2DEngine
 {
     /// <summary>
-    /// This class is a base class for any UI objects in the game.
+    /// This class is a base class for any UI objects in the game.  
+    /// It is marked abstract because we do not want to create an instance of this class - it is too generic
     /// </summary>
-    public class UIObject : BaseObject
+    public abstract class UIObject : BaseObject
     {
         #region Properties and Fields
 

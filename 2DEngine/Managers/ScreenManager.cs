@@ -63,6 +63,73 @@ namespace _2DEngine
         {
         }
 
+        #region Virtual Functions
+
+        /// <summary>
+        /// Loads the game mouse and any screens already added
+        /// </summary>
+        public override void LoadContent()
+        {
+            if (!ShouldLoad) { return; }
+
+            GameMouse.Instance.LoadContent();
+
+            base.LoadContent();
+        }
+
+        /// <summary>
+        /// Initialises the camera and game mouse
+        /// </summary>
+        public override void Initialise()
+        {
+            if (!ShouldInitialise) { return; }
+
+            Camera.Initialise();
+            GameMouse.Instance.Initialise();
+
+            base.Initialise();
+        }
+
+        /// <summary>
+        /// Updates the keyboard and mouse.
+        /// Handles input for Camera and screens in ScreenManager
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
+        public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
+        {
+            // Check to see if we should handle input
+            if (!ShouldHandleInput) { return; }
+
+            // Update keyboard and mouse first
+            GameKeyboard.Update();
+            GameMouse.Instance.Update(elapsedGameTime);
+
+            // Then handle camera input
+            Camera.HandleInput(elapsedGameTime);
+
+            // Then finally handle screen input
+            base.HandleInput(elapsedGameTime, mousePosition);
+        }
+
+        /// <summary>
+        /// Update the camera and then any screens
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        public override void Update(float elapsedGameTime)
+        {
+            // Check to see if we should update
+            if (!ShouldUpdate) { return; }
+
+            // Update camera
+            Camera.Update(elapsedGameTime);
+
+            // Then update any screens
+            base.Update(elapsedGameTime);
+        }
+
+        #endregion
+
         #region Utility Functions
 
         /// <summary>
@@ -74,8 +141,8 @@ namespace _2DEngine
         public void Setup(SpriteBatch spriteBatch, Viewport viewport)
         {
             // Check that we have called this before loading and initialising
-            Debug.Assert(!ShouldLoad);
-            Debug.Assert(!ShouldInitialise);
+            Debug.Assert(ShouldLoad);
+            Debug.Assert(ShouldInitialise);
 
             SpriteBatch = spriteBatch;
             Viewport = viewport;

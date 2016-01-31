@@ -79,18 +79,7 @@ namespace WindowsGame
             // This has to be milliseconds because 'Seconds' is an int, so will be rounded down to 0
             float elapsedGameTime = gameTime.ElapsedGameTime.Milliseconds / 1000f;
 
-            // Update keyboard and mouse first
-            GameKeyboard.Update();
-            GameMouse.Instance.Update(elapsedGameTime);
-
-            // Handle input
-
-            Camera.HandleInput(elapsedGameTime);
             ScreenManager.Instance.HandleInput(elapsedGameTime, GameMouse.Instance.WorldPosition);
-
-            // Then update
-
-            Camera.Update(elapsedGameTime);
             ScreenManager.Instance.Update(elapsedGameTime);
         }
 
@@ -104,7 +93,7 @@ namespace WindowsGame
 
             base.Draw(gameTime);
 
-            ScreenManager.Instance.Draw(spriteBatch, null);
+            ScreenManager.Instance.Draw(spriteBatch);
         }
     }
 }

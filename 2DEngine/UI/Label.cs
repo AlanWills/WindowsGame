@@ -5,7 +5,8 @@ using System.Diagnostics;
 namespace _2DEngine
 {
     /// <summary>
-    /// A class for drawing text
+    /// A class for drawing text.
+    /// Has no collider by default.
     /// </summary>
     public class Label : UIObject
     {
@@ -24,14 +25,15 @@ namespace _2DEngine
         /// <summary>
         /// Corresponds to the dimensions of the text using the SpriteFont we have set up.
         /// </summary>
-        public Vector2 TextDimensions { get { return SpriteFont.MeasureString(Text); } }
+        private Vector2 TextDimensions { get { return SpriteFont.MeasureString(Text); } }
 
         #endregion
 
         public Label(string text, Vector2 localPosition, string spriteFontAsset = AssetManager.DefaultSpriteFontAsset) :
             base(localPosition, "")
         {
-
+            // Labels do not need a collider
+            HasCollider = false;
         }
 
         #region Virtual Functions

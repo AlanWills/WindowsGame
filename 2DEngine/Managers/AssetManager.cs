@@ -23,6 +23,8 @@ namespace _2DEngine
 
         public const string MouseTextureAsset = "";
         public const string DefaultSpriteFontAsset = "";
+        public const string DefaultButtonTextureAsset = "";
+        public const string DefaultTextBoxTextureAsset = "";
 
         #endregion
 
