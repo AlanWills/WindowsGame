@@ -146,6 +146,7 @@ namespace _2DEngine
 
         /// <summary>
         /// Sets up class variables from the main Game1 class which will be useful for our game.
+        /// Loads options from XML.
         /// MUST be called before LoadContent and Initialise.
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch from our Game1 class</param>
@@ -155,6 +156,8 @@ namespace _2DEngine
             // Check that we have called this before loading and initialising
             Debug.Assert(ShouldLoad);
             Debug.Assert(ShouldInitialise);
+
+            OptionsManager.Load();
 
             SpriteBatch = spriteBatch;
             Content = content;

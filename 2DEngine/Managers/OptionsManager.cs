@@ -25,7 +25,7 @@ namespace _2DEngine
         }
     }
 
-    public static class Options
+    public static class OptionsManager
     {
         #region Properties and Fields
 
