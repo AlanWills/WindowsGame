@@ -140,8 +140,7 @@ namespace _2DEngine
         /// Called every frame - draws text and sprites
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch we can use to draw textures</param>
-        /// <param name="spriteFont">The SpriteFont we can use to draw text</param>
-        public virtual void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             // If we shouldn't draw then we return
             if (!ShouldDraw) { return; }
@@ -164,7 +163,7 @@ namespace _2DEngine
         /// <summary>
         /// Sets the component to handle input, update and draw
         /// </summary>
-        public void Show()
+        public virtual void Show()
         {
             ShouldHandleInput = true;
             ShouldUpdate = true;
@@ -174,7 +173,7 @@ namespace _2DEngine
         /// <summary>
         /// Sets the component to not handle input, update or draw
         /// </summary>
-        public void Hide()
+        public virtual void Hide()
         {
             ShouldHandleInput = false;
             ShouldUpdate = false;

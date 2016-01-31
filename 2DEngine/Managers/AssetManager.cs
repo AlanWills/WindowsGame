@@ -19,7 +19,12 @@ namespace _2DEngine
 
         #endregion
 
+        #region Default Assets
+
         public const string MouseTextureAsset = "";
+        public const string DefaultSpriteFontAsset = "";
+
+        #endregion
 
         #region Properties
 

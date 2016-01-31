@@ -15,10 +15,10 @@ namespace _2DEngine
         #region Properties and Fields
 
         // A list to temporarily hold objects we wish to add to ActiveObjects
-        private List<T> ObjectsToAdd { get; set; }
+        protected List<T> ObjectsToAdd { get; private set; }
 
         // All the current objects which we will update etc.
-        private List<T> ActiveObjects { get; set; }
+        protected List<T> ActiveObjects { get; private set; }
 
         #endregion
 
@@ -133,10 +133,9 @@ namespace _2DEngine
         /// Loop through all the objects and call Draw
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch we can use to draw any textures</param>
-        /// <param name="spriteFont">The SpriteFont we can use to draw any text</param>
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch, spriteFont);
+            base.Draw(spriteBatch);
 
             // If we shouldn't draw, we return
             if (!ShouldDraw) { return; }
@@ -144,13 +143,13 @@ namespace _2DEngine
             foreach (T obj in ActiveObjects)
             {
                 // Update the object
-                obj.Draw(spriteBatch, spriteFont);
+                obj.Draw(spriteBatch);
             }
         }
 
         #endregion
 
-        #region Utility Functions
+        #region Object Management Functions
 
         /// <summary>
         /// Adds an object to this Manager
@@ -222,6 +221,61 @@ namespace _2DEngine
             Debug.Assert(obj != null);
 
             return obj;
+        }
+
+        #endregion
+
+        #region Utility Functions
+
+        /// <summary>
+        /// Calls Show on all sub items in this Manager
+        /// </summary>
+        public override void Show()
+        {
+            base.Show();
+
+            foreach (T obj in ActiveObjects)
+            {
+                obj.Show();
+            }
+
+            foreach (T obj in ObjectsToAdd)
+            {
+                obj.Show();
+            }
+        }
+
+        /// <summary>
+        /// Calls Hide on all sub items in this Manager
+        /// </summary>
+        public override void Hide()
+        {
+            base.Hide();
+
+            foreach (T obj in ActiveObjects)
+            {
+                obj.Hide();
+            }
+
+            foreach (T obj in ObjectsToAdd)
+            {
+                obj.Hide();
+            }
+        }
+
+        public override void Die()
+        {
+            base.Die();
+
+            foreach (T obj in ActiveObjects)
+            {
+                obj.Die();
+            }
+
+            foreach (T obj in ObjectsToAdd)
+            {
+                obj.Die();
+            }
         }
 
         #endregion

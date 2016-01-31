@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace _2DEngine
 {
@@ -24,6 +25,12 @@ namespace _2DEngine
         /// Useful for buttons etc.
         /// </summary>
         public object StoredObject { get; set; }
+
+        /// <summary>
+        /// A class specific SpriteFont which can be used to draw text.
+        /// Must be created by this class.
+        /// </summary>
+        protected SpriteFont SpriteFont { get; set; }
 
         #endregion
 
@@ -55,6 +62,15 @@ namespace _2DEngine
                 // and will be cleared up by whatever manager is in charge of it
                 Die();
             }
+        }
+
+        #endregion
+
+        #region Utility Functions
+
+        protected void SetupSpriteFont(string spriteFontAsset = AssetManager.DefaultSpriteFontAsset)
+        {
+            SpriteFont = AssetManager.GetSpriteFont(spriteFontAsset);
         }
 
         #endregion

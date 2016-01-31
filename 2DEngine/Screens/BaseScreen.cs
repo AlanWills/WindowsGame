@@ -56,7 +56,7 @@ namespace _2DEngine
             InGameUIObjects = new ObjectManager<UIObject>();
             ScreenUIObjects = new ObjectManager<UIObject>();
 
-            MusicQueueType = QueueType.WaitForCurrent
+            MusicQueueType = QueueType.WaitForCurrent;
         }
 
         // Do three drawing steps here rather than in screen manager
@@ -157,10 +157,9 @@ namespace _2DEngine
         /// Draws the mouse at the after everything else.
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch we should use for drawing sprites</param>
-        /// <param name="spriteFont">The SpriteFont we should use for drawing text</param>
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch, spriteFont);
+            base.Draw(spriteBatch);
 
             // Check to see if we should draw
             if (!ShouldDraw) { return; }
@@ -170,7 +169,7 @@ namespace _2DEngine
             {
                 spriteBatch.Begin();
 
-                Background.Draw(spriteBatch, spriteFont);
+                Background.Draw(spriteBatch);
 
                 spriteBatch.End();
             }
@@ -178,16 +177,16 @@ namespace _2DEngine
             // Draw the camera dependent objects using the camera transformation matrix
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
 
-            GameObjects.Draw(spriteBatch, spriteFont);
-            InGameUIObjects.Draw(spriteBatch, spriteFont);
+            GameObjects.Draw(spriteBatch);
+            InGameUIObjects.Draw(spriteBatch);
 
             spriteBatch.End();
 
             // Draw the camera independent objects and the mouse last
             spriteBatch.Begin();
 
-            ScreenUIObjects.Draw(spriteBatch, spriteFont);
-            GameMouse.Instance.Draw(spriteBatch, spriteFont);
+            ScreenUIObjects.Draw(spriteBatch);
+            GameMouse.Instance.Draw(spriteBatch);
 
             spriteBatch.End();
         }

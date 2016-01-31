@@ -170,10 +170,9 @@ namespace _2DEngine
         /// If we wish to create an object, but not draw it, change it's ShouldDraw property
         /// </summary>
         /// <param name="spriteBatch"></param>
-        /// <param name="spriteFont"></param>
-        public override void Draw(SpriteBatch spriteBatch, SpriteFont spriteFont)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch, spriteFont);
+            base.Draw(spriteBatch);
 
             // If we should draw, we return
             if (!ShouldDraw) { return; }
