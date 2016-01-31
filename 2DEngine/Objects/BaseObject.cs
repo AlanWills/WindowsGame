@@ -36,6 +36,12 @@ namespace _2DEngine
         protected virtual Vector2 TextureCentre { get; private set; }
 
         /// <summary>
+        /// A source rectangle used to specify a sub section of the Texture2D to draw.
+        /// Useful for animations and bars and by default set to (0, 0, texture width, texture height).
+        /// </summary>
+        public Rectangle SourceRectangle { get; set; }
+
+        /// <summary>
         /// An object which we can parent this object off of.  Positions and rotations are then relative to this object
         /// </summary>
         public BaseObject Parent { get; set; }
@@ -156,6 +162,12 @@ namespace _2DEngine
             {
                 TextureDimensions = new Vector2(Texture.Bounds.Width, Texture.Bounds.Height);
                 TextureCentre = new Vector2(Texture.Bounds.Center.X, Texture.Bounds.Center.Y);
+
+                // Set the source rectangle to the default size of the texture
+                SourceRectangle = new Rectangle(
+                     0, 0,
+                     (int)TextureDimensions.X,
+                     (int)TextureDimensions.Y);
             }
 
             base.LoadContent();
@@ -239,7 +251,7 @@ namespace _2DEngine
                 Texture,
                 WorldPosition,
                 null,
-                null,
+                SourceRectangle,
                 TextureCentre,
                 WorldRotation,
                 Vector2.Divide(Size, TextureDimensions),

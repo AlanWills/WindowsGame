@@ -45,6 +45,12 @@ namespace _2DEngine
         public ContentManager Content { get; private set; }
 
         /// <summary>
+        /// The Graphics Device we can use to change display settings.
+        /// Not really used except at startup and during Options changes.
+        /// </summary>
+        public GraphicsDeviceManager GraphicsDeviceManager { get; private set; }
+
+        /// <summary>
         /// The Viewport for our game window - can be used to access screen dimensions
         /// </summary>
         public Viewport Viewport { get; private set; }
@@ -144,14 +150,16 @@ namespace _2DEngine
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch from our Game1 class</param>
         /// <param name="viewport">The Viewport corresponding to the window</param>
-        public void Setup(SpriteBatch spriteBatch, Viewport viewport, ContentManager content)
+        public void Setup(SpriteBatch spriteBatch, Viewport viewport, ContentManager content, GraphicsDeviceManager graphics)
         {
             // Check that we have called this before loading and initialising
             Debug.Assert(ShouldLoad);
             Debug.Assert(ShouldInitialise);
 
             SpriteBatch = spriteBatch;
+            Content = content;
             Viewport = viewport;
+            GraphicsDeviceManager = graphics;
 
             ScreenDimensions = new Vector2(viewport.Width, viewport.Height);
             ScreenCentre = new Vector2(viewport.Width * 0.5f, viewport.Height * 0.5f);
