@@ -21,7 +21,7 @@ namespace _2DEngine
         /// <summary>
         /// The texture for this object - override if we have different textures that need to be drawn at different times
         /// </summary>
-        protected virtual Texture2D Texture { get; private set; }
+        protected virtual Texture2D Texture { get; set; }
 
         /// <summary>
         /// This is a cached vector that will only be set once.  Used in the draw method to indicate the dimensions of the texture.
@@ -150,7 +150,7 @@ namespace _2DEngine
             // Check to see whether we should load
             if (!ShouldLoad) { return; }
 
-            if (!string.IsNullOrEmpty(TextureAsset))
+            if (!string.IsNullOrEmpty(TextureAsset) && Texture == null)
             {
                 // Load the texture from the AssetManager
                 Texture = AssetManager.GetTexture(TextureAsset);

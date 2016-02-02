@@ -47,6 +47,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animation\Animation.cs" />
     <Compile Include="Camera and Input\Camera.cs" />
     <Compile Include="Camera and Input\GameMouse.cs" />
     <Compile Include="Camera and Input\GameKeyboard.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Managers\AssetManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
     <Compile Include="Managers\ObjectManager.cs" />
+    <Compile Include="Managers\OptionsManager.cs" />
     <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
     <Compile Include="Managers\SFXManager.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="UI\Image.cs" />
     <Compile Include="UI\Label.cs" />
     <Compile Include="UI\DialogBox.cs" />
+    <Compile Include="UI\Logo.cs" />
     <Compile Include="UI\UIContainer.cs" />
   </ItemGroup>
   <ItemGroup>

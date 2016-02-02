@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace _2DEngine
@@ -65,7 +66,7 @@ namespace _2DEngine
                     }
                 }
             }
-            catch { }
+            catch { /*Debug.Fail("Serious failure in MusicManager loading Music.");*/ }
         }
 
         public static void QueueSong(string songName, QueueType queueType = QueueType.WaitForCurrent)

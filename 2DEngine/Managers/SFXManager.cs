@@ -50,7 +50,7 @@ namespace _2DEngine
                     }
                 }
             }
-            catch { }
+            catch { /*Debug.Fail("Serious failure in SFXManager loading SFX.");*/ }
         }
 
         public static SoundEffect GetSoundEffect(string sfxName)

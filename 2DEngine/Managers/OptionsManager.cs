@@ -47,7 +47,7 @@ namespace _2DEngine
             set;
         }
 
-        public static string OptionsFilePath = ScreenManager.Instance.Content.RootDirectory + "\\Options.xml";
+        private static string OptionsFilePath { get; set; }
 
         #endregion
 
@@ -55,7 +55,12 @@ namespace _2DEngine
 
         public static void Load()
         {
-            OptionsData optionsData;
+            if (string.IsNullOrEmpty(OptionsFilePath))
+            {
+                OptionsFilePath = ScreenManager.Instance.Content.RootDirectory + "\\Options.xml";
+            }
+
+            OptionsData optionsData = new OptionsData();
 
             XmlSerializer mySerializer = new XmlSerializer(typeof(OptionsData));
             // To read the file, create a FileStream.
@@ -84,6 +89,11 @@ namespace _2DEngine
 
         public static void Save()
         {
+            if (string.IsNullOrEmpty(OptionsFilePath))
+            {
+                OptionsFilePath = ScreenManager.Instance.Content.RootDirectory + "\\Options.xml";
+            }
+
             OptionsData optionsData = new OptionsData();
             optionsData.IsFullScreen = IsFullScreen;
             optionsData.MusicVolume = MusicVolume;

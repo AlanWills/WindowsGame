@@ -1,8 +1,8 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin/Windows
-/intermediateDir:obj/Windows
+/outputDir:bin
+/intermediateDir:bin
 /platform:Windows
 /config:
 /profile:Reach
@@ -12,4 +12,16 @@
 
 
 #---------------------------------- Content ---------------------------------#
+
+#begin Sprites/CharacterSpriteSheets/Hero/Shoot_000_1x16_Resized.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/CharacterSpriteSheets/Hero/Shoot_000_1x16_Resized.png
 

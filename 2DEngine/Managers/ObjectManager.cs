@@ -168,6 +168,8 @@ namespace _2DEngine
             {
                 objectToAdd.Initialise();
             }
+
+            ObjectsToAdd.Add(objectToAdd);
         }
 
         /// <summary>

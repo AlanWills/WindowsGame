@@ -41,6 +41,7 @@ namespace WindowsGame
             base.Initialize();
 
             ScreenManager.Instance.Initialise();
+            ScreenManager.Instance.StartGame(new MainMenuScreen());
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace WindowsGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenManager.Instance.Setup(spriteBatch, GraphicsDevice.Viewport, Content);
+            ScreenManager.Instance.Setup(spriteBatch, GraphicsDevice.Viewport, Content, graphics);
             ScreenManager.Instance.LoadContent();
         }
 

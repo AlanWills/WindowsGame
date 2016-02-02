@@ -26,3 +26,7 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.exe
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.pdb
+C:\Users\Alan\documents\visual studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Cursor.xnb
+C:\Users\Alan\documents\visual studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Logo.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run & Shoot_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb

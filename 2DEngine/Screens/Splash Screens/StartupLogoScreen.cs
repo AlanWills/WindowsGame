@@ -8,6 +8,21 @@ namespace _2DEngine
     /// </summary>
     public class StartupLogoScreen : BaseScreen
     {
+        #region Properties and Fields
+
+        /// <summary>
+        /// The screen we wish to transition to after we have finished loading
+        /// </summary>
+        private BaseScreen ScreenAfterLoading { get; set; }
+
+        #endregion
+
+        public StartupLogoScreen(BaseScreen screenAfterLoading) :
+            base()
+        {
+            ScreenAfterLoading = screenAfterLoading;
+        }
+
         #region Virtual Functions
 
         /// <summary>
@@ -17,7 +32,7 @@ namespace _2DEngine
         {
             base.AddInitialUI();
 
-            AddScreenUIObject(new Image(GetScreenCentre(), AssetManager.StartupLogoTextureAsset));
+            AddScreenUIObject(new Logo());
         }
 
         /// <summary>
@@ -38,7 +53,7 @@ namespace _2DEngine
             MusicManager.LoadAssets(content);
             SFXManager.LoadAssets(content);
 
-            Die();
+            Transition(ScreenAfterLoading);
         }
 
         #endregion

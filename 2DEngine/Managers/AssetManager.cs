@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace _2DEngine
@@ -21,11 +23,11 @@ namespace _2DEngine
 
         #region Default Assets
 
-        public const string MouseTextureAsset = "";
+        public const string MouseTextureAsset = "Sprites\\Cursor";
         public const string DefaultSpriteFontAsset = "";
         public const string DefaultButtonTextureAsset = "";
         public const string DefaultTextBoxTextureAsset = "";
-        public const string StartupLogoTextureAsset = "";
+        public const string StartupLogoTextureAsset = "Sprites\\Logo";
 
         #endregion
 
@@ -74,7 +76,7 @@ namespace _2DEngine
                     SpriteFonts.Add(spriteFontFiles[i], content.Load<SpriteFont>(spriteFontFiles[i]));
                 }
             }
-            catch { }
+            catch { /*Debug.Fail("Serious failure in AssetManager lpading SpriteFonts.");*/ }
 
             Textures = new Dictionary<string, Texture2D>();
 
@@ -92,7 +94,7 @@ namespace _2DEngine
                     Textures.Add(textureFiles[i], content.Load<Texture2D>(textureFiles[i]));
                 }
             }
-            catch { }
+            catch { Debug.Fail("Serious failure in AssetManager loading Textures."); }
 
             // Can't tell whether this will load all the data in as BaseData or will be clever and load as it should be
             /*Data = new Dictionary<string, BaseData>();
@@ -111,7 +113,7 @@ namespace _2DEngine
                     Data.Add(dataFiles[i], content.Load<BaseData>(dataFiles[i]));
                 }
             }
-            catch { }
+            catch { Debug.Fail("Serious failure in AssetManager loading Data."); }
             */
         }
 

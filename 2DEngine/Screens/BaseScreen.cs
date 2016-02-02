@@ -78,9 +78,11 @@ namespace _2DEngine
         /// </summary>
         protected virtual void AddInitialUI()
         {
-            if (string.IsNullOrEmpty(BackgroundDataAsset))
+            if (!string.IsNullOrEmpty(BackgroundDataAsset))
             {
-                AddScreenUIObject(new Image(GetScreenDimensions(), GetScreenCentre(), BackgroundDataAsset));
+                Background = new Image(GetScreenDimensions(), GetScreenCentre(), BackgroundDataAsset);
+                Background.LoadContent();
+                Background.Initialise();
             }
         }
 

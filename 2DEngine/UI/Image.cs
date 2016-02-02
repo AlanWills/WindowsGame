@@ -48,7 +48,7 @@ namespace _2DEngine
             // Texture cannot be null
             Debug.Assert(Texture != null);
 
-            float aspectRatio = Texture.Bounds.Height / Texture.Bounds.Width;
+            float aspectRatio = (float)Texture.Bounds.Height / (float)Texture.Bounds.Width;
             Debug.Assert(aspectRatio > 0);
 
             Size = new Vector2(Size.X, Size.X * aspectRatio);

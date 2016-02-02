@@ -71,6 +71,15 @@ namespace _2DEngine
 
         #region Virtual Functions
 
+        public override void LoadContent()
+        {
+            if (!ShouldLoad) { return; }
+
+            Texture = ScreenManager.Instance.Content.Load<Texture2D>(AssetManager.MouseTextureAsset);
+
+            base.LoadContent();
+        }
+
         public override void Update(float elapsedGameTime)
         {
             base.Update(elapsedGameTime);

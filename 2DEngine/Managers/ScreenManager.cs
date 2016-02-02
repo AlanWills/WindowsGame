@@ -157,12 +157,12 @@ namespace _2DEngine
             Debug.Assert(ShouldLoad);
             Debug.Assert(ShouldInitialise);
 
-            OptionsManager.Load();
-
             SpriteBatch = spriteBatch;
             Content = content;
             Viewport = viewport;
             GraphicsDeviceManager = graphics;
+
+            OptionsManager.Load();
 
             ScreenDimensions = new Vector2(viewport.Width, viewport.Height);
             ScreenCentre = new Vector2(viewport.Width * 0.5f, viewport.Height * 0.5f);
@@ -188,6 +188,15 @@ namespace _2DEngine
             }
 
             transitionFrom.Die();
+        }
+
+        /// <summary>
+        /// Adds a startup logo screen and kicks off asset loading
+        /// </summary>
+        /// <param name="screenAfterLoading">The screen we wish to display after the StartupLogoScreen</param>
+        public void StartGame(BaseScreen screenAfterLoading)
+        {
+            AddObject(new StartupLogoScreen(screenAfterLoading), true, true);
         }
 
         #endregion
