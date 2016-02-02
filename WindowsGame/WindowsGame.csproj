@@ -58,6 +58,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.png" />
@@ -85,6 +103,24 @@
     <Content Include="Content\Sprites\Logo.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb" />

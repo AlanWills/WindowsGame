@@ -16,10 +16,18 @@ namespace WindowsGame
             }
         }
 
+        protected override Vector2 TextureCentre
+        {
+            get
+            {
+                return Animation.Centre;
+            }
+        }
+
         public Character(Vector2 localPosition, string dataAsset) :
             base(localPosition, dataAsset)
         {
-            Animation = new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Walk_000_1x16_Resized", 1, 16, 0.05f);
+            Animation = new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Forward Roll_000_1x13_Resized", 1, 13, 0.05f, true, false);
         }
 
         public override void LoadContent()
@@ -37,7 +45,7 @@ namespace WindowsGame
 
             base.Initialise();
 
-            LocalPosition += new Vector2(0, Size.Y * 0.5f);
+            //LocalPosition += new Vector2(0, Size.Y * 0.5f);
         }
 
         public override void Update(float elapsedGameTime)

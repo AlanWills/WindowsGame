@@ -24,6 +24,12 @@ namespace _2DEngine
         private Point FrameDimensions { get; set; }
 
         /// <summary>
+        /// The centre we should pass to the object that is using this animation.
+        /// Set only once at loading.
+        /// </summary>
+        public Vector2 Centre { get; private set; }
+
+        /// <summary>
         /// The number of frames in the sprite sheet
         /// </summary>
         private Point Frames { get; set; }
@@ -90,6 +96,7 @@ namespace _2DEngine
             Debug.Assert(Texture != null);
 
             FrameDimensions = new Point(Texture.Width / Frames.X, Texture.Height / Frames.Y);
+            Centre = new Vector2(FrameDimensions.X * 0.5f, FrameDimensions.Y * 0.5f);
 
             CalculateSourceRectangle();
         }
@@ -115,6 +122,8 @@ namespace _2DEngine
                         if (CurrentFrame == Frames.X * Frames.Y - 1)
                         {
                             Finished = true;
+                            IsPlaying = false;
+                            return;
                         }
                     }
                     else
