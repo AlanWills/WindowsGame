@@ -27,10 +27,10 @@ namespace _2DEngine
 
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            base.HandleInput(elapsedGameTime, mousePosition);
-
             // Check to see if we should update
             if (!ShouldHandleInput) { return; }
+
+            base.HandleInput(elapsedGameTime, mousePosition);
 
             if (GameKeyboard.IsKeyPressed(Keys.Escape))
             {

@@ -69,9 +69,9 @@ namespace _2DEngine
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
             if (!ShouldDraw) { return; }
+
+            base.Draw(spriteBatch);
 
             Text.Draw(spriteBatch);
         }

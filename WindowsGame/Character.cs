@@ -27,6 +27,7 @@ namespace WindowsGame
         public Character(Vector2 localPosition, string dataAsset) :
             base(localPosition, dataAsset)
         {
+            SpriteEffect = SpriteEffects.FlipHorizontally;
             Animation = new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Forward Roll_000_1x13_Resized", 1, 13, 0.05f, true, false);
         }
 
@@ -37,15 +38,6 @@ namespace WindowsGame
             Animation.LoadContent();
 
             base.LoadContent();
-        }
-
-        public override void Initialise()
-        {
-            if (!ShouldInitialise) { return; }
-
-            base.Initialise();
-
-            //LocalPosition += new Vector2(0, Size.Y * 0.5f);
         }
 
         public override void Update(float elapsedGameTime)

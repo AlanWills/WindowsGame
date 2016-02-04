@@ -48,6 +48,8 @@ namespace _2DEngine
 
         /// <summary>
         /// The local offset from the parent.
+        /// Cannot do LocalPosition.X = x, because Vector2 is a struct.
+        /// Instead, do LocalPosition = new Vector2(x, LocalPosition.Y).
         /// </summary>
         public Vector2 LocalPosition { get; set; }
 
@@ -112,6 +114,12 @@ namespace _2DEngine
         public float Opacity { get; set; }
 
         /// <summary>
+        /// A property that can be used to reverse an image - useful for animations or sprites that are facing just one way.
+        /// By default, this is SpriteEffects.None.
+        /// </summary>
+        protected SpriteEffects SpriteEffect { get; set; }
+
+        /// <summary>
         /// A bool to indicate whether we should add a collider during initialisation.
         /// Some objects (like text) do not need a collider - this is an optimisation step.
         /// </summary>
@@ -132,6 +140,7 @@ namespace _2DEngine
             Colour = Color.White;
             Opacity = 1;
             HasCollider = true;
+            SpriteEffect = SpriteEffects.None;
         }
 
         public BaseObject(Vector2 size, Vector2 localPosition, string textureAsset) :
@@ -205,6 +214,9 @@ namespace _2DEngine
         /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
+            // Check to see if we should handle input for this object
+            if (!ShouldHandleInput) { return; }
+
             base.HandleInput(elapsedGameTime, mousePosition);
 
             if (HasCollider)
@@ -220,9 +232,10 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            base.Update(elapsedGameTime);
-
+            // Check to see if we should update this object
             if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
 
             if (HasCollider)
             {
@@ -239,10 +252,10 @@ namespace _2DEngine
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
-            // If we should draw, we return
+            // If we shouldn't draw, we return
             if (!ShouldDraw) { return; }
+
+            base.Draw(spriteBatch);
 
             // If we are drawing this object, it should have a valid texture
             // If we wish to create an object but not draw it, simply change it's ShouldDraw property
@@ -256,7 +269,7 @@ namespace _2DEngine
                 WorldRotation,
                 Vector2.Divide(Size, TextureDimensions),
                 Colour * Opacity,
-                SpriteEffects.None,
+                SpriteEffect,
                 0);
         }
 

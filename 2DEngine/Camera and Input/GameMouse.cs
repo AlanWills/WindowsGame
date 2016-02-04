@@ -82,10 +82,10 @@ namespace _2DEngine
 
         public override void Update(float elapsedGameTime)
         {
-            base.Update(elapsedGameTime);
-
             // Check if we should update the mouse
             if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
 
             PreviousMouseState = CurrentMouseState;
             CurrentMouseState = Mouse.GetState();

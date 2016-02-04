@@ -47,9 +47,9 @@ namespace _2DEngine
         {
             CheckCanRun();
 
+            // Check to see if we should update
             if (!ShouldUpdate) { return; }
 
-            // Do not call Update unless we can in fact begin
             base.Update(elapsedGameTime);
         }
 

@@ -51,10 +51,10 @@ namespace _2DEngine
 
         public override void Update(float elapsedGameTime)
         {
-            base.Update(elapsedGameTime);
-
             // Check if we should update
             if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
 
             CurrentLifeTime += elapsedGameTime;
             if (CurrentLifeTime > LifeTime)

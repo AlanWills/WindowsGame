@@ -145,14 +145,14 @@ namespace _2DEngine
         /// <param name="mousePosition">The current screen space position of the mouse</param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            base.HandleInput(elapsedGameTime, mousePosition);
-
             // See if we should continue or whether the ScriptManager is preventing us
             ScriptManager.HandleInput(elapsedGameTime, mousePosition);
             ShouldHandleInput = ScriptManager.ShouldUpdateGame;
 
             // Check to see if we should handle input
             if (!ShouldHandleInput) { return; }
+
+            base.HandleInput(elapsedGameTime, mousePosition);
 
             GameObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition));
             InGameUIObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition));
@@ -165,14 +165,14 @@ namespace _2DEngine
         /// <param name="elapsedGameTime">The time in seconds since the last frame</param>
         public override void Update(float elapsedGameTime)
         {
+            // Check to see if we should update
+            if (!ShouldUpdate) { return; }
+
             base.Update(elapsedGameTime);
 
             // See if we should continue or whether the ScriptManager is preventing us
             ScriptManager.Update(elapsedGameTime);
             ShouldUpdate = ScriptManager.ShouldUpdateGame;
-
-            // Check to see if we should update
-            if (!ShouldUpdate) { return; }
 
             GameObjects.Update(elapsedGameTime);
             InGameUIObjects.Update(elapsedGameTime);
@@ -187,10 +187,10 @@ namespace _2DEngine
         /// <param name="spriteBatch">The SpriteBatch we should use for drawing sprites</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
             // Check to see if we should draw
             if (!ShouldDraw) { return; }
+
+            base.Draw(spriteBatch);
 
             // Draw the background if it has been set
             if (Background != null)

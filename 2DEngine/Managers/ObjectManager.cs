@@ -89,10 +89,10 @@ namespace _2DEngine
         /// <param name="mousePosition">The current position of the mouse in the space of the Component (screen or game)</param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            base.HandleInput(elapsedGameTime, mousePosition);
-
             // If we shouldn't HandleInput, we return
             if (!ShouldHandleInput) { return; }
+
+            base.HandleInput(elapsedGameTime, mousePosition);
 
             // Loop through the active object
             foreach (T obj in ActiveObjects)
@@ -108,11 +108,11 @@ namespace _2DEngine
         /// <param name="elapsedGameTime">The seconds that have elapsed since the last update loop</param>
         public override void Update(float elapsedGameTime)
         {
-            // Always call the super class' function - it will deal with whether it should run it itself
-            base.Update(elapsedGameTime);
-
             // If we should not Update, we return
             if (!ShouldUpdate) { return; }
+
+            // Always call the super class' function - it will deal with whether it should run it itself
+            base.Update(elapsedGameTime);
 
             // Add the objects and then clear the list - it is only a temporary holder
             ActiveObjects.AddRange(ObjectsToAdd);
@@ -135,10 +135,10 @@ namespace _2DEngine
         /// <param name="spriteBatch">The SpriteBatch we can use to draw any textures</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
             // If we shouldn't draw, we return
             if (!ShouldDraw) { return; }
+
+            base.Draw(spriteBatch);
 
             foreach (T obj in ActiveObjects)
             {

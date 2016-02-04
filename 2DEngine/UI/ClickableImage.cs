@@ -77,10 +77,10 @@ namespace _2DEngine
         /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            base.HandleInput(elapsedGameTime, mousePosition);
-
             // Check to see if we should handle input
             if (!ShouldHandleInput) { return; }
+
+            base.HandleInput(elapsedGameTime, mousePosition);
 
             if (Collider.IsMouseOver && ClickState != ClickState.kPressed)
             {
@@ -108,10 +108,10 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            base.Update(elapsedGameTime);
-
             // Check to see if we should update
             if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
 
             CurrentClickTimer += elapsedGameTime;
             if (CurrentClickTimer >= clickResetTime)

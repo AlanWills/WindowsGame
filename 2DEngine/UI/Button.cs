@@ -70,10 +70,10 @@ namespace _2DEngine
 
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            base.HandleInput(elapsedGameTime, mousePosition);
-
             // Check to see whether we should handle input
             if (!ShouldHandleInput) { return; }
+
+            base.HandleInput(elapsedGameTime, mousePosition);
 
             // Play SFX if we have entered the button
             if (/*have entered*/true)
@@ -90,10 +90,10 @@ namespace _2DEngine
 
         public override void Update(float elapsedGameTime)
         {
-            base.Update(elapsedGameTime);
-
             // Check to see whether we should update
             if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
 
             // Lerp back to the default colour - gives the effect of highlighted -> original colour over time
             Colour = Color.Lerp(Colour, DefaultColour, elapsedGameTime * 3);
@@ -101,10 +101,10 @@ namespace _2DEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
             // Check to see whether we should draw
             if (!ShouldDraw) { return; }
+
+            base.Draw(spriteBatch);
 
             ButtonText.Draw(spriteBatch);
         }
