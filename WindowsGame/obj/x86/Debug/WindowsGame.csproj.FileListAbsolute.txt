@@ -53,3 +53,4 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb

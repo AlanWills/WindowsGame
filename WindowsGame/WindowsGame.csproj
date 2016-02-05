@@ -76,6 +76,7 @@
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.png" />
@@ -121,6 +122,7 @@
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb" />
+    <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb" />

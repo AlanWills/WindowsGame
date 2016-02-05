@@ -70,10 +70,11 @@ namespace _2DEngine
         public Rectangle CurrentSourceRectangle { get; private set; }
 
         private float currentTimeOnFrame = 0;
+        private const float defaultTimePerFrame = 0.05f;
 
         #endregion
 
-        public Animation(string textureAsset, int framesInX, int framesInY, float timePerFrame, bool isPlaying = true, bool continual = true, int defaultFrame = 0)
+        public Animation(string textureAsset, int framesInX, int framesInY, bool continual = true, bool isPlaying = false, int defaultFrame = 0, float timePerFrame = defaultTimePerFrame)
         {
             TextureAsset = textureAsset;
             Frames = new Point(framesInX, framesInY);
@@ -146,6 +147,9 @@ namespace _2DEngine
 
         #region Utility Functions
 
+        /// <summary>
+        /// Calculates the source rectangle from the sprite sheet we should use based on the dimensions and current frame.
+        /// </summary>
         private void CalculateSourceRectangle()
         {
             int currentRow = CurrentFrame / Frames.X;
@@ -155,6 +159,19 @@ namespace _2DEngine
             Debug.Assert(currentRow < Frames.Y);
 
             CurrentSourceRectangle = new Rectangle(currentColumn * FrameDimensions.X, currentRow * FrameDimensions.Y, FrameDimensions.X, FrameDimensions.Y);
+        }
+
+        /// <summary>
+        /// Resets the animation to make it ready to play again.
+        /// </summary>
+        public void Reset()
+        {
+            currentTimeOnFrame = 0;
+            IsPlaying = false;
+            CurrentFrame = DefaultFrame;
+            Finished = false;
+
+            CalculateSourceRectangle();
         }
 
         #endregion

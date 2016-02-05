@@ -36,50 +36,62 @@ namespace _2DEngine
 
         #endregion
 
-        public StateMachine(GameObject parentGameObject)
+        public StateMachine(GameObject parentGameObject, State startingState)
         {
             ParentGameObject = parentGameObject;
+            ActiveState = startingState;
+
+            States = new List<State>();
+            GlobalTransitions = new List<Transition>();
         }
 
         #region State Machine Update Functions
+
+        /// <summary>
+        /// Calls LoadContent on every State in this state machine.
+        /// </summary>
+        public void LoadContent()
+        {
+            foreach (State state in States)
+            {
+                state.Animation.LoadContent();
+            }
+
+            foreach (Transition globalState in GlobalTransitions)
+            {
+                globalState.DestinationState.Animation.LoadContent();
+            }
+
+            ActiveState.Animation.IsPlaying = true;
+        }
 
         /// <summary>
         /// Checks the transitions from our ActiveState and sets the new state if there was a change.
         /// Then, checks the global transitions and if there was a successful transition, sets the new state to be this state and returns.
         /// I.e. normal states can overridden on successful transition, but global states cannot.
         /// </summary>
-        public void Update()
+        public void Update(float elapsedGameTime)
         {
             Debug.Assert(ActiveState != null);
             Debug.Assert(States.Count > 0);
 
+            ActiveState.Update(elapsedGameTime);
+
             ActiveState = ActiveState.CheckTransitions();
+
+            // Check to make sure we have transition to a state that exists in our state machine.
+            Debug.Assert(States.Exists(x => x == ActiveState));
             
             foreach (Transition state in GlobalTransitions)
             {
                 if (state.CheckTransitionCondition())
                 {
+                    ActiveState.Animation.Reset();
+
                     ActiveState = state.DestinationState;
                     return;
                 }
             }
-        }
-
-        #endregion
-
-        #region Utility Functions
-
-        /// <summary>
-        /// Adds a global state to our state machine.
-        /// </summary>
-        /// <param name="state">The global state.</param>
-        /// <param name="transitionEvent">The condition that must be fulfilled to transition to this state.</param>
-        public void AddGlobalState(State state, TransitionEventHandler transitionEvent)
-        {
-            Transition transition = new Transition(state);
-            transition.TransitionEvent += transitionEvent;
-
-            GlobalTransitions.Add(transition);
         }
 
         #endregion

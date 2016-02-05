@@ -48,13 +48,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation\Animation.cs" />
-    <Compile Include="Animation\GlobalTransition.cs" />
     <Compile Include="Animation\State.cs" />
     <Compile Include="Animation\StateMachine.cs" />
     <Compile Include="Animation\Transition.cs" />
     <Compile Include="Camera and Input\Camera.cs" />
     <Compile Include="Camera and Input\GameMouse.cs" />
     <Compile Include="Camera and Input\GameKeyboard.cs" />
+    <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
     <Compile Include="Managers\AssetManager.cs" />

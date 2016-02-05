@@ -8,6 +8,8 @@ namespace _2DEngine
     /// </summary>
     public class State
     {
+        #region Properties and Fields
+
         /// <summary>
         /// The animation associated with this state.
         /// </summary>
@@ -17,6 +19,24 @@ namespace _2DEngine
         /// A list of transitions to other states
         /// </summary>
         public List<Transition> Transitions { get; set; }
+
+        #endregion
+
+        public State(Animation animation)
+        {
+            Animation = animation;
+
+            Transitions = new List<Transition>();
+        }
+
+        #region State Update Functions
+
+        public void Update(float elapsedGameTime)
+        {
+            Animation.Update(elapsedGameTime);
+        }
+
+        #endregion
 
         #region State Transition Functions
 
@@ -30,6 +50,9 @@ namespace _2DEngine
             {
                 if (transition.CheckTransitionCondition())
                 {
+                    Animation.Reset();
+                    transition.DestinationState.Animation.IsPlaying = true;
+
                     return transition.DestinationState;
                 }
             }
