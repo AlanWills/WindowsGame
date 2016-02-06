@@ -61,5 +61,22 @@ namespace _2DEngine
         }
 
         #endregion
+
+        #region Transition Utility Functions
+
+        /// <summary>
+        /// Adds a transition between this and the inputted state with the inputted transition condition.
+        /// </summary>
+        /// <param name="destinationState">The state we will transition to.</param>
+        /// <param name="transitionEvent">The condition that must be satisfied for a transition to occur.</param>
+        public void AddTransition(State destinationState, TransitionEventHandler transitionEvent)
+        {
+            // For now, don't support transitions to yourself.  This just makes no sense really.
+            Debug.Assert(destinationState != this);
+
+            Transitions.Add(new Transition(this, destinationState, transitionEvent));
+        }
+
+        #endregion
     }
 }

@@ -15,14 +15,14 @@ namespace _2DEngine
         /// <summary>
         /// The health of this object.  If below zero, it will be killed and cleaned up.
         /// </summary>
-        private float Health { get; set; }
+        protected float Health { get; set; }
 
         #endregion
 
         public GameObject(Vector2 localPosition, string dataAsset) :
             base(localPosition, "")
         {
-            Health = 1;
+            Health = 100;
             DataAsset = dataAsset;
         }
 
@@ -37,6 +37,29 @@ namespace _2DEngine
             // Set the texture asset - if no data, then set the texture asset to be the data asset
 
             base.LoadContent();
+        }
+
+        /// <summary>
+        /// Calls Die on the object if it has insufficient health.
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        public override void Update(float elapsedGameTime)
+        {
+            if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
+
+            // Die if we have insufficient health
+            if (Health <= 0) { Die(); }
+        }
+
+        #endregion
+
+        #region Utility Functions
+
+        public bool DeathTransition(State sourceState, State destinationState)
+        {
+            return Health <= 0;
         }
 
         #endregion

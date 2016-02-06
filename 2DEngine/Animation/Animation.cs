@@ -1,17 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Diagnostics;
 
 namespace _2DEngine
 {
+    /// <summary>
+    /// A delegate used for events after animations have completed.
+    /// </summary>
+    public delegate void OnAnimationCompleteHandler();
+
     public class Animation
     {
         #region Animation Properties
 
         /// <summary>
-        /// The string path for the texture asset
+        /// The string path for the data asset
         /// </summary>
-        private string TextureAsset { get; set; }
+        private string DataAsset { get; set; }
 
         /// <summary>
         /// The texture associated with this animation
@@ -40,11 +46,6 @@ namespace _2DEngine
         private int CurrentFrame { get; set; }
 
         /// <summary>
-        /// The starting frame of the animation
-        /// </summary>
-        private int DefaultFrame { get; set; }
-
-        /// <summary>
         /// The time each frame is displayed before moving on
         /// </summary>
         public float TimePerFrame { get; set; }
@@ -69,20 +70,22 @@ namespace _2DEngine
         /// </summary>
         public Rectangle CurrentSourceRectangle { get; private set; }
 
+        /// <summary>
+        /// Can only be used by non continual animations.
+        /// Used to perform a function after the animation has completed.
+        /// </summary>
+        public event OnAnimationCompleteHandler OnAnimationComplete;
+
         private float currentTimeOnFrame = 0;
         private const float defaultTimePerFrame = 0.05f;
 
         #endregion
 
-        public Animation(string textureAsset, int framesInX, int framesInY, bool continual = true, bool isPlaying = false, int defaultFrame = 0, float timePerFrame = defaultTimePerFrame)
+        public Animation(string dataAsset)
         {
-            TextureAsset = textureAsset;
-            Frames = new Point(framesInX, framesInY);
-            TimePerFrame = timePerFrame;
-            IsPlaying = isPlaying;
-            Continual = continual;
-            DefaultFrame = defaultFrame;
-            CurrentFrame = defaultFrame;
+            DataAsset = dataAsset;
+            IsPlaying = false;
+            CurrentFrame = 0;
         }
 
         #region LoadContent and Update functions
@@ -92,10 +95,16 @@ namespace _2DEngine
         /// </summary>
         public void LoadContent()
         {
-            Texture = AssetManager.GetTexture(TextureAsset);
+            AnimationData data = AssetManager.GetData<AnimationData>(DataAsset);
+            Debug.Assert(data != null);
 
+            Texture = AssetManager.GetTexture(data.AnimationTextureAsset);
             Debug.Assert(Texture != null);
 
+            Frames = data.TextureFrames;
+            Continual = data.Continual;
+
+            TimePerFrame = defaultTimePerFrame;
             FrameDimensions = new Point(Texture.Width / Frames.X, Texture.Height / Frames.Y);
             Centre = new Vector2(FrameDimensions.X * 0.5f, FrameDimensions.Y * 0.5f);
 
@@ -124,6 +133,12 @@ namespace _2DEngine
                         {
                             Finished = true;
                             IsPlaying = false;
+
+                            if (OnAnimationComplete != null)
+                            {
+                                OnAnimationComplete();
+                            }
+
                             return;
                         }
                     }
@@ -139,7 +154,7 @@ namespace _2DEngine
             }
             else
             {
-                CurrentFrame = DefaultFrame;
+                CurrentFrame = 0;
             }
         }
 
@@ -168,7 +183,7 @@ namespace _2DEngine
         {
             currentTimeOnFrame = 0;
             IsPlaying = false;
-            CurrentFrame = DefaultFrame;
+            CurrentFrame = 0;
             Finished = false;
 
             CalculateSourceRectangle();

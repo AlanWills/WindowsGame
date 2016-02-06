@@ -39,11 +39,11 @@ namespace _2DEngine
             private set;
         }
 
-        /*public static Dictionary<string, BaseData> Data
+        public static Dictionary<string, BaseData> Data
         {
             get;
             private set;
-        }*/
+        }
 
         public static Dictionary<string, SpriteFont> SpriteFonts
         {
@@ -97,9 +97,9 @@ namespace _2DEngine
             catch { Debug.Fail("Serious failure in AssetManager loading Textures."); }
 
             // Can't tell whether this will load all the data in as BaseData or will be clever and load as it should be
-            /*Data = new Dictionary<string, BaseData>();
+            Data = new Dictionary<string, BaseData>();
 
-            try
+            /*try
             {
                 string[] dataFiles = Directory.GetFiles(content.RootDirectory + "\\Data", "*.*", SearchOption.AllDirectories);
                 for (int i = 0; i < dataFiles.Length; i++)
@@ -113,8 +113,8 @@ namespace _2DEngine
                     Data.Add(dataFiles[i], content.Load<BaseData>(dataFiles[i]));
                 }
             }
-            catch { Debug.Fail("Serious failure in AssetManager loading Data."); }
-            */
+            catch { Debug.Fail("Serious failure in AssetManager loading Data."); }*/
+            
         }
 
         #region Utility Functions
@@ -145,13 +145,16 @@ namespace _2DEngine
             return texture;
         }
 
-        /*public static T GetData<T>(string name) where T : BaseData
+        public static T GetData<T>(string name) where T : BaseData
         {
             BaseData data = null;
             Data.TryGetValue(name, out data);
 
-            if (data == null)
+            Debug.Assert(data != null);
+
+            /*if (data == null)
             {
+                
                 try
                 {
                     return ScreenManager.Content.Load<T>(name);
@@ -160,12 +163,12 @@ namespace _2DEngine
                 {
                     return null;
                 }
-            }
+            }*/
 
             return data as T;
         }
 
-        public static List<T> GetAllData<T>() where T : BaseData
+        /*public static List<T> GetAllData<T>() where T : BaseData
         {
             List<T> dataOfType = new List<T>();
 

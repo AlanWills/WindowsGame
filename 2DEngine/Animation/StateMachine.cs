@@ -80,18 +80,28 @@ namespace _2DEngine
             ActiveState = ActiveState.CheckTransitions();
 
             // Check to make sure we have transition to a state that exists in our state machine.
-            Debug.Assert(States.Exists(x => x == ActiveState));
+            Debug.Assert(States.Exists(x => x == ActiveState) || GlobalTransitions.Exists(x => x.DestinationState == ActiveState));
             
-            foreach (Transition state in GlobalTransitions)
+            foreach (Transition transition in GlobalTransitions)
             {
-                if (state.CheckTransitionCondition())
+                if (transition.DestinationState != ActiveState && transition.CheckTransitionCondition())
                 {
                     ActiveState.Animation.Reset();
 
-                    ActiveState = state.DestinationState;
+                    ActiveState = transition.DestinationState;
+                    ActiveState.Animation.IsPlaying = true;
                     return;
                 }
             }
+        }
+
+        #endregion
+
+        #region Global Transitions
+
+        public void AddGlobalTransition(State destinationState, TransitionEventHandler transitionEvent)
+        {
+            GlobalTransitions.Add(new Transition(null, destinationState, transitionEvent));
         }
 
         #endregion

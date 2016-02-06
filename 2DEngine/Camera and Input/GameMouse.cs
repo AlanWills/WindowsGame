@@ -124,11 +124,11 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Determines whether the inputted mouse button is pressed this frame
+        /// Determines whether the inputted mouse button is pressed down this frame
         /// </summary>
         /// <param name="mouseButton">The mouse button we wish to query</param>
-        /// <returns>Returns true if the mouse button was pressed this frame</returns>
-        public bool IsPressed(MouseButton mouseButton)
+        /// <returns>Returns true if the mouse button was pressed down this frame</returns>
+        public bool IsDown(MouseButton mouseButton)
         {
             switch (mouseButton)
             {
@@ -154,7 +154,7 @@ namespace _2DEngine
         /// <returns>Returns true if the inputted button is down and we have moved the mouse since last frame</returns>
         public bool IsDragged(MouseButton mouseButton)
         {
-            return IsPressed(mouseButton) && GetDragDelta() != Vector2.Zero;
+            return IsDown(mouseButton) && GetDragDelta() != Vector2.Zero;
         }
 
         /// <summary>
@@ -164,6 +164,28 @@ namespace _2DEngine
         public Vector2 GetDragDelta()
         {
             return new Vector2(CurrentMouseState.X - PreviousMouseState.X, CurrentMouseState.Y - PreviousMouseState.Y);
+        }
+
+        /// <summary>
+        /// Determines whether the InputMap Shoot button was clicked this frame.
+        /// </summary>
+        /// <param name="sourceState"></param>
+        /// <param name="destinationState"></param>
+        /// <returns>Returns true if the InputMap Shoot button was clicked.</returns>
+        public static bool IsShootButtonClicked(State sourceState, State destinationState)
+        {
+            return Instance.IsClicked(InputMap.Shoot);
+        }
+
+        /// <summary>
+        /// Determines whether the InputMap Melee button was clicked this frame.
+        /// </summary>
+        /// <param name="sourceState"></param>
+        /// <param name="destinationState"></param>
+        /// <returns>Returns true if the InputMap Melee button was clicked.</returns>
+        public static bool IsMeleeButtonClicked(State sourceState, State destinationState)
+        {
+            return Instance.IsClicked(InputMap.Melee);
         }
 
         #endregion

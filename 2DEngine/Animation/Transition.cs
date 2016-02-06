@@ -5,14 +5,6 @@ using System.Diagnostics;
 namespace _2DEngine
 {
     /// <summary>
-    /// A class used for basic transition conditions
-    /// </summary>
-    public class TransitionArgs : EventArgs
-    {
-        
-    }
-
-    /// <summary>
     /// An event handler description for our transition event.
     /// Possibly will take custom args, but haven't worked that out yet.
     /// </summary>
@@ -26,7 +18,8 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
-        /// An event handler that 
+        /// An event handler that is used to work out whether a transition should occur.
+        /// Pass a custom function which returns a bool to dictate when this transition should occur.
         /// </summary>
         public event TransitionEventHandler TransitionEvent;
 
@@ -44,6 +37,9 @@ namespace _2DEngine
 
         public Transition(State sourceState, State destinationState, TransitionEventHandler transitionEvent)
         {
+            // Source state can be null, but destination state cannot be null
+            Debug.Assert(destinationState != null);
+
             SourceState = sourceState;
             DestinationState = destinationState;
             TransitionEvent += transitionEvent;
@@ -70,28 +66,12 @@ namespace _2DEngine
         #region State Transition Events - some generic, common events
 
         /// <summary>
-        /// Transition if the left or right movement keys are down.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destination"></param>
-        /// <returns></returns>
-        public static bool IsMovementKeyDown(State source, State destination)
-        {
-            return GameKeyboard.IsKeyDown(InputMap.MoveLeft) || GameKeyboard.IsKeyDown(InputMap.MoveRight);
-        }
-
-        public static bool IsMovementKeyNotDown(State source, State destination)
-        {
-            return !IsMovementKeyDown(source, destination);
-        }
-
-        /// <summary>
         /// Transition if the source animation has finished playing.
         /// </summary>
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool AnimationComplete(State source, State destination)
+        public static bool SourceAnimationComplete(State source, State destination)
         {
             // If we are using this condition, the animation cannot be continual.
             Debug.Assert(source.Animation.Continual == false);

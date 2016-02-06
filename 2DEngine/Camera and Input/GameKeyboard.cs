@@ -48,6 +48,50 @@ namespace _2DEngine
             return CurrentKeyboardState.IsKeyDown(key) && PreviousKeyboardState.IsKeyUp(key);
         }
 
+        /// <summary>
+        /// Transition if the InputMap movement keys are down.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsMovementKeyDown(State source, State destination)
+        {
+            return GameKeyboard.IsKeyDown(InputMap.MoveLeft) || GameKeyboard.IsKeyDown(InputMap.MoveRight);
+        }
+
+        /// <summary>
+        /// Transitions if the InputMap movements keys are not down.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsMovementKeyNotDown(State source, State destination)
+        {
+            return !IsMovementKeyDown(source, destination);
+        }
+
+        /// <summary>
+        /// Transitions if the InputMap jump key is pressed.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsJumpKeyPressed(State source, State destination)
+        {
+            return IsKeyPressed(InputMap.Jump);
+        }
+
+        /// <summary>
+        /// Transitions if the InputMap roll key is pressed.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsRollKeyPressed(State source, State destination)
+        {
+            return IsKeyPressed(InputMap.ForwardRoll);
+        }
+
         #endregion
     }
 }

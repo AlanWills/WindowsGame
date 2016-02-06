@@ -57,6 +57,8 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Data\AnimationData.cs" />
+    <Compile Include="Data\BaseData.cs" />
     <Compile Include="Managers\AssetManager.cs" />
     <Compile Include="Managers\MusicManager.cs" />
     <Compile Include="Managers\ObjectManager.cs" />

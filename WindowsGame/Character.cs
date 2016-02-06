@@ -53,20 +53,57 @@ namespace WindowsGame
         public virtual void SetUpStateMachine()
         {
             State idleState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Idle_000_1x12_Resized", 1, 12));
-            State walkingState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Walk_000_1x16_Resized", 1, 16, false));
-            State runningState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Run_000_1x14_Resized", 1, 14));
+            State walkState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Walk_000_1x16_Resized", 1, 16, false));
+            State runState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Run_000_1x14_Resized", 1, 14));
+            State jumpStartState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Jump Start_000_1x10_Resized", 1, 10, false));
+            State jumpFallState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Jump Fall_000_1x1_Resized", 1, 1));
+            State idleShootState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Shoot_000_1x16_Resized", 1, 16, false));
+            State runAndShootState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Run_Shoot_000_1x15_Resized", 1, 15, false));
+            State meleeState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Knockback_000_1x16_Resized", 1, 16, false));
+            State forwardRollState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Forward Roll_000_1x13_Resized", 1, 13, false));
 
-            idleState.Transitions.Add(new Transition(idleState, walkingState, Transition.IsMovementKeyDown));
+            State deathState = new State(new Animation("Sprites\\CharacterSpriteSheets\\Hero\\Death_000_1x15_Resized", 1, 15, false));
 
-            walkingState.Transitions.Add(new Transition(walkingState, runningState, Transition.AnimationComplete));
-            walkingState.Transitions.Add(new Transition(walkingState, idleState, Transition.IsMovementKeyNotDown));
+            idleState.AddTransition(walkState, GameKeyboard.IsMovementKeyDown);
+            idleState.AddTransition(jumpStartState, GameKeyboard.IsJumpKeyPressed);
+            idleState.AddTransition(idleShootState, GameMouse.IsShootButtonClicked);
+            idleState.AddTransition(meleeState, GameMouse.IsMeleeButtonClicked);
+            idleState.AddTransition(forwardRollState, GameKeyboard.IsRollKeyPressed);
 
-            runningState.Transitions.Add(new Transition(runningState, idleState, Transition.IsMovementKeyNotDown));
+            walkState.AddTransition(runState, Transition.SourceAnimationComplete);
+            walkState.AddTransition(idleState, GameKeyboard.IsMovementKeyNotDown);
+            walkState.AddTransition(meleeState, GameMouse.IsMeleeButtonClicked);
+            walkState.AddTransition(forwardRollState, GameKeyboard.IsRollKeyPressed);
+
+            runState.AddTransition(idleState, GameKeyboard.IsMovementKeyNotDown);
+            runState.AddTransition(runAndShootState, GameMouse.IsShootButtonClicked);
+            runState.AddTransition(meleeState, GameMouse.IsMeleeButtonClicked);
+            runState.AddTransition(forwardRollState, GameKeyboard.IsRollKeyPressed);
+
+            jumpStartState.AddTransition(jumpFallState, Transition.SourceAnimationComplete);
+
+            idleShootState.AddTransition(idleState, Transition.SourceAnimationComplete);
+
+            runAndShootState.AddTransition(runState, Transition.SourceAnimationComplete);
+
+            meleeState.AddTransition(idleState, Transition.SourceAnimationComplete);
+
+            forwardRollState.AddTransition(idleState, Transition.SourceAnimationComplete);
+
+            deathState.Animation.OnAnimationComplete += base.Die;
 
             StateMachine = new StateMachine(this, idleState);
             StateMachine.States.Add(idleState);
-            StateMachine.States.Add(walkingState);
-            StateMachine.States.Add(runningState);
+            StateMachine.States.Add(walkState);
+            StateMachine.States.Add(runState);
+            StateMachine.States.Add(jumpStartState);
+            StateMachine.States.Add(jumpFallState);
+            StateMachine.States.Add(idleShootState);
+            StateMachine.States.Add(runAndShootState);
+            StateMachine.States.Add(meleeState);
+            StateMachine.States.Add(forwardRollState);
+
+            StateMachine.AddGlobalTransition(deathState, DeathTransition);
         }
 
         #endregion
@@ -115,9 +152,9 @@ namespace WindowsGame
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            base.Update(elapsedGameTime);
-
             if (!ShouldUpdate) { return; }
+
+            base.Update(elapsedGameTime);
 
             StateMachine.Update(elapsedGameTime);
         }
@@ -133,6 +170,11 @@ namespace WindowsGame
             SourceRectangle = StateMachine.ActiveState.Animation.CurrentSourceRectangle;
 
             base.Draw(spriteBatch);
+        }
+
+        public override void Die()
+        {
+            ShouldHandleInput = false;
         }
 
         #endregion
