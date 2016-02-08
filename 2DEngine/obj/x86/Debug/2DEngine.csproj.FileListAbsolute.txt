@@ -23,3 +23,5 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\2DEngine\bin\Win
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\2DEngine\bin\Windows\Debug\SharpDX.XInput.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\2DEngine\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\2DEngine\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\2DEngine\bin\Windows\Debug\2DEngineData.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\2DEngine\bin\Windows\Debug\2DEngineData.pdb

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized</AnimationTextureAsset>
+  <TextureFramesX>1</TextureFramesX>
+  <TextureFramesY>12</TextureFramesY>
+  <Continual>true</Continual>
+</Root>

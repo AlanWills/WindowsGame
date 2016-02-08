@@ -57,9 +57,8 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
-    <Compile Include="Data\AnimationData.cs" />
-    <Compile Include="Data\BaseData.cs" />
-    <Compile Include="Managers\AssetManager.cs" />
+    <Compile Include="Managers\Assets\AssetManager.cs" />
+    <Compile Include="Managers\Assets\XMLRegistry.cs" />
     <Compile Include="Managers\MusicManager.cs" />
     <Compile Include="Managers\ObjectManager.cs" />
     <Compile Include="Managers\OptionsManager.cs" />
@@ -98,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\2DEngineData\2DEngineData.csproj">
+      <Project>{ed8a2787-963c-45ce-9405-d4a031b3a977}</Project>
+      <Name>2DEngineData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

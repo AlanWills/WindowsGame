@@ -18,7 +18,8 @@ namespace _2DEngine
 
         #endregion
 
-        public MenuScreen()
+        public MenuScreen(string screenDataAsset) :
+            base(screenDataAsset)
         {
             Camera.SetFixed(Vector2.Zero);
         }

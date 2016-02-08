@@ -54,3 +54,166 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Run & Shoot_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Content.mgcb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Idle.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Run & Shoot_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.mgcontent
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Cursor.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Logo.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngineData.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngineData.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\StartupLogoScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\LoadingScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\MainMenuScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\HeroAnimations.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Fast.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Dizzy.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Backward.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fall.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Hurt.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Forward Roll.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Dizzy.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Death.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Balance.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Forward.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Hurt.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Idle.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump On Air.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump Start.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump Fall.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Run Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Run.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Slide.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Throw Grenade.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Walk Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Walk.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Idle Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Melee.xml

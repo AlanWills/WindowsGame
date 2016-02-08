@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <TextureAsset></TextureAsset>
+  <FolderPath>Content\Data\Animations\Hero\</FolderPath>
+  <AnimationInfo>
+    <Item>Balance</Item>
+    <Item>Death</Item>
+    <Item>Dizzy</Item>
+    <Item>Forward Roll</Item>
+    <Item>Hurt</Item>
+    <Item>Idle</Item>
+    <Item>Jump Fall</Item>
+    <Item>Jump On Air</Item>
+    <Item>Jump Start</Item>
+    <Item>Melee</Item>
+    <Item>Run</Item>
+    <Item>Run Shoot</Item>
+    <Item>Idle Shoot</Item>
+    <Item>Slide</Item>
+    <Item>Throw Grenade</Item>
+    <Item>Walk</Item>
+    <Item>Walk Shoot</Item>
+  </AnimationInfo>
+</Root>

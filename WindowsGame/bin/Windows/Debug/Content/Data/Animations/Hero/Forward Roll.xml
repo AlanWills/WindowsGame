@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized</AnimationTextureAsset>
+  <TextureFramesX>1</TextureFramesX>
+  <TextureFramesY>13</TextureFramesY>
+  <Continual>false</Continual>
+</Root>

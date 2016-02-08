@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using _2DEngineData;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Diagnostics;
@@ -101,7 +102,7 @@ namespace _2DEngine
             Texture = AssetManager.GetTexture(data.AnimationTextureAsset);
             Debug.Assert(Texture != null);
 
-            Frames = data.TextureFrames;
+            Frames = new Point(data.TextureFramesX, data.TextureFramesY);
             Continual = data.Continual;
 
             TimePerFrame = defaultTimePerFrame;

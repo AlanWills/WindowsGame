@@ -15,8 +15,8 @@
 
         #endregion
 
-        public LoadingScreen(GameplayScreen screenToTransitionTo) :
-            base()
+        public LoadingScreen(GameplayScreen screenToTransitionTo, string screenDataAsset = "Content\\Data\\Screens\\LoadingScreen.xml") :
+            base(screenDataAsset)
         {
             ScreenToTransitionTo = screenToTransitionTo;
         }

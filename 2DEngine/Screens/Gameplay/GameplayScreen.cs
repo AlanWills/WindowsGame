@@ -9,5 +9,11 @@
         // Can't work out whether this should be static or not.
         // How many gameplay screens will we have?
         // protected HUD HUD {get;set;}
+
+        public GameplayScreen(string screenDataAsset) :
+            base(screenDataAsset)
+        {
+
+        }
     }
 }

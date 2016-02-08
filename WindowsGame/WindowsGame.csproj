@@ -44,9 +44,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Character.cs" />
+    <Compile Include="Characters\AnimatedCharacter.cs" />
+    <Compile Include="Characters\Character.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="MainMenuScreen.cs" />
+    <Compile Include="Screens\Menus\MainMenuScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,39 +59,601 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.png" />
-    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.png" />
-    <Content Include="Content\Sprites\Cursor.png" />
-    <Content Include="Content\Sprites\Logo.png" />
-    <Content Include="Icon.ico" />
+    <Content Include="Content\bin\.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Run &amp; Shoot_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Content.mgcb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fly Fast.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fly Dizzy.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fly Backward.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fall.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Hurt.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Forward Roll.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Dizzy.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Death.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\HeroAnimations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Balance.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fly Forward.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fly Hurt.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Fly Shoot.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jetpack Idle.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jump On Air.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jump Start.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Jump Fall.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Melee.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Idle Shoot.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Run Shoot.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Run.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Slide.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Throw Grenade.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Walk Shoot.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Walk.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Animations\Hero\Idle.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Data\Screens\StartupLogoScreen.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Screens\LoadingScreen.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Screens\MainMenuScreen.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Run &amp; Shoot_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.mgcontent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Cursor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Cursor.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Logo.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\2DEngineData\2DEngineData.csproj">
+      <Project>{ed8a2787-963c-45ce-9405-d4a031b3a977}</Project>
+      <Name>2DEngineData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\2DEngine\2DEngine.csproj">
       <Project>{b56f5aa9-69a8-454a-9ee5-a815735804b7}</Project>
       <Name>2DEngine</Name>
@@ -104,6 +667,7 @@
     <Content Include="Content\Sprites\Logo.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb" />
@@ -130,6 +694,7 @@
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

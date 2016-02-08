@@ -167,6 +167,17 @@ namespace _2DEngine
                 Debug.Assert(Texture != null);
             }
 
+            base.LoadContent();
+        }
+
+        /// <summary>
+        /// Set up the size if it has not been set already.
+        /// Adds the collider if it should.
+        /// </summary>
+        public override void Initialise()
+        {
+            if (!ShouldInitialise) { return; }
+
             if (Texture != null)
             {
                 TextureDimensions = new Vector2(Texture.Bounds.Width, Texture.Bounds.Height);
@@ -178,17 +189,6 @@ namespace _2DEngine
                      (int)TextureDimensions.X,
                      (int)TextureDimensions.Y);
             }
-
-            base.LoadContent();
-        }
-
-        /// <summary>
-        /// Set up the size if it has not been set already.
-        /// Adds the collider if it should.
-        /// </summary>
-        public override void Initialise()
-        {
-            if (!ShouldInitialise) { return; }
 
             // If our size is zero (i.e. uninitialised) we use the texture's size (if it is not null)
             if (Size == Vector2.Zero && Texture != null)

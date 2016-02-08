@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized</AnimationTextureAsset>
+  <TextureFramesX>1</TextureFramesX>
+  <TextureFramesY>16</TextureFramesY>
+  <Continual>false</Continual>
+</Root>

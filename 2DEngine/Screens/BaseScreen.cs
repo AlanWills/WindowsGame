@@ -1,6 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using _2DEngineData;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace _2DEngine
 {
@@ -35,10 +38,14 @@ namespace _2DEngine
         private ScriptManager ScriptManager { get; set; }
 
         /// <summary>
-        /// A string for the background image.  Simply set this string in LoadContent before base.LoadContent is called
-        /// and the background image will be added in AddInitialUI.
+        /// A string for the xml data file for this screen.
         /// </summary>
-        protected string BackgroundDataAsset { private get; set; }
+        private string ScreenDataAsset { get; set; }
+
+        /// <summary>
+        /// A property for the data for this screen.  In screens that inherit from BaseScreen, this could be a custom data class.
+        /// </summary>
+        private BaseScreenData ScreenData { get; set; }
 
         /// <summary>
         /// The screen background
@@ -54,9 +61,10 @@ namespace _2DEngine
 
         #endregion
 
-        public BaseScreen() : 
+        public BaseScreen(string screenDataAsset) : 
             base()
         {
+            ScreenDataAsset = screenDataAsset;
             GameObjects = new ObjectManager<GameObject>();
             InGameUIObjects = new ObjectManager<UIObject>();
             ScreenUIObjects = new ObjectManager<UIObject>();
@@ -78,12 +86,24 @@ namespace _2DEngine
         /// </summary>
         protected virtual void AddInitialUI()
         {
-            if (!string.IsNullOrEmpty(BackgroundDataAsset))
+            Debug.Assert(ScreenData != null);
+
+            if (!string.IsNullOrEmpty(ScreenData.BackgroundTextureAsset))
             {
-                Background = new Image(GetScreenDimensions(), GetScreenCentre(), BackgroundDataAsset);
+                Background = new Image(GetScreenDimensions(), GetScreenCentre(), ScreenData.BackgroundTextureAsset);
                 Background.LoadContent();
                 Background.Initialise();
             }
+        }
+
+        /// <summary>
+        /// A function which loads the screen data of a certain type.
+        /// Can be overridden to load screen data of a type different to BaseScreenData.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual BaseScreenData LoadScreenData()
+        {
+            return AssetManager.GetData<BaseScreenData>(ScreenDataAsset);
         }
 
         /// <summary>
@@ -93,6 +113,10 @@ namespace _2DEngine
         {
             // Check if we should load
             if (!ShouldLoad) { return; }
+
+            // Load the screen data (possibly calling an override function)
+            ScreenData = LoadScreenData();
+            Debug.Assert(ScreenData != null);
 
             AddInitialUI();
 

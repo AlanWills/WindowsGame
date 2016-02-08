@@ -7,6 +7,7 @@ namespace _2DEngine
         // Movement
         public static Keys MoveLeft = Keys.A;
         public static Keys MoveRight = Keys.D;
+        public static Keys Run = Keys.LeftShift;
 
         // Gymnastics
         public static Keys Jump = Keys.Space;

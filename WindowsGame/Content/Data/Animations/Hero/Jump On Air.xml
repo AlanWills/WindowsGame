@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized</AnimationTextureAsset>
+  <TextureFramesX>1</TextureFramesX>
+  <TextureFramesY>1</TextureFramesY>
+  <Continual>true</Continual>
+</Root>

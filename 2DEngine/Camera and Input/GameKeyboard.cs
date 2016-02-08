@@ -54,9 +54,31 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsMovementKeyDown(State source, State destination)
+        public static bool IsWalkKeyDown(State source, State destination)
         {
-            return GameKeyboard.IsKeyDown(InputMap.MoveLeft) || GameKeyboard.IsKeyDown(InputMap.MoveRight);
+            return IsKeyDown(InputMap.MoveLeft) || IsKeyDown(InputMap.MoveRight);
+        }
+
+        /// <summary>
+        /// Transition if the InputMap run key is down.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsRunKeyDown(State source, State destination)
+        {
+            return IsKeyDown(InputMap.Run);
+        }
+
+        /// <summary>
+        /// Transition if the InputMap movement and run keys are down.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsWalkAndRunKeyDown(State source, State destination)
+        {
+            return IsWalkKeyDown(source, destination) && IsRunKeyDown(source, destination);
         }
 
         /// <summary>
@@ -65,9 +87,31 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsMovementKeyNotDown(State source, State destination)
+        public static bool IsWalkKeyNotDown(State source, State destination)
         {
-            return !IsMovementKeyDown(source, destination);
+            return !IsWalkKeyDown(source, destination);
+        }
+
+        /// <summary>
+        /// Transitions if the InputMap run key is not down.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsRunKeyNotDown(State source, State destination)
+        {
+            return !IsRunKeyDown(source, destination);
+        }
+
+        /// <summary>
+        /// Transitions if the InputMap movement and run keys are not down.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static bool IsWalkAndRunKeyNotDown(State source, State destination)
+        {
+            return !IsWalkAndRunKeyDown(source, destination);
         }
 
         /// <summary>

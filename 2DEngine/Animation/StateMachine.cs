@@ -36,10 +36,9 @@ namespace _2DEngine
 
         #endregion
 
-        public StateMachine(GameObject parentGameObject, State startingState)
+        public StateMachine(GameObject parentGameObject)
         {
             ParentGameObject = parentGameObject;
-            ActiveState = startingState;
 
             States = new List<State>();
             GlobalTransitions = new List<Transition>();

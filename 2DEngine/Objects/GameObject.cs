@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using _2DEngineData;
+using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace _2DEngine
 {
@@ -13,9 +14,15 @@ namespace _2DEngine
         protected string DataAsset { get; private set; }
 
         /// <summary>
+        /// The data associated with this game object.  Not all game objects will have data, but most should.
+        /// Loaded in the LoadContent step.
+        /// </summary>
+        protected GameObjectData Data { get; private set; }
+
+        /// <summary>
         /// The health of this object.  If below zero, it will be killed and cleaned up.
         /// </summary>
-        protected float Health { get; set; }
+        protected float Health { get; private set; }
 
         #endregion
 
@@ -28,14 +35,38 @@ namespace _2DEngine
 
         #region Virtual Functions
 
+        /// <summary>
+        /// A function for specifying a custom data class to load for this game object.
+        /// Override completely to specify a new data type in the AssetManager.GetData function.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual GameObjectData LoadGameObjectData()
+        {
+            return AssetManager.GetData<GameObjectData>(DataAsset);
+        }
+
         public override void LoadContent()
         {
             // Check to see if we should load
             if (!ShouldLoad) { return; }
 
-            // Load the data here
-            // Set the texture asset - if no data, then set the texture asset to be the data asset
+            // Load the data here if we have a non-empty data asset.
+            if (!string.IsNullOrEmpty(DataAsset))
+            {
+                Data = LoadGameObjectData();
+                Debug.Assert(Data != null);
 
+                // Texture asset can be empty - for example, with animations they will handle themselves.
+                TextureAsset = Data.TextureAsset;
+            }
+            else
+            {
+                // If we have got in here, the data asset was not specified and so our texture asset was manually set.
+                // Should check that this is true.
+                Debug.Assert(string.IsNullOrEmpty(TextureAsset));
+            }
+
+            // This will now handle the loading.
             base.LoadContent();
         }
 
@@ -51,6 +82,16 @@ namespace _2DEngine
 
             // Die if we have insufficient health
             if (Health <= 0) { Die(); }
+        }
+
+        /// <summary>
+        /// A function for altering the health of this object.  
+        /// Health cannot be modified in any other, because we may wish to have extra behaviour when we lose health (i.e. changing behaviour/animation state).
+        /// </summary>
+        /// <param name="damage">The amount to subtract from this object's health.</param>
+        public virtual void Damage(float damage)
+        {
+            Health -= damage;
         }
 
         #endregion
