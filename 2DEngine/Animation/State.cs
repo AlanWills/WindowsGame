@@ -20,11 +20,24 @@ namespace _2DEngine
         /// </summary>
         public List<Transition> Transitions { get; set; }
 
+        /// <summary>
+        /// A bool property to indicate whether this state is global or not.
+        /// If set, the state will be marked in the state machine as global and be always checked on behaviour changes.
+        /// </summary>
+        public bool IsGlobal { get; private set; }
+
+        /// <summary>
+        /// The state ID of this state.  Corresponds to an enum value in a class deriving from Character.
+        /// </summary>
+        public uint StateID { get; private set; }
+
         #endregion
 
-        public State(Animation animation)
+        public State(uint stateID, Animation animation, bool isGlobal = false)
         {
+            StateID = stateID;
             Animation = animation;
+            IsGlobal = isGlobal;
 
             Transitions = new List<Transition>();
         }
@@ -41,23 +54,20 @@ namespace _2DEngine
         #region State Transition Functions
 
         /// <summary>
-        /// Iterates through the transitions and checks each condition.  If a condition is true, we return.
+        /// Iterates through the transitions and checks each condition.
         /// </summary>
-        /// <returns>Returns the state we transition to if a transition condition is met.  Otherwise, returns this state.</returns>
-        public State CheckTransitions()
+        /// <returns>Returns true if we have found a state to transition to, otherwise false.</returns>
+        public bool CheckTransitions(uint newBehaviourState)
         {
             foreach (Transition transition in Transitions)
             {
-                if (transition.CheckTransitionCondition())
+                if (transition.DestinationState == newBehaviourState)
                 {
-                    Animation.Reset();
-                    transition.DestinationState.Animation.IsPlaying = true;
-
-                    return transition.DestinationState;
+                    return true;
                 }
             }
 
-            return this;
+            return false;
         }
 
         #endregion
@@ -65,16 +75,15 @@ namespace _2DEngine
         #region Transition Utility Functions
 
         /// <summary>
-        /// Adds a transition between this and the inputted state with the inputted transition condition.
+        /// Adds a transition between this and the state with the inputted state ID.
         /// </summary>
-        /// <param name="destinationState">The state we will transition to.</param>
-        /// <param name="transitionEvent">The condition that must be satisfied for a transition to occur.</param>
-        public void AddTransition(State destinationState, TransitionEventHandler transitionEvent)
+        /// <param name="destinationStateID">The ID of the state we will transition to.</param>
+        public void AddTransition(uint destinationStateID)
         {
-            // For now, don't support transitions to yourself.  This just makes no sense really.
-            Debug.Assert(destinationState != this);
+            Debug.Assert(destinationStateID != StateID);
+            Debug.Assert(!Transitions.Exists(x => x.DestinationState == destinationStateID));
 
-            Transitions.Add(new Transition(this, destinationState, transitionEvent));
+            Transitions.Add(new Transition(destinationStateID));
         }
 
         #endregion

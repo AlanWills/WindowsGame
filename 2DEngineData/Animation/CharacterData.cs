@@ -4,9 +4,9 @@ using System.Xml.Serialization;
 namespace _2DEngineData
 {
     /// <summary>
-    /// A class to hold the animation data assets for an animated character.
+    /// A class to hold the animation data assets for a character.
     /// </summary>
-    public class AnimatedCharacterData : GameObjectData
+    public class CharacterData : GameObjectData
     {
         /// <summary>
         /// The path to the folder for these animations.

@@ -26,5 +26,11 @@ namespace _2DEngineData
         /// A flag to indicate whether the animation should repeat or not.
         /// </summary>
         public bool Continual { get; set; }
+
+        /// <summary>
+        /// A flag to indicate whether this animation will be global in our state machine.
+        /// Assign true if it should be reachable from every other state in our state machine.
+        /// </summary>
+        public bool IsGlobal { get; set; }
     }
 }

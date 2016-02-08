@@ -48,6 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Animation\Animation.cs" />
+    <Compile Include="Animation\Characters\Character.cs" />
     <Compile Include="Animation\State.cs" />
     <Compile Include="Animation\StateMachine.cs" />
     <Compile Include="Animation\Transition.cs" />

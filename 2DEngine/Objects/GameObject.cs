@@ -15,9 +15,21 @@ namespace _2DEngine
 
         /// <summary>
         /// The data associated with this game object.  Not all game objects will have data, but most should.
-        /// Loaded in the LoadContent step.
+        /// If not loaded when needed, then is loaded automatically.
         /// </summary>
-        protected GameObjectData Data { get; private set; }
+        private GameObjectData data;
+        protected GameObjectData Data
+        {
+            get
+            {
+                if (data == null)
+                {
+                    data = LoadGameObjectData();
+                }
+
+                return data;
+            }
+        }
 
         /// <summary>
         /// The health of this object.  If below zero, it will be killed and cleaned up.
@@ -42,6 +54,8 @@ namespace _2DEngine
         /// <returns></returns>
         protected virtual GameObjectData LoadGameObjectData()
         {
+            if (Data != null) { return Data; }
+
             return AssetManager.GetData<GameObjectData>(DataAsset);
         }
 
@@ -53,7 +67,6 @@ namespace _2DEngine
             // Load the data here if we have a non-empty data asset.
             if (!string.IsNullOrEmpty(DataAsset))
             {
-                Data = LoadGameObjectData();
                 Debug.Assert(Data != null);
 
                 // Texture asset can be empty - for example, with animations they will handle themselves.
@@ -63,10 +76,10 @@ namespace _2DEngine
             {
                 // If we have got in here, the data asset was not specified and so our texture asset was manually set.
                 // Should check that this is true.
-                Debug.Assert(string.IsNullOrEmpty(TextureAsset));
+                Debug.Assert(!string.IsNullOrEmpty(TextureAsset));
             }
 
-            // This will now handle the loading.
+            // This will handle the loading if not done so already.
             base.LoadContent();
         }
 

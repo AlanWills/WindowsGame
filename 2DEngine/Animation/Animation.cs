@@ -62,6 +62,11 @@ namespace _2DEngine
         public bool Continual { get; set; }
 
         /// <summary>
+        /// A flag used for our state machine to indicate whether this animation should be reachable from any state.
+        /// </summary>
+        public bool IsGlobal { get; private set; }
+
+        /// <summary>
         /// A flag to indicate whether the animation is completed
         /// </summary>
         private bool Finished { get; set; }
@@ -104,6 +109,7 @@ namespace _2DEngine
 
             Frames = new Point(data.TextureFramesX, data.TextureFramesY);
             Continual = data.Continual;
+            IsGlobal = data.IsGlobal;
 
             TimePerFrame = defaultTimePerFrame;
             FrameDimensions = new Point(Texture.Width / Frames.X, Texture.Height / Frames.Y);

@@ -44,8 +44,6 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Characters\AnimatedCharacter.cs" />
-    <Compile Include="Characters\Character.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Screens\Menus\MainMenuScreen.cs" />
     <Compile Include="Program.cs" />

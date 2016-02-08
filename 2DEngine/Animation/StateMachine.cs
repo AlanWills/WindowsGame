@@ -15,13 +15,13 @@ namespace _2DEngine
         /// <summary>
         /// A list of all the current states in our state machine.
         /// </summary>
-        public List<State> States { get; set; }
+        private State[] States { get; set; }
 
         /// <summary>
         /// A list of all the current global states in our state machine.  Global states can be accessed from any state, i.e. Death.
         /// These are represented as transitions, because they are really the thing we are interested in.
         /// </summary>
-        private List<Transition> GlobalTransitions { get; set; }
+        private List<State> GlobalStates { get; set; }
 
         /// <summary>
         /// The current state we are in.  The transitions from the active state and global transitions will be checked every frame.
@@ -30,18 +30,27 @@ namespace _2DEngine
         public State ActiveState { get; private set; }
 
         /// <summary>
-        /// The game object that is associated with this state machine.
+        /// The starting state for the state machine obtained from the Character's data xml file.
         /// </summary>
-        public GameObject ParentGameObject { get; private set; }
+        public uint StartingState { private get; set; }
+
+        /// <summary>
+        /// A flag to determine whether we should do a full load.
+        /// </summary>
+        private bool ShouldLoad { get; set; }
+
+        // A field just used for validating addition of states in the correct order.
+        private uint currentAddedStates = 0;
 
         #endregion
 
-        public StateMachine(GameObject parentGameObject)
+        public StateMachine(Character character, uint numAnimations)
         {
-            ParentGameObject = parentGameObject;
+            character.BehaviourChanged += HandleBehaviourChange;
 
-            States = new List<State>();
-            GlobalTransitions = new List<Transition>();
+            States = new State[numAnimations];
+            GlobalStates = new List<State>();
+            ShouldLoad = true;
         }
 
         #region State Machine Update Functions
@@ -51,17 +60,17 @@ namespace _2DEngine
         /// </summary>
         public void LoadContent()
         {
+            if (!ShouldLoad) { return; }
+
             foreach (State state in States)
             {
                 state.Animation.LoadContent();
             }
 
-            foreach (Transition globalState in GlobalTransitions)
-            {
-                globalState.DestinationState.Animation.LoadContent();
-            }
-
-            ActiveState.Animation.IsPlaying = true;
+            Debug.Assert(States[StartingState] != null);
+            ActiveState = States[StartingState];
+            
+            ShouldLoad = false;
         }
 
         /// <summary>
@@ -72,35 +81,87 @@ namespace _2DEngine
         public void Update(float elapsedGameTime)
         {
             Debug.Assert(ActiveState != null);
-            Debug.Assert(States.Count > 0);
 
             ActiveState.Update(elapsedGameTime);
+        }
 
-            ActiveState = ActiveState.CheckTransitions();
+        #endregion
 
-            // Check to make sure we have transition to a state that exists in our state machine.
-            Debug.Assert(States.Exists(x => x == ActiveState) || GlobalTransitions.Exists(x => x.DestinationState == ActiveState));
-            
-            foreach (Transition transition in GlobalTransitions)
+        #region Adding States Functions
+
+        /// <summary>
+        /// Adds a state to this state machine.  This function takes care of global states and ID checks.
+        /// </summary>
+        /// <param name="state"></param>
+        public void AddState(State state)
+        {
+            // This is a check to make sure that we are adding the states in the order they are declared in the enum.
+            // If this doesn't occur, the states will be mixed up and all hell will break loose.
+            Debug.Assert(state.StateID == currentAddedStates);
+
+            States[currentAddedStates] = state;
+            currentAddedStates++;
+
+            // If our state is global, add it to our list
+            if (state.IsGlobal)
             {
-                if (transition.DestinationState != ActiveState && transition.CheckTransitionCondition())
-                {
-                    ActiveState.Animation.Reset();
-
-                    ActiveState = transition.DestinationState;
-                    ActiveState.Animation.IsPlaying = true;
-                    return;
-                }
+                GlobalStates.Add(state);
             }
         }
 
         #endregion
 
-        #region Global Transitions
+        #region Behaviour Change Handling
 
-        public void AddGlobalTransition(State destinationState, TransitionEventHandler transitionEvent)
+        /// <summary>
+        /// Checks the current active state's transitions against the new behaviour state.
+        /// Performs no checking if the new state and current ActiveState have the same ID.
+        /// </summary>
+        /// <param name="newBehaviourState"></param>
+        private void HandleBehaviourChange(uint newBehaviourState)
         {
-            GlobalTransitions.Add(new Transition(null, destinationState, transitionEvent));
+            Debug.Assert(ActiveState != null);
+
+            // If we have not changed state then just return.
+            if (newBehaviourState == ActiveState.StateID) { return; }
+
+            // Check the transitions of the current active state
+            if (ActiveState.CheckTransitions(newBehaviourState))
+            {
+                SetNewActiveState(newBehaviourState);
+            }
+
+            // Check the global states
+            foreach (State state in GlobalStates)
+            {
+                if (state != ActiveState && state.StateID == newBehaviourState)
+                {
+                    SetNewActiveState(newBehaviourState);
+
+                    break;
+                }
+            }
+
+            // The new state we have moved to should not be playing already
+            Debug.Assert(ActiveState.Animation.IsPlaying == false);
+
+            ActiveState.Animation.IsPlaying = true;
+        }
+
+        /// <summary>
+        /// A helper function which performs clean up and checks when transitioning to a new state.
+        /// </summary>
+        /// <param name="newBehaviourState"></param>
+        private void SetNewActiveState(uint newBehaviourState)
+        {
+            // Check to make sure we have transitioned to a state that exists in our state machine.
+            Debug.Assert(States[newBehaviourState] != null);
+
+            // Reset the old states's animation
+            ActiveState.Animation.Reset();
+
+            // Set the new state
+            ActiveState = States[newBehaviourState];
         }
 
         #endregion
