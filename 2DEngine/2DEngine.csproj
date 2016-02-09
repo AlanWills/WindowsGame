@@ -73,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="Screens\Gameplay\GameplayScreen.cs" />
+    <Compile Include="Screens\Level Design\LevelDesignScreen.cs" />
     <Compile Include="Screens\Menus\MenuScreen.cs" />
     <Compile Include="Screens\Splash Screens\LoadingScreen.cs" />
     <Compile Include="Screens\Splash Screens\StartupLogoScreen.cs" />

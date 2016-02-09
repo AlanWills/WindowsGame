@@ -637,43 +637,117 @@
     <Content Include="Content\Sprites\Cursor.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Sprites\Level\Objects\Barrel %281%29.png" />
-    <Content Include="Content\Sprites\Level\Objects\Barrel %282%29.png" />
-    <Content Include="Content\Sprites\Level\Objects\Box.png" />
-    <Content Include="Content\Sprites\Level\Objects\DoorLocked.png" />
-    <Content Include="Content\Sprites\Level\Objects\DoorOpen.png" />
-    <Content Include="Content\Sprites\Level\Objects\DoorUnlocked.png" />
-    <Content Include="Content\Sprites\Level\Objects\Saw.png" />
-    <Content Include="Content\Sprites\Level\Objects\Switch %281%29.png" />
-    <Content Include="Content\Sprites\Level\Objects\Switch %282%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Acid %281%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Acid %282%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %281%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %282%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %283%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %284%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %285%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %286%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\BGTile %287%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Fence %281%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Fence %282%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Fence %283%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Spike.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %281%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %2810%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %2811%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %2812%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %2813%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %2814%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %2815%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %282%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %283%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %284%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %285%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %286%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %287%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %288%29.png" />
-    <Content Include="Content\Sprites\Level\Tiles\Tile %289%29.png" />
+    <Content Include="Content\Sprites\Level\Objects\Barrel %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\Barrel %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\Box.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\DoorLocked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\DoorOpen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\DoorUnlocked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\Saw.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\Switch %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Objects\Switch %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Acid %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Acid %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %283%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %284%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %285%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %286%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\BGTile %287%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Fence %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Fence %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Fence %283%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Spike.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %2810%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %2811%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %2812%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %2813%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %2814%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %2815%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %282%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %283%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %284%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %285%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %286%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %287%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %288%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\Level\Tiles\Tile %289%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -725,43 +799,117 @@
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb" />
-    <None Include="Content\Sprites\Level\Objects\Barrel %281%29.xnb" />
-    <None Include="Content\Sprites\Level\Objects\Barrel %282%29.xnb" />
-    <None Include="Content\Sprites\Level\Objects\Box.xnb" />
-    <None Include="Content\Sprites\Level\Objects\DoorLocked.xnb" />
-    <None Include="Content\Sprites\Level\Objects\DoorOpen.xnb" />
-    <None Include="Content\Sprites\Level\Objects\DoorUnlocked.xnb" />
-    <None Include="Content\Sprites\Level\Objects\Saw.xnb" />
-    <None Include="Content\Sprites\Level\Objects\Switch %281%29.xnb" />
-    <None Include="Content\Sprites\Level\Objects\Switch %282%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Acid %281%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Acid %282%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %281%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %282%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %283%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %284%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %285%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %286%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\BGTile %287%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Fence %281%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Fence %282%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Fence %283%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Spike.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %281%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %2810%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %2811%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %2812%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %2813%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %2814%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %2815%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %282%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %283%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %284%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %285%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %286%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %287%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %288%29.xnb" />
-    <None Include="Content\Sprites\Level\Tiles\Tile %289%29.xnb" />
+    <None Include="Content\Sprites\Level\Objects\Barrel %281%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\Barrel %282%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\Box.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\DoorLocked.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\DoorOpen.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\DoorUnlocked.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\Saw.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\Switch %281%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Objects\Switch %282%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Acid %281%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Acid %282%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %281%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %282%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %283%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %284%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %285%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %286%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\BGTile %287%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Fence %281%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Fence %282%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Fence %283%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Spike.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %281%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %2810%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %2811%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %2812%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %2813%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %2814%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %2815%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %282%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %283%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %284%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %285%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %286%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %287%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %288%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Sprites\Level\Tiles\Tile %289%29.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
