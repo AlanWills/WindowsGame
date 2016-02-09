@@ -70,7 +70,7 @@ namespace _2DEngine
 
             try
             {
-                string[] textureFiles = Directory.GetFiles(content.RootDirectory + "\\Sprites", "*.*", SearchOption.AllDirectories);
+                string[] textureFiles = Directory.GetFiles(content.RootDirectory + "\\Sprites", "*.xnb", SearchOption.AllDirectories);
                 for (int i = 0; i < textureFiles.Length; i++)
                 {
                     // Remove the Content\\ from the start
@@ -83,7 +83,7 @@ namespace _2DEngine
                     {
                         Textures.Add(textureFiles[i], content.Load<Texture2D>(textureFiles[i]));
                     }
-                    catch { }
+                    catch { Debug.Fail("Adding texture more than once."); }
                 }
             }
             catch { Debug.Fail("Serious failure in AssetManager loading Textures."); }
