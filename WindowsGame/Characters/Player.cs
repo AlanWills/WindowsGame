@@ -94,56 +94,28 @@ namespace WindowsGame
 
             // Transitions from kJumpFall
             StateMachine.AddTransition((uint)PlayerBehaviours.kJumpFall, (uint)CharacterBehaviours.kIdle, false);
-
-            /*
-
-            kMelee,
-        kForwardRoll,
-        kJumpStart,
-        kJumpFall
-            jumpStartState.AddTransition(jumpFallState, Transition.SourceAnimationComplete);
-
-            idleShootState.AddTransition(idleState, Transition.SourceAnimationComplete);
-
-            walkAndShootState.AddTransition(walkState, Transition.SourceAnimationComplete);
-
-            runAndShootState.AddTransition(runState, Transition.SourceAnimationComplete);
-
-            meleeState.AddTransition(idleState, Transition.SourceAnimationComplete);
-
-            forwardRollState.AddTransition(idleState, Transition.SourceAnimationComplete);
-
-            deathState.Animation.OnAnimationComplete += base.Die;
-
-            StateMachine.States.Add(idleState);
-            StateMachine.States.Add(walkState);
-            StateMachine.States.Add(runState);
-            StateMachine.States.Add(jumpStartState);
-            StateMachine.States.Add(jumpFallState);
-            StateMachine.States.Add(idleShootState);
-            StateMachine.States.Add(walkAndShootState);
-            StateMachine.States.Add(runAndShootState);
-            StateMachine.States.Add(meleeState);
-            StateMachine.States.Add(forwardRollState);
-
-            StateMachine.AddGlobalTransition(deathState, DeathTransition);*/
-
         }
 
-        public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
+        protected override void UpdateBehaviour()
         {
-            // Check to see if we should handle input
-            if (!ShouldHandleInput) { return; }
+            base.UpdateBehaviour();
 
-            base.HandleInput(elapsedGameTime, mousePosition);
-
-            // Switch on behaviour
-            // For each behaviour, write a function which tests the conditions which would move it to another behaviour
             switch (CurrentBehaviour)
             {
+                // Add extra cases here
+
                 default:
                     break;
             }
+        }
+
+        #endregion
+
+        #region Player Behaviour Changing Functions
+
+        protected override void IdleState()
+        {
+            base.IdleState();
         }
 
         #endregion

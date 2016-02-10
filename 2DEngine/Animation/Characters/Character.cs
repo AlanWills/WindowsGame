@@ -167,6 +167,42 @@ namespace _2DEngine
         }
 
         /// <summary>
+        /// Checks the current behaviour to see if it can move to a new behaviour.
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
+        public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
+        {
+            // Check to see if we should handle input
+            if (!ShouldHandleInput) { return; }
+
+            base.HandleInput(elapsedGameTime, mousePosition);
+
+
+        }
+
+        /// <summary>
+        /// Runs through all the behaviours in our Behaviour enum and checks their appropriate function for whether the behaviour state can change.
+        /// Can be overridden to check inherited class' new behaviours.
+        /// </summary>
+        protected virtual void UpdateBehaviour()
+        {
+            switch (CurrentBehaviour)
+            {
+                case (uint)CharacterBehaviours.kIdle:
+                    IdleState();
+                    break;
+
+                case (uint)CharacterBehaviours.kDeath:
+                    DeathState();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Updates the state machine.
         /// </summary>
         /// <param name="elapsedGameTime"></param>
@@ -222,6 +258,28 @@ namespace _2DEngine
         {
             Debug.Assert(id < NumBehaviours);
             return StateMachine.GetState(id);
+        }
+
+        #endregion
+
+        #region Character Behaviour Changing Functions
+
+        /// <summary>
+        /// The function that will be called in the kIdle state to see if we can transition to a new behaviour state.
+        /// </summary>
+        protected virtual void IdleState()
+        {
+            // Check health -> go to death if insufficient health
+            // Dont' check is alive as this is still true so that we can play the death animation.
+        }
+
+        /// <summary>
+        /// The function that will be called in the kDeath state to see if we can transition to a new behaviour state.
+        /// </summary>
+        protected virtual void DeathState()
+        {
+            // Probably should be empty
+            // Maybe add a check to see if the animation is complete to then actually kill the object?
         }
 
         #endregion
