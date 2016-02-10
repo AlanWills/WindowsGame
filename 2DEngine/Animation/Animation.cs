@@ -69,7 +69,7 @@ namespace _2DEngine
         /// <summary>
         /// A flag to indicate whether the animation is completed
         /// </summary>
-        private bool Finished { get; set; }
+        public bool Finished { get; private set; }
 
         /// <summary>
         /// The source rectangle to use in the spritebatch Draw function calculated for this animation using the current frame and frame dimensions

@@ -67,7 +67,7 @@ namespace _2DEngine
                 state.Animation.LoadContent();
             }
 
-            DebugAssertState(StartingState);
+            CheckStateValid(StartingState);
             ActiveState = States[StartingState];
             
             ShouldLoad = false;
@@ -94,11 +94,13 @@ namespace _2DEngine
         /// Should not really be used - instead use Character function 'CreateState' - it is much nicer and tidier.
         /// </summary>
         /// <param name="state"></param>
-        public void AddState(State state)
+        public void CreateState(uint id, Animation animation)
         {
             // This is a check to make sure that we are adding the states in the order they are declared in the enum.
             // If this doesn't occur, the states will be mixed up and all hell will break loose.
-            Debug.Assert(state.StateID == currentAddedStates);
+            Debug.Assert(id == currentAddedStates);
+
+            State state = new State(id, animation);
 
             States[currentAddedStates] = state;
             currentAddedStates++;
@@ -117,9 +119,22 @@ namespace _2DEngine
         /// <returns>The state we requested.  Guaranteed to not be null in debug.</returns>
         public State GetState(uint stateID)
         {
-            DebugAssertState(stateID);
+            CheckStateValid(stateID);
 
             return States[stateID];
+        }
+
+        /// <summary>
+        /// Checks the current ActiveState and returns true if it has finished playing.
+        /// Can only be checked against non-continual animations.
+        /// </summary>
+        /// <returns></returns>
+        public bool CurrentAnimationFinished()
+        {
+            Debug.Assert(ActiveState != null);
+            Debug.Assert(!ActiveState.Animation.Continual);
+
+            return ActiveState.Animation.Finished;
         }
 
         /// <summary>
@@ -128,10 +143,21 @@ namespace _2DEngine
         /// </summary>
         /// <param name="stateID"></param>
         [Conditional("DEBUG")]
-        private void DebugAssertState(uint stateID)
+        private void CheckStateValid(uint stateID)
         {
             Debug.Assert(stateID < States.Length);
             Debug.Assert(States[stateID] != null);
+        }
+
+        /// <summary>
+        /// Only available in Debug.
+        /// Debug.Asserts ActiveState stateID with inputed state
+        /// </summary>
+        /// <param name="stateID"></param>
+        [Conditional("DEBUG")]
+        public void CheckActiveStateHasID(uint stateID)
+        {
+            Debug.Assert(ActiveState.StateID == stateID);
         }
 
         #endregion
@@ -147,8 +173,8 @@ namespace _2DEngine
         /// <param name="reciprocal">A flag to indicate whether we should create a transition on the state with destinationStateID back to this one.  True by default.</param>
         public void AddTransition(uint sourceStateID, uint destStateID, bool reciprocal = true)
         {
-            DebugAssertState(sourceStateID);
-            DebugAssertState(destStateID);
+            CheckStateValid(sourceStateID);
+            CheckStateValid(destStateID);
 
             States[sourceStateID].AddTransition(destStateID);
 
@@ -204,7 +230,7 @@ namespace _2DEngine
         private void SetNewActiveState(uint newBehaviourState)
         {
             // Check to make sure we have transitioned to a state that exists in our state machine.
-            DebugAssertState(newBehaviourState);
+            CheckStateValid(newBehaviourState);
 
             // Reset the old states's animation
             ActiveState.Animation.Reset();

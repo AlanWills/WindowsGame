@@ -79,8 +79,10 @@ namespace WindowsGame
             // This has to be milliseconds because 'Seconds' is an int, so will be rounded down to 0
             float elapsedGameTime = gameTime.ElapsedGameTime.Milliseconds / 1000f;
 
-            ScreenManager.Instance.HandleInput(elapsedGameTime, GameMouse.Instance.WorldPosition);
-            ScreenManager.Instance.Update(elapsedGameTime);
+            ScreenManager screenManager = ScreenManager.Instance;
+
+            if (screenManager.ShouldHandleInput) { screenManager.HandleInput(elapsedGameTime, GameMouse.Instance.WorldPosition); }
+            if (screenManager.ShouldUpdate) { screenManager.Update(elapsedGameTime); }
         }
 
         /// <summary>
@@ -93,7 +95,7 @@ namespace WindowsGame
 
             base.Draw(gameTime);
 
-            ScreenManager.Instance.Draw(spriteBatch);
+            if (ScreenManager.Instance.ShouldDraw) { ScreenManager.Instance.Draw(spriteBatch); }
         }
     }
 }

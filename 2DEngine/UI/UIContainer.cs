@@ -18,7 +18,7 @@
         public override void LoadContent()
         {
             // Check to see if we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             AddInitialUI();
 

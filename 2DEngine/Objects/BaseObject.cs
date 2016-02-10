@@ -171,7 +171,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Check to see whether we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             Debug.Assert(Texture != null);
 
@@ -184,7 +184,7 @@ namespace _2DEngine
         /// </summary>
         public override void Initialise()
         {
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             if (Texture != null)
             {
@@ -222,9 +222,6 @@ namespace _2DEngine
         /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            // Check to see if we should handle input for this object
-            if (!ShouldHandleInput) { return; }
-
             base.HandleInput(elapsedGameTime, mousePosition);
 
             if (HasCollider)
@@ -240,9 +237,6 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            // Check to see if we should update this object
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             if (HasCollider)
@@ -260,9 +254,6 @@ namespace _2DEngine
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // If we shouldn't draw, we return
-            if (!ShouldDraw) { return; }
-
             base.Draw(spriteBatch);
 
             // If we are drawing this object, it should have a valid texture

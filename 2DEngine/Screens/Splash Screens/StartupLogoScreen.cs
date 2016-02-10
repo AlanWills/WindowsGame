@@ -42,9 +42,6 @@ namespace _2DEngine
         /// </summary>
         public override void Update(float elapsedGameTime)
         {
-            // Check to see if we should update
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             ContentManager content = ScreenManager.Instance.Content;

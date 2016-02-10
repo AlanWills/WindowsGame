@@ -112,7 +112,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Check if we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             // Load the screen data (possibly calling an override function)
             ScreenData = LoadScreenData();
@@ -133,7 +133,7 @@ namespace _2DEngine
         /// </summary>
         public override void Initialise()
         {
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             GameObjects.Initialise();
             InGameUIObjects.Initialise();
@@ -169,18 +169,15 @@ namespace _2DEngine
         /// <param name="mousePosition">The current screen space position of the mouse</param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
+            base.HandleInput(elapsedGameTime, mousePosition);
+
             // See if we should continue or whether the ScriptManager is preventing us
             ScriptManager.HandleInput(elapsedGameTime, mousePosition);
             ShouldHandleInput = ScriptManager.ShouldUpdateGame;
 
-            // Check to see if we should handle input
-            if (!ShouldHandleInput) { return; }
-
-            base.HandleInput(elapsedGameTime, mousePosition);
-
-            GameObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition));
-            InGameUIObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition));
-            ScreenUIObjects.HandleInput(elapsedGameTime, mousePosition);
+            if (GameObjects.ShouldHandleInput) { GameObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition)); }
+            if (InGameUIObjects.ShouldHandleInput) { InGameUIObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition)); }
+            if (ScreenUIObjects.ShouldHandleInput) { ScreenUIObjects.HandleInput(elapsedGameTime, mousePosition); }
         }
 
         /// <summary>
@@ -189,18 +186,15 @@ namespace _2DEngine
         /// <param name="elapsedGameTime">The time in seconds since the last frame</param>
         public override void Update(float elapsedGameTime)
         {
-            // Check to see if we should update
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             // See if we should continue or whether the ScriptManager is preventing us
             ScriptManager.Update(elapsedGameTime);
             ShouldUpdate = ScriptManager.ShouldUpdateGame;
 
-            GameObjects.Update(elapsedGameTime);
-            InGameUIObjects.Update(elapsedGameTime);
-            ScreenUIObjects.Update(elapsedGameTime);
+            if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
+            if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
+            if (ScreenUIObjects.ShouldUpdate) { ScreenUIObjects.Update(elapsedGameTime); }
         }
 
         /// <summary>
@@ -211,9 +205,6 @@ namespace _2DEngine
         /// <param name="spriteBatch">The SpriteBatch we should use for drawing sprites</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // Check to see if we should draw
-            if (!ShouldDraw) { return; }
-
             base.Draw(spriteBatch);
 
             // Draw the background if it has been set
@@ -221,7 +212,7 @@ namespace _2DEngine
             {
                 spriteBatch.Begin();
 
-                Background.Draw(spriteBatch);
+                if (Background.ShouldDraw) { Background.Draw(spriteBatch); }
 
                 spriteBatch.End();
             }
@@ -229,16 +220,16 @@ namespace _2DEngine
             // Draw the camera dependent objects using the camera transformation matrix
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
 
-            GameObjects.Draw(spriteBatch);
-            InGameUIObjects.Draw(spriteBatch);
+            if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
+            if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
 
             spriteBatch.End();
 
             // Draw the camera independent objects and the mouse last
             spriteBatch.Begin();
 
-            ScreenUIObjects.Draw(spriteBatch);
-            GameMouse.Instance.Draw(spriteBatch);
+            if (ScreenUIObjects.ShouldDraw) { ScreenUIObjects.Draw(spriteBatch); }
+            if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
 
             spriteBatch.End();
         }

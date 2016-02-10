@@ -62,7 +62,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Check to see if we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             // Load the data here if we have a non-empty data asset.
             if (!string.IsNullOrEmpty(DataAsset))
@@ -89,8 +89,6 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             // Die if we have insufficient health

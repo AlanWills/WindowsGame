@@ -82,7 +82,7 @@ namespace _2DEngine
         /// </summary>
         public override void LoadContent()
         {
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             GameMouse.Instance.LoadContent();
 
@@ -94,7 +94,7 @@ namespace _2DEngine
         /// </summary>
         public override void Initialise()
         {
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             Camera.Initialise();
             GameMouse.Instance.Initialise();
@@ -110,9 +110,6 @@ namespace _2DEngine
         /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            // Check to see if we should handle input
-            if (!ShouldHandleInput) { return; }
-
             // Update keyboard and mouse first
             GameKeyboard.Update();
             GameMouse.Instance.Update(elapsedGameTime);
@@ -130,9 +127,6 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            // Check to see if we should update
-            if (!ShouldUpdate) { return; }
-
             // Update camera
             Camera.Update(elapsedGameTime);
 
@@ -154,8 +148,8 @@ namespace _2DEngine
         public void Setup(SpriteBatch spriteBatch, Viewport viewport, ContentManager content, GraphicsDeviceManager graphics)
         {
             // Check that we have called this before loading and initialising
-            Debug.Assert(ShouldLoad);
-            Debug.Assert(ShouldInitialise);
+            CheckShouldLoad();
+            CheckShouldInitialise();
 
             SpriteBatch = spriteBatch;
             Content = content;

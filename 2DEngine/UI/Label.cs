@@ -44,7 +44,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Check to see if we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             SetupSpriteFont();
 
@@ -57,7 +57,7 @@ namespace _2DEngine
         public override void Initialise()
         {
             // Check to see if we should initialise
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             // Change the size to the text dimensions if unset
             if (Size == Vector2.Zero)
@@ -74,9 +74,6 @@ namespace _2DEngine
         /// <param name="spriteBatch">The SpriteBatch used for rendering</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // Check if we should draw
-            if (!ShouldDraw) { return; }
-
             // Draw the text
             Debug.Assert(SpriteFont != null);
             spriteBatch.DrawString(

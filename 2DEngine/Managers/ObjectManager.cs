@@ -39,7 +39,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Check to see whether we have already called LoadContent
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             foreach (T obj in ObjectsToAdd)
             {
@@ -56,7 +56,7 @@ namespace _2DEngine
         public override void Initialise()
         {
             // Check to see whether we have already called Initialise
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             foreach (T obj in ObjectsToAdd)
             {
@@ -89,16 +89,16 @@ namespace _2DEngine
         /// <param name="mousePosition">The current position of the mouse in the space of the Component (screen or game)</param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            // If we shouldn't HandleInput, we return
-            if (!ShouldHandleInput) { return; }
-
             base.HandleInput(elapsedGameTime, mousePosition);
 
             // Loop through the active object
             foreach (T obj in ActiveObjects)
             {
-                // Update the object
-                obj.HandleInput(elapsedGameTime, mousePosition);
+                // Handle input for the object
+                if (obj.ShouldHandleInput)
+                {
+                    obj.HandleInput(elapsedGameTime, mousePosition);
+                }
             }
         }
 
@@ -108,9 +108,6 @@ namespace _2DEngine
         /// <param name="elapsedGameTime">The seconds that have elapsed since the last update loop</param>
         public override void Update(float elapsedGameTime)
         {
-            // If we should not Update, we return
-            if (!ShouldUpdate) { return; }
-
             // Always call the super class' function - it will deal with whether it should run it itself
             base.Update(elapsedGameTime);
 
@@ -121,8 +118,11 @@ namespace _2DEngine
             // Loop through the active object
             foreach (T obj in ActiveObjects)
             {
-                // Update the object
-                obj.Update(elapsedGameTime);
+                if (obj.ShouldUpdate)
+                {
+                    // Update the object
+                    obj.Update(elapsedGameTime);
+                }
             }
 
             // Remove all the objects that are no longer alive
@@ -135,15 +135,15 @@ namespace _2DEngine
         /// <param name="spriteBatch">The SpriteBatch we can use to draw any textures</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // If we shouldn't draw, we return
-            if (!ShouldDraw) { return; }
-
             base.Draw(spriteBatch);
 
             foreach (T obj in ActiveObjects)
             {
-                // Update the object
-                obj.Draw(spriteBatch);
+                if (ShouldDraw)
+                {
+                    // Draw the object
+                    obj.Draw(spriteBatch);
+                }
             }
         }
 

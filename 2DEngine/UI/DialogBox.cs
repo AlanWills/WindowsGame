@@ -40,7 +40,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Check to see if we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             Text.LoadContent();
 
@@ -53,7 +53,7 @@ namespace _2DEngine
         public override void Initialise()
         {
             // Check to see if we should initialise
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             Text.Initialise();
 
@@ -69,8 +69,6 @@ namespace _2DEngine
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!ShouldDraw) { return; }
-
             base.Draw(spriteBatch);
 
             Text.Draw(spriteBatch);

@@ -22,7 +22,7 @@ namespace _2DEngine
         /// </summary>
         public override void LoadContent()
         {
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             Texture = ScreenManager.Instance.Content.Load<Texture2D>(TextureAsset);
 

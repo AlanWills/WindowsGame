@@ -145,7 +145,7 @@ namespace _2DEngine
         /// </summary>
         public override void LoadContent()
         {
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             // Do not need to rely on loading character data - this will happen when needed.
             SetUpAnimations();
@@ -159,7 +159,7 @@ namespace _2DEngine
         /// </summary>
         public override void Initialise()
         {
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             StateMachine.ActiveState.Animation.IsPlaying = true;
 
@@ -173,12 +173,9 @@ namespace _2DEngine
         /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            // Check to see if we should handle input
-            if (!ShouldHandleInput) { return; }
-
             base.HandleInput(elapsedGameTime, mousePosition);
 
-
+            UpdateBehaviour();
         }
 
         /// <summary>
@@ -208,8 +205,6 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             StateMachine.Update(elapsedGameTime);
@@ -221,8 +216,6 @@ namespace _2DEngine
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!ShouldDraw) { return; }
-
             SourceRectangle = StateMachine.ActiveState.Animation.CurrentSourceRectangle;
 
             base.Draw(spriteBatch);
@@ -238,15 +231,11 @@ namespace _2DEngine
         /// </summary>
         /// <param name="name">The name of the asset in our Animations dictionary - will be the name of the XML, e.g. "Walk".</param>
         /// <param name="id">The desired ID for this state.</param>
-        /// <returns>Returns the state we have just created.</returns>
-        protected State CreateState(string name, uint id)
+        protected void CreateState(string name, uint id)
         {
             Debug.Assert(Animations[name] != null);
 
-            State state = new State(id, Animations[name], Animations[name].IsGlobal);
-            StateMachine.AddState(state);
-
-            return state;
+            StateMachine.CreateState(id, Animations[name]);
         }
 
         /// <summary>
@@ -269,8 +258,11 @@ namespace _2DEngine
         /// </summary>
         protected virtual void IdleState()
         {
-            // Check health -> go to death if insufficient health
             // Dont' check is alive as this is still true so that we can play the death animation.
+            if (Health <= 0)
+            {
+                CurrentBehaviour = (uint)CharacterBehaviours.kDeath;
+            }
         }
 
         /// <summary>

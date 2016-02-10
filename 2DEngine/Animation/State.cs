@@ -33,11 +33,11 @@ namespace _2DEngine
 
         #endregion
 
-        public State(uint stateID, Animation animation, bool isGlobal = false)
+        public State(uint stateID, Animation animation)
         {
             StateID = stateID;
             Animation = animation;
-            IsGlobal = isGlobal;
+            IsGlobal = animation.IsGlobal;
 
             Transitions = new List<Transition>();
         }

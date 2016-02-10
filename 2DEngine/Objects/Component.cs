@@ -24,13 +24,13 @@ namespace _2DEngine
         /// A bool to hold whether LoadContent has been called
         /// This is an optimization to stop LoadContent being called multiple times
         /// </summary>
-        protected bool ShouldLoad { get; private set; }
+        private bool ShouldLoad { get; set; }
 
         /// <summary>
         /// A bool to hold whether Initialise has been called
         /// This is an optimization to stop Initialise being called multiple times
         /// </summary>
-        protected bool ShouldInitialise { get; private set; }
+        private bool ShouldInitialise { get; set; }
 
         /// <summary>
         /// A bool to indicate whether Begun has been called on the object
@@ -116,11 +116,7 @@ namespace _2DEngine
         /// </summary>
         /// <param name="elapsedGameTime">The seconds that have elapsed since the last update loop</param>
         /// <param name="mousePosition">The current position of the mouse in the space of the Component (screen or game)</param>
-        public virtual void HandleInput(float elapsedGameTime, Vector2 mousePosition)
-        {
-            // If we shouldn't update then we return
-            if (!ShouldHandleInput) { return; }
-        }
+        public virtual void HandleInput(float elapsedGameTime, Vector2 mousePosition) { }
 
         /// <summary>
         /// Called every frame - update class logic
@@ -134,20 +130,13 @@ namespace _2DEngine
             }
 
             Debug.Assert(IsBegun);
-
-            // If we shouldn't update then we return
-            if (!ShouldUpdate) { return; }
         }
 
         /// <summary>
         /// Called every frame - draws text and sprites
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch we can use to draw textures</param>
-        public virtual void Draw(SpriteBatch spriteBatch)
-        {
-            // If we shouldn't draw then we return
-            if (!ShouldDraw) { return; }
-        }
+        public virtual void Draw(SpriteBatch spriteBatch) { }
 
         /// <summary>
         /// Sets IsAlive to false.  The object will then be cleaned up by the ObjectManager it is in.
@@ -203,6 +192,28 @@ namespace _2DEngine
         public bool Is<T>() where T : Component
         {
             return this is T;
+        }
+
+        #endregion
+
+        #region Debug Checking Functions
+
+        /// <summary>
+        /// A function used in Debug to check we are not making unnecessary LoadContent calls
+        /// </summary>
+        [Conditional("DEBUG")]
+        protected void CheckShouldLoad()
+        {
+            Debug.Assert(ShouldLoad);
+        }
+
+        /// <summary>
+        /// A function in Debug to check we are not making unnecessary Initialise calls
+        /// </summary>
+        [Conditional("DEBUG")]
+        protected void CheckShouldInitialise()
+        {
+            Debug.Assert(ShouldInitialise);
         }
 
         #endregion

@@ -11,7 +11,7 @@ namespace _2DEngine
 
         // Gymnastics
         public static Keys Jump = Keys.Space;
-        public static Keys ForwardRoll = Keys.E;
+        public static Keys ForwardRoll = Keys.LeftAlt;
 
         // Weapons
         public static MouseButton Shoot = MouseButton.kLeftButton;

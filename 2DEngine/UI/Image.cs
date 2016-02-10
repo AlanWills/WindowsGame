@@ -43,7 +43,7 @@ namespace _2DEngine
         public override void Initialise()
         {
             // Check to see whether we should Initialise
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             // Texture cannot be null
             Debug.Assert(Texture != null);

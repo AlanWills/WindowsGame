@@ -46,7 +46,7 @@ namespace _2DEngine
         public override void LoadContent()
         {
             // Checks to see if we should load
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             // Loads the button text
             ButtonText.LoadContent();
@@ -60,7 +60,7 @@ namespace _2DEngine
         public override void Initialise()
         {
             // Checks to see if we should initialise
-            if (!ShouldInitialise) { return; }
+            CheckShouldInitialise();
 
             // Initialises the button text
             ButtonText.Initialise();
@@ -70,9 +70,6 @@ namespace _2DEngine
 
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
-            // Check to see whether we should handle input
-            if (!ShouldHandleInput) { return; }
-
             base.HandleInput(elapsedGameTime, mousePosition);
 
             // Play SFX if we have entered the button
@@ -90,9 +87,6 @@ namespace _2DEngine
 
         public override void Update(float elapsedGameTime)
         {
-            // Check to see whether we should update
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             // Lerp back to the default colour - gives the effect of highlighted -> original colour over time
@@ -101,9 +95,6 @@ namespace _2DEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // Check to see whether we should draw
-            if (!ShouldDraw) { return; }
-
             base.Draw(spriteBatch);
 
             ButtonText.Draw(spriteBatch);

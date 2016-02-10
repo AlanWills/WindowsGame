@@ -73,7 +73,7 @@ namespace _2DEngine
 
         public override void LoadContent()
         {
-            if (!ShouldLoad) { return; }
+            CheckShouldLoad();
 
             Texture = ScreenManager.Instance.Content.Load<Texture2D>(AssetManager.MouseTextureAsset);
 
@@ -82,9 +82,6 @@ namespace _2DEngine
 
         public override void Update(float elapsedGameTime)
         {
-            // Check if we should update the mouse
-            if (!ShouldUpdate) { return; }
-
             base.Update(elapsedGameTime);
 
             PreviousMouseState = CurrentMouseState;
@@ -164,28 +161,6 @@ namespace _2DEngine
         public Vector2 GetDragDelta()
         {
             return new Vector2(CurrentMouseState.X - PreviousMouseState.X, CurrentMouseState.Y - PreviousMouseState.Y);
-        }
-
-        /// <summary>
-        /// Determines whether the InputMap Shoot button was clicked this frame.
-        /// </summary>
-        /// <param name="sourceState"></param>
-        /// <param name="destinationState"></param>
-        /// <returns>Returns true if the InputMap Shoot button was clicked.</returns>
-        public static bool IsShootButtonClicked(State sourceState, State destinationState)
-        {
-            return Instance.IsClicked(InputMap.Shoot);
-        }
-
-        /// <summary>
-        /// Determines whether the InputMap Melee button was clicked this frame.
-        /// </summary>
-        /// <param name="sourceState"></param>
-        /// <param name="destinationState"></param>
-        /// <returns>Returns true if the InputMap Melee button was clicked.</returns>
-        public static bool IsMeleeButtonClicked(State sourceState, State destinationState)
-        {
-            return Instance.IsClicked(InputMap.Melee);
         }
 
         #endregion
