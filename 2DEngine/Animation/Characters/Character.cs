@@ -9,6 +9,7 @@ namespace _2DEngine
     public enum CharacterBehaviours
     {
         kIdle,
+        kDeath,
 
         kNumBehaviours
     }
@@ -104,7 +105,7 @@ namespace _2DEngine
         /// <summary>
         /// Sets up all the states and transitions.
         /// </summary>
-        public virtual void SetUpAnimations()
+        protected virtual void SetUpAnimations()
         {
             Debug.Assert(Data != null);
             CharacterData data = Data.As<CharacterData>();
@@ -125,6 +126,8 @@ namespace _2DEngine
             }
 
             CreateState("Idle", (uint)CharacterBehaviours.kIdle);
+            CreateState("Death", (uint)CharacterBehaviours.kDeath);
+
             StateMachine.StartingState = (uint)CharacterBehaviours.kIdle;
         }
 
@@ -208,6 +211,17 @@ namespace _2DEngine
             StateMachine.AddState(state);
 
             return state;
+        }
+
+        /// <summary>
+        /// Obtains a state from the state machine.  Checks for valid ID and null state.
+        /// </summary>
+        /// <param name="id">The ID of the state we wish to obtain.</param>
+        /// <returns>The state we requested from our state machine.</returns>
+        public State GetState(uint id)
+        {
+            Debug.Assert(id < NumBehaviours);
+            return StateMachine.GetState(id);
         }
 
         #endregion

@@ -67,7 +67,7 @@ namespace _2DEngine
                 state.Animation.LoadContent();
             }
 
-            Debug.Assert(States[StartingState] != null);
+            DebugAssertState(StartingState);
             ActiveState = States[StartingState];
             
             ShouldLoad = false;
@@ -87,10 +87,11 @@ namespace _2DEngine
 
         #endregion
 
-        #region Adding States Functions
+        #region State Utility Functions
 
         /// <summary>
         /// Adds a state to this state machine.  This function takes care of global states and ID checks.
+        /// Should not really be used - instead use Character function 'CreateState' - it is much nicer and tidier.
         /// </summary>
         /// <param name="state"></param>
         public void AddState(State state)
@@ -106,6 +107,54 @@ namespace _2DEngine
             if (state.IsGlobal)
             {
                 GlobalStates.Add(state);
+            }
+        }
+
+        /// <summary>
+        /// Gets a state from the state machine and performs checks for null and valid ID.
+        /// </summary>
+        /// <param name="stateID">The ID of the state we wish to obtain.</param>
+        /// <returns>The state we requested.  Guaranteed to not be null in debug.</returns>
+        public State GetState(uint stateID)
+        {
+            DebugAssertState(stateID);
+
+            return States[stateID];
+        }
+
+        /// <summary>
+        /// Only available in Debug.
+        /// Debug.Asserts state ID and whether the state is null. 
+        /// </summary>
+        /// <param name="stateID"></param>
+        [Conditional("DEBUG")]
+        private void DebugAssertState(uint stateID)
+        {
+            Debug.Assert(stateID < States.Length);
+            Debug.Assert(States[stateID] != null);
+        }
+
+        #endregion
+
+        #region Transition Utility Functions
+
+        /// <summary>
+        /// Adds a transition between two states.  Useful because it means you do not need the state itself.
+        /// Checks for valid IDs and existing transitions.  If a transition exists, it will not create it.
+        /// </summary>
+        /// <param name="sourceStateID">The ID of the source state.</param>
+        /// <param name="destStateID">The ID of the destination state.</param>
+        /// <param name="reciprocal">A flag to indicate whether we should create a transition on the state with destinationStateID back to this one.  True by default.</param>
+        public void AddTransition(uint sourceStateID, uint destStateID, bool reciprocal = true)
+        {
+            DebugAssertState(sourceStateID);
+            DebugAssertState(destStateID);
+
+            States[sourceStateID].AddTransition(destStateID);
+
+            if (reciprocal)
+            {
+                States[destStateID].AddTransition(sourceStateID);
             }
         }
 
@@ -155,7 +204,7 @@ namespace _2DEngine
         private void SetNewActiveState(uint newBehaviourState)
         {
             // Check to make sure we have transitioned to a state that exists in our state machine.
-            Debug.Assert(States[newBehaviourState] != null);
+            DebugAssertState(newBehaviourState);
 
             // Reset the old states's animation
             ActiveState.Animation.Reset();

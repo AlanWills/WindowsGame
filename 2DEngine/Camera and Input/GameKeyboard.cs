@@ -51,10 +51,8 @@ namespace _2DEngine
         /// <summary>
         /// Transition if the InputMap movement keys are down.
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsWalkKeyDown(State source, State destination)
+        public static bool IsWalkKeyDown()
         {
             return IsKeyDown(InputMap.MoveLeft) || IsKeyDown(InputMap.MoveRight);
         }
@@ -65,7 +63,7 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsRunKeyDown(State source, State destination)
+        public static bool IsRunKeyDown()
         {
             return IsKeyDown(InputMap.Run);
         }
@@ -76,9 +74,9 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsWalkAndRunKeyDown(State source, State destination)
+        public static bool IsWalkAndRunKeyDown()
         {
-            return IsWalkKeyDown(source, destination) && IsRunKeyDown(source, destination);
+            return IsWalkKeyDown() && IsRunKeyDown();
         }
 
         /// <summary>
@@ -87,9 +85,9 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsWalkKeyNotDown(State source, State destination)
+        public static bool IsWalkKeyNotDown()
         {
-            return !IsWalkKeyDown(source, destination);
+            return !IsWalkKeyDown();
         }
 
         /// <summary>
@@ -98,9 +96,9 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsRunKeyNotDown(State source, State destination)
+        public static bool IsRunKeyNotDown()
         {
-            return !IsRunKeyDown(source, destination);
+            return !IsRunKeyDown();
         }
 
         /// <summary>
@@ -109,9 +107,9 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsWalkAndRunKeyNotDown(State source, State destination)
+        public static bool IsWalkAndRunKeyNotDown()
         {
-            return !IsWalkAndRunKeyDown(source, destination);
+            return !IsWalkAndRunKeyDown();
         }
 
         /// <summary>
@@ -120,7 +118,7 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsJumpKeyPressed(State source, State destination)
+        public static bool IsJumpKeyPressed()
         {
             return IsKeyPressed(InputMap.Jump);
         }
@@ -131,7 +129,7 @@ namespace _2DEngine
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static bool IsRollKeyPressed(State source, State destination)
+        public static bool IsRollKeyPressed()
         {
             return IsKeyPressed(InputMap.ForwardRoll);
         }

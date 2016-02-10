@@ -5,7 +5,14 @@
     /// Will handle collisions tiles, decals and start points.
     /// Can be overridden to create a custom screen for a more custom level output.
     /// </summary>
-    public class LevelDesignScreen
+    public class LevelDesignScreen : BaseScreen
     {
+
+
+        public LevelDesignScreen(string screenDataAsset = "LevelDesignScreen.xml") :
+            base(screenDataAsset)
+        {
+
+        }
     }
 }
