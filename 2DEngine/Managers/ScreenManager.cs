@@ -132,6 +132,10 @@ namespace _2DEngine
 
             // Then update any screens
             base.Update(elapsedGameTime);
+
+            // Deflush the mouse after all input handling and updating
+            // If the draw logic depends on this, it is just wrong
+            GameMouse.Instance.IsFlushed = false;
         }
 
         #endregion

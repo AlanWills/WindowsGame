@@ -150,7 +150,7 @@ namespace _2DEngine
         /// <summary>
         /// Adds Initial Scripts after all the Initialisation for this screen has been performed. 
         /// </summary>
-        public virtual void AddInitialScripts() { }
+        protected virtual void AddInitialScripts() { }
 
         /// <summary>
         /// Queues up any music for this screen

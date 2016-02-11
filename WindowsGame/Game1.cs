@@ -42,7 +42,7 @@ namespace WindowsGame
             base.Initialize();
 
             ScreenManager.Instance.Initialise();
-            ScreenManager.Instance.StartGame(new MainMenuScreen());
+            ScreenManager.Instance.StartGame(new LevelDesignScreen());
         }
 
         /// <summary>

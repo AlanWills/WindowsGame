@@ -43,6 +43,12 @@ namespace _2DEngine
         private MouseState PreviousMouseState { get; set; }
 
         /// <summary>
+        /// A bool which can be used to disable all further checks this frame.  
+        /// Any call to IsClicked, IsPressed, IsDragged or GetDragDelta will return false or Vector2.Zero until the next frame begins.
+        /// </summary>
+        public bool IsFlushed { get; set; }
+
+        /// <summary>
         /// The single static instance of this class.
         /// </summary>
         private static GameMouse instance;
@@ -103,6 +109,9 @@ namespace _2DEngine
         /// <returns>Returns true if the mouse button was pressed in the previous frame and released this frame</returns>
         public bool IsClicked(MouseButton mouseButton)
         {
+            // If we are flushed this frame return false
+            if (IsFlushed) { return false; }
+
             switch (mouseButton)
             {
                 case MouseButton.kLeftButton:
@@ -127,6 +136,9 @@ namespace _2DEngine
         /// <returns>Returns true if the mouse button was pressed down this frame</returns>
         public bool IsDown(MouseButton mouseButton)
         {
+            // If we are flushed this frame, return false
+            if (IsFlushed) { return false; }
+
             switch (mouseButton)
             {
                 case MouseButton.kLeftButton:
@@ -151,6 +163,9 @@ namespace _2DEngine
         /// <returns>Returns true if the inputted button is down and we have moved the mouse since last frame</returns>
         public bool IsDragged(MouseButton mouseButton)
         {
+            // If we are flushed this frame, return false
+            if (IsFlushed) { return false; }
+
             return IsDown(mouseButton) && GetDragDelta() != Vector2.Zero;
         }
 
@@ -160,6 +175,9 @@ namespace _2DEngine
         /// <returns>The amount that we have moved the mouse since last frame</returns>
         public Vector2 GetDragDelta()
         {
+            // If we are flushed this frame return Vector2.Zero
+            if (IsFlushed) { return Vector2.Zero; }
+
             return new Vector2(CurrentMouseState.X - PreviousMouseState.X, CurrentMouseState.Y - PreviousMouseState.Y);
         }
 

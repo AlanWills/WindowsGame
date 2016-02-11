@@ -28,7 +28,7 @@ namespace _2DEngine
             {
                 if (texture == null)
                 {
-                    Debug.Assert(string.IsNullOrEmpty(TextureAsset));
+                    Debug.Assert(!string.IsNullOrEmpty(TextureAsset));
                     texture = AssetManager.GetTexture(TextureAsset);
                 }
 

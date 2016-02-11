@@ -51,7 +51,14 @@ namespace _2DEngine
             float aspectRatio = (float)Texture.Bounds.Height / (float)Texture.Bounds.Width;
             Debug.Assert(aspectRatio > 0);
 
-            Size = new Vector2(Size.X, Size.X * aspectRatio);
+            if (aspectRatio < 1)
+            {
+                Size = new Vector2(Size.X, Size.X * aspectRatio);
+            }
+            else
+            {
+                Size = new Vector2(Size.Y / aspectRatio, Size.Y);
+            }
 
             base.Initialise();
 

@@ -139,7 +139,7 @@ namespace _2DEngine
 
             foreach (T obj in ActiveObjects)
             {
-                if (ShouldDraw)
+                if (obj.ShouldDraw)
                 {
                     // Draw the object
                     obj.Draw(spriteBatch);
