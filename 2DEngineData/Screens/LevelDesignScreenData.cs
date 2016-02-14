@@ -37,5 +37,17 @@ namespace _2DEngineData
         /// </summary>
         [XmlArrayItem(ElementName = "Item")]
         public List<LevelObjectData> CollisionDecals { get; set; }
+
+        #region Utility Functions
+
+        public void ClearAll()
+        {
+            NormalTiles.Clear();
+            CollisionTiles.Clear();
+            NormalDecals.Clear();
+            CollisionDecals.Clear();
+        }
+
+        #endregion
     }
 }

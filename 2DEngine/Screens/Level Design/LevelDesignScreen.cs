@@ -161,8 +161,6 @@ namespace _2DEngine
 
         protected override BaseScreenData LoadScreenData()
         {
-            if (ScreenData != null) { return ScreenData; }
-
             return AssetManager.GetData<LevelDesignScreenData>(ScreenDataAsset);
         }
 
@@ -358,26 +356,28 @@ namespace _2DEngine
             LevelDesignScreenData levelData = ScreenData.As<LevelDesignScreenData>();
             DebugUtils.AssertNotNull(levelData);
 
+            levelData.ClearAll();
+
             // Serialize normal tiles to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalTile])
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalTile].FindAll(x => x.IsAlive))
             {
                 levelData.NormalTiles.Add(SerializeLevelObject(levelObject));
             }
 
             // Serialize collision tiles to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionTile])
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionTile].FindAll(x => x.IsAlive))
             {
                 levelData.CollisionTiles.Add(SerializeLevelObject(levelObject));
             }
 
             // Serialize normal decals to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalDecal])
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalDecal].FindAll(x => x.IsAlive))
             {
                 levelData.NormalDecals.Add(SerializeLevelObject(levelObject));
             }
 
             // Serialize collision decals to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionDecal])
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionDecal].FindAll(x => x.IsAlive))
             {
                 levelData.CollisionDecals.Add(SerializeLevelObject(levelObject));
             }

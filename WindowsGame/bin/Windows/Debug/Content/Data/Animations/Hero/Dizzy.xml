@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root>
+<AnimationData>
   <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized</AnimationTextureAsset>
   <TextureFramesX>1</TextureFramesX>
   <TextureFramesY>15</TextureFramesY>
   <Continual>false</Continual>
   <Global>false</Global>
-</Root>
+</AnimationData>

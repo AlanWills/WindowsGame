@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Root>
+<AnimationData>
   <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized</AnimationTextureAsset>
   <TextureFramesX>1</TextureFramesX>
   <TextureFramesY>12</TextureFramesY>
   <Continual>true</Continual>
   <Global>false</Global>
-</Root>
+</AnimationData>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Root>
+<CharacterData>
   <TextureAsset></TextureAsset>
   <FolderPath>Content\Data\Animations\Hero\</FolderPath>
   <AnimationInfo>
@@ -21,4 +21,4 @@
     <Item>Walk</Item>
     <Item>Walk Shoot</Item>
   </AnimationInfo>
-</Root>
+</CharacterData>

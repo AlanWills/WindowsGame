@@ -122,8 +122,6 @@ namespace _2DEngine
         /// <returns></returns>
         protected virtual BaseScreenData LoadScreenData()
         {
-            if (ScreenData != null) { return ScreenData; }
-
             return AssetManager.GetData<BaseScreenData>(ScreenDataAsset);
         }
 

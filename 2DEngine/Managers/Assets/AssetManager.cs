@@ -166,7 +166,7 @@ namespace _2DEngine
         {
             DebugUtils.AssertNotNull(data);
 
-            using (FileStream writeFileStream = File.OpenWrite(name))
+            using (FileStream writeFileStream = new FileStream(name, FileMode.Create,FileAccess.Write))
             {
                 XmlSerializer xml = new XmlSerializer(typeof(T));
                 xml.Serialize(writeFileStream, data);
