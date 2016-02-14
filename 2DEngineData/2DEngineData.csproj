@@ -53,6 +53,7 @@
     <Compile Include="Objects\GameObjectData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseScreenData.cs" />
+    <Compile Include="Screens\LevelDesignScreenData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

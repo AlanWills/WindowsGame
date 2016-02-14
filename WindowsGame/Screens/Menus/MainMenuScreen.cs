@@ -10,7 +10,7 @@ namespace WindowsGame
         public MainMenuScreen(string screenDataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
             base(screenDataAsset)
         {
-            AddGameObject(new Player(GetScreenCentre(), "Content\\Data\\Animations\\Hero\\HeroAnimations.xml"));
+            
         }
     }
 }

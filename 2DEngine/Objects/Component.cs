@@ -24,13 +24,13 @@ namespace _2DEngine
         /// A bool to hold whether LoadContent has been called
         /// This is an optimization to stop LoadContent being called multiple times
         /// </summary>
-        private bool ShouldLoad { get; set; }
+        protected bool ShouldLoad { get; set; }
 
         /// <summary>
         /// A bool to hold whether Initialise has been called
         /// This is an optimization to stop Initialise being called multiple times
         /// </summary>
-        private bool ShouldInitialise { get; set; }
+        protected bool ShouldInitialise { get; set; }
 
         /// <summary>
         /// A bool to indicate whether Begun has been called on the object

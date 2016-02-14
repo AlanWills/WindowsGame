@@ -258,11 +258,7 @@ namespace _2DEngine
         /// </summary>
         protected virtual void IdleState()
         {
-            // Dont' check is alive as this is still true so that we can play the death animation.
-            if (Health <= 0)
-            {
-                CurrentBehaviour = (uint)CharacterBehaviours.kDeath;
-            }
+            
         }
 
         /// <summary>
@@ -270,8 +266,11 @@ namespace _2DEngine
         /// </summary>
         protected virtual void DeathState()
         {
-            // Probably should be empty
-            // Maybe add a check to see if the animation is complete to then actually kill the object?
+            // Don't check is alive as this is still true so that we can play the death animation.
+            if (Health <= 0)
+            {
+                CurrentBehaviour = (uint)CharacterBehaviours.kDeath;
+            }
         }
 
         #endregion

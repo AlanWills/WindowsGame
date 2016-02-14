@@ -69,6 +69,7 @@ namespace _2DEngine
         protected void SetupSpriteFont(string spriteFontAsset = AssetManager.DefaultSpriteFontAsset)
         {
             SpriteFont = AssetManager.GetSpriteFont(spriteFontAsset);
+            DebugUtils.AssertNotNull(SpriteFont);
         }
 
         #endregion

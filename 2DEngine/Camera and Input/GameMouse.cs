@@ -23,6 +23,17 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
+        /// Uses the camera to calculate the in game position of the mouse
+        /// </summary>
+        public Vector2 InGamePosition
+        {
+            get
+            {
+                return Camera.ScreenToGameCoords(WorldPosition);
+            }
+        }
+
+        /// <summary>
         /// We wish the origin of the texture to be the top left, so that the click position is the tip of the cursor
         /// </summary>
         protected override Vector2 TextureCentre{ get { return Vector2.Zero; } }
@@ -47,6 +58,17 @@ namespace _2DEngine
         /// Any call to IsClicked, IsPressed, IsDragged or GetDragDelta will return false or Vector2.Zero until the next frame begins.
         /// </summary>
         public bool IsFlushed { get; set; }
+
+        /// <summary>
+        /// A flag to set whether this mouse should snap to multiples of a position or be completely free moving.
+        /// Can only be set via the function SetSnapping() since it requires an increment
+        /// </summary>
+        public bool Snapping { get; private set; }
+
+        /// <summary>
+        /// The increments we should snap to.
+        /// </summary>
+        private Vector2 Increment { get; set; }
 
         /// <summary>
         /// The single static instance of this class.
@@ -94,6 +116,11 @@ namespace _2DEngine
             CurrentMouseState = Mouse.GetState();
 
             LocalPosition = new Vector2(CurrentMouseState.X, CurrentMouseState.Y);
+
+            if (Snapping)
+            {
+                LocalPosition = Increment * new Vector2((int)(CurrentMouseState.X / Increment.X), (int)(CurrentMouseState.Y / Increment.Y));
+            }
         }
 
         #endregion
@@ -179,6 +206,21 @@ namespace _2DEngine
             if (IsFlushed) { return Vector2.Zero; }
 
             return new Vector2(CurrentMouseState.X - PreviousMouseState.X, CurrentMouseState.Y - PreviousMouseState.Y);
+        }
+
+        #endregion
+
+        #region Utility Functions
+
+        /// <summary>
+        /// Sets the mouse to be free or snapping to an increment based on the bool input.
+        /// </summary>
+        /// <param name="snapping">Set true to have mouse snapping.</param>
+        /// <param name="increment">If snapping is true, the amount we should increment when snapping.</param>
+        public void SetSnapping(bool snapping, Vector2 increment)
+        {
+            Snapping = snapping;
+            Increment = increment;
         }
 
         #endregion

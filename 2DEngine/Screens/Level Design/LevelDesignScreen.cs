@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Diagnostics;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using _2DEngineData;
 
 namespace _2DEngine
 {
@@ -12,14 +12,14 @@ namespace _2DEngine
     /// Will handle collisions tiles, decals and start points.
     /// Can be overridden to create a custom screen for a more custom level output.
     /// </summary>
-    public class LevelDesignScreen : BaseScreen
+    public class LevelDesignScreen : GameplayScreen
     {
         protected enum LevelDesignType
         {
-            kNormalTile = 1 << 0,
-            kCollisionTile = 1 << 1,
-            kNormalDecal = 1 << 2,
-            kCollisionDecal = 1 << 3,
+            kNormalTile,        // Used for general environment but without collider
+            kCollisionTile,     // Used for general environment but with collider
+            kNormalDecal,       // Used for decals which enrich the level but without collider
+            kCollisionDecal,    // Used for decals which enrich the level but with collider
 
             kNumTypes,
         }
@@ -27,24 +27,10 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
-        /// A list of the normal tiles in our level
+        /// A dictionary of lists of objects indexed by their type.
+        /// When we create new level objects, they will be added to the appropriate list for serialization.
         /// </summary>
-        private List<UIObject> NormalTiles { get; set; }
-
-        /// <summary>
-        /// A list of the collision tiles in our level
-        /// </summary>
-        private List<UIObject> CollisionTiles { get; set; }
-
-        /// <summary>
-        /// A list of the normal decals in our level
-        /// </summary>
-        private List<UIObject> NormalDecals { get; set; }
-
-        /// <summary>
-        /// A list of the collision decals in our level
-        /// </summary>
-        private List<UIObject> CollisionDecals { get; set; }
+        private Dictionary<LevelDesignType, List<LevelDesignObject>> LevelObjects { get; set; }
 
         /// <summary>
         /// The current type we will use when adding level objects
@@ -64,23 +50,30 @@ namespace _2DEngine
         /// <summary>
         /// The current selected object we are going to place
         /// </summary>
-        private UIObject CurrentSelectedObject { get; set; }
+        private Image CurrentSelectedObject { get; set; }
 
+        /// <summary>
+        /// UI Constants
+        /// </summary>
         private Vector2 ButtonSize = new Vector2(32, 32);
+        private Vector2 TileSize = new Vector2(128, 128);
         private float ButtonPadding = 8;
 
         #endregion
 
-        public LevelDesignScreen(string screenDataAsset = "Content\\Data\\Screens\\LevelDesignScreen.xml") :
+        public LevelDesignScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-            NormalTiles = new List<UIObject>();
-            CollisionTiles = new List<UIObject>();
-            NormalDecals = new List<UIObject>();
-            CollisionDecals = new List<UIObject>();
+            LevelObjects = new Dictionary<LevelDesignType, List<LevelDesignObject>>((int)LevelDesignType.kNumTypes);
+
+            for (LevelDesignType type = LevelDesignType.kNormalTile; type < LevelDesignType.kNumTypes; type++)
+            {
+                LevelObjects[type] = new List<LevelDesignObject>();
+            }
 
             CurrentType = LevelDesignType.kNormalTile;
             CurrentTypeLabel = new Label(GetLabelText(), GetScreenDimensions() * 0.9f);
+            AddScreenUIObject(CurrentTypeLabel);
 
             AvailableAssets = new List<string>()
             {
@@ -126,7 +119,7 @@ namespace _2DEngine
         #region Virtual Functions
 
         /// <summary>
-        /// Adds the buttons for the available assets
+        /// Adds the buttons for the available assets and loads our level
         /// </summary>
         protected override void AddInitialUI()
         {
@@ -158,8 +151,26 @@ namespace _2DEngine
             CurrentSelectedObject.Hide();
 
             AddScreenUIObject(CurrentSelectedObject);
+
+            Button serializeButton = new Button("Serialize", new Vector2(GetScreenDimensions().X * 0.1f, GetScreenDimensions().Y * 0.9f));
+            serializeButton.ClickEvent += SerializeLevel;
+            AddScreenUIObject(serializeButton);
+
+            DeserializeLevel();
         }
 
+        protected override BaseScreenData LoadScreenData()
+        {
+            if (ScreenData != null) { return ScreenData; }
+
+            return AssetManager.GetData<LevelDesignScreenData>(ScreenDataAsset);
+        }
+
+        /// <summary>
+        /// Handles mouse input for adding/removing objects and 
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         { 
             base.HandleInput(elapsedGameTime, mousePosition);
@@ -171,7 +182,7 @@ namespace _2DEngine
                     AddLevelObject();
                 }
             }
-            else if (GameMouse.Instance.IsClicked(MouseButton.kMiddleButton))
+            else if (GameMouse.Instance.IsClicked(MouseButton.kMiddleButton) || GameKeyboard.IsKeyPressed(Keys.Q))
             {
                 CurrentSelectedObject.Hide();
             }
@@ -198,18 +209,47 @@ namespace _2DEngine
             }
         }
 
+        /// <summary>
+        /// Update the game mouse position based on the current type of object we have selected.
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        public override void Update(float elapsedGameTime)
+        {
+            base.Update(elapsedGameTime);
+
+            if (CurrentSelectedObject.ShouldUpdate && (CurrentType == LevelDesignType.kNormalTile || CurrentType == LevelDesignType.kCollisionTile))
+            {
+                if (GameMouse.Instance.Snapping == false)
+                {
+                    GameMouse.Instance.SetSnapping(true, TileSize);
+                }
+            }
+            else
+            {
+                if (GameMouse.Instance.Snapping == true)
+                {
+                    GameMouse.Instance.SetSnapping(false, Vector2.Zero);
+                }
+            }
+        }
+
         #endregion
 
         #region Utility Functions
 
+        /// <summary>
+        /// Changes the object we will be adding to our level.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetCurrentSelectedObject(object sender, EventArgs e)
         {
             ClickableImage image = sender as ClickableImage;
-            Debug.Assert(image != null);
+            DebugUtils.AssertNotNull(image);
 
             RemoveScreenUIObject(CurrentSelectedObject);
 
-            CurrentSelectedObject = new Image(Vector2.Zero, (string)image.StoredObject);
+            CurrentSelectedObject = new Image(TileSize, Vector2.Zero, (string)image.StoredObject);
             CurrentSelectedObject.StoredObject = image.StoredObject;
             CurrentSelectedObject.Parent = GameMouse.Instance;
 
@@ -218,17 +258,148 @@ namespace _2DEngine
             GameMouse.Instance.IsFlushed = true;
         }
 
+        /// <summary>
+        /// Creates a new object in our level based on the mouse's current position.
+        /// Also adds it to the LevelObjects dictionary.
+        /// </summary>
         private void AddLevelObject()
         {
-            AddInGameUIObject(new Image(Camera.ScreenToGameCoords(GameMouse.Instance.WorldPosition), (string)CurrentSelectedObject.StoredObject), true, true);
+            LevelDesignObject newObject = null;
+
+            // If we have a tile, use TileSize, otherwise use the natural object size
+            if (CurrentType == LevelDesignType.kNormalTile || CurrentType == LevelDesignType.kCollisionTile)
+            {
+                newObject = new LevelDesignObject(TileSize, GameMouse.Instance.InGamePosition, (string)CurrentSelectedObject.StoredObject);
+            }
+            else
+            {
+                newObject = new LevelDesignObject(GameMouse.Instance.InGamePosition, (string)CurrentSelectedObject.StoredObject);
+            }
+
+            DebugUtils.AssertNotNull(newObject);
+
+            LevelObjects[CurrentType].Add(newObject);
+            AddInGameUIObject(newObject, true, true);
         }
 
+        /// <summary>
+        /// Gets the appropriate text based on the current type of the objects we will be adding.
+        /// </summary>
+        /// <returns></returns>
         private string GetLabelText()
         {
             string normalOrCollision = (CurrentType == LevelDesignType.kNormalTile) || (CurrentType == LevelDesignType.kNormalDecal) ? "Normal" : "Collision";
             string tileOrDecal = (CurrentType == LevelDesignType.kNormalTile) || (CurrentType == LevelDesignType.kCollisionTile) ? "Tile" : "Decal";
 
             return normalOrCollision + " " + tileOrDecal;
+        }
+
+        #endregion
+
+        #region Level Serialization and Deserialization
+
+        /// <summary>
+        /// Deserializes our Level XML data file and creates all the objects for our level editor.
+        /// </summary>
+        protected void DeserializeLevel()
+        {
+            // Load our previously serialized level here
+            LevelDesignScreenData levelData = ScreenData.As<LevelDesignScreenData>();
+            DebugUtils.AssertNotNull(levelData);
+
+            // Add normal tiles from serialized data
+            foreach (LevelObjectData data in levelData.NormalTiles)
+            {
+                UIObject newObject = DeserializeLevelObject(data, LevelDesignType.kNormalTile, TileSize);
+            }
+
+            // Add collision tiles from serialized data
+            foreach (LevelObjectData data in levelData.CollisionTiles)
+            {
+                UIObject newObject = DeserializeLevelObject(data, LevelDesignType.kCollisionTile, TileSize);
+            }
+
+            // Add normal decals from serialized data
+            foreach (LevelObjectData data in levelData.NormalDecals)
+            {
+                DeserializeLevelObject(data, LevelDesignType.kNormalDecal, Vector2.Zero);
+            }
+
+            // Add collision decals from serialized data
+            foreach (LevelObjectData data in levelData.CollisionDecals)
+            {
+                DeserializeLevelObject(data, LevelDesignType.kCollisionDecal, Vector2.Zero);
+            }
+        }
+
+        /// <summary>
+        /// A function which creates a UIObject for the inputted data and adds it to the appropriate LevelObjects list.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="size"></param>
+        /// <returns>Returns the newly created UIObject we have made from the inputted data</returns>
+        private LevelDesignObject DeserializeLevelObject(LevelObjectData data, LevelDesignType type, Vector2 size)
+        {
+            LevelDesignObject newObject = new LevelDesignObject(size, data.Position, data.TextureAsset);
+            newObject.LocalRotation = data.Rotation;
+            newObject.UsesCollider = data.Collision;
+
+            LevelObjects[type].Add(newObject);
+            AddInGameUIObject(newObject);
+
+            return newObject;
+        }
+
+        /// <summary>
+        /// Serializes all the UIObjects in our level editor into an XML data file.
+        /// </summary>
+        protected void SerializeLevel(object sender, EventArgs e)
+        {
+            LevelDesignScreenData levelData = ScreenData.As<LevelDesignScreenData>();
+            DebugUtils.AssertNotNull(levelData);
+
+            // Serialize normal tiles to level data
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalTile])
+            {
+                levelData.NormalTiles.Add(SerializeLevelObject(levelObject));
+            }
+
+            // Serialize collision tiles to level data
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionTile])
+            {
+                levelData.CollisionTiles.Add(SerializeLevelObject(levelObject));
+            }
+
+            // Serialize normal decals to level data
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalDecal])
+            {
+                levelData.NormalDecals.Add(SerializeLevelObject(levelObject));
+            }
+
+            // Serialize collision decals to level data
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionDecal])
+            {
+                levelData.CollisionDecals.Add(SerializeLevelObject(levelObject));
+            }
+
+            // Load our previously serialized level here
+            AssetManager.SaveData(levelData, ScreenDataAsset);
+        }
+
+        /// <summary>
+        /// Serializes an object in our level for our XML.
+        /// </summary>
+        /// <param name="levelObject">The object we wish to serialize into our XML.</param>
+        /// <returns>Returns the XML struct for our data.</returns>
+        private LevelObjectData SerializeLevelObject(LevelDesignObject levelObject)
+        {
+            LevelObjectData objectData = new LevelObjectData();
+            objectData.TextureAsset = levelObject.TextureAsset;
+            objectData.Position = levelObject.WorldPosition;
+            objectData.Rotation = levelObject.WorldRotation;
+            objectData.Collision = levelObject.UsesCollider;
+
+            return objectData;
         }
 
         #endregion

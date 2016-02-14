@@ -69,6 +69,7 @@
     <Compile Include="Objects\BaseObject.cs" />
     <Compile Include="Objects\Component.cs" />
     <Compile Include="Objects\GameObject.cs" />
+    <Compile Include="Objects\LevelDesignObject.cs" />
     <Compile Include="Objects\UIObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="UI\DialogBox.cs" />
     <Compile Include="UI\Logo.cs" />
     <Compile Include="UI\UIContainer.cs" />
+    <Compile Include="Utils\DebugUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

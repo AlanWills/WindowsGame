@@ -32,8 +32,10 @@ namespace _2DEngine
         public Label(string text, Vector2 localPosition, string spriteFontAsset = AssetManager.DefaultSpriteFontAsset) :
             base(localPosition, "")
         {
+            Text = text;
+
             // Labels do not need a collider
-            HasCollider = false;
+            UsesCollider = false;
         }
 
         #region Virtual Functions
@@ -48,7 +50,7 @@ namespace _2DEngine
 
             SetupSpriteFont();
 
-            base.LoadContent();
+            ShouldLoad = false;
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace _2DEngine
                 Size = TextDimensions;
             }
 
-            base.Initialise();
+            ShouldInitialise = false;
         }
 
         /// <summary>

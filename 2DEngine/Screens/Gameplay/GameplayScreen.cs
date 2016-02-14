@@ -1,4 +1,6 @@
-﻿namespace _2DEngine
+﻿using Microsoft.Xna.Framework;
+
+namespace _2DEngine
 {
     /// <summary>
     /// A simple class which contains a HUD.
@@ -13,7 +15,7 @@
         public GameplayScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-
+            Camera.SetFree(Vector2.Zero);
         }
     }
 }

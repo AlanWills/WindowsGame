@@ -25,11 +25,11 @@ namespace _2DEngine
 
         #region Default Assets
 
-        public const string MouseTextureAsset = "Sprites\\Cursor";
-        public const string DefaultSpriteFontAsset = "";
-        public const string DefaultButtonTextureAsset = "";
+        public const string MouseTextureAsset = "Sprites\\UI\\Cursor";
+        public const string DefaultSpriteFontAsset = "SpriteFonts\\DefaultSpriteFont";
+        public const string DefaultButtonTextureAsset = "Sprites\\UI\\ColourButtonTrial1";
         public const string DefaultTextBoxTextureAsset = "";
-        public const string StartupLogoTextureAsset = "Sprites\\Logo";
+        public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
 
         #endregion
 
@@ -52,7 +52,7 @@ namespace _2DEngine
 
             try
             {
-                string[] spriteFontFiles = Directory.GetFiles(content.RootDirectory + SpriteFontsPath, "*.*", SearchOption.AllDirectories);
+                string[] spriteFontFiles = Directory.GetFiles(content.RootDirectory + SpriteFontsPath, "*.xnb*", SearchOption.AllDirectories);
                 for (int i = 0; i < spriteFontFiles.Length; i++)
                 {
                     // Remove the Content\\ from the start
@@ -61,10 +61,14 @@ namespace _2DEngine
                     // Remove the .xnb at the end
                     spriteFontFiles[i] = spriteFontFiles[i].Split('.')[0];
 
-                    SpriteFonts.Add(spriteFontFiles[i], content.Load<SpriteFont>(spriteFontFiles[i]));
+                    try
+                    {
+                        SpriteFonts.Add(spriteFontFiles[i], content.Load<SpriteFont>(spriteFontFiles[i]));
+                    }
+                    catch { Debug.Fail("Adding spritefont more than once."); }
                 }
             }
-            catch { /*Debug.Fail("Serious failure in AssetManager loading SpriteFonts.");*/ }
+            catch { Debug.Fail("Serious failure in AssetManager loading SpriteFonts."); }
 
             Textures = new Dictionary<string, Texture2D>();
 
@@ -97,7 +101,7 @@ namespace _2DEngine
         /// <summary>
         /// Get a loaded SpriteFont
         /// </summary>
-        /// <param name="name">The name of the SpriteFont, e.g. "SpriteFont"</param>
+        /// <param name="name">The full path of the SpriteFont, e.g. "SpriteFonts\\DefaultSpriteFont"</param>
         /// <returns>Returns the sprite font</returns>
         public static SpriteFont GetSpriteFont(string name)
         {
@@ -110,7 +114,7 @@ namespace _2DEngine
         /// <summary>
         /// Get a loaded texture
         /// </summary>
-        /// <param name="name">The name of the Texture, e.g. "Cursor"</param>
+        /// <param name="name">The full path of the Texture, e.g. "Sprites\\UI\\Cursor"</param>
         /// <returns>Returns the texture</returns>
         public static Texture2D GetTexture(string name)
         {
@@ -145,16 +149,28 @@ namespace _2DEngine
         {
             T data = null;
 
-            FileStream readFileStream = new FileStream(name, FileMode.Open, FileAccess.Read, FileShare.Read);
+            using (FileStream readFileStream = File.Open(name, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                XmlRootAttribute rootAttr = new XmlRootAttribute(typeof(T).Name);
 
-            XmlRootAttribute rootAttr = new XmlRootAttribute("Root");
+                XmlSerializer xml = new XmlSerializer(typeof(T), rootAttr);
+                data = (T)xml.Deserialize(readFileStream);
 
-            XmlSerializer xml = new XmlSerializer(typeof(T), rootAttr);
-            data = (T)xml.Deserialize(readFileStream);
-
-            Debug.Assert(data != null);
+                Debug.Assert(data != null);
+            }
 
             return data;
+        }
+
+        public static void SaveData<T>(T data, string name) where T : BaseData
+        {
+            DebugUtils.AssertNotNull(data);
+
+            using (FileStream writeFileStream = File.OpenWrite(name))
+            {
+                XmlSerializer xml = new XmlSerializer(typeof(T));
+                xml.Serialize(writeFileStream, data);
+            }
         }
 
         /*public static T GetData<T>(string name) where T : BaseData

@@ -1,8 +1,6 @@
 ﻿using _2DEngine;
-using _2DEngineData;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace WindowsGame
 {
@@ -42,7 +40,7 @@ namespace WindowsGame
             base.Initialize();
 
             ScreenManager.Instance.Initialise();
-            ScreenManager.Instance.StartGame(new LevelDesignScreen());
+            ScreenManager.Instance.StartGame(new PlatformGameplayScreen("Content\\Data\\Levels\\Level1.xml"));
         }
 
         /// <summary>

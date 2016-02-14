@@ -18,12 +18,17 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
+        /// A Manager for all the In Game background UI Objects (that will appear behind the Game Objects)
+        /// </summary>
+        private ObjectManager<UIObject> BackgroundObjects { get; set; }
+
+        /// <summary>
         /// A Manager for the GameObjects in our screen
         /// </summary>
         private ObjectManager<GameObject> GameObjects { get; set; }
 
         /// <summary>
-        /// A Manager for the In Game (camera dependent) UI Objects in our screen
+        /// A Manager for the In Game (camera dependent) UI Objects in our screen (that will appear in front of the Game Objects)
         /// </summary>
         private ObjectManager<UIObject> InGameUIObjects { get; set; }
 
@@ -40,12 +45,24 @@ namespace _2DEngine
         /// <summary>
         /// A string for the xml data file for this screen.
         /// </summary>
-        private string ScreenDataAsset { get; set; }
+        protected string ScreenDataAsset { get; private set; }
 
         /// <summary>
         /// A property for the data for this screen.  In screens that inherit from BaseScreen, this could be a custom data class.
         /// </summary>
-        private BaseScreenData ScreenData { get; set; }
+        private BaseScreenData screenData;
+        protected BaseScreenData ScreenData
+        {
+            get
+            {
+                if (screenData == null)
+                {
+                    screenData = LoadScreenData();
+                }
+
+                return screenData;
+            }
+        }
 
         /// <summary>
         /// The screen background
@@ -65,6 +82,8 @@ namespace _2DEngine
             base()
         {
             ScreenDataAsset = screenDataAsset;
+
+            BackgroundObjects = new ObjectManager<UIObject>();
             GameObjects = new ObjectManager<GameObject>();
             InGameUIObjects = new ObjectManager<UIObject>();
             ScreenUIObjects = new ObjectManager<UIObject>();
@@ -103,6 +122,8 @@ namespace _2DEngine
         /// <returns></returns>
         protected virtual BaseScreenData LoadScreenData()
         {
+            if (ScreenData != null) { return ScreenData; }
+
             return AssetManager.GetData<BaseScreenData>(ScreenDataAsset);
         }
 
@@ -114,12 +135,9 @@ namespace _2DEngine
             // Check if we should load
             CheckShouldLoad();
 
-            // Load the screen data (possibly calling an override function)
-            ScreenData = LoadScreenData();
-            Debug.Assert(ScreenData != null);
-
             AddInitialUI();
 
+            BackgroundObjects.LoadContent();
             GameObjects.LoadContent();
             InGameUIObjects.LoadContent();
             ScreenUIObjects.LoadContent();
@@ -135,6 +153,7 @@ namespace _2DEngine
         {
             CheckShouldInitialise();
 
+            BackgroundObjects.Initialise();
             GameObjects.Initialise();
             InGameUIObjects.Initialise();
             ScreenUIObjects.Initialise();
@@ -175,8 +194,11 @@ namespace _2DEngine
             ScriptManager.HandleInput(elapsedGameTime, mousePosition);
             ShouldHandleInput = ScriptManager.ShouldUpdateGame;
 
-            if (GameObjects.ShouldHandleInput) { GameObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition)); }
-            if (InGameUIObjects.ShouldHandleInput) { InGameUIObjects.HandleInput(elapsedGameTime, Camera.ScreenToGameCoords(mousePosition)); }
+            Vector2 gameMouseCoords = Camera.ScreenToGameCoords(mousePosition);
+
+            if (BackgroundObjects.ShouldHandleInput) { BackgroundObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
+            if (GameObjects.ShouldHandleInput) { GameObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
+            if (InGameUIObjects.ShouldHandleInput) { InGameUIObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
             if (ScreenUIObjects.ShouldHandleInput) { ScreenUIObjects.HandleInput(elapsedGameTime, mousePosition); }
         }
 
@@ -192,6 +214,7 @@ namespace _2DEngine
             ScriptManager.Update(elapsedGameTime);
             ShouldUpdate = ScriptManager.ShouldUpdateGame;
 
+            if (BackgroundObjects.ShouldUpdate) { BackgroundObjects.Update(elapsedGameTime); }
             if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
             if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
             if (ScreenUIObjects.ShouldUpdate) { ScreenUIObjects.Update(elapsedGameTime); }
@@ -207,7 +230,6 @@ namespace _2DEngine
         {
             base.Draw(spriteBatch);
 
-            // Draw the background if it has been set
             if (Background != null)
             {
                 spriteBatch.Begin();
@@ -220,6 +242,7 @@ namespace _2DEngine
             // Draw the camera dependent objects using the camera transformation matrix
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
 
+            if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
             if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
             if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
 
@@ -239,12 +262,43 @@ namespace _2DEngine
         #region Functions for Managing Objects
 
         /// <summary>
+        /// Adds a UIObject to this screen's BackgroundObjects manager
+        /// </summary>
+        /// <param name="gameObjectToAdd">The object to add</param>
+        /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
+        /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
+        protected void AddBackgroundObject(UIObject backgroundObjectToAdd, bool load = false, bool initialise = false)
+        {
+            BackgroundObjects.AddObject(backgroundObjectToAdd, load, initialise);
+        }
+
+        /// <summary>
+        /// Removes a UIObject from this screen's BackgroundObjects manager
+        /// </summary>
+        /// <param name="backgroundObjectToRemove">The background object to remove</param>
+        protected void RemoveBackgroundObject(UIObject backgroundObjectToRemove)
+        {
+            BackgroundObjects.RemoveObject(backgroundObjectToRemove);
+        }
+
+        /// <summary>
+        /// Finds a UIObject in this screen's BackgroundObjects manager
+        /// </summary>
+        /// <typeparam name="K">The type that we wish to return the found object as</typeparam>
+        /// <param name="backgroundObjectName">The name of the object to find</param>
+        /// <returns>Returns the found object casted to type K, or null</returns>
+        protected K FindBackgroundObject<K>(string backgroundObjectName) where K : UIObject
+        {
+            return BackgroundObjects.FindObject<K>(backgroundObjectName);
+        }
+
+        /// <summary>
         /// Adds a GameObject to this screen's GameObjects manager
         /// </summary>
         /// <param name="gameObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        public void AddGameObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
+        protected void AddGameObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
         {
             GameObjects.AddObject(gameObjectToAdd, load, initialise);
         }
@@ -253,7 +307,7 @@ namespace _2DEngine
         /// Removes a GameObject from this screen's GameObjects manager
         /// </summary>
         /// <param name="gameObjectToRemove">The game object to remove</param>
-        public void RemoveGameObject(GameObject gameObjectToRemove)
+        protected void RemoveGameObject(GameObject gameObjectToRemove)
         {
             GameObjects.RemoveObject(gameObjectToRemove);
         }
@@ -264,7 +318,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type that we wish to return the found object as</typeparam>
         /// <param name="gameObjectName">The name of the object to find</param>
         /// <returns>Returns the found object casted to type K, or null</returns>
-        public K FindGameObject<K>(string gameObjectName) where K : GameObject
+        protected K FindGameObject<K>(string gameObjectName) where K : GameObject
         {
             return GameObjects.FindObject<K>(gameObjectName);
         }
@@ -275,7 +329,7 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        public void AddInGameUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        protected void AddInGameUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
             InGameUIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
@@ -284,7 +338,7 @@ namespace _2DEngine
         /// Removes an InGameUIObject from this screen's InGameUIObjects manager
         /// </summary>
         /// <param name="uiObjectToRemove"></param>
-        public void RemoveInGameUIObject(UIObject uiObjectToRemove)
+        protected void RemoveInGameUIObject(UIObject uiObjectToRemove)
         {
             InGameUIObjects.RemoveObject(uiObjectToRemove);
         }
@@ -295,7 +349,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type we wish to return the found object as</typeparam>
         /// <param name="uiObjectName">The name of the object to find</param>
         /// <returns>Returns the found object casted to type K, or null</returns>
-        public K FindInGameUIObject<K>(string uiObjectName) where K : UIObject
+        protected K FindInGameUIObject<K>(string uiObjectName) where K : UIObject
         {
             return InGameUIObjects.FindObject<K>(uiObjectName);
         }
@@ -306,7 +360,7 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        public void AddScreenUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        protected void AddScreenUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
             ScreenUIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
@@ -315,7 +369,7 @@ namespace _2DEngine
         /// Removes a ScreenUIObject from this screen's ScreenUIObjects manager
         /// </summary>
         /// <param name="uiObjectToRemove"></param>
-        public void RemoveScreenUIObject(UIObject uiObjectToRemove)
+        protected void RemoveScreenUIObject(UIObject uiObjectToRemove)
         {
             ScreenUIObjects.RemoveObject(uiObjectToRemove);
         }
@@ -326,7 +380,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type we wish to return the found object as</typeparam>
         /// <param name="uiObjectName">The name of the object to find</param>
         /// <returns>Returns he found object casted to type K, or null</returns>
-        public K FindScreenUIObject<K>(string uiObjectName) where K : UIObject
+        protected K FindScreenUIObject<K>(string uiObjectName) where K : UIObject
         {
             return ScreenUIObjects.FindObject<K>(uiObjectName);
         }

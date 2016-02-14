@@ -16,7 +16,7 @@ namespace _2DEngine
         /// <summary>
         /// A string to store the texture asset for this object
         /// </summary>
-        protected string TextureAsset { get; set; }
+        public string TextureAsset { get; protected set; }
 
         /// <summary>
         /// The texture for this object - override if we have different textures that need to be drawn at different times
@@ -137,7 +137,7 @@ namespace _2DEngine
         /// A bool to indicate whether we should add a collider during initialisation.
         /// Some objects (like text) do not need a collider - this is an optimisation step.
         /// </summary>
-        public bool HasCollider { get; set; }
+        public bool UsesCollider { get; set; }
 
         /// <summary>
         /// The collider associated with this object.  Also, is responsible for mouse interactions.
@@ -153,7 +153,7 @@ namespace _2DEngine
             TextureAsset = textureAsset;
             Colour = Color.White;
             Opacity = 1;
-            HasCollider = true;
+            UsesCollider = true;
             SpriteEffect = SpriteEffects.None;
         }
 
@@ -173,6 +173,7 @@ namespace _2DEngine
             // Check to see whether we should load
             CheckShouldLoad();
 
+            // Bit of a hacky check, but do not want to change the structure just for labels.
             Debug.Assert(Texture != null);
 
             base.LoadContent();
@@ -205,7 +206,7 @@ namespace _2DEngine
             }
 
             // Adds the collider if the flag is true
-            if (HasCollider) { AddCollider(); }
+            if (UsesCollider) { AddCollider(); }
 
             base.Initialise();
         }
@@ -224,7 +225,7 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            if (HasCollider)
+            if (UsesCollider)
             {
                 Debug.Assert(Collider != null);
                 Collider.HandleInput(mousePosition);
@@ -239,7 +240,7 @@ namespace _2DEngine
         {
             base.Update(elapsedGameTime);
 
-            if (HasCollider)
+            if (UsesCollider)
             {
                 // Update the collider position and state variables
                 Debug.Assert(Collider != null);
