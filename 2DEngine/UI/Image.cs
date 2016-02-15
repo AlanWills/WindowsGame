@@ -46,7 +46,7 @@ namespace _2DEngine
             CheckShouldInitialise();
 
             // Texture cannot be null
-            Debug.Assert(Texture != null);
+            DebugUtils.AssertNotNull(Texture);
 
             float aspectRatio = (float)Texture.Bounds.Height / (float)Texture.Bounds.Width;
             Debug.Assert(aspectRatio > 0);

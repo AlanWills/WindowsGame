@@ -80,7 +80,7 @@ namespace _2DEngine
         /// </summary>
         public void Update(float elapsedGameTime)
         {
-            Debug.Assert(ActiveState != null);
+            DebugUtils.AssertNotNull(ActiveState);
 
             ActiveState.Update(elapsedGameTime);
         }
@@ -131,7 +131,7 @@ namespace _2DEngine
         /// <returns></returns>
         public bool CurrentAnimationFinished()
         {
-            Debug.Assert(ActiveState != null);
+            DebugUtils.AssertNotNull(ActiveState);
             Debug.Assert(!ActiveState.Animation.Continual);
 
             return ActiveState.Animation.Finished;
@@ -146,7 +146,7 @@ namespace _2DEngine
         private void CheckStateValid(uint stateID)
         {
             Debug.Assert(stateID < States.Length);
-            Debug.Assert(States[stateID] != null);
+            DebugUtils.AssertNotNull(States[stateID]);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace _2DEngine
         /// <param name="newBehaviourState"></param>
         private void HandleBehaviourChange(uint newBehaviourState)
         {
-            Debug.Assert(ActiveState != null);
+            DebugUtils.AssertNotNull(ActiveState);
 
             // If we have not changed state then just return.
             if (newBehaviourState == ActiveState.StateID) { return; }

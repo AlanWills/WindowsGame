@@ -67,7 +67,7 @@ namespace _2DEngine
             // Load the data here if we have a non-empty data asset.
             if (!string.IsNullOrEmpty(DataAsset))
             {
-                Debug.Assert(Data != null);
+                DebugUtils.AssertNotNull(Data);
 
                 // Texture asset can be empty - for example, with animations they will handle themselves.
                 TextureAsset = Data.TextureAsset;

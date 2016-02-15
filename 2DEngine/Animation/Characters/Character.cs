@@ -40,7 +40,7 @@ namespace _2DEngine
 
                 // Behaviour Changed should not be null.
                 // If it is, it means we have not set up our State Machine to hook into this event.
-                Debug.Assert(BehaviourChanged != null);
+                DebugUtils.AssertNotNull(BehaviourChanged);
                 BehaviourChanged(currentBehaviour);
             }
         }
@@ -68,9 +68,9 @@ namespace _2DEngine
         {
             get
             {
-                Debug.Assert(StateMachine != null);
-                Debug.Assert(StateMachine.ActiveState != null);
-                Debug.Assert(StateMachine.ActiveState.Animation != null);
+                DebugUtils.AssertNotNull(StateMachine);
+                DebugUtils.AssertNotNull(StateMachine.ActiveState);
+                DebugUtils.AssertNotNull(StateMachine.ActiveState.Animation);
 
                 return StateMachine.ActiveState.Animation.Texture;
             }
@@ -83,9 +83,9 @@ namespace _2DEngine
         {
             get
             {
-                Debug.Assert(StateMachine != null);
-                Debug.Assert(StateMachine.ActiveState != null);
-                Debug.Assert(StateMachine.ActiveState.Animation != null);
+                DebugUtils.AssertNotNull(StateMachine);
+                DebugUtils.AssertNotNull(StateMachine.ActiveState);
+                DebugUtils.AssertNotNull(StateMachine.ActiveState.Animation);
 
                 return StateMachine.ActiveState.Animation.Centre;
             }
@@ -107,9 +107,9 @@ namespace _2DEngine
         /// </summary>
         protected virtual void SetUpAnimations()
         {
-            Debug.Assert(Data != null);
+            DebugUtils.AssertNotNull(Data);
             CharacterData data = Data.As<CharacterData>();
-            Debug.Assert(data != null);
+            DebugUtils.AssertNotNull(data);
 
             // Checks that we have declared at most the same number of enum behaviours as we have animations.
             // If NumAnimations is larger than data.AnimationInfo.Count, it means we have not loaded enough animations for all our behaviours.
@@ -233,7 +233,7 @@ namespace _2DEngine
         /// <param name="id">The desired ID for this state.</param>
         protected void CreateState(string name, uint id)
         {
-            Debug.Assert(Animations[name] != null);
+            DebugUtils.AssertNotNull(Animations[name]);
 
             StateMachine.CreateState(id, Animations[name]);
         }

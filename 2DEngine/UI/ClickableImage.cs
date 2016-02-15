@@ -90,7 +90,7 @@ namespace _2DEngine
                 if (ClickState != ClickState.kPressed)
                 {
                     // The event should be set up if we have created this class
-                    Debug.Assert(ClickEvent != null);
+                    DebugUtils.AssertNotNull(ClickEvent);
 
                     ClickEvent(this, EventArgs.Empty);
                     ClickState = ClickState.kPressed;

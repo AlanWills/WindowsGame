@@ -102,10 +102,10 @@ namespace _2DEngine
         public void LoadContent()
         {
             AnimationData data = AssetManager.GetData<AnimationData>(DataAsset);
-            Debug.Assert(data != null);
+            DebugUtils.AssertNotNull(data);
 
             Texture = AssetManager.GetTexture(data.AnimationTextureAsset);
-            Debug.Assert(Texture != null);
+            DebugUtils.AssertNotNull(Texture);
 
             Frames = new Point(data.TextureFramesX, data.TextureFramesY);
             Continual = data.Continual;

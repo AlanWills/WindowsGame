@@ -70,6 +70,7 @@
     <Compile Include="Objects\BaseObject.cs" />
     <Compile Include="Objects\Component.cs" />
     <Compile Include="Objects\GameObject.cs" />
+    <Compile Include="Objects\GameObjectContainer.cs" />
     <Compile Include="Objects\LevelDesignObject.cs" />
     <Compile Include="Objects\UIObject.cs" />
     <Compile Include="Effects\ParticleEmitter.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="UI\Label.cs" />
     <Compile Include="UI\DialogBox.cs" />
     <Compile Include="UI\Logo.cs" />
-    <Compile Include="UI\UIContainer.cs" />
+    <Compile Include="Objects\UIContainer.cs" />
     <Compile Include="Utils\DebugUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />
   </ItemGroup>

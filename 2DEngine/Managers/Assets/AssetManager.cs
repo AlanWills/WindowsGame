@@ -156,7 +156,7 @@ namespace _2DEngine
                 XmlSerializer xml = new XmlSerializer(typeof(T), rootAttr);
                 data = (T)xml.Deserialize(readFileStream);
 
-                Debug.Assert(data != null);
+                DebugUtils.AssertNotNull(data);
             }
 
             return data;

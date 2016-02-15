@@ -6,5 +6,10 @@
     /// </summary>
     public class HUD : UIContainer
     {
+        public HUD() :
+            base(ScreenManager.Instance.ScreenDimensions, ScreenManager.Instance.ScreenCentre, "")
+        {
+
+        }
     }
 }

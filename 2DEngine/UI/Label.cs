@@ -77,7 +77,7 @@ namespace _2DEngine
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Draw the text
-            Debug.Assert(SpriteFont != null);
+            DebugUtils.AssertNotNull(SpriteFont);
             spriteBatch.DrawString(
                 SpriteFont, 
                 Text, 

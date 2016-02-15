@@ -3,9 +3,9 @@
 namespace _2DEngine
 {
     /// <summary>
-    /// An experimental particle emitter used to test performance
+    /// A particle emitter
     /// </summary>
-    public class ParticleEmitter : ObjectManager<Particle>
+    public class ParticleEmitter : UIContainer
     {
         // Start and end size
         // Start and end colour
@@ -17,22 +17,59 @@ namespace _2DEngine
 
         #region Properties and Fields
 
+        /// <summary>
+        /// The beginning size for an emitted particle
+        /// </summary>
         public Vector2 StartSize { get; set; }
+
+        /// <summary>
+        /// The end size for an emitted particle
+        /// </summary>
         public Vector2 EndSize { get; set; }
+
+        /// <summary>
+        /// The variation of our end size
+        /// </summary>
         public Vector2 SizeVariation { get; set; }
 
+        /// <summary>
+        /// The velocity of our particle
+        /// </summary>
         public Vector2 Velocity { get; set; }
+
+        /// <summary>
+        /// The variation in the velocity of our particle
+        /// </summary>
         public Vector2 VelocityVariation { get; set; }
 
+        /// <summary>
+        /// The start colour of our particle
+        /// </summary>
         public Color StartColour { get; set; }
+
+        /// <summary>
+        /// The end colour of our particle
+        /// </summary>
         public Color EndColour { get; set; }
 
+        /// <summary>
+        /// The life time of a particle
+        /// </summary>
         public float ParticleLifeTime { get; set; }
+
+        /// <summary>
+        /// The variation in the life time of a particle
+        /// </summary>
         public float ParticleLifeTimeVariation { get; set; }
 
+        /// <summary>
+        /// The time delay between emitting particles
+        /// </summary>
         public float EmitTimer { get; set; }
 
-        private Vector2 LocalPosition { get; set; }
+        /// <summary>
+        /// The texture asset for an emitted particle
+        /// </summary>
         private string ParticleTextureAsset { get; set; }
 
         private float currentEmitTimer = 0;
@@ -52,7 +89,7 @@ namespace _2DEngine
             float emitTimer,
             Vector2 localPosition, 
             string particleTextureAsset) :
-            base()
+            base(localPosition, particleTextureAsset)
         {
             StartSize = startSize;
             EndSize = endSize;
@@ -64,15 +101,17 @@ namespace _2DEngine
             ParticleLifeTime = particleLifeTime;
             ParticleLifeTimeVariation = particleLifeTimeVariation;
             EmitTimer = emitTimer;
-            LocalPosition = localPosition;
             ParticleTextureAsset = particleTextureAsset;
         }
 
+        /// <summary>
+        /// Creates a new particle
+        /// </summary>
         private void EmitParticle()
         {
             float extraLifeTime = MathUtils.GenerateFloat(0, ParticleLifeTimeVariation);
 
-            Particle particle = new Particle(StartSize, LocalPosition, ParticleTextureAsset, ParticleLifeTime + extraLifeTime);
+            Particle particle = new Particle(StartSize, Vector2.Zero, ParticleTextureAsset, ParticleLifeTime + extraLifeTime);
             particle.EndSize = EndSize + new Vector2(MathUtils.GenerateFloat(0, SizeVariation.X), MathUtils.GenerateFloat(0, SizeVariation.X));
             particle.Colour = StartColour;
             particle.EndColour = EndColour;
@@ -81,16 +120,24 @@ namespace _2DEngine
             AddObject(particle, true, true);
         }
 
+        #region Virtual Functions
+
+        /// <summary>
+        /// Emits particles when our timer has reached a certain amount
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
             base.Update(elapsedGameTime);
 
             currentEmitTimer += elapsedGameTime;
-            if (currentEmitTimer >= EmitTimer)
+            while (currentEmitTimer >= EmitTimer)
             {
                 EmitParticle();
-                currentEmitTimer = 0;
+                currentEmitTimer -= EmitTimer;
             }
         }
+
+        #endregion
     }
 }

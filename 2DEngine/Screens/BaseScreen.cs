@@ -105,7 +105,7 @@ namespace _2DEngine
         /// </summary>
         protected virtual void AddInitialUI()
         {
-            Debug.Assert(ScreenData != null);
+            DebugUtils.AssertNotNull(ScreenData);
 
             if (!string.IsNullOrEmpty(ScreenData.BackgroundTextureAsset))
             {

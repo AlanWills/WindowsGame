@@ -173,8 +173,7 @@ namespace _2DEngine
             // Check to see whether we should load
             CheckShouldLoad();
 
-            // Bit of a hacky check, but do not want to change the structure just for labels.
-            Debug.Assert(Texture != null);
+            DebugUtils.AssertNotNull(Texture);
 
             base.LoadContent();
         }
@@ -227,7 +226,7 @@ namespace _2DEngine
 
             if (UsesCollider)
             {
-                Debug.Assert(Collider != null);
+                DebugUtils.AssertNotNull(Collider);
                 Collider.HandleInput(mousePosition);
             }
         }
@@ -243,7 +242,7 @@ namespace _2DEngine
             if (UsesCollider)
             {
                 // Update the collider position and state variables
-                Debug.Assert(Collider != null);
+                DebugUtils.AssertNotNull(Collider);
                 Collider.Update();
             }
         }
@@ -259,7 +258,7 @@ namespace _2DEngine
 
             // If we are drawing this object, it should have a valid texture
             // If we wish to create an object but not draw it, simply change it's ShouldDraw property
-            Debug.Assert(Texture != null);
+            DebugUtils.AssertNotNull(Texture);
             spriteBatch.Draw(
                 Texture,
                 WorldPosition,

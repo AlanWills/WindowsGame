@@ -2,6 +2,9 @@
 
 namespace _2DEngine
 {
+    /// <summary>
+    /// A class used in the ParticleEmitter which handles size and colour changing
+    /// </summary>
     public class Particle : UIObject
     {
         public Vector2 EndSize { private get; set; }
@@ -14,6 +17,12 @@ namespace _2DEngine
             
         }
 
+        #region Virtual Functions
+
+        /// <summary>
+        /// Updates the size, colour and position of our particle
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
             base.Update(elapsedGameTime);
@@ -23,5 +32,7 @@ namespace _2DEngine
 
             LocalPosition += Velocity;
         }
+
+        #endregion
     }
 }

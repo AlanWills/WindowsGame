@@ -44,9 +44,9 @@ namespace WindowsGame
                 new Vector2(0.25f, 0.35f),
                 Color.Cyan,
                 Color.OrangeRed,
-                1,
+                2,
                 0.25f,
-                0.01f,
+                0.001f,
                 GetScreenCentre(),
                 "Sprites\\Effects\\TrialParticle");
 

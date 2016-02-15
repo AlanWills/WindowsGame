@@ -178,7 +178,7 @@ namespace _2DEngine
         /// <param name="objectToRemove">The object we wish to remove</param>
         public void RemoveObject(T objectToRemove)
         {
-            Debug.Assert(objectToRemove != null);
+            DebugUtils.AssertNotNull(objectToRemove);
 
             // This function will set IsAlive to false so that the object gets cleaned up next Update loop
             objectToRemove.Die();
@@ -220,7 +220,7 @@ namespace _2DEngine
             obj = ObjectsToAdd.Find(x => x.Name == name).As<K>();
 
             // Really we shouldn't be returning null, because we assume we are trying to find something we know exists
-            Debug.Assert(obj != null);
+            DebugUtils.AssertNotNull(obj);
 
             return obj;
         }
