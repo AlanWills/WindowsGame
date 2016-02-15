@@ -2,6 +2,7 @@
 using _2DEngineData;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame
 {
@@ -13,13 +14,14 @@ namespace WindowsGame
         #region Properties and Fields
 
         private Vector2 TileSize = new Vector2(128, 128);
+        private ParticleEmitter emitter;
 
         #endregion
 
         public PlatformGameplayScreen(string levelDataAsset) :
             base(levelDataAsset)
         {
-            AddGameObject(new Player(GetScreenCentre(), "Content\\Data\\Animations\\Hero\\HeroAnimations.xml"));
+            //AddGameObject(new Player(GetScreenCentre(), "Content\\Data\\Animations\\Hero\\HeroAnimations.xml"));
         }
 
         #region Virtual Functions
@@ -33,7 +35,43 @@ namespace WindowsGame
         {
             base.AddInitialUI();
 
-            DeserializeLevel();
+            //DeserializeLevel();
+            emitter = new ParticleEmitter(
+                new Vector2(3),
+                new Vector2(5, 5),
+                new Vector2(3, 3),
+                new Vector2(0, -1),
+                new Vector2(0.25f, 0.35f),
+                Color.Cyan,
+                Color.OrangeRed,
+                1,
+                0.25f,
+                0.01f,
+                GetScreenCentre(),
+                "Sprites\\Effects\\TrialParticle");
+
+            emitter.LoadContent();
+            emitter.Initialise();
+        }
+
+        public override void Update(float elapsedGameTime)
+        {
+            base.Update(elapsedGameTime);
+
+            emitter.Update(elapsedGameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            spriteBatch.Begin();
+
+            //SpriteBatch spriteBatch = new SpriteBatch(ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice);
+
+            emitter.Draw(spriteBatch);
+
+            spriteBatch.End();
         }
 
         #endregion

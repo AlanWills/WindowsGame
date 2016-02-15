@@ -292,3 +292,4 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\Cursor.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Levels\Level1.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\SpriteFonts\DefaultSpriteFont.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\TrialParticle.xnb

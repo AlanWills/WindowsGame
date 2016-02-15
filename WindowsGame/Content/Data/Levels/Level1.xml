@@ -3,60 +3,6 @@
   <BackgroundTextureAsset />
   <NormalTiles>
     <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (2)</TextureAsset>
-      <Position>
-        <X>512</X>
-        <Y>384</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (2)</TextureAsset>
-      <Position>
-        <X>640</X>
-        <Y>384</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (2)</TextureAsset>
-      <Position>
-        <X>768</X>
-        <Y>384</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (2)</TextureAsset>
-      <Position>
-        <X>512</X>
-        <Y>384</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (2)</TextureAsset>
-      <Position>
-        <X>640</X>
-        <Y>384</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (2)</TextureAsset>
-      <Position>
-        <X>768</X>
-        <Y>384</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
       <TextureAsset>Sprites\Level\Tiles\Tile (1)</TextureAsset>
       <Position>
         <X>128</X>
@@ -84,55 +30,10 @@
       <Collision>true</Collision>
     </Item>
     <Item>
-      <TextureAsset>Sprites\Level\Tiles\Tile (2)</TextureAsset>
+      <TextureAsset>Sprites\Level\Tiles\Tile (3)</TextureAsset>
       <Position>
         <X>512</X>
         <Y>768</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Tile (3)</TextureAsset>
-      <Position>
-        <X>640</X>
-        <Y>768</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (1)</TextureAsset>
-      <Position>
-        <X>768</X>
-        <Y>768</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Acid (1)</TextureAsset>
-      <Position>
-        <X>896</X>
-        <Y>768</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Tile (12)</TextureAsset>
-      <Position>
-        <X>896</X>
-        <Y>640</Y>
-      </Position>
-      <Rotation>0</Rotation>
-      <Collision>true</Collision>
-    </Item>
-    <Item>
-      <TextureAsset>Sprites\Level\Tiles\Tile (13)</TextureAsset>
-      <Position>
-        <X>1024</X>
-        <Y>640</Y>
       </Position>
       <Rotation>0</Rotation>
       <Collision>true</Collision>

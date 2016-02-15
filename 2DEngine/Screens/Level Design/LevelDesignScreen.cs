@@ -358,6 +358,8 @@ namespace _2DEngine
 
             levelData.ClearAll();
 
+            // Need to check for the alive ones because although the objects are cleaned up from the Screen Managers, they will still linger in the other lists
+
             // Serialize normal tiles to level data
             foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalTile].FindAll(x => x.IsAlive))
             {

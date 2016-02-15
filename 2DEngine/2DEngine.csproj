@@ -58,6 +58,7 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Effects\Particle.cs" />
     <Compile Include="Managers\Assets\AssetManager.cs" />
     <Compile Include="Managers\Assets\XMLRegistry.cs" />
     <Compile Include="Managers\MusicManager.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\LevelDesignObject.cs" />
     <Compile Include="Objects\UIObject.cs" />
+    <Compile Include="Effects\ParticleEmitter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="Screens\Gameplay\GameplayScreen.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="UI\Logo.cs" />
     <Compile Include="UI\UIContainer.cs" />
     <Compile Include="Utils\DebugUtils.cs" />
+    <Compile Include="Utils\MathUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

@@ -1,7 +1,44 @@
 <?xml version="1.0"?>
 <LevelDesignScreenData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <BackgroundTextureAsset />
-  <NormalTiles />
+  <NormalTiles>
+    <Item>
+      <TextureAsset>Sprites\Level\Tiles\Tile (1)</TextureAsset>
+      <Position>
+        <X>128</X>
+        <Y>768</Y>
+      </Position>
+      <Rotation>0</Rotation>
+      <Collision>true</Collision>
+    </Item>
+    <Item>
+      <TextureAsset>Sprites\Level\Tiles\Tile (2)</TextureAsset>
+      <Position>
+        <X>256</X>
+        <Y>768</Y>
+      </Position>
+      <Rotation>0</Rotation>
+      <Collision>true</Collision>
+    </Item>
+    <Item>
+      <TextureAsset>Sprites\Level\Tiles\Tile (2)</TextureAsset>
+      <Position>
+        <X>384</X>
+        <Y>768</Y>
+      </Position>
+      <Rotation>0</Rotation>
+      <Collision>true</Collision>
+    </Item>
+    <Item>
+      <TextureAsset>Sprites\Level\Tiles\Tile (3)</TextureAsset>
+      <Position>
+        <X>512</X>
+        <Y>768</Y>
+      </Position>
+      <Rotation>0</Rotation>
+      <Collision>true</Collision>
+    </Item>
+  </NormalTiles>
   <CollisionTiles />
   <NormalDecals />
   <CollisionDecals />
