@@ -104,7 +104,7 @@ namespace _2DEngine
             AnimationData data = AssetManager.GetData<AnimationData>(DataAsset);
             DebugUtils.AssertNotNull(data);
 
-            Texture = AssetManager.GetTexture(data.AnimationTextureAsset);
+            Texture = AssetManager.GetSprite(data.AnimationTextureAsset);
             DebugUtils.AssertNotNull(Texture);
 
             Frames = new Point(data.TextureFramesX, data.TextureFramesY);

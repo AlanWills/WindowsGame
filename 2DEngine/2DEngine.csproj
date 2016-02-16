@@ -106,9 +106,6 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\2DEngineData\2DEngineData.csproj">
       <Project>{ed8a2787-963c-45ce-9405-d4a031b3a977}</Project>
       <Name>2DEngineData</Name>

@@ -4,9 +4,9 @@ namespace _2DEngine
 {
     public enum Dimensions
     {
-        kX,
-        kY,
-        kXAndY
+        kX = 1,
+        kY = 2,
+        kXAndY = 4,
     }
 
     /// <summary>

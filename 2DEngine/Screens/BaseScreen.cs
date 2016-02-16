@@ -76,6 +76,12 @@ namespace _2DEngine
         /// </summary>
         protected QueueType MusicQueueType { private get; set; }
 
+        public static Texture2D lightMask;
+        public static Effect effect;
+        public static BasicEffect lights;
+        static RenderTarget2D lightsTarget;
+        static RenderTarget2D mainTarget;
+
         #endregion
 
         public BaseScreen(string screenDataAsset) : 
@@ -140,6 +146,9 @@ namespace _2DEngine
             InGameUIObjects.LoadContent();
             ScreenUIObjects.LoadContent();
 
+            lightMask = ScreenManager.Instance.Content.Load<Texture2D>("Sprites\\Effects\\LightMask");
+            effect = ScreenManager.Instance.Content.Load<Effect>("Effects\\LightEffect");
+
             base.LoadContent();
         }
 
@@ -160,6 +169,11 @@ namespace _2DEngine
 
             ScriptManager.LoadContent();
             ScriptManager.Initialise();
+
+            GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
+            var pp = graphicsDevice.PresentationParameters;
+            lightsTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+            mainTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
 
             base.Initialise();
         }
@@ -228,29 +242,34 @@ namespace _2DEngine
         {
             base.Draw(spriteBatch);
 
+            GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
+
             if (Background != null)
             {
                 spriteBatch.Begin();
-
-                if (Background.ShouldDraw) { Background.Draw(spriteBatch); }
+                {
+                    if (Background.ShouldDraw) { Background.Draw(spriteBatch); }
+                }
 
                 spriteBatch.End();
             }
 
             // Draw the camera dependent objects using the camera transformation matrix
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
-
-            if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
-            if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
-            if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
+            {
+                if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
+                if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
+                if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
+            }
 
             spriteBatch.End();
 
             // Draw the camera independent objects and the mouse last
             spriteBatch.Begin();
-
-            if (ScreenUIObjects.ShouldDraw) { ScreenUIObjects.Draw(spriteBatch); }
-            if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
+            {
+                if (ScreenUIObjects.ShouldDraw) { ScreenUIObjects.Draw(spriteBatch); }
+                if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
+            }
 
             spriteBatch.End();
         }

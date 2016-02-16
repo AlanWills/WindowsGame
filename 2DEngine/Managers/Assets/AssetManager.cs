@@ -18,7 +18,8 @@ namespace _2DEngine
         #region File Paths
 
         private const string SpriteFontsPath = "\\SpriteFonts";
-        private const string TexturesPath = "\\Textures";
+        private const string SpritesPath = "\\Sprites";
+        private const string EffectsPath = "\\Effects";
         private const string DataPath = "\\Data";
 
         #endregion
@@ -35,9 +36,10 @@ namespace _2DEngine
 
         #region Properties
 
-        public static Dictionary<string, SpriteFont> SpriteFonts { get; private set; }
-        public static Dictionary<string, Texture2D> Textures { get; private set; }
-        public static Dictionary<string, BaseData> Data { get; private set; }
+        private static Dictionary<string, SpriteFont> SpriteFonts { get; set; }
+        private static Dictionary<string, Texture2D> Sprites { get; set; }
+        private static Dictionary<string, Effect> Effects { get; set; }
+        private static Dictionary<string, BaseData> Data { get; set; }
 
         #endregion
 
@@ -48,52 +50,43 @@ namespace _2DEngine
         /// <param name="content"></param>
         public static void LoadAssets(ContentManager content)
         {
-            SpriteFonts = new Dictionary<string, SpriteFont>();
+            SpriteFonts = Load<SpriteFont>(content, SpriteFontsPath);
+            Sprites = Load<Texture2D>(content, SpritesPath);
+            Effects = Load<Effect>(content, EffectsPath);
+        }
+
+        /// <summary>
+        /// Loads all the assets of an inputted type that exist in our Content folder
+        /// </summary>
+        /// <typeparam name="T">The type of asset to load</typeparam>
+        /// <param name="content">The ContentManager we will use to load our content</param>
+        /// <param name="path">The path of the assets we wish to load</param>
+        /// <returns>Returns the dictionary of all loading content</returns>
+        private static Dictionary<string, T> Load<T>(ContentManager content,string path)
+        {
+            Dictionary<string, T> objects = new Dictionary<string, T>();
 
             try
             {
-                string[] spriteFontFiles = Directory.GetFiles(content.RootDirectory + SpriteFontsPath, "*.xnb*", SearchOption.AllDirectories);
-                for (int i = 0; i < spriteFontFiles.Length; i++)
+                string[] files = Directory.GetFiles(content.RootDirectory + path, "*.xnb*", SearchOption.AllDirectories);
+                for (int i = 0; i < files.Length; i++)
                 {
                     // Remove the Content\\ from the start
-                    spriteFontFiles[i] = spriteFontFiles[i].Remove(0, 8);
+                    files[i] = files[i].Remove(0, 8);
 
                     // Remove the .xnb at the end
-                    spriteFontFiles[i] = spriteFontFiles[i].Split('.')[0];
+                    files[i] = files[i].Split('.')[0];
 
                     try
                     {
-                        SpriteFonts.Add(spriteFontFiles[i], content.Load<SpriteFont>(spriteFontFiles[i]));
+                        objects.Add(files[i], content.Load<T>(files[i]));
                     }
-                    catch { Debug.Fail("Adding spritefont more than once."); }
+                    catch { Debug.Fail("Adding asset more than once."); }
                 }
             }
-            catch { Debug.Fail("Serious failure in AssetManager loading SpriteFonts."); }
+            catch { Debug.Fail("Serious failure in AssetManager loading assets from " + path); }
 
-            Textures = new Dictionary<string, Texture2D>();
-
-            try
-            {
-                string[] textureFiles = Directory.GetFiles(content.RootDirectory + "\\Sprites", "*.xnb", SearchOption.AllDirectories);
-                for (int i = 0; i < textureFiles.Length; i++)
-                {
-                    // Remove the Content\\ from the start
-                    textureFiles[i] = textureFiles[i].Remove(0, 8);
-
-                    // Remove the .xnb at the end
-                    textureFiles[i] = textureFiles[i].Split('.')[0];
-
-                    try
-                    {
-                        Textures.Add(textureFiles[i], content.Load<Texture2D>(textureFiles[i]));
-                    }
-                    catch { Debug.Fail("Adding texture more than once."); }
-                }
-            }
-            catch { Debug.Fail("Serious failure in AssetManager loading Textures."); }
-
-            // Can't tell whether this will load all the data in as BaseData or will be clever and load as it should be
-            Data = new Dictionary<string, BaseData>();
+            return objects;
         }
 
         #region Utility Functions
@@ -108,20 +101,39 @@ namespace _2DEngine
             SpriteFont spriteFont = null;
             SpriteFonts.TryGetValue(name, out spriteFont);
 
+            DebugUtils.AssertNotNull(spriteFont);
+
             return spriteFont;
         }
 
         /// <summary>
-        /// Get a loaded texture
+        /// Get a pre-loaded sprite
         /// </summary>
-        /// <param name="name">The full path of the Texture, e.g. "Sprites\\UI\\Cursor"</param>
+        /// <param name="name">The full path of the Sprite, e.g. "Sprites\\UI\\Cursor"</param>
         /// <returns>Returns the texture</returns>
-        public static Texture2D GetTexture(string name)
+        public static Texture2D GetSprite(string name)
         {
             Texture2D texture = null;
-            Textures.TryGetValue(name, out texture);
+            Sprites.TryGetValue(name, out texture);
+
+            DebugUtils.AssertNotNull(texture);
 
             return texture;
+        }
+
+        /// <summary>
+        /// Get a pre-loaded effect
+        /// </summary>
+        /// <param name="name">The full path of the Effect, e.g. "Effects\\LightEffect"</param>
+        /// <returns>Returns the effect</returns>
+        public static Effect GetEffect(string name)
+        {
+            Effect effect = null;
+            Effects.TryGetValue(name, out effect);
+
+            DebugUtils.AssertNotNull(effect);
+
+            return effect;
         }
 
         /// <summary>

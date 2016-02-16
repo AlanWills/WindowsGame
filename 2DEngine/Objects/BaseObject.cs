@@ -29,7 +29,7 @@ namespace _2DEngine
                 if (texture == null)
                 {
                     Debug.Assert(!string.IsNullOrEmpty(TextureAsset));
-                    texture = AssetManager.GetTexture(TextureAsset);
+                    texture = AssetManager.GetSprite(TextureAsset);
                 }
 
                 return texture;
@@ -65,7 +65,26 @@ namespace _2DEngine
         /// Cannot do LocalPosition.X = x, because Vector2 is a struct.
         /// Instead, do LocalPosition = new Vector2(x, LocalPosition.Y).
         /// </summary>
-        public Vector2 LocalPosition { get; set; }
+        private Vector2 localPosition;
+        public Vector2 LocalPosition
+        {
+            get { return localPosition; }
+            set
+            {
+                localPosition = value;
+
+                // If we have no parent, set the world position to be the local position
+                if (Parent == null)
+                {
+                    WorldPosition = localPosition;
+                }
+                else
+                {
+                    // This syntax is for optimisation
+                    WorldPosition = Vector2.Add(Parent.WorldPosition, Vector2.Transform(localPosition, Matrix.CreateRotationZ(WorldRotation)));
+                }
+            }
+        }
 
         /// <summary>
         /// The local rotation from the parent's rotation - this value is bound between -PI and PI
@@ -78,39 +97,30 @@ namespace _2DEngine
             {
                 // Wrap the angle between -PI and PI
                 localRotation = MathHelper.WrapAngle(value);
+
+                // If we have no parent, return the local rotation
+                if (Parent == null)
+                {
+                    WorldRotation = localRotation;
+                }
+                else
+                {
+                    // Wrap the angle between -PI and PI
+                    WorldRotation = MathHelper.WrapAngle(Parent.WorldRotation + localRotation);
+                }
             }
         }
 
         /// <summary>
-        /// The world space position, calculated recursively using the parent's WorldPosition
+        /// The world space position of the object
         /// </summary>
-        public Vector2 WorldPosition
-        {
-            get
-            {
-                // If we have no parent, return the local position
-                if (Parent == null) { return LocalPosition; }
-
-                // This syntax is for optimisation
-                return Vector2.Add(Parent.WorldPosition, Vector2.Transform(LocalPosition, Matrix.CreateRotationZ(WorldRotation)));
-            }
-        }
+        public Vector2 WorldPosition { get; private set; }
 
         /// <summary>
         /// The world space rotation, calculated recursively using the parent's WorldRotation.
         /// This value will be between -PI and PI
         /// </summary>
-        public float WorldRotation
-        {
-            get
-            {
-                // If we have no parent, return the local rotation
-                if (Parent == null) { return LocalRotation; }
-
-                // Wrap the angle between -PI and PI
-                return MathHelper.WrapAngle(Parent.WorldRotation + LocalRotation);
-            }
-        }
+        public float WorldRotation { get; private set; }
 
         /// <summary>
         /// The size of this object.  By default this will be the size of the Texture.

@@ -181,12 +181,7 @@ namespace _2DEngine
         public override void UpdateCollider(ref Vector2 position, ref Vector2 size)
         {
             position = WorldPosition;
-            size = 2 * TextureCentre;
-        }
-
-        protected override void AddCollider()
-        {
-            base.AddCollider();
+            size = new Vector2(TextureCentre.X, 2 * TextureCentre.Y);
         }
 
         /// <summary>
