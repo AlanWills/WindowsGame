@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 
 namespace _2DEngine
 {
@@ -7,7 +8,7 @@ namespace _2DEngine
     /// A class which is designed to contain UIObjects.  Useful for Menus and custom UI.
     /// Marked as abstract because we do not want to create an instance of this class since it does not inherit from BaseObject
     /// </summary>
-    public class UIContainer : UIObject
+    public class UIContainer : UIObject, IEnumerable
     {
         #region Properties and Fields
 
@@ -113,6 +114,15 @@ namespace _2DEngine
             uiObjectToAdd.Parent = this;
 
             UIObjects.AddObject(uiObjectToAdd, load, initialise);
+        }
+
+        /// <summary>
+        /// Iterator used so that we can use this class in a foreach loop and it will iterate through the manager's active objects
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return UIObjects.GetEnumerator();
         }
 
         #endregion

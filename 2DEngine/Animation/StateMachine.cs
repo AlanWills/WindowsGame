@@ -62,11 +62,6 @@ namespace _2DEngine
         {
             if (!ShouldLoad) { return; }
 
-            foreach (State state in States)
-            {
-                state.Animation.LoadContent();
-            }
-
             CheckStateValid(StartingState);
             ActiveState = States[StartingState];
             
@@ -216,6 +211,9 @@ namespace _2DEngine
                     break;
                 }
             }
+
+            // Check that we have indeed transitioned to our new state
+            Debug.Assert(newBehaviourState == ActiveState.StateID);
 
             // The new state we have moved to should not be playing already
             Debug.Assert(ActiveState.Animation.IsPlaying == false);

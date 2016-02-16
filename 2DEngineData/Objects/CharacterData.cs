@@ -19,5 +19,20 @@ namespace _2DEngineData
         /// </summary>
         [XmlArrayItem(ElementName = "Item")]
         public List<string> AnimationInfo { get; set; }
+
+        /// <summary>
+        /// The speed at which the player will walk
+        /// </summary>
+        public float WalkSpeed { get; set; }
+
+        /// <summary>
+        /// The speed at which the player will run
+        /// </summary>
+        public float RunSpeed { get; set; }
+
+        /// <summary>
+        /// The height at which the player can jump
+        /// </summary>
+        public float JumpHeight { get; set; }
     }
 }

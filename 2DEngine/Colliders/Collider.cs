@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace _2DEngine
 {
@@ -53,6 +54,30 @@ namespace _2DEngine
         /// <returns>Returns true if a collision occurred</returns>
         public abstract bool CheckCollisionWith(Vector2 point);
 
+        /// <summary>
+        /// Calls the appropriate check function against the type of the inputted collider.
+        /// </summary>
+        /// <param name="collider">The collider to check against</param>
+        /// <returns>Returns true if a collision occurred</returns>
+        public virtual bool CheckCollisionWith(Collider collider)
+        {
+            RectangleCollider rectangleCollider = collider as RectangleCollider;
+            if (rectangleCollider != null)
+            {
+                return CheckCollisionWith(rectangleCollider);
+            }
+
+            Debug.Fail("Checking against an unknown collider.");
+            return false;
+        }
+
+        /// <summary>
+        /// Check collision with inputted rectangle collider and updates the CollidedThisFrame bool
+        /// </summary>
+        /// <param name="rectangleCollider">The rectangle collider to check against</param>
+        /// <returns>Returns true if a collision occurred</returns>
+        public abstract bool CheckCollisionWith(RectangleCollider rectangleCollider);
+
         #endregion
 
         #region Collider Update and Handle Input Functions
@@ -63,6 +88,9 @@ namespace _2DEngine
         /// <param name="mousePosition"></param>
         public void HandleInput(Vector2 mousePosition)
         {
+            CollidedLastFrame = CollidedThisFrame;
+            CollidedThisFrame = false;
+
             // If the mouse position and this have collided the mouse is over it
             IsMouseOver = CheckCollisionWith(mousePosition);
 
@@ -75,7 +103,7 @@ namespace _2DEngine
         /// </summary>
         public virtual void Update()
         {
-            CollidedLastFrame = CollidedThisFrame;
+            
         }
 
         #endregion

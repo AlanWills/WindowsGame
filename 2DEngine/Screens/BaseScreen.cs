@@ -20,22 +20,22 @@ namespace _2DEngine
         /// <summary>
         /// A Manager for all the In Game background UI Objects (that will appear behind the Game Objects)
         /// </summary>
-        private ObjectManager<UIObject> BackgroundObjects { get; set; }
+        protected ObjectManager<UIObject> BackgroundObjects { get; private set; }
 
         /// <summary>
         /// A Manager for the GameObjects in our screen
         /// </summary>
-        private ObjectManager<GameObject> GameObjects { get; set; }
+        protected ObjectManager<GameObject> GameObjects { get; private set; }
 
         /// <summary>
         /// A Manager for the In Game (camera dependent) UI Objects in our screen (that will appear in front of the Game Objects)
         /// </summary>
-        private ObjectManager<UIObject> InGameUIObjects { get; set; }
+        protected ObjectManager<UIObject> InGameUIObjects { get; private set; }
 
         /// <summary>
         /// A Manager for the Screen (camera independent) UI Objects in our screen
         /// </summary>
-        private ObjectManager<UIObject> ScreenUIObjects { get; set; }
+        protected ObjectManager<UIObject> ScreenUIObjects { get; private set; }
 
         /// <summary>
         /// Each screen has a script manager which contains scripts specific to that screen

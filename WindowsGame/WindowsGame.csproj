@@ -325,7 +325,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Data\Animations\Hero\HeroAnimations.xml">
+    <Content Include="Content\Data\Character Data\Hero.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Data\Animations\Hero\Balance.xml">

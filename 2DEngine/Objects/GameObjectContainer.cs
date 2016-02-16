@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 
 namespace _2DEngine
 {
@@ -7,7 +8,7 @@ namespace _2DEngine
     /// A class which extends the ObjectManager.
     /// A game object which also contains a GameObjectManager.
     /// </summary>
-    public class GameObjectContainer : GameObject
+    public class GameObjectContainer : GameObject, IEnumerable
     {
         #region Properties and Fields
 
@@ -100,6 +101,15 @@ namespace _2DEngine
             gameObjectToAdd.Parent = this;
 
             GameObjects.AddObject(gameObjectToAdd, load, initialise);
+        }
+
+        /// <summary>
+        /// Iterator used so that we can use this class in a foreach loop and it will iterate through the manager's active objects
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GameObjects.GetEnumerator();
         }
 
         #endregion

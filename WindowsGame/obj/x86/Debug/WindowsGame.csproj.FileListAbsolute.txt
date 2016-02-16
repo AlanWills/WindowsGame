@@ -188,7 +188,6 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\StartupLogoScreen.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\LoadingScreen.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\MainMenuScreen.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\HeroAnimations.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Fast.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Dizzy.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Backward.xml
@@ -293,3 +292,4 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Levels\Level1.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\SpriteFonts\DefaultSpriteFont.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\TrialParticle.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Character Data\Hero.xml

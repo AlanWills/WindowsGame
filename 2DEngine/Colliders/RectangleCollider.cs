@@ -38,6 +38,14 @@ namespace _2DEngine
             return result;
         }
 
+        public override bool CheckCollisionWith(RectangleCollider rectangleCollider)
+        {
+            bool result = bounds.Intersects(rectangleCollider.Bounds);
+            CollidedThisFrame = CollidedThisFrame || result;
+
+            return result;
+        }
+
         #endregion
 
         #region Collider Update Functions
@@ -49,13 +57,17 @@ namespace _2DEngine
         {
             base.Update();
 
-            Vector2 parentWorldPos = Parent.WorldPosition;
-            Vector2 parentSize = Parent.Size;
+            Vector2 parentWorldPos = Vector2.Zero, parentSize = Vector2.Zero;
+
+            Parent.UpdateCollider(ref parentWorldPos, ref parentSize);
 
             // Update the bounds location (top left)
             bounds.Location = new Point(
                 (int)(parentWorldPos.X - parentSize.X * 0.5f),
                 (int)(parentWorldPos.Y - parentSize.Y * 0.5f));
+
+            // Update the bounds size
+            bounds.Size = new Point((int)parentSize.X, (int)parentSize.Y);
         }
 
         #endregion

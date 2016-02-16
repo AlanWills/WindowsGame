@@ -74,6 +74,8 @@
     <Compile Include="Objects\LevelDesignObject.cs" />
     <Compile Include="Objects\UIObject.cs" />
     <Compile Include="Effects\ParticleEmitter.cs" />
+    <Compile Include="Physics\PhysicsBody.cs" />
+    <Compile Include="Physics\PhysicsConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="Screens\Gameplay\GameplayScreen.cs" />

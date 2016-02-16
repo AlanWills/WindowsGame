@@ -4,5 +4,5 @@
   <TextureFramesX>1</TextureFramesX>
   <TextureFramesY>16</TextureFramesY>
   <Continual>true</Continual>
-  <Global>false</Global>
+  <IsGlobal>false</IsGlobal>
 </AnimationData>

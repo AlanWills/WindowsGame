@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
+using System.Collections;
 
 namespace _2DEngine
 {
@@ -10,7 +11,7 @@ namespace _2DEngine
     /// Typical examples of what you would use this for include screens and objects in game
     /// </summary>
     /// <typeparam name="T">An object which extends Component</typeparam>
-    public class ObjectManager<T> : Component where T : Component
+    public class ObjectManager<T> : Component, IEnumerable<T> where T : Component
     {
         #region Properties and Fields
 
@@ -278,6 +279,24 @@ namespace _2DEngine
             {
                 obj.Die();
             }
+        }
+
+        /// <summary>
+        /// Iterator used so that we can use this class in a foreach loop and it will iterate through the active objects
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)ActiveObjects).GetEnumerator();
+        }
+
+        /// <summary>
+        /// Iterator used so that we can use this class in a foreach loop and it will iterate through the active objects
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<T>)ActiveObjects).GetEnumerator();
         }
 
         #endregion

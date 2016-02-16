@@ -1,7 +1,6 @@
 ﻿using _2DEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
 
 namespace WindowsGame
 {
@@ -148,6 +147,16 @@ namespace WindowsGame
             }
         }
 
+        /// <summary>
+        /// Adds a PhysicsBody to the player
+        /// </summary>
+        public override void Initialise()
+        {
+            base.Initialise();
+
+            AddPhysicsBody();
+        }
+
         #endregion
 
         #region Player Behaviour Changing Functions
@@ -159,32 +168,46 @@ namespace WindowsGame
         {
             base.IdleState();
 
+            DebugUtils.AssertNotNull(PhysicsBody);
+
             bool isMoveLeftDown = GameKeyboard.IsKeyDown(InputMap.MoveLeft);
             bool isMoveRightDown = GameKeyboard.IsKeyDown(InputMap.MoveRight);
 
             // This should always be checked
             if (isMoveLeftDown || isMoveRightDown)
             {
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
                 if (GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
+
+                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
                 }
                 else
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;
+
+                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
                 }
 
                 SpriteEffect = isMoveLeftDown ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            }
+            else
+            {
+                PhysicsBody.FullLinearStop(Dimensions.kX);
             }
 
             // The other states should always be checked no matter the movement input
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kIdleShoot;
+
+                PhysicsBody.FullLinearStop(Dimensions.kX);
             }
             else
             {
-                CheckMeleeRollJump();
+                CheckMeleeRollJumpFall();
             }
         }
 
@@ -200,12 +223,23 @@ namespace WindowsGame
             if (!isMoveLeftDown && !isMoveRightDown)
             {
                 CurrentBehaviour = (uint)CharacterBehaviours.kIdle;
+
+                PhysicsBody.FullLinearStop(Dimensions.kX);
             }
             else if (isMoveLeftDown || isMoveRightDown)
             {
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
                 if (GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
+
+                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
+                }
+                else
+                {
+                    // We are already walking so no need to set the CurrentBehaviour, but update the linear velocity
+                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
                 }
 
                 SpriteEffect = isMoveLeftDown ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
@@ -215,10 +249,13 @@ namespace WindowsGame
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kWalkShoot;
+
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+                PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
             }
             else 
             {
-                CheckMeleeRollJump();
+                CheckMeleeRollJumpFall();
             }
         }
 
@@ -234,12 +271,23 @@ namespace WindowsGame
             if (!isMoveLeftDown && !isMoveRightDown)
             {
                 CurrentBehaviour = (uint)CharacterBehaviours.kIdle;
+
+                PhysicsBody.FullLinearStop(Dimensions.kX);
             }
             else if (isMoveLeftDown || isMoveRightDown)
             {
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
                 if (!GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;
+
+                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
+                }
+                else
+                {
+                    // We are already running so no need to set the CurrentBehaviour, but update the linear velocity
+                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
                 }
 
                 SpriteEffect = isMoveLeftDown ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
@@ -249,10 +297,13 @@ namespace WindowsGame
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kRunShoot;
+
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+                PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
             }
             else
             {
-                CheckMeleeRollJump();
+                CheckMeleeRollJumpFall();
             }
         }
 
@@ -301,7 +352,12 @@ namespace WindowsGame
         /// </summary>
         private void JumpStartState()
         {
-            ToStateWhenFinished((uint)PlayerBehaviours.kJumpStart, (uint)PlayerBehaviours.kJumpFall);
+            DebugUtils.AssertNotNull(PhysicsBody);
+
+            if (PhysicsBody.LinearVelocity.Y < 0)
+            {
+                CurrentBehaviour = (uint)PlayerBehaviours.kJumpFall;
+            }
         }
 
         /// <summary>
@@ -309,25 +365,47 @@ namespace WindowsGame
         /// </summary>
         private void JumpFallState()
         {
-            // Fill this in when we have collisions with terrain
+            DebugUtils.AssertNotNull(PhysicsBody);
+
+            if ((Collider.CollidedThisFrame || Collider.CollidedLastFrame))
+            {
+                CurrentBehaviour = (uint)CharacterBehaviours.kIdle;
+            }
         }
 
         /// <summary>
-        /// A utility function to check melee, roll and jump which are the same for most states
+        /// A utility function to check melee, roll, jump and fall which are the same for most states
         /// </summary>
-        private void CheckMeleeRollJump()
+        private void CheckMeleeRollJumpFall()
         {
             if (GameMouse.Instance.IsClicked(InputMap.Melee))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kMelee;
+
+                PhysicsBody.FullLinearStop(Dimensions.kX);
             }
             else if (GameKeyboard.IsKeyPressed(InputMap.ForwardRoll))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kForwardRoll;
+
+                bool isMoveRightDown = GameKeyboard.IsKeyDown(InputMap.MoveRight);
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
+                PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
             }
             else if (GameKeyboard.IsKeyPressed(InputMap.Jump))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kJumpStart;
+
+                bool isMoveRightDown = GameKeyboard.IsKeyDown(InputMap.MoveRight);
+                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
+                LocalPosition += new Vector2(0, 10);
+                PhysicsBody.LinearVelocity += new Vector2(0, CharacterData.JumpHeight);
+            }
+            else if (!Collider.CollidedThisFrame && !Collider.CollidedLastFrame)
+            {
+                CurrentBehaviour = (uint)PlayerBehaviours.kJumpFall;
             }
         }
 

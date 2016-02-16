@@ -62,6 +62,11 @@ namespace _2DEngine
         protected StateMachine StateMachine { get; set; }
 
         /// <summary>
+        /// A cached cast of the loaded GameObject data to stop us from having to do lots of casts
+        /// </summary>
+        protected CharacterData CharacterData { get; set; }
+
+        /// <summary>
         /// Get the current texture based on the state machine active state.
         /// </summary>
         protected override Texture2D Texture
@@ -120,6 +125,7 @@ namespace _2DEngine
             foreach (string animationDataAsset in data.AnimationInfo)
             {
                 Animation animation = new Animation(data.FolderPath + animationDataAsset + ".xml");
+                animation.LoadContent();
 
                 Debug.Assert(!Animations.ContainsKey(animationDataAsset));
                 Animations.Add(animationDataAsset, animation);
@@ -137,7 +143,8 @@ namespace _2DEngine
         /// <returns></returns>
         protected override GameObjectData LoadGameObjectData()
         {
-            return AssetManager.GetData<CharacterData>(DataAsset);
+            CharacterData = AssetManager.GetData<CharacterData>(DataAsset);
+            return CharacterData;
         }
 
         /// <summary>
@@ -164,6 +171,22 @@ namespace _2DEngine
             StateMachine.ActiveState.Animation.IsPlaying = true;
 
             base.Initialise();
+        }
+
+        /// <summary>
+        /// Because this object uses an animation, we have to alter the position of the collider based on the size of a single frame
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="size"></param>
+        public override void UpdateCollider(ref Vector2 position, ref Vector2 size)
+        {
+            position = WorldPosition;
+            size = 2 * TextureCentre;
+        }
+
+        protected override void AddCollider()
+        {
+            base.AddCollider();
         }
 
         /// <summary>

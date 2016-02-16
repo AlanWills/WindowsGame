@@ -32,6 +32,11 @@ namespace _2DEngine
         }
 
         /// <summary>
+        /// A potentially null physics body used to apply physics to this GameObject
+        /// </summary>
+        protected PhysicsBody PhysicsBody { get; private set; }
+
+        /// <summary>
         /// The health of this object.  If below zero, it will be killed and cleaned up.
         /// </summary>
         protected float Health { get; private set; }
@@ -91,6 +96,8 @@ namespace _2DEngine
         {
             base.Update(elapsedGameTime);
 
+            if (PhysicsBody != null) { PhysicsBody.Update(elapsedGameTime); }
+
             // Die if we have insufficient health
             if (Health <= 0) { Die(); }
         }
@@ -108,6 +115,11 @@ namespace _2DEngine
         #endregion
 
         #region Utility Functions
+
+        protected void AddPhysicsBody()
+        {
+            PhysicsBody = new PhysicsBody(this);
+        }
 
         public bool DeathTransition(State sourceState, State destinationState)
         {

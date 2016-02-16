@@ -210,9 +210,25 @@ namespace _2DEngine
             base.Initialise();
         }
 
+        /// <summary>
+        /// By default adds a RectangleCollider for this object if it's bool UsesCollider is set to true.
+        /// Can be overridden to add custom colliders instead.
+        /// </summary>
         protected virtual void AddCollider()
         {
             Collider = new RectangleCollider(this);
+        }
+
+        /// <summary>
+        /// A function which updates the collider per frame.
+        /// Can be overridden to provide custom behaviour - i.e. for objects which use an animation.
+        /// </summary>
+        /// <param name="position">The position we wish the collider to be centred at</param>
+        /// <param name="size">The dimensions of the collider</param>
+        public virtual void UpdateCollider(ref Vector2 position, ref Vector2 size)
+        {
+            position = WorldPosition;
+            size = Size;
         }
 
         /// <summary>
