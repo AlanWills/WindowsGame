@@ -70,17 +70,33 @@ namespace _2DEngine
         private UIObject Background { get; set; }
 
         /// <summary>
+        /// Returns the dimensions of the game window
+        /// </summary>
+        protected Vector2 ScreenDimensions
+        {
+            get { return ScreenManager.Instance.ScreenDimensions; }
+        }
+
+        /// <summary>
+        /// Returns the centre of the game window
+        /// </summary>
+        protected Vector2 ScreenCentre
+        {
+            get { return ScreenManager.Instance.ScreenCentre; }
+        }
+
+        /// <summary>
         /// A variable used to determine whether this screen should queue it's screen music or not.
         /// Set to 'WaitForCurrent' to queue songs after the music already playing (DEFAULT).
         /// Set to 'PlayImmediately to clear current queued songs and play this screen's music.
         /// </summary>
         protected QueueType MusicQueueType { private get; set; }
 
-        public static Texture2D lightMask;
-        public static Effect effect;
-        public static BasicEffect lights;
-        static RenderTarget2D lightsTarget;
-        static RenderTarget2D mainTarget;
+        Texture2D lightMask;
+        Texture2D cursor;
+        Effect effect;
+        RenderTarget2D lightsTarget;
+        RenderTarget2D mainTarget;
 
         #endregion
 
@@ -115,7 +131,7 @@ namespace _2DEngine
 
             if (!string.IsNullOrEmpty(ScreenData.BackgroundTextureAsset))
             {
-                Background = new Image(GetScreenDimensions(), GetScreenCentre(), ScreenData.BackgroundTextureAsset);
+                Background = new Image(ScreenDimensions, ScreenCentre, ScreenData.BackgroundTextureAsset);
                 Background.LoadContent();
                 Background.Initialise();
             }
@@ -147,6 +163,7 @@ namespace _2DEngine
             ScreenUIObjects.LoadContent();
 
             lightMask = ScreenManager.Instance.Content.Load<Texture2D>("Sprites\\Effects\\LightMask");
+            cursor = ScreenManager.Instance.Content.Load<Texture2D>("Sprites\\UI\\Cursor");
             effect = ScreenManager.Instance.Content.Load<Effect>("Effects\\LightEffect");
 
             base.LoadContent();
@@ -173,7 +190,7 @@ namespace _2DEngine
             GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
             var pp = graphicsDevice.PresentationParameters;
             lightsTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
-            mainTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+            mainTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, false, pp.BackBufferFormat, DepthFormat.Depth24);
 
             base.Initialise();
         }
@@ -244,7 +261,34 @@ namespace _2DEngine
 
             GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
 
-            if (Background != null)
+            graphicsDevice.SetRenderTarget(lightsTarget);
+            graphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
+            spriteBatch.Draw(lightMask, new Vector2(0, 0), Color.White);
+            spriteBatch.Draw(lightMask, new Vector2(100, 0), Color.White);
+            spriteBatch.Draw(lightMask, new Vector2(200, 200), Color.White);
+            spriteBatch.Draw(lightMask, new Vector2(300, 300), Color.White);
+            spriteBatch.Draw(lightMask, new Vector2(500, 200), Color.White);
+            spriteBatch.End();
+
+            graphicsDevice.SetRenderTarget(mainTarget);
+            graphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+            spriteBatch.Draw(cursor, new Vector2(100, 0), Color.White);
+            spriteBatch.Draw(cursor, new Vector2(250, 250), Color.White);
+            spriteBatch.Draw(cursor, new Vector2(550, 225), Color.White);
+            spriteBatch.End();
+
+            graphicsDevice.SetRenderTarget(null);
+            graphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+            effect.Parameters["lightMask"].SetValue(lightsTarget);
+            effect.CurrentTechnique.Passes[0].Apply();
+            spriteBatch.Draw(mainTarget, Vector2.Zero, Color.White);
+            spriteBatch.End();
+
+            /*if (Background != null)
             {
                 spriteBatch.Begin();
                 {
@@ -271,7 +315,7 @@ namespace _2DEngine
                 if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
             }
 
-            spriteBatch.End();
+            spriteBatch.End();*/
         }
 
         #endregion
@@ -405,24 +449,6 @@ namespace _2DEngine
         #endregion
 
         #region Utility Functions
-
-        /// <summary>
-        /// Returns the dimensions of the game window
-        /// </summary>
-        /// <returns>The game window dimensions</returns>
-        protected Vector2 GetScreenDimensions()
-        {
-            return ScreenManager.Instance.ScreenDimensions;
-        }
-
-        /// <summary>
-        /// Returns the centre of the game window
-        /// </summary>
-        /// <returns>The game window centre</returns>
-        protected Vector2 GetScreenCentre()
-        {
-            return ScreenManager.Instance.ScreenCentre;
-        }
 
         /// <summary>
         /// Calls the ScreenManager Transition function.  Moves from the current screen to the inputted screen.

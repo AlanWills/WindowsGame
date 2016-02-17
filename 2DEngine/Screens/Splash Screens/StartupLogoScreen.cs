@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Content;
+using System.Threading;
 
 namespace _2DEngine
 {
@@ -14,6 +15,8 @@ namespace _2DEngine
         /// The screen we wish to transition to after we have finished loading
         /// </summary>
         private BaseScreen ScreenAfterLoading { get; set; }
+
+        private float timer = 0;
 
         #endregion
 
@@ -35,6 +38,14 @@ namespace _2DEngine
             AddScreenUIObject(new Logo());
         }
 
+        public override void Begin()
+        {
+            base.Begin();
+
+            //Thread loadThread = new Thread(new ThreadStart(LoadAllAssets));
+            //loadThread.Start();
+        }
+
         /// <summary>
         /// Loads all the game assets into their managers.
         /// Do this in the update loop so that we have one draw call before loading.
@@ -44,15 +55,24 @@ namespace _2DEngine
         {
             base.Update(elapsedGameTime);
 
+            LoadAllAssets();
+            timer += elapsedGameTime;
+
+            if (timer > 2)
+            {
+                Transition(ScreenAfterLoading);
+            }
+        }
+
+        #endregion
+
+        public void LoadAllAssets()
+        {
             ContentManager content = ScreenManager.Instance.Content;
 
             AssetManager.LoadAssets(content);
             MusicManager.LoadAssets(content);
             SFXManager.LoadAssets(content);
-
-            Transition(ScreenAfterLoading);
         }
-
-        #endregion
     }
 }

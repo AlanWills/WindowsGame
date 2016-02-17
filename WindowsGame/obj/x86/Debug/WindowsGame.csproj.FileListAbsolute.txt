@@ -129,7 +129,6 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Content.mgcb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Idle.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent

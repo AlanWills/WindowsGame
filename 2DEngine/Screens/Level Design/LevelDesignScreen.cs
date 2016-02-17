@@ -72,7 +72,7 @@ namespace _2DEngine
             }
 
             CurrentType = LevelDesignType.kNormalTile;
-            CurrentTypeLabel = new Label(GetLabelText(), GetScreenDimensions() * 0.9f);
+            CurrentTypeLabel = new Label(GetLabelText(), ScreenDimensions * 0.9f);
             AddScreenUIObject(CurrentTypeLabel);
 
             AvailableAssets = new List<string>()
@@ -126,7 +126,7 @@ namespace _2DEngine
             base.AddInitialUI();
 
             int row = 1;
-            int buttonsOnRow = (int)(GetScreenDimensions().X / (ButtonSize.X + ButtonPadding));
+            int buttonsOnRow = (int)(ScreenDimensions.X / (ButtonSize.X + ButtonPadding));
             int currentButton = 1;
             for (int i = 0; i < AvailableAssets.Count; i++)
             {
@@ -152,7 +152,7 @@ namespace _2DEngine
 
             AddScreenUIObject(CurrentSelectedObject);
 
-            Button serializeButton = new Button("Serialize", new Vector2(GetScreenDimensions().X * 0.1f, GetScreenDimensions().Y * 0.9f));
+            Button serializeButton = new Button("Serialize", new Vector2(ScreenDimensions.X * 0.1f, ScreenDimensions.Y * 0.9f));
             serializeButton.ClickEvent += SerializeLevel;
             AddScreenUIObject(serializeButton);
 

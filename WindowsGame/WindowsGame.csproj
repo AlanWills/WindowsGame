@@ -290,9 +290,7 @@
     <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Content.mgcb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
     <Content Include="Content\Data\Animations\Hero\Jetpack Fly Fast.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

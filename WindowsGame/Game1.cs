@@ -89,11 +89,11 @@ namespace WindowsGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            base.Draw(gameTime);
+            //GraphicsDevice.Clear(Color.Transparent);
 
             if (ScreenManager.Instance.ShouldDraw) { ScreenManager.Instance.Draw(spriteBatch); }
+
+            base.Draw(gameTime);
         }
     }
 }

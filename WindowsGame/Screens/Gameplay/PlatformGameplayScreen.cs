@@ -18,7 +18,7 @@ namespace WindowsGame
         public PlatformGameplayScreen(string levelDataAsset) :
             base(levelDataAsset)
         {
-            Player player = new Player(GetScreenCentre(), "Content\\Data\\Character Data\\Hero.xml");
+            Player player = new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml");
             AddGameObject(player);
             AddCollisionObject(player);
         }

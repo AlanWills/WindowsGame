@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace _2DEngine
@@ -62,7 +64,7 @@ namespace _2DEngine
         /// <param name="content">The ContentManager we will use to load our content</param>
         /// <param name="path">The path of the assets we wish to load</param>
         /// <returns>Returns the dictionary of all loading content</returns>
-        private static Dictionary<string, T> Load<T>(ContentManager content,string path)
+        private static Dictionary<string, T> Load<T>(ContentManager content, string path)
         {
             Dictionary<string, T> objects = new Dictionary<string, T>();
 
@@ -79,7 +81,7 @@ namespace _2DEngine
 
                     try
                     {
-                        objects.Add(files[i], content.Load<T>(files[i]));
+                        objects.Add(files[i], LoadFromContentManager<T>(files[i]));
                     }
                     catch { Debug.Fail("Adding asset more than once."); }
                 }
@@ -89,51 +91,79 @@ namespace _2DEngine
             return objects;
         }
 
+        /// <summary>
+        /// A wrapper for loading content directly using the ContentManager.
+        /// Should only be used as a last resort.
+        /// </summary>
+        /// <typeparam name="T">The type of content to load</typeparam>
+        /// <param name="path">The path of the object e.g. Sprites\\UI\\Cursor</param>
+        /// <returns>The loaded content</returns>
+        public static T LoadFromContentManager<T>(string path)
+        {
+            T asset = ScreenManager.Instance.Content.Load<T>(path);
+
+            DebugUtils.AssertNotNull(asset);
+
+            return asset;
+        }
+
         #region Utility Functions
 
         /// <summary>
         /// Get a loaded SpriteFont
         /// </summary>
-        /// <param name="name">The full path of the SpriteFont, e.g. "SpriteFonts\\DefaultSpriteFont"</param>
+        /// <param name="path">The full path of the SpriteFont, e.g. "SpriteFonts\\DefaultSpriteFont"</param>
         /// <returns>Returns the sprite font</returns>
-        public static SpriteFont GetSpriteFont(string name)
+        public static SpriteFont GetSpriteFont(string path)
         {
-            SpriteFont spriteFont = null;
-            SpriteFonts.TryGetValue(name, out spriteFont);
+            SpriteFont spriteFont;
 
-            DebugUtils.AssertNotNull(spriteFont);
-
-            return spriteFont;
+            if (SpriteFonts.TryGetValue(path, out spriteFont))
+            {
+                return spriteFont;
+            }
+            else
+            {
+                return LoadFromContentManager<SpriteFont>(path);
+            }
         }
 
         /// <summary>
         /// Get a pre-loaded sprite
         /// </summary>
-        /// <param name="name">The full path of the Sprite, e.g. "Sprites\\UI\\Cursor"</param>
+        /// <param name="path">The full path of the Sprite, e.g. "Sprites\\UI\\Cursor"</param>
         /// <returns>Returns the texture</returns>
-        public static Texture2D GetSprite(string name)
+        public static Texture2D GetSprite(string path)
         {
-            Texture2D texture = null;
-            Sprites.TryGetValue(name, out texture);
+            Texture2D sprite;
 
-            DebugUtils.AssertNotNull(texture);
-
-            return texture;
+            if (Sprites.TryGetValue(path, out sprite))
+            {
+                return sprite;
+            }
+            else
+            {
+                return LoadFromContentManager<Texture2D>(path);
+            }
         }
 
         /// <summary>
         /// Get a pre-loaded effect
         /// </summary>
-        /// <param name="name">The full path of the Effect, e.g. "Effects\\LightEffect"</param>
+        /// <param name="path">The full path of the Effect, e.g. "Effects\\LightEffect"</param>
         /// <returns>Returns the effect</returns>
-        public static Effect GetEffect(string name)
+        public static Effect GetEffect(string path)
         {
-            Effect effect = null;
-            Effects.TryGetValue(name, out effect);
+            Effect effect;
 
-            DebugUtils.AssertNotNull(effect);
-
-            return effect;
+            if (Effects.TryGetValue(path, out effect))
+            {
+                return effect;
+            }
+            else
+            {
+                return LoadFromContentManager<Effect>(path);
+            }
         }
 
         /// <summary>

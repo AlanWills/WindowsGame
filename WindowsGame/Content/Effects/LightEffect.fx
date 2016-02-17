@@ -7,34 +7,20 @@
 	#define PS_SHADERMODEL ps_4_0_level_9_1
 #endif
 
-Texture2D SpriteTexture;
-Texture2D LightMaskTexture;
+sampler s0;
+texture lightMask;
+sampler lightSampler = sampler_state { Texture = <lightMask>; };
 
-sampler2D SpriteTextureSampler = sampler_state
+float4 MainPS(float4 pos : SV_POSITION, float4 color1 : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-	Texture = <SpriteTexture>;
-};
-
-sampler2D LightMaskTextureSampler = sampler_state
-{
-  Texture = <LightMaskTexture>;
-};
-
-struct VertexShaderOutput
-{
-	float4 Position : SV_POSITION;
-	float4 Color : COLOR0;
-	float2 TextureCoordinates : TEXCOORD0;
-};
-
-float4 MainPS(VertexShaderOutput input) : COLOR
-{
-	return tex2D(LightMaskTextureSampler, input.TextureCoordinates) * input.Color;
+  float4 color = tex2D(s0, coords);
+  float4 lightColor = tex2D(lightSampler, coords);
+  return color * lightColor;
 }
 
 technique SpriteDrawing
 {
-	pass P0
+	pass Pass1
 	{
 		PixelShader = compile PS_SHADERMODEL MainPS();
 	}
