@@ -58,6 +58,7 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Threading\CustomThread.cs" />
     <Compile Include="Effects\Lighting\AmbientLight.cs" />
     <Compile Include="Effects\Lighting\Light.cs" />
     <Compile Include="Managers\Objects\LightManager.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Managers\Objects\ScreenManager.cs" />
     <Compile Include="Managers\Objects\ScriptManager.cs" />
     <Compile Include="Managers\Music and SFX\SFXManager.cs" />
+    <Compile Include="Managers\ThreadManager.cs" />
     <Compile Include="Objects\BaseObject.cs" />
     <Compile Include="Objects\Component.cs" />
     <Compile Include="Objects\GameObject.cs" />

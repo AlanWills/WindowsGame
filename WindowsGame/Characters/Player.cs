@@ -1,6 +1,7 @@
 ﻿using _2DEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Threading;
 
 namespace WindowsGame
 {

@@ -15,8 +15,6 @@ namespace _2DEngine
         /// </summary>
         private GameplayScreen ScreenToTransitionTo { get; set; }
 
-        Thread loadingThread;
-
         #endregion
 
         public LoadingScreen(GameplayScreen screenToTransitionTo, string screenDataAsset = "Content\\Data\\Screens\\LoadingScreen.xml") :
@@ -36,29 +34,26 @@ namespace _2DEngine
         {
             base.Begin();
 
-            loadingThread = new Thread(new ThreadStart(LoadScreenToTransitionTo));
-            loadingThread.Start();
-        }
-
-        public override void Update(float elapsedGameTime)
-        {
-            base.Update(elapsedGameTime);
-
-            if (!loadingThread.IsAlive)
-            {
-                Transition(ScreenToTransitionTo, false, false);
-            }
+            ThreadManager.CreateThread(LoadScreenCallback, TransitionCallback);
         }
 
         #endregion
 
         /// <summary>
-        /// A function we will pass to our loading thread to perform all the loading and initialising of our screen we wish to transition to.
+        /// A callback for our loading thread to load and initialise our next screen.
         /// </summary>
-        private void LoadScreenToTransitionTo()
+        private void LoadScreenCallback()
         {
             ScreenToTransitionTo.LoadContent();
             ScreenToTransitionTo.Initialise();
+        }
+
+        /// <summary>
+        /// A callback for our loading thread to transition to the next screen when completed loading.
+        /// </summary>
+        private void TransitionCallback()
+        {
+            Transition(ScreenToTransitionTo, false, false);
         }
     }
 }

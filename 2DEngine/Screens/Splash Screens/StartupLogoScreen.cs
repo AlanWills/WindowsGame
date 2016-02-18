@@ -16,8 +16,6 @@ namespace _2DEngine
         /// </summary>
         private BaseScreen ScreenAfterLoading { get; set; }
 
-        Thread loadThread;
-
         #endregion
 
         public StartupLogoScreen(BaseScreen screenAfterLoading, string screenDataAsset = "Content\\Data\\Screens\\StartupLogoScreen.xml") :
@@ -42,34 +40,33 @@ namespace _2DEngine
         {
             base.Begin();
 
-            loadThread = new Thread(new ThreadStart(LoadAllAssets));
-            loadThread.Start();
-        }
-
-        /// <summary>
-        /// Loads all the game assets into their managers.
-        /// Do this in the update loop so that we have one draw call before loading.
-        /// This way the screen UI will be displayed whilst we load.
-        /// </summary>
-        public override void Update(float elapsedGameTime)
-        {
-            base.Update(elapsedGameTime);
-
-            if (!loadThread.IsAlive)
-            {
-                Transition(ScreenAfterLoading);
-            }
+            ThreadManager.CreateThread(LoadAllAssetsCallback, TransitionCallback);
         }
 
         #endregion
 
-        public void LoadAllAssets()
+        /// <summary>
+        /// A callback for our loading thread to load all our game's assets.
+        /// </summary>
+        private void LoadAllAssetsCallback()
         {
             ContentManager content = ScreenManager.Instance.Content;
 
             AssetManager.LoadAssets(content);
             MusicManager.LoadAssets(content);
             SFXManager.LoadAssets(content);
+
+            ScreenAfterLoading.LoadContent();
+            ScreenAfterLoading.Initialise();
+        }
+
+        /// <summary>
+        /// A callback for our loading thread to complete when finished loading.
+        /// It will transition to the next screen.
+        /// </summary>
+        private void TransitionCallback()
+        {
+            Transition(ScreenAfterLoading, false, false);
         }
     }
 }

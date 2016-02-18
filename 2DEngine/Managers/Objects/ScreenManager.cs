@@ -96,6 +96,7 @@ namespace _2DEngine
         {
             CheckShouldInitialise();
 
+            ThreadManager.Initialise();
             Camera.Initialise();
             GameMouse.Instance.Initialise();
 
@@ -127,6 +128,9 @@ namespace _2DEngine
         /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
+            // Updates Thread manager
+            ThreadManager.Update();
+
             // Update camera
             Camera.Update(elapsedGameTime);
 
@@ -178,7 +182,7 @@ namespace _2DEngine
         {
             if (transitionTo.Is<GameplayScreen>() && !transitionFrom.Is<LoadingScreen>())
             {
-                AddObject(new LoadingScreen(transitionTo.As<GameplayScreen>()), load, initialise);
+                AddObject(new LoadingScreen(transitionTo.As<GameplayScreen>()), true, true);
             }
             else
             {

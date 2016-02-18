@@ -819,18 +819,6 @@
 /processorParam:DebugMode=Auto
 /build:Effects/LightEffect.fx
 
-#begin Sprites/Effects/AmbientLightMask.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Effects/AmbientLightMask.png
-
 #begin Sprites/Effects/PointLightMask.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -842,4 +830,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Effects/PointLightMask.png
+
+#begin Sprites/Backgrounds/MainMenuScreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Backgrounds/MainMenuScreen.png
 
