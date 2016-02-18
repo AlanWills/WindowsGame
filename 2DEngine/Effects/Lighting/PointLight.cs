@@ -8,14 +8,14 @@ namespace _2DEngine
     /// </summary>
     public class PointLight : Light
     {
-        public PointLight(Vector2 localPosition, Color colour, string pointLightTextureAsset = AssetManager.DefaultPointLightTextureAsset, float lifeTime = float.MaxValue) :
-            this(Vector2.Zero, localPosition, colour, pointLightTextureAsset, lifeTime)
+        public PointLight(Vector2 localPosition, Color colour, string pointLightTextureAsset = AssetManager.DefaultPointLightTextureAsset, float intensity = 1, float lifeTime = float.MaxValue) :
+            this(Vector2.Zero, localPosition, colour, pointLightTextureAsset, intensity, lifeTime)
         {
 
         }
 
-        public PointLight(Vector2 size, Vector2 localPosition, Color colour, string pointLightTextureAsset = AssetManager.DefaultPointLightTextureAsset, float lifeTime = float.MaxValue) :
-            base(size, localPosition, colour, pointLightTextureAsset, lifeTime)
+        public PointLight(Vector2 size, Vector2 localPosition, Color colour, string pointLightTextureAsset = AssetManager.DefaultPointLightTextureAsset, float intensity = 1, float lifeTime = float.MaxValue) :
+            base(size, localPosition, colour, pointLightTextureAsset, intensity, lifeTime)
         {
             
         }

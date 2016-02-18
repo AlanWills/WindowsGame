@@ -36,7 +36,8 @@ namespace _2DEngine
         public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
 
         // Lights
-        public const string DefaultPointLightTextureAsset = "Sprites\\Effects\\LightMask";
+        public const string DefaultPointLightTextureAsset = "Sprites\\Effects\\PointLightMask";
+        public const string AmbientLightTextureAsset = "Sprites\\Effects\\AmbientLightMask";
 
         #endregion
 

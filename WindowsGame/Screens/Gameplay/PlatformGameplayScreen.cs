@@ -21,6 +21,10 @@ namespace WindowsGame
             Player player = new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml");
             AddGameObject(player);
             AddCollisionObject(player);
+
+            PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
+            pointLight.Parent = player;
+            LightManager.AddObject(pointLight);
         }
 
         #region Virtual Functions
@@ -36,7 +40,8 @@ namespace WindowsGame
 
             DeserializeLevel();
 
-            LightManager.AddObject(new PointLight(new Vector2(500, 500), ScreenCentre, Color.White));
+            
+            //LightManager.AddObject(new PointLight(new Vector2(500, 500), ScreenCentre, Color.Blue));
         }
 
         #endregion

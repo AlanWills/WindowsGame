@@ -19,19 +19,31 @@ namespace _2DEngine
 
         #endregion
 
-        public Light(Vector2 localPosition, Color colour, string lightTextureAsset, float lifeTime = float.MaxValue) :
-            this(Vector2.Zero, localPosition, colour, lightTextureAsset)
+        public Light(Vector2 localPosition, Color colour, string lightTextureAsset, float intensity = 1f, float lifeTime = float.MaxValue) :
+            this(Vector2.Zero, localPosition, colour, lightTextureAsset, intensity)
         {
         }
 
-        public Light(Vector2 size, Vector2 localPosition, Color colour, string lightTextureAsset, float lifeTime = float.MaxValue) :
+        public Light(Vector2 size, Vector2 localPosition, Color colour, string lightTextureAsset, float intensity = 1f, float lifeTime = float.MaxValue) :
             base(size, localPosition, lightTextureAsset)
         {
             Colour = colour;
             LifeTime = lifeTime;
+            UsesCollider = false;
+            Opacity = intensity;
         }
 
         #region Virtual Methods
+
+        /// <summary>
+        /// Lights do not have a handle input 
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
+        public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
+        {
+            
+        }
 
         /// <summary>
         /// Updates this light's life time

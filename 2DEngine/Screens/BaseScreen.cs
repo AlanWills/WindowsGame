@@ -18,14 +18,24 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
-        /// The render target we will use to draw our game world and ultimately our final scene.
-        /// </summary>
-        private RenderTarget2D MainRenderTarget { get; set; }
-
-        /// <summary>
         /// The render target we will use to draw our lighting.
         /// </summary>
         private RenderTarget2D LightRenderTarget { get; set; }
+
+        /// <summary>
+        /// The render target we will use to draw our game world and ultimately our final scene.
+        /// </summary>
+        private RenderTarget2D GameWorldRenderTarget { get; set; }
+
+        /// <summary>
+        /// The render target we will use to draw our In Game UI.
+        /// </summary>
+        private RenderTarget2D InGameUIRenderTarget { get; set; }
+
+        /// <summary>
+        /// The render target we will use to draw our Screen UI
+        /// </summary>
+        private RenderTarget2D ScreenUIRenderTarget { get; set; }
 
         /// <summary>
         /// A Manager for all the lights in the game.
@@ -117,8 +127,10 @@ namespace _2DEngine
             GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
             var pp = graphicsDevice.PresentationParameters;
 
-            MainRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
             LightRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+            GameWorldRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+            InGameUIRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+            ScreenUIRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
 
             LightManager = new LightManager();
             BackgroundObjects = new ObjectManager<UIObject>();
@@ -291,8 +303,8 @@ namespace _2DEngine
 
             // Draw our game world
             {
-                graphicsDevice.SetRenderTarget(MainRenderTarget);
-                graphicsDevice.Clear(Color.CornflowerBlue);
+                graphicsDevice.SetRenderTarget(GameWorldRenderTarget);
+                graphicsDevice.Clear(Color.White);
 
                 if (Background != null)
                 {
@@ -309,10 +321,28 @@ namespace _2DEngine
                 {
                     if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
                     if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
+                }
+
+                spriteBatch.End();
+            }
+
+            // Draw our InGameUI
+            {
+                graphicsDevice.SetRenderTarget(InGameUIRenderTarget);
+                graphicsDevice.Clear(Color.Transparent);
+
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
+                {
                     if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
                 }
 
                 spriteBatch.End();
+            }
+
+            // Draw our Screen UI
+            {
+                graphicsDevice.SetRenderTarget(ScreenUIRenderTarget);
+                graphicsDevice.Clear(Color.Transparent);
 
                 // Draw the camera independent objects and the mouse last
                 spriteBatch.Begin();
@@ -327,12 +357,20 @@ namespace _2DEngine
             // Combine the separate render targets together using the appropriate effects
             {
                 graphicsDevice.SetRenderTarget(null);
-                graphicsDevice.Clear(Color.CornflowerBlue);
+                graphicsDevice.Clear(Color.Black);
 
+                // Combine the Light and Game World render targets
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
                 LightManager.LightEffect.Parameters["lightMask"].SetValue(LightRenderTarget);
+                LightManager.LightEffect.Parameters["ambientLight"].SetValue(LightManager.AmbientLight.ToVector4());
                 LightManager.LightEffect.CurrentTechnique.Passes[0].Apply();
-                spriteBatch.Draw(MainRenderTarget, Vector2.Zero, Color.White);
+                spriteBatch.Draw(GameWorldRenderTarget, Vector2.Zero, Color.White);
+                spriteBatch.End();
+
+                // Draw our UI render targets
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                spriteBatch.Draw(InGameUIRenderTarget, Vector2.Zero, Color.White);
+                spriteBatch.Draw(ScreenUIRenderTarget, Vector2.Zero, Color.White);
                 spriteBatch.End();
             }
         }

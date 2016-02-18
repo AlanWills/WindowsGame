@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace _2DEngine
 {
@@ -15,6 +16,23 @@ namespace _2DEngine
         /// </summary>
         public Effect LightEffect { get; private set; }
 
+        /// <summary>
+        /// The ambient light in our scene that will affect all the objects in our game world.
+        /// Only one of these exists.
+        /// </summary>
+        private AmbientLight AmbientLightReference { get; set; }
+
+        /// <summary>
+        /// The colour we will use to reset our LightRenderTarget to create ambient light.
+        /// </summary>
+        public Color AmbientLight
+        {
+            get
+            {
+                return AmbientLightReference.Colour * AmbientLightReference.Opacity;
+            }
+        }
+
         private const string defaultLightEffect = "Effects\\LightEffect";
 
         #endregion
@@ -22,7 +40,7 @@ namespace _2DEngine
         public LightManager() :
             base()
         {
-
+            AddObject(new AmbientLight(Color.White, 0.3f));
         }
 
         #region Virtual Functions
@@ -38,6 +56,29 @@ namespace _2DEngine
             DebugUtils.AssertNotNull(LightEffect);
 
             base.LoadContent();
+        }
+
+        /// <summary>
+        /// Adds a light, but if it is an ambient light then we replace our current ambient light with a new one.
+        /// </summary>
+        /// <param name="objectToAdd">The light to add</param>
+        /// <param name="load">Whether we should call load content</param>
+        /// <param name="initialise">Whether we should initialise</param>
+        public override void AddObject(Light objectToAdd, bool load = false, bool initialise = false)
+        {
+            base.AddObject(objectToAdd, load, initialise);
+
+            if (objectToAdd.Is<AmbientLight>())
+            {
+                // Remove our old ambient light
+                if (AmbientLightReference != null)
+                {
+                    RemoveObject(AmbientLightReference);
+                }
+
+                // Set our new ambient light
+                AmbientLightReference = objectToAdd.As<AmbientLight>();
+            }
         }
 
         #endregion
