@@ -7,7 +7,7 @@ namespace _2DEngine
     /// A screen to be displayed on start up whilst we load content.
     /// Very simple - just displays a logo and possibly a background.
     /// </summary>
-    public class StartupLogoScreen : BaseScreen
+    public class StartupLogoScreen : MenuScreen
     {
         #region Properties and Fields
 
@@ -16,7 +16,7 @@ namespace _2DEngine
         /// </summary>
         private BaseScreen ScreenAfterLoading { get; set; }
 
-        private float timer = 0;
+        Thread loadThread;
 
         #endregion
 
@@ -42,8 +42,8 @@ namespace _2DEngine
         {
             base.Begin();
 
-            //Thread loadThread = new Thread(new ThreadStart(LoadAllAssets));
-            //loadThread.Start();
+            loadThread = new Thread(new ThreadStart(LoadAllAssets));
+            loadThread.Start();
         }
 
         /// <summary>
@@ -55,10 +55,7 @@ namespace _2DEngine
         {
             base.Update(elapsedGameTime);
 
-            LoadAllAssets();
-            timer += elapsedGameTime;
-
-            if (timer > 2)
+            if (!loadThread.IsAlive)
             {
                 Transition(ScreenAfterLoading);
             }

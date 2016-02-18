@@ -18,6 +18,21 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
+        /// The render target we will use to draw our game world and ultimately our final scene.
+        /// </summary>
+        private RenderTarget2D MainRenderTarget { get; set; }
+
+        /// <summary>
+        /// The render target we will use to draw our lighting.
+        /// </summary>
+        private RenderTarget2D LightRenderTarget { get; set; }
+
+        /// <summary>
+        /// A Manager for all the lights in the game.
+        /// </summary>
+        protected LightManager LightManager { get; private set; }
+
+        /// <summary>
         /// A Manager for all the In Game background UI Objects (that will appear behind the Game Objects)
         /// </summary>
         protected ObjectManager<UIObject> BackgroundObjects { get; private set; }
@@ -92,12 +107,6 @@ namespace _2DEngine
         /// </summary>
         protected QueueType MusicQueueType { private get; set; }
 
-        Texture2D lightMask;
-        Texture2D cursor;
-        Effect effect;
-        RenderTarget2D lightsTarget;
-        RenderTarget2D mainTarget;
-
         #endregion
 
         public BaseScreen(string screenDataAsset) : 
@@ -105,6 +114,13 @@ namespace _2DEngine
         {
             ScreenDataAsset = screenDataAsset;
 
+            GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
+            var pp = graphicsDevice.PresentationParameters;
+
+            MainRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+            LightRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
+
+            LightManager = new LightManager();
             BackgroundObjects = new ObjectManager<UIObject>();
             GameObjects = new ObjectManager<GameObject>();
             InGameUIObjects = new ObjectManager<UIObject>();
@@ -157,14 +173,11 @@ namespace _2DEngine
 
             AddInitialUI();
 
+            LightManager.LoadContent();
             BackgroundObjects.LoadContent();
             GameObjects.LoadContent();
             InGameUIObjects.LoadContent();
             ScreenUIObjects.LoadContent();
-
-            lightMask = ScreenManager.Instance.Content.Load<Texture2D>("Sprites\\Effects\\LightMask");
-            cursor = ScreenManager.Instance.Content.Load<Texture2D>("Sprites\\UI\\Cursor");
-            effect = ScreenManager.Instance.Content.Load<Effect>("Effects\\LightEffect");
 
             base.LoadContent();
         }
@@ -177,6 +190,7 @@ namespace _2DEngine
         {
             CheckShouldInitialise();
 
+            LightManager.Initialise();
             BackgroundObjects.Initialise();
             GameObjects.Initialise();
             InGameUIObjects.Initialise();
@@ -186,11 +200,6 @@ namespace _2DEngine
 
             ScriptManager.LoadContent();
             ScriptManager.Initialise();
-
-            GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
-            var pp = graphicsDevice.PresentationParameters;
-            lightsTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
-            mainTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight, false, pp.BackBufferFormat, DepthFormat.Depth24);
 
             base.Initialise();
         }
@@ -243,6 +252,7 @@ namespace _2DEngine
             ScriptManager.Update(elapsedGameTime);
             ShouldUpdate = ScriptManager.ShouldUpdateGame;
 
+            if (LightManager.ShouldUpdate) { LightManager.Update(elapsedGameTime); }
             if (BackgroundObjects.ShouldUpdate) { BackgroundObjects.Update(elapsedGameTime); }
             if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
             if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
@@ -261,61 +271,70 @@ namespace _2DEngine
 
             GraphicsDevice graphicsDevice = ScreenManager.Instance.GraphicsDeviceManager.GraphicsDevice;
 
-            graphicsDevice.SetRenderTarget(lightsTarget);
-            graphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive);
-            spriteBatch.Draw(lightMask, new Vector2(0, 0), Color.White);
-            spriteBatch.Draw(lightMask, new Vector2(100, 0), Color.White);
-            spriteBatch.Draw(lightMask, new Vector2(200, 200), Color.White);
-            spriteBatch.Draw(lightMask, new Vector2(300, 300), Color.White);
-            spriteBatch.Draw(lightMask, new Vector2(500, 200), Color.White);
-            spriteBatch.End();
-
-            graphicsDevice.SetRenderTarget(mainTarget);
-            graphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
-            spriteBatch.Draw(cursor, new Vector2(100, 0), Color.White);
-            spriteBatch.Draw(cursor, new Vector2(250, 250), Color.White);
-            spriteBatch.Draw(cursor, new Vector2(550, 225), Color.White);
-            spriteBatch.End();
-
-            graphicsDevice.SetRenderTarget(null);
-            graphicsDevice.Clear(Color.CornflowerBlue);
-
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-            effect.Parameters["lightMask"].SetValue(lightsTarget);
-            effect.CurrentTechnique.Passes[0].Apply();
-            spriteBatch.Draw(mainTarget, Vector2.Zero, Color.White);
-            spriteBatch.End();
-
-            /*if (Background != null)
+            // Draw our lighting
             {
+                graphicsDevice.SetRenderTarget(LightRenderTarget);
+
+                if (LightManager.ShouldDraw)
+                {
+                    graphicsDevice.Clear(Color.Black);
+
+                    spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Camera.TransformationMatrix);
+                    LightManager.Draw(spriteBatch);
+                    spriteBatch.End();
+                }
+                else
+                {
+                    graphicsDevice.Clear(Color.White);
+                }
+            }
+
+            // Draw our game world
+            {
+                graphicsDevice.SetRenderTarget(MainRenderTarget);
+                graphicsDevice.Clear(Color.CornflowerBlue);
+
+                if (Background != null)
+                {
+                    spriteBatch.Begin();
+                    {
+                        if (Background.ShouldDraw) { Background.Draw(spriteBatch); }
+                    }
+
+                    spriteBatch.End();
+                }
+
+                // Draw the camera dependent objects using the camera transformation matrix
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
+                {
+                    if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
+                    if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
+                    if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
+                }
+
+                spriteBatch.End();
+
+                // Draw the camera independent objects and the mouse last
                 spriteBatch.Begin();
                 {
-                    if (Background.ShouldDraw) { Background.Draw(spriteBatch); }
+                    if (ScreenUIObjects.ShouldDraw) { ScreenUIObjects.Draw(spriteBatch); }
+                    if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
                 }
 
                 spriteBatch.End();
             }
 
-            // Draw the camera dependent objects using the camera transformation matrix
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
+            // Combine the separate render targets together using the appropriate effects
             {
-                if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
-                if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
-                if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
+                graphicsDevice.SetRenderTarget(null);
+                graphicsDevice.Clear(Color.CornflowerBlue);
+
+                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                LightManager.LightEffect.Parameters["lightMask"].SetValue(LightRenderTarget);
+                LightManager.LightEffect.CurrentTechnique.Passes[0].Apply();
+                spriteBatch.Draw(MainRenderTarget, Vector2.Zero, Color.White);
+                spriteBatch.End();
             }
-
-            spriteBatch.End();
-
-            // Draw the camera independent objects and the mouse last
-            spriteBatch.Begin();
-            {
-                if (ScreenUIObjects.ShouldDraw) { ScreenUIObjects.Draw(spriteBatch); }
-                if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
-            }
-
-            spriteBatch.End();*/
         }
 
         #endregion

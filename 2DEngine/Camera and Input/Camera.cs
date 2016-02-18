@@ -40,6 +40,11 @@ namespace _2DEngine
         public static float PanSpeed { get; set; }
 
         /// <summary>
+        /// A value to determine how much we increase or decrease the camera zoom by when pressing + or -.
+        /// </summary>
+        public static float ZoomIncrement { get; set; }
+
+        /// <summary>
         /// A value only to be altered and seen by this class, used to determine the zoom of the camera.
         /// This value can be changed in Free or Follow mode by keyboard input ONLY.
         /// </summary>
@@ -122,12 +127,48 @@ namespace _2DEngine
             // If we are in fixed camera mode, we should not update anything
             if (CameraMode == CameraMode.kFixed) { return; }
 
-            // In Free or Follow mode, we can alter the zoom
+            // Handles zooming in or out
+            if (GameKeyboard.IsKeyPressed(InputMap.ZoomIn))
+            {
+                Zoom += ZoomIncrement;
+            }
+            else if (GameKeyboard.IsKeyPressed(InputMap.ZoomOut))
+            {
+                Zoom -= ZoomIncrement;
+                Zoom = MathHelper.Clamp(Zoom, ZoomIncrement, float.MaxValue);
+            }
 
             // We will be updating the position using keyboard input from now on - this only applies to Free mode
             if (CameraMode == CameraMode.kFollow) { return; }
 
-            // Update the camera position using keyboard input
+            Vector2 delta = Vector2.Zero;
+
+            // Handles panning in all four directions
+            if (GameKeyboard.IsKeyDown(InputMap.PanLeft))
+            {
+                delta += new Vector2(-1, 0);
+            }
+
+            if (GameKeyboard.IsKeyDown(InputMap.PanRight))
+            {
+                delta += new Vector2(1, 0);
+            }
+
+            if (GameKeyboard.IsKeyDown(InputMap.PanUp))
+            {
+                delta += new Vector2(0, -1);
+            }
+
+            if (GameKeyboard.IsKeyDown(InputMap.PanDown))
+            {
+                delta += new Vector2(0, 1);
+            }
+
+            if (delta != Vector2.Zero)
+            {
+                delta.Normalize();
+                Position += delta * PanSpeed * elapsedGameTime;
+            }
         }
 
         #endregion
@@ -190,7 +231,7 @@ namespace _2DEngine
         /// <param name="resetPosition">The new value of the camera's position</param>
         public static void SetFree(Vector2 resetPosition)
         {
-            CameraMode = CameraMode.kFree;
+            SetFree();
             Position = resetPosition;
         }
 
@@ -208,7 +249,7 @@ namespace _2DEngine
         /// <param name="resetPosition">The new value of the camera's position</param>
         public static void SetFixed(Vector2 resetPosition)
         {
-            CameraMode = CameraMode.kFixed;
+            SetFixed();
             Position = resetPosition;
         }
 

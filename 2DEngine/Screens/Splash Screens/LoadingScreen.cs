@@ -1,4 +1,6 @@
-﻿namespace _2DEngine
+﻿using System.Threading;
+
+namespace _2DEngine
 {
     /// <summary>
     /// An intermediary class used for moving to a gameplay screen.
@@ -12,6 +14,8 @@
         /// The screen we wish to transition to after this loading screen is completed
         /// </summary>
         private GameplayScreen ScreenToTransitionTo { get; set; }
+
+        Thread loadingThread;
 
         #endregion
 
@@ -32,9 +36,29 @@
         {
             base.Begin();
 
-            Transition(ScreenToTransitionTo);
+            loadingThread = new Thread(new ThreadStart(LoadScreenToTransitionTo));
+            loadingThread.Start();
+        }
+
+        public override void Update(float elapsedGameTime)
+        {
+            base.Update(elapsedGameTime);
+
+            if (!loadingThread.IsAlive)
+            {
+                Transition(ScreenToTransitionTo, false, false);
+            }
         }
 
         #endregion
+
+        /// <summary>
+        /// A function we will pass to our loading thread to perform all the loading and initialising of our screen we wish to transition to.
+        /// </summary>
+        private void LoadScreenToTransitionTo()
+        {
+            ScreenToTransitionTo.LoadContent();
+            ScreenToTransitionTo.Initialise();
+        }
     }
 }

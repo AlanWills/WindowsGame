@@ -58,6 +58,10 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Effects\Lighting\AmbientLight.cs" />
+    <Compile Include="Effects\Lighting\Light.cs" />
+    <Compile Include="Managers\LightManager.cs" />
+    <Compile Include="Effects\Lighting\PointLight.cs" />
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Managers\Assets\AssetManager.cs" />
     <Compile Include="Managers\Assets\XMLRegistry.cs" />

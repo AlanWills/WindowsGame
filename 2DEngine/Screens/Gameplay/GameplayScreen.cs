@@ -22,12 +22,19 @@ namespace _2DEngine
         public GameplayScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-            Camera.SetFree(Vector2.Zero);
+            LightManager.ShouldDraw = true;
 
             CollisionObjects = new List<GameObject>();
         }
 
         #region Virtual Functions
+
+        public override void Initialise()
+        {
+            base.Initialise();
+
+            Camera.SetFree(Vector2.Zero);
+        }
 
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {

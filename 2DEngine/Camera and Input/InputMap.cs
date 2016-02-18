@@ -16,5 +16,13 @@ namespace _2DEngine
         // Weapons
         public static MouseButton Shoot = MouseButton.kLeftButton;
         public static MouseButton Melee = MouseButton.kRightButton;
+
+        // Camera
+        public static Keys ZoomIn = Keys.Add;
+        public static Keys ZoomOut = Keys.Subtract;
+        public static Keys PanLeft = Keys.Left;
+        public static Keys PanRight = Keys.Right;
+        public static Keys PanUp = Keys.Up;
+        public static Keys PanDown = Keys.Down;
     }
 }

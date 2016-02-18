@@ -12,7 +12,8 @@ namespace _2DEngine
 
         /// <summary>
         /// The previous screen which we will transition to if we press Esc.
-        /// Going to need to think this through - currently ScreenManager removes it from active screens on transitioning
+        /// Going to need to think this through - currently ScreenManager removes it from active screens on transitioning.
+        /// Clone it or something?
         /// </summary>
         //private MenuScreen PreviousMenuScreen { get; set; }
 
@@ -21,10 +22,17 @@ namespace _2DEngine
         public MenuScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-            Camera.SetFixed(Vector2.Zero);
+            LightManager.ShouldDraw = false;
         }
 
         #region Virtual Functions
+
+        public override void Initialise()
+        {
+            base.Initialise();
+
+            Camera.SetFixed(Vector2.Zero);
+        }
 
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {

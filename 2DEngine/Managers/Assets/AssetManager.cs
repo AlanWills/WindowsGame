@@ -28,11 +28,15 @@ namespace _2DEngine
 
         #region Default Assets
 
+        // UI
         public const string MouseTextureAsset = "Sprites\\UI\\Cursor";
         public const string DefaultSpriteFontAsset = "SpriteFonts\\DefaultSpriteFont";
         public const string DefaultButtonTextureAsset = "Sprites\\UI\\ColourButtonTrial1";
         public const string DefaultTextBoxTextureAsset = "";
         public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
+
+        // Lights
+        public const string DefaultPointLightTextureAsset = "Sprites\\Effects\\LightMask";
 
         #endregion
 
@@ -118,14 +122,17 @@ namespace _2DEngine
         {
             SpriteFont spriteFont;
 
-            if (SpriteFonts.TryGetValue(path, out spriteFont))
+            try
             {
-                return spriteFont;
+                SpriteFonts.TryGetValue(path, out spriteFont);
             }
-            else
+            catch
             {
-                return LoadFromContentManager<SpriteFont>(path);
+                spriteFont = LoadFromContentManager< SpriteFont > (path);
             }
+
+            DebugUtils.AssertNotNull(spriteFont);
+            return spriteFont;
         }
 
         /// <summary>
@@ -137,14 +144,17 @@ namespace _2DEngine
         {
             Texture2D sprite;
 
-            if (Sprites.TryGetValue(path, out sprite))
+            try
             {
-                return sprite;
+                Sprites.TryGetValue(path, out sprite);
             }
-            else
+            catch
             {
-                return LoadFromContentManager<Texture2D>(path);
+                sprite = LoadFromContentManager<Texture2D>(path);
             }
+
+            DebugUtils.AssertNotNull(sprite);
+            return sprite;
         }
 
         /// <summary>
@@ -156,14 +166,16 @@ namespace _2DEngine
         {
             Effect effect;
 
-            if (Effects.TryGetValue(path, out effect))
+            try
             {
-                return effect;
+                Effects.TryGetValue(path, out effect);
             }
-            else
+            catch
             {
-                return LoadFromContentManager<Effect>(path);
+                effect = LoadFromContentManager<Effect>(path);
             }
+
+            return effect;
         }
 
         /// <summary>

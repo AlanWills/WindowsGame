@@ -35,22 +35,8 @@ namespace WindowsGame
             base.AddInitialUI();
 
             DeserializeLevel();
-            /*emitter = new ParticleEmitter(
-                new Vector2(3),
-                new Vector2(5, 5),
-                new Vector2(3, 3),
-                new Vector2(0, -1),
-                new Vector2(0.25f, 0.35f),
-                Color.Cyan,
-                Color.OrangeRed,
-                2,
-                0.25f,
-                0.001f,
-                GetScreenCentre(),
-                "Sprites\\Effects\\TrialParticle");
 
-            emitter.LoadContent();
-            emitter.Initialise();*/
+            LightManager.AddObject(new PointLight(new Vector2(500, 500), ScreenCentre, Color.White));
         }
 
         #endregion
