@@ -39,7 +39,6 @@ namespace WindowsGame
             base.Initialize();
 
             ScreenManager.Instance.Initialise();
-            //ScreenManager.Instance.StartGame(new PlatformGameplayScreen("Content\\Data\\Levels\\Level1.xml"));
             ScreenManager.Instance.StartGame(new MainMenuScreen());
         }
 

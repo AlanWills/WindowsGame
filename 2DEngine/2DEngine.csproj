@@ -58,6 +58,7 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Scripts\WaitScript.cs" />
     <Compile Include="Threading\CustomThread.cs" />
     <Compile Include="Effects\Lighting\AmbientLight.cs" />
     <Compile Include="Effects\Lighting\Light.cs" />
@@ -85,7 +86,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="Screens\Gameplay\GameplayScreen.cs" />
-    <Compile Include="Screens\Level Design\LevelDesignScreen.cs" />
     <Compile Include="Screens\Menus\MenuScreen.cs" />
     <Compile Include="Screens\Splash Screens\LoadingScreen.cs" />
     <Compile Include="Screens\Splash Screens\StartupLogoScreen.cs" />
@@ -98,6 +98,7 @@
     <Compile Include="UI\DialogBox.cs" />
     <Compile Include="UI\Logo.cs" />
     <Compile Include="Objects\UIContainer.cs" />
+    <Compile Include="UI\Slider.cs" />
     <Compile Include="Utils\DebugUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />
   </ItemGroup>

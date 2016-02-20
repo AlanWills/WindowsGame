@@ -1,0 +1,118 @@
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\obj\x86\Debug\LevelEditor.csprojResolveAssemblyReference.cache
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\LevelEditor.exe.config
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\LevelEditor.exe
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\LevelEditor.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\2DEngine.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\2DEngineData.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\LevelEditorData.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\2DEngineData.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\2DEngine.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\LevelEditorData.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\obj\x86\Debug\LevelEditor.exe
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\obj\x86\Debug\LevelEditor.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (1).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (2).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Box.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorLocked.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorOpen.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorUnlocked.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Saw.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (1).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (2).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (1).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (2).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (1).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (2).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (3).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (4).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (5).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (6).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (7).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (1).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (2).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (3).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Spike.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (1).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (10).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (11).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (12).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (13).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (14).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (15).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (2).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (3).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (4).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (5).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (6).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (7).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (8).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (9).png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\ColourButtonTrial1.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\Cursor.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\Logo.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Box.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorLocked.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorOpen.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorUnlocked.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Saw.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (3).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (4).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (5).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (6).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (7).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (3).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Spike.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (10).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (11).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (12).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (13).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (14).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (15).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (3).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (4).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (5).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (6).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (7).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (8).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (9).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\ColourButtonTrial1.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\Cursor.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\Logo.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Data\Levels\Level1.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Data\Screens\LoadingScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Data\Screens\StartupLogoScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Effects\LightEffect.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\SpriteFonts\DefaultSpriteFont.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Data\Screens\MainMenuScreen.xml

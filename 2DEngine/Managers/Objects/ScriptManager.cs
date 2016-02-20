@@ -1,7 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
-
-namespace _2DEngine
+﻿namespace _2DEngine
 {
     /// <summary>
     /// A singleton class for managing scripts in for our screens.
@@ -10,8 +7,11 @@ namespace _2DEngine
     {
         #region Properties
 
-        private ScriptManager instance;
-        public ScriptManager Instance
+        /// <summary>
+        /// Our ScriptManager singleton.
+        /// </summary>
+        private static ScriptManager instance;
+        public static ScriptManager Instance
         {
             get
             {
@@ -21,24 +21,6 @@ namespace _2DEngine
                 }
 
                 return instance;
-            }
-        }
-
-        /// <summary>
-        /// Loops through all the scripts. 
-        /// If one exists which should not update the game, returns false. Else returns true.
-        /// </summary>
-        public bool ShouldUpdateGame
-        {
-            get
-            {
-                foreach (Script script in ActiveObjects)
-                {
-                    // If a script exists which should not update the game, we return false
-                    if (!script.ShouldUpdateGame) { return false; }
-                }
-
-                return true;
             }
         }
 
@@ -52,5 +34,26 @@ namespace _2DEngine
         {
             
         }
+
+        #region Virtual Functions
+
+        /// <summary>
+        /// Adds a script and sets the it's ParentScreen property to the current screen if not currently set.
+        /// </summary>
+        /// <param name="objectToAdd"></param>
+        /// <param name="load"></param>
+        /// <param name="initialise"></param>
+        /// <returns></returns>
+        public override Script AddObject(Script objectToAdd, bool load = false, bool initialise = false)
+        {
+            if (objectToAdd.ParentScreen == null)
+            {
+                objectToAdd.ParentScreen = ScreenManager.Instance.CurrentScreen;
+            }
+
+            return base.AddObject(objectToAdd, load, initialise);
+        }
+
+        #endregion
     }
 }

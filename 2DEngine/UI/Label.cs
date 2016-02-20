@@ -29,8 +29,8 @@ namespace _2DEngine
 
         #endregion
 
-        public Label(string text, Vector2 localPosition, string spriteFontAsset = AssetManager.DefaultSpriteFontAsset) :
-            base(localPosition, "")
+        public Label(string text, Vector2 localPosition, string spriteFontAsset = AssetManager.DefaultSpriteFontAsset, float lifeTime = float.MaxValue) :
+            base(localPosition, "", lifeTime)
         {
             Text = text;
 

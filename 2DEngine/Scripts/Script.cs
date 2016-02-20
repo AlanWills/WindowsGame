@@ -5,6 +5,16 @@ using System.Diagnostics;
 namespace _2DEngine
 {
     /// <summary>
+    /// A delegate use for a function which will be called to test whether the current script can run
+    /// </summary>
+    public delegate void CanScriptRun();
+
+    /// <summary>
+    /// A delegate used for a function which will be called when the script dies
+    /// </summary>
+    public delegate void OnScriptDeath();
+
+    /// <summary>
     /// A script class to run a set of commands within a screen.
     /// Scripts should not really draw, update or handle input for items, but instead add them to their appropriate screen's manager.
     /// This can always be done by caching the screen as a property.
@@ -14,11 +24,6 @@ namespace _2DEngine
     public class Script : Component
     {
         #region Properties and Fields
-
-        /// <summary>
-        /// A flag to indicate whether we should allow the main game loops to run - Update and HandleInput
-        /// </summary>
-        public bool ShouldUpdateGame { get; set; }
 
         /// <summary>
         /// A reference to the parent screen - this will be useful for adding objects etc.
@@ -31,12 +36,20 @@ namespace _2DEngine
         public Script PreviousScript { get; set; }
 
         /// <summary>
-        /// A custom EventHandler for specifying a function to determine whether this script can run.
+        /// An event handler for specifying a function to determine whether this script can run.
         /// The event must specify itself whether the script ShouldHandleInput and ShouldUpdate.
         /// </summary>
-        public EventHandler CanRunEvent;
+        public event CanScriptRun CanRunEvent;
+
+        /// <summary>
+        /// An event handler used to manage a function which will be called when the script is completed.
+        /// Useful for resetting the game state for example.
+        /// </summary>
+        public event OnScriptDeath OnDeathCallback;
 
         #endregion
+
+        #region Virtual Functions
 
         /// <summary>
         /// Checks to see if the script can run and handle input.
@@ -65,16 +78,21 @@ namespace _2DEngine
         /// Tests if the PreviousScript is completely, or based on a custom event, otherwise true.
         /// </summary>
         /// <returns></returns>
-        public virtual void CheckCanRun()
+        protected virtual void CheckCanRun()
         {
-            if (PreviousScript != null)
+            if (ScreenManager.Instance.CurrentScreen != ParentScreen)
+            {
+                ShouldHandleInput = false;
+                ShouldUpdate = false;
+            }
+            else if (PreviousScript != null)
             {
                 ShouldHandleInput = !PreviousScript.IsAlive;
                 ShouldUpdate = !PreviousScript.IsAlive;
             }
             else if (CanRunEvent != null)
             {
-                CanRunEvent(this, EventArgs.Empty);
+                CanRunEvent();
             }
             else
             {
@@ -82,5 +100,20 @@ namespace _2DEngine
                 ShouldUpdate = true;
             }
         }
+
+        /// <summary>
+        /// Indicates that the script has finished and calls the OnDeathCallback event.
+        /// </summary>
+        public override void Die()
+        {
+            base.Die();
+
+            if (OnDeathCallback != null)
+            {
+                OnDeathCallback();
+            }
+        }
+
+        #endregion
     }
 }

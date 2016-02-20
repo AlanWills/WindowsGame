@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/UI/ColourButtonTrial1.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/UI/Cursor.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/UI/Logo.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Acid (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Acid (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (3).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (4).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (5).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (6).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/BGTile (7).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Fence (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Fence (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Fence (3).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Spike.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (3).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (4).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (5).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (6).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (7).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (8).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (9).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (10).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (11).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (12).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (13).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (14).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Tiles/Tile (15).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/Barrel (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/Barrel (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/Box.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/DoorLocked.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/DoorOpen.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/DoorUnlocked.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/Saw.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/Switch (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/Level/Objects/Switch (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Effects/LightEffect.fx</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/SpriteFonts/DefaultSpriteFont.spritefont</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/UI/BlueSliderDown.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/Sprites/UI/SliderBar.png</File>
+  </SourceFiles>
+</SourceFileCollection>

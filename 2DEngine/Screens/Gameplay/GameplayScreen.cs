@@ -29,6 +29,9 @@ namespace _2DEngine
 
         #region Virtual Functions
 
+        /// <summary>
+        /// Updates the Camera to be free moving
+        /// </summary>
         public override void Initialise()
         {
             base.Initialise();
@@ -36,6 +39,11 @@ namespace _2DEngine
             Camera.SetFree(Vector2.Zero);
         }
 
+        /// <summary>
+        /// Handles collisions of CollisionObjects
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
             base.HandleInput(elapsedGameTime, mousePosition);
@@ -66,6 +74,10 @@ namespace _2DEngine
 
         #region Utility Functions
 
+        /// <summary>
+        /// A function used to indicate that a GameObject should check collisions with the BackgroundObjects and other GameObjects
+        /// </summary>
+        /// <param name="collisionObject"></param>
         protected void AddCollisionObject(GameObject collisionObject)
         {
             Debug.Assert(collisionObject.UsesCollider);

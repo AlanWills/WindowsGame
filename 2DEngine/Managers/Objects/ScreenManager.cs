@@ -88,6 +88,7 @@ namespace _2DEngine
         {
             CheckShouldLoad();
 
+            ScriptManager.Instance.LoadContent();
             GameMouse.Instance.LoadContent();
 
             base.LoadContent();
@@ -100,6 +101,7 @@ namespace _2DEngine
         {
             CheckShouldInitialise();
 
+            ScriptManager.Instance.Initialise();
             ThreadManager.Initialise();
             Camera.Initialise();
             GameMouse.Instance.Initialise();
@@ -109,10 +111,10 @@ namespace _2DEngine
 
         /// <summary>
         /// Updates the keyboard and mouse.
-        /// Handles input for Camera and screens in ScreenManager
+        /// Handles input for Camera and screens in ScreenManager.
         /// </summary>
         /// <param name="elapsedGameTime"></param>
-        /// <param name="mousePosition"></param>
+        /// <param name="mousePosition">The screen position of the mouse</param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
             // Update keyboard and mouse first
@@ -121,6 +123,9 @@ namespace _2DEngine
 
             // Then handle camera input
             Camera.HandleInput(elapsedGameTime);
+
+            // Handle input for all of the scripts in our script manager
+            ScriptManager.Instance.HandleInput(elapsedGameTime, mousePosition);
 
             // Then finally handle screen input
             base.HandleInput(elapsedGameTime, mousePosition);
@@ -137,6 +142,9 @@ namespace _2DEngine
 
             // Update camera
             Camera.Update(elapsedGameTime);
+
+            // Update ScriptManager scripts
+            ScriptManager.Instance.Update(elapsedGameTime);
 
             // Then update any screens
             base.Update(elapsedGameTime);

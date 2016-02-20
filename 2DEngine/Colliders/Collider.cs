@@ -34,6 +34,11 @@ namespace _2DEngine
         public bool IsClicked { get; private set; }
 
         /// <summary>
+        /// A flag to indicate whether we have been pressed on
+        /// </summary>
+        public bool IsPressed { get; private set; }
+
+        /// <summary>
         /// A flag to indicate whether our mouse is over the object
         /// </summary>
         public bool IsMouseOver { get; private set; }
@@ -94,8 +99,11 @@ namespace _2DEngine
             // If the mouse position and this have collided the mouse is over it
             IsMouseOver = CheckCollisionWith(mousePosition);
 
-            // If the mouse is over this and the mouse is clicked the object is clicked
+            // If the mouse is over this and the left mouse button is clicked, the object is clicked
             IsClicked = IsMouseOver && GameMouse.Instance.IsClicked(MouseButton.kLeftButton);
+
+            // If the mouse is over this and the left mouse button is down, the object is pressed
+            IsPressed = IsMouseOver && GameMouse.Instance.IsDown(MouseButton.kLeftButton);
         }
 
         /// <summary>

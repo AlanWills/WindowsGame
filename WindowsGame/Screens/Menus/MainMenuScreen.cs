@@ -11,7 +11,7 @@ namespace WindowsGame
         public MainMenuScreen(string screenDataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
             base(screenDataAsset)
         {
-
+            
         }
 
         #region Virtual Functions

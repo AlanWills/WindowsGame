@@ -1,5 +1,6 @@
 ﻿using _2DEngine;
 using _2DEngineData;
+using LevelEditorData;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame
@@ -64,7 +65,7 @@ namespace WindowsGame
 
             PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
             pointLight.Parent = FindGameObject<GameObject>("Hero");
-            Lights.AddObject(pointLight);
+            //Lights.AddObject(pointLight);
         }
 
         #endregion

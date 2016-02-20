@@ -1,9 +1,7 @@
 ﻿using _2DEngineData;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace _2DEngine
 {
@@ -61,11 +59,6 @@ namespace _2DEngine
         /// A Manager for the Screen (camera independent) UI Objects in our screen
         /// </summary>
         protected ObjectManager<UIObject> ScreenUIObjects { get; private set; }
-
-        /// <summary>
-        /// Each screen has a script manager which contains scripts specific to that screen
-        /// </summary>
-        private ScriptManager ScriptManager { get; set; }
 
         /// <summary>
         /// A string for the xml data file for this screen.
@@ -139,8 +132,6 @@ namespace _2DEngine
             ScreenUIObjects = new ObjectManager<UIObject>();
 
             MusicQueueType = QueueType.WaitForCurrent;
-
-            ScriptManager = new ScriptManager(this);
         }
 
         // Do three drawing steps here rather than in screen manager
@@ -203,6 +194,8 @@ namespace _2DEngine
             InGameUIObjects.LoadContent();
             ScreenUIObjects.LoadContent();
 
+            AddInitialScripts();
+
             base.LoadContent();
         }
 
@@ -219,11 +212,6 @@ namespace _2DEngine
             GameObjects.Initialise();
             InGameUIObjects.Initialise();
             ScreenUIObjects.Initialise();
-
-            AddInitialScripts();
-
-            ScriptManager.LoadContent();
-            ScriptManager.Initialise();
 
             base.Initialise();
         }
@@ -252,10 +240,6 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            // See if we should continue or whether the ScriptManager is preventing us
-            ScriptManager.HandleInput(elapsedGameTime, mousePosition);
-            ShouldHandleInput = ScriptManager.ShouldUpdateGame;
-
             Vector2 gameMouseCoords = Camera.ScreenToGameCoords(mousePosition);
 
             if (BackgroundObjects.ShouldHandleInput) { BackgroundObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
@@ -271,10 +255,6 @@ namespace _2DEngine
         public override void Update(float elapsedGameTime)
         {
             base.Update(elapsedGameTime);
-
-            // See if we should continue or whether the ScriptManager is preventing us
-            ScriptManager.Update(elapsedGameTime);
-            ShouldUpdate = ScriptManager.ShouldUpdateGame;
 
             if (Lights.ShouldUpdate) { Lights.Update(elapsedGameTime); }
             if (BackgroundObjects.ShouldUpdate) { BackgroundObjects.Update(elapsedGameTime); }
@@ -397,7 +377,7 @@ namespace _2DEngine
         /// <param name="lightToAdd">The light to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this light when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this light when adding</param>
-        protected Light AddLight(Light lightToAdd, bool load = false, bool initialise = false)
+        public Light AddLight(Light lightToAdd, bool load = false, bool initialise = false)
         {
             return Lights.AddObject(lightToAdd, load, initialise);
         }
@@ -406,7 +386,7 @@ namespace _2DEngine
         /// Removes a Light from this screen's Lights manager
         /// </summary>
         /// <param name="lightToRemove">The light to remove</param>
-        protected void RemoveLight(Light lightToRemove)
+        public void RemoveLight(Light lightToRemove)
         {
             Lights.RemoveObject(lightToRemove);
         }
@@ -417,7 +397,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type that we wish to return the found light as</typeparam>
         /// <param name="backgroundObjectName">The name of the light to find</param>
         /// <returns>Returns the found light casted to type K, or null</returns>
-        protected K FindLight<K>(string lightName) where K : Light
+        public K FindLight<K>(string lightName) where K : Light
         {
             return Lights.FindObject<K>(lightName);
         }
@@ -428,7 +408,7 @@ namespace _2DEngine
         /// <param name="gameObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected UIObject AddBackgroundObject(UIObject backgroundObjectToAdd, bool load = false, bool initialise = false)
+        public UIObject AddBackgroundObject(UIObject backgroundObjectToAdd, bool load = false, bool initialise = false)
         {
             return BackgroundObjects.AddObject(backgroundObjectToAdd, load, initialise);
         }
@@ -437,7 +417,7 @@ namespace _2DEngine
         /// Removes a UIObject from this screen's BackgroundObjects manager
         /// </summary>
         /// <param name="backgroundObjectToRemove">The background object to remove</param>
-        protected void RemoveBackgroundObject(UIObject backgroundObjectToRemove)
+        public void RemoveBackgroundObject(UIObject backgroundObjectToRemove)
         {
             BackgroundObjects.RemoveObject(backgroundObjectToRemove);
         }
@@ -448,7 +428,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type that we wish to return the found object as</typeparam>
         /// <param name="backgroundObjectName">The name of the object to find</param>
         /// <returns>Returns the found object casted to type K, or null</returns>
-        protected K FindBackgroundObject<K>(string backgroundObjectName) where K : UIObject
+        public K FindBackgroundObject<K>(string backgroundObjectName) where K : UIObject
         {
             return BackgroundObjects.FindObject<K>(backgroundObjectName);
         }
@@ -459,7 +439,7 @@ namespace _2DEngine
         /// <param name="gameObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected GameObject AddGameObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
+        public GameObject AddGameObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
         {
             return GameObjects.AddObject(gameObjectToAdd, load, initialise);
         }
@@ -468,7 +448,7 @@ namespace _2DEngine
         /// Removes a GameObject from this screen's GameObjects manager
         /// </summary>
         /// <param name="gameObjectToRemove">The game object to remove</param>
-        protected void RemoveGameObject(GameObject gameObjectToRemove)
+        public void RemoveGameObject(GameObject gameObjectToRemove)
         {
             GameObjects.RemoveObject(gameObjectToRemove);
         }
@@ -490,7 +470,7 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected UIObject AddInGameUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        public UIObject AddInGameUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
             return InGameUIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
@@ -499,7 +479,7 @@ namespace _2DEngine
         /// Removes an InGameUIObject from this screen's InGameUIObjects manager
         /// </summary>
         /// <param name="uiObjectToRemove"></param>
-        protected void RemoveInGameUIObject(UIObject uiObjectToRemove)
+        public void RemoveInGameUIObject(UIObject uiObjectToRemove)
         {
             InGameUIObjects.RemoveObject(uiObjectToRemove);
         }
@@ -510,7 +490,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type we wish to return the found object as</typeparam>
         /// <param name="uiObjectName">The name of the object to find</param>
         /// <returns>Returns the found object casted to type K, or null</returns>
-        protected K FindInGameUIObject<K>(string uiObjectName) where K : UIObject
+        public K FindInGameUIObject<K>(string uiObjectName) where K : UIObject
         {
             return InGameUIObjects.FindObject<K>(uiObjectName);
         }
@@ -521,7 +501,7 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected UIObject AddScreenUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        public UIObject AddScreenUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
             return ScreenUIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
@@ -530,7 +510,7 @@ namespace _2DEngine
         /// Removes a ScreenUIObject from this screen's ScreenUIObjects manager
         /// </summary>
         /// <param name="uiObjectToRemove"></param>
-        protected void RemoveScreenUIObject(UIObject uiObjectToRemove)
+        public void RemoveScreenUIObject(UIObject uiObjectToRemove)
         {
             ScreenUIObjects.RemoveObject(uiObjectToRemove);
         }
@@ -541,7 +521,7 @@ namespace _2DEngine
         /// <typeparam name="K">The type we wish to return the found object as</typeparam>
         /// <param name="uiObjectName">The name of the object to find</param>
         /// <returns>Returns he found object casted to type K, or null</returns>
-        protected K FindScreenUIObject<K>(string uiObjectName) where K : UIObject
+        public K FindScreenUIObject<K>(string uiObjectName) where K : UIObject
         {
             return ScreenUIObjects.FindObject<K>(uiObjectName);
         }
@@ -567,10 +547,11 @@ namespace _2DEngine
         /// <param name="script"></param>
         /// <param name="load">Calls Load on the Script</param>
         /// <param name="initialise">Calls Initialise on the Script</param>
-        protected void AddScript(Script script, Script previousScript = null, bool load = false, bool initialise = false)
+        protected Script AddScript(Script script, Script previousScript = null, bool load = true, bool initialise = true)
         {
             script.PreviousScript = null;
-            ScriptManager.AddObject(script);
+            script.ParentScreen = this;
+            return ScriptManager.Instance.AddObject(script, load, initialise);
         }
 
         #endregion

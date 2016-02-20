@@ -31,9 +31,12 @@ namespace _2DEngine
         // UI
         public const string MouseTextureAsset = "Sprites\\UI\\Cursor";
         public const string DefaultSpriteFontAsset = "SpriteFonts\\DefaultSpriteFont";
+        public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
+
         public const string DefaultButtonTextureAsset = "Sprites\\UI\\ColourButtonTrial1";
         public const string DefaultTextBoxTextureAsset = "";
-        public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
+        public const string DefaultSliderBarTextureAsset = "Sprites\\UI\\SliderBar";
+        public const string DefaultSliderHandleTextureAsset = "Sprites\\UI\\BlueSliderDown";
 
         // Lights
         public const string DefaultPointLightTextureAsset = "Sprites\\Effects\\PointLightMask";

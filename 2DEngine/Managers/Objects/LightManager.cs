@@ -40,7 +40,7 @@ namespace _2DEngine
         public LightManager() :
             base()
         {
-            AddObject(new AmbientLight(Color.Black, 0));
+            AddObject(new AmbientLight(Color.Black, 1));
         }
 
         #region Virtual Functions

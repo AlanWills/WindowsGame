@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/SpriteFonts/DefaultSpriteFont.spritefont</SourceFile>
+  <SourceTime>2016-02-20T13:49:21.9574382+00:00</SourceTime>
+  <DestFile>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/LevelEditor/Content/bin/Windows/SpriteFonts/DefaultSpriteFont.xnb</DestFile>
+  <DestTime>2016-02-20T13:49:37.9298422+00:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2016-01-09T01:35:18+00:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2016-01-09T01:35:18+00:00</ProcessorTime>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

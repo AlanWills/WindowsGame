@@ -767,6 +767,10 @@
       <Project>{b56f5aa9-69a8-454a-9ee5-a815735804b7}</Project>
       <Name>2DEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LevelEditorData\LevelEditorData.csproj">
+      <Project>{330b7b81-d484-4fea-83b1-76e746c6c381}</Project>
+      <Name>LevelEditorData</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -780,6 +784,9 @@
     <Content Include="Content\Effects\LightEffect.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\Scripts\Test.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\SpriteFonts\DefaultSpriteFont.spritefont" />
     <None Include="Content\SpriteFonts\DefaultSpriteFont.xnb" />
     <None Include="Content\Sprites\Backgrounds\MainMenuScreen.xnb" />
