@@ -18,36 +18,62 @@ namespace WindowsGame
         public PlatformGameplayScreen(string levelDataAsset) :
             base(levelDataAsset)
         {
-            Player player = new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml");
-            AddGameObject(player);
-            AddCollisionObject(player);
 
-            PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
-            pointLight.Parent = player;
-            LightManager.AddObject(pointLight);
         }
 
         #region Virtual Functions
 
+        /// <summary>
+        /// Load this screen's data as LevelDesignScreenData.
+        /// </summary>
+        /// <returns></returns>
         protected override BaseScreenData LoadScreenData()
         {
             return AssetManager.GetData<LevelDesignScreenData>(ScreenDataAsset);
         }
 
+        /// <summary>
+        /// Deserialize our level and add the appropriate background/UI objects
+        /// </summary>
         protected override void AddInitialUI()
         {
             base.AddInitialUI();
 
             DeserializeLevel();
+        }
 
-            
-            //LightManager.AddObject(new PointLight(new Vector2(500, 500), ScreenCentre, Color.Blue));
+        /// <summary>
+        /// Add our initial game objects to the scene.
+        /// </summary>
+        protected override void AddInitialGameObjects()
+        {
+            base.AddInitialGameObjects();
+
+            Player player = new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml");
+            player.Name = "Hero";
+            AddGameObject(player);
+            AddCollisionObject(player);
+        }
+
+        /// <summary>
+        /// Add our initial game objects to the scene.
+        /// </summary>
+        protected override void AddInitialLights()
+        {
+            base.AddInitialLights();
+
+            PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
+            pointLight.Parent = FindGameObject<GameObject>("Hero");
+            Lights.AddObject(pointLight);
         }
 
         #endregion
 
         #region Level Loading Functions
 
+        /// <summary>
+        /// Deserialize the LevelDesignScreenData.
+        /// </summary>
         private void DeserializeLevel()
         {
             LevelDesignScreenData levelData = ScreenData.As<LevelDesignScreenData>();
@@ -73,9 +99,14 @@ namespace WindowsGame
             }
         }
 
+        /// <summary>
+        /// Create a background object for our level using the XML data.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="size"></param>
         private void DeserializeLevelObject(LevelObjectData data, Vector2 size)
         {
-            LevelDesignObject newObject = new LevelDesignObject(size, data.Position, data.TextureAsset);
+            Image newObject = new Image(size, data.Position, data.TextureAsset);
             newObject.LocalRotation = data.Rotation;
             newObject.UsesCollider = data.Collision;
 

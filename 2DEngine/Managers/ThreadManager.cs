@@ -11,11 +11,17 @@ namespace _2DEngine
         private static List<CustomThread> ActiveThreads { get; set; }
 
         /// <summary>
+        /// The main thread for our game.
+        /// </summary>
+        public static Thread MainThread { get; private set; }
+
+        /// <summary>
         /// Initialises any static properties for the ThreadManager.
         /// </summary>
         public static void Initialise()
         {
             ActiveThreads = new List<CustomThread>();
+            MainThread = Thread.CurrentThread;
         }
 
         /// <summary>

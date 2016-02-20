@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
 
 namespace _2DEngine
 {
@@ -64,6 +63,11 @@ namespace _2DEngine
         /// A wrapper property to return the centre of the screen
         /// </summary>
         public Vector2 ScreenCentre { get; private set; }
+
+        /// <summary>
+        /// A reference to our current screen
+        /// </summary>
+        public BaseScreen CurrentScreen { get; private set; }
 
         #endregion
 
@@ -142,6 +146,20 @@ namespace _2DEngine
             GameMouse.Instance.IsFlushed = false;
         }
 
+        /// <summary>
+        /// Adds a screen to the screenmanager and updates our current screen reference
+        /// </summary>
+        /// <param name="objectToAdd"></param>
+        /// <param name="load"></param>
+        /// <param name="initialise"></param>
+        /// <returns></returns>
+        public override BaseScreen AddObject(BaseScreen objectToAdd, bool load = false, bool initialise = false)
+        {
+            CurrentScreen = objectToAdd;
+
+            return base.AddObject(objectToAdd, load, initialise);
+        }
+
         #endregion
 
         #region Utility Functions
@@ -180,9 +198,9 @@ namespace _2DEngine
         /// <param name="initialise">Whether we should call Initialise on the screen to add</param>
         public void Transition(BaseScreen transitionFrom, BaseScreen transitionTo, bool load = true, bool initialise = true)
         {
-            if (transitionTo.Is<GameplayScreen>() && !transitionFrom.Is<LoadingScreen>())
+            if (transitionTo is GameplayScreen && !(transitionFrom is LoadingScreen))
             {
-                AddObject(new LoadingScreen(transitionTo.As<GameplayScreen>()), true, true);
+                AddObject(new LoadingScreen(transitionTo as GameplayScreen), true, true);
             }
             else
             {

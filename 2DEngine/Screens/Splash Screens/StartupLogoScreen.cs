@@ -36,6 +36,9 @@ namespace _2DEngine
             AddScreenUIObject(new Logo());
         }
 
+        /// <summary>
+        /// Creates a thread to load the content.
+        /// </summary>
         public override void Begin()
         {
             base.Begin();

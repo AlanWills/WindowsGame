@@ -40,7 +40,7 @@ namespace _2DEngine
         public LightManager() :
             base()
         {
-            AddObject(new AmbientLight(Color.White, 0.3f));
+            AddObject(new AmbientLight(Color.Black, 0));
         }
 
         #region Virtual Functions
@@ -64,11 +64,9 @@ namespace _2DEngine
         /// <param name="objectToAdd">The light to add</param>
         /// <param name="load">Whether we should call load content</param>
         /// <param name="initialise">Whether we should initialise</param>
-        public override void AddObject(Light objectToAdd, bool load = false, bool initialise = false)
+        public override Light AddObject(Light objectToAdd, bool load = false, bool initialise = false)
         {
-            base.AddObject(objectToAdd, load, initialise);
-
-            if (objectToAdd.Is<AmbientLight>())
+            if (objectToAdd is AmbientLight)
             {
                 // Remove our old ambient light
                 if (AmbientLightReference != null)
@@ -77,8 +75,10 @@ namespace _2DEngine
                 }
 
                 // Set our new ambient light
-                AmbientLightReference = objectToAdd.As<AmbientLight>();
+                AmbientLightReference = objectToAdd as AmbientLight;
             }
+
+            return base.AddObject(objectToAdd, load, initialise);
         }
 
         #endregion

@@ -1,13 +1,28 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using System.Diagnostics;
 
 namespace _2DEngine
 {
     /// <summary>
-    /// A class for managing scripts in a screen
+    /// A singleton class for managing scripts in for our screens.
     /// </summary>
     public class ScriptManager : ObjectManager<Script>
     {
         #region Properties
+
+        private ScriptManager instance;
+        public ScriptManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ScriptManager();
+                }
+
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Loops through all the scripts. 
@@ -27,43 +42,15 @@ namespace _2DEngine
             }
         }
 
-        /// <summary>
-        /// A reference to the screen that this ScriptManager corresponds to.
-        /// </summary>
-        private BaseScreen ParentScreen { get; set; }
-
         #endregion
 
         /// <summary>
         /// Private constructor to enforce the singleton.
         /// </summary>
-        public  ScriptManager(BaseScreen parentScreen) :
+        public  ScriptManager() :
             base()
         {
-            ParentScreen = parentScreen;
+            
         }
-
-        #region Virtual Functions
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            // No drawing in scripts
-        }
-
-        #endregion
-
-        #region Utility Functions
-
-        public override void AddObject(Script objectToAdd, bool load = false, bool initialise = false)
-        {
-            if (objectToAdd.ParentScreen == null)
-            {
-                objectToAdd.ParentScreen = ParentScreen;
-            }
-
-            base.AddObject(objectToAdd, load, initialise);
-        }
-
-        #endregion
     }
 }

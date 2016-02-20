@@ -22,7 +22,7 @@ namespace _2DEngine
         public GameplayScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-            LightManager.ShouldDraw = true;
+            Lights.ShouldDraw = true;
 
             CollisionObjects = new List<GameObject>();
         }

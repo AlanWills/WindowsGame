@@ -109,11 +109,11 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd"></param>
         /// <param name="load"></param>
         /// <param name="initialise"></param>
-        public void AddObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        public UIObject AddObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
             uiObjectToAdd.Parent = this;
 
-            UIObjects.AddObject(uiObjectToAdd, load, initialise);
+            return UIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
 
         /// <summary>

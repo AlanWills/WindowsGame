@@ -158,7 +158,7 @@ namespace _2DEngine
         /// <param name="objectToAdd">The object we wish to add</param>
         /// <param name="load">A flag to indicate whether we wish to call LoadContent on this object before adding - false by default.</param>
         /// <param name="initialise">A flag to indicate whether we wish to call Initialise on this object before adding - false by default.</param>
-        public virtual void AddObject(T objectToAdd, bool load = false, bool initialise = false)
+        public virtual T AddObject(T objectToAdd, bool load = false, bool initialise = false)
         {
             if (load)
             {
@@ -171,6 +171,8 @@ namespace _2DEngine
             }
 
             ObjectsToAdd.Add(objectToAdd);
+
+            return objectToAdd;
         }
 
         /// <summary>
@@ -195,9 +197,9 @@ namespace _2DEngine
             List<K> objects = new List<K>();
             foreach (T obj in ActiveObjects)
             {
-                if (obj.Is<K>())
+                if (obj is K)
                 {
-                    objects.Add(obj.As<K>());
+                    objects.Add(obj as K);
                 }
             }
 
@@ -214,11 +216,11 @@ namespace _2DEngine
         public K FindObject<K>(string name) where K : T
         {
             K obj = null;
-            obj = ActiveObjects.Find(x => x.Name == name).As<K>();
+            obj = ActiveObjects.Find(x => x.Name == name) as K;
 
             if (obj != null) { return obj; }
 
-            obj = ObjectsToAdd.Find(x => x.Name == name).As<K>();
+            obj = ObjectsToAdd.Find(x => x.Name == name) as K;
 
             // Really we shouldn't be returning null, because we assume we are trying to find something we know exists
             DebugUtils.AssertNotNull(obj);

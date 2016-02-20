@@ -22,7 +22,7 @@ namespace _2DEngine
         public MenuScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-            LightManager.ShouldDraw = false;
+            Lights.ShouldDraw = false;
         }
 
         #region Virtual Functions

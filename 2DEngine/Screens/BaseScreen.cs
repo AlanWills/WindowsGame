@@ -40,7 +40,7 @@ namespace _2DEngine
         /// <summary>
         /// A Manager for all the lights in the game.
         /// </summary>
-        protected LightManager LightManager { get; private set; }
+        protected LightManager Lights { get; private set; }
 
         /// <summary>
         /// A Manager for all the In Game background UI Objects (that will appear behind the Game Objects)
@@ -132,7 +132,7 @@ namespace _2DEngine
             InGameUIRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
             ScreenUIRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
 
-            LightManager = new LightManager();
+            Lights = new LightManager();
             BackgroundObjects = new ObjectManager<UIObject>();
             GameObjects = new ObjectManager<GameObject>();
             InGameUIObjects = new ObjectManager<UIObject>();
@@ -166,6 +166,16 @@ namespace _2DEngine
         }
 
         /// <summary>
+        /// Adds initial game objects to our screen.
+        /// </summary>
+        protected virtual void AddInitialGameObjects() { }
+
+        /// <summary>
+        /// Adds initial lights to our screen.
+        /// </summary>
+        protected virtual void AddInitialLights() { }
+
+        /// <summary>
         /// A function which loads the screen data of a certain type.
         /// Can be overridden to load screen data of a type different to BaseScreenData.
         /// </summary>
@@ -176,7 +186,7 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Creates Initial UI and then calls LoadContent on the three Managers
+        /// Creates Initial UI, GameObjects and Lights and then calls LoadContent on the screen Managers.
         /// </summary>
         public override void LoadContent()
         {
@@ -184,8 +194,10 @@ namespace _2DEngine
             CheckShouldLoad();
 
             AddInitialUI();
+            AddInitialGameObjects();
+            AddInitialLights();
 
-            LightManager.LoadContent();
+            Lights.LoadContent();
             BackgroundObjects.LoadContent();
             GameObjects.LoadContent();
             InGameUIObjects.LoadContent();
@@ -195,14 +207,14 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Calls Initialise on the three Managers and ScriptManager.
+        /// Calls Initialise on the screen Managers and ScriptManager.
         /// Adds Initial Scripts to the ScriptManager
         /// </summary>
         public override void Initialise()
         {
             CheckShouldInitialise();
 
-            LightManager.Initialise();
+            Lights.Initialise();
             BackgroundObjects.Initialise();
             GameObjects.Initialise();
             InGameUIObjects.Initialise();
@@ -232,7 +244,7 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Call HandleInput on the three managers
+        /// Call HandleInput on the screen managers.
         /// </summary>
         /// <param name="elapsedGameTime">The time in seconds since the last frame</param>
         /// <param name="mousePosition">The current screen space position of the mouse</param>
@@ -253,7 +265,7 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Call Update on the three managers
+        /// Call Update on the screen managers.
         /// </summary>
         /// <param name="elapsedGameTime">The time in seconds since the last frame</param>
         public override void Update(float elapsedGameTime)
@@ -264,7 +276,7 @@ namespace _2DEngine
             ScriptManager.Update(elapsedGameTime);
             ShouldUpdate = ScriptManager.ShouldUpdateGame;
 
-            if (LightManager.ShouldUpdate) { LightManager.Update(elapsedGameTime); }
+            if (Lights.ShouldUpdate) { Lights.Update(elapsedGameTime); }
             if (BackgroundObjects.ShouldUpdate) { BackgroundObjects.Update(elapsedGameTime); }
             if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
             if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
@@ -273,7 +285,7 @@ namespace _2DEngine
 
         /// <summary>
         /// Draws the background first.
-        /// Calls draw on the three objects in the order: GameObjects, InGameUIObjects, ScreenUIObjects.
+        /// Calls draw on the screen objects in the order: Lights, Background, GameObjects, InGameUIObjects, ScreenUIObjects.
         /// Draws the mouse at the after everything else.
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch we should use for drawing sprites</param>
@@ -287,12 +299,12 @@ namespace _2DEngine
             {
                 graphicsDevice.SetRenderTarget(LightRenderTarget);
 
-                if (LightManager.ShouldDraw)
+                if (Lights.ShouldDraw)
                 {
                     graphicsDevice.Clear(Color.Black);
 
                     spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, null, null, null, null, Camera.TransformationMatrix);
-                    LightManager.Draw(spriteBatch);
+                    Lights.Draw(spriteBatch);
                     spriteBatch.End();
                 }
                 else
@@ -361,9 +373,9 @@ namespace _2DEngine
 
                 // Combine the Light and Game World render targets
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-                LightManager.LightEffect.Parameters["lightMask"].SetValue(LightRenderTarget);
-                LightManager.LightEffect.Parameters["ambientLight"].SetValue(LightManager.AmbientLight.ToVector4());
-                LightManager.LightEffect.CurrentTechnique.Passes[0].Apply();
+                Lights.LightEffect.Parameters["lightMask"].SetValue(LightRenderTarget);
+                Lights.LightEffect.Parameters["ambientLight"].SetValue(Lights.AmbientLight.ToVector4());
+                Lights.LightEffect.CurrentTechnique.Passes[0].Apply();
                 spriteBatch.Draw(GameWorldRenderTarget, Vector2.Zero, Color.White);
                 spriteBatch.End();
 
@@ -380,14 +392,45 @@ namespace _2DEngine
         #region Functions for Managing Objects
 
         /// <summary>
+        /// Adds a Light to this screen's Lights manager
+        /// </summary>
+        /// <param name="lightToAdd">The light to add</param>
+        /// <param name="load">A flag to indicate whether LoadContent should be called on this light when adding</param>
+        /// <param name="initialise">A flag to indicate whether Initialise should be called on this light when adding</param>
+        protected Light AddLight(Light lightToAdd, bool load = false, bool initialise = false)
+        {
+            return Lights.AddObject(lightToAdd, load, initialise);
+        }
+
+        /// <summary>
+        /// Removes a Light from this screen's Lights manager
+        /// </summary>
+        /// <param name="lightToRemove">The light to remove</param>
+        protected void RemoveLight(Light lightToRemove)
+        {
+            Lights.RemoveObject(lightToRemove);
+        }
+
+        /// <summary>
+        /// Finds a Light in this screen's Lights manager
+        /// </summary>
+        /// <typeparam name="K">The type that we wish to return the found light as</typeparam>
+        /// <param name="backgroundObjectName">The name of the light to find</param>
+        /// <returns>Returns the found light casted to type K, or null</returns>
+        protected K FindLight<K>(string lightName) where K : Light
+        {
+            return Lights.FindObject<K>(lightName);
+        }
+
+        /// <summary>
         /// Adds a UIObject to this screen's BackgroundObjects manager
         /// </summary>
         /// <param name="gameObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected void AddBackgroundObject(UIObject backgroundObjectToAdd, bool load = false, bool initialise = false)
+        protected UIObject AddBackgroundObject(UIObject backgroundObjectToAdd, bool load = false, bool initialise = false)
         {
-            BackgroundObjects.AddObject(backgroundObjectToAdd, load, initialise);
+            return BackgroundObjects.AddObject(backgroundObjectToAdd, load, initialise);
         }
 
         /// <summary>
@@ -416,9 +459,9 @@ namespace _2DEngine
         /// <param name="gameObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected void AddGameObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
+        protected GameObject AddGameObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
         {
-            GameObjects.AddObject(gameObjectToAdd, load, initialise);
+            return GameObjects.AddObject(gameObjectToAdd, load, initialise);
         }
 
         /// <summary>
@@ -447,9 +490,9 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected void AddInGameUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        protected UIObject AddInGameUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
-            InGameUIObjects.AddObject(uiObjectToAdd, load, initialise);
+            return InGameUIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
 
         /// <summary>
@@ -478,9 +521,9 @@ namespace _2DEngine
         /// <param name="uiObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        protected void AddScreenUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
+        protected UIObject AddScreenUIObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
-            ScreenUIObjects.AddObject(uiObjectToAdd, load, initialise);
+            return ScreenUIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
 
         /// <summary>

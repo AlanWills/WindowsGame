@@ -111,13 +111,11 @@ namespace _2DEngine
         {
             float extraLifeTime = MathUtils.GenerateFloat(0, ParticleLifeTimeVariation);
 
-            Particle particle = new Particle(StartSize, Vector2.Zero, ParticleTextureAsset, ParticleLifeTime + extraLifeTime);
+            Particle particle = (Particle)AddObject(new Particle(StartSize, Vector2.Zero, ParticleTextureAsset, ParticleLifeTime + extraLifeTime), true, true);
             particle.EndSize = EndSize + new Vector2(MathUtils.GenerateFloat(0, SizeVariation.X), MathUtils.GenerateFloat(0, SizeVariation.X));
             particle.Colour = StartColour;
             particle.EndColour = EndColour;
             particle.Velocity = Velocity + new Vector2(MathUtils.GenerateFloat(-VelocityVariation.X, VelocityVariation.X), MathUtils.GenerateFloat(0, VelocityVariation.Y));
-
-            AddObject(particle, true, true);
         }
 
         #region Virtual Functions
