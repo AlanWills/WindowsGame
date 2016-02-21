@@ -13,9 +13,26 @@ namespace _2DEngine
         #region Properties and Fields
 
         /// <summary>
-        /// The text which we will be rendering
+        /// The text which we will be rendering.
+        /// Automatically changes the size so the new text will be in the same dimensions.
         /// </summary>
-        public string Text { get; set; }
+        private string text;
+        public string Text
+        {
+            get { return text; }
+            set
+            {
+                // Initially, our text will be null so cannot use the old dimensions to calculate the new ones, so use an indentity vector
+                Vector2 oldScale = Vector2.One;
+                if (Text != null)
+                {
+                    oldScale = Vector2.Divide(Size, TextDimensions);
+                }
+                
+                text = value;
+                Size = Vector2.Multiply(oldScale, TextDimensions);
+            }
+        }
 
         /// <summary>
         /// Used in drawing the text.  Corresponds to the centre of the text string.
@@ -41,14 +58,11 @@ namespace _2DEngine
         #region Virtual Functions
 
         /// <summary>
-        /// Sets up the SpriteFont for this text
+        /// We do not need a texture or any other set up that happens from base classes so do not call their LoadContent function
         /// </summary>
         public override void LoadContent()
         {
-            // Check to see if we should load
             CheckShouldLoad();
-
-            SetupSpriteFont();
 
             ShouldLoad = false;
         }

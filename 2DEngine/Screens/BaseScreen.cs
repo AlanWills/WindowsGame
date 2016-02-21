@@ -177,16 +177,17 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Creates Initial UI, GameObjects and Lights and then calls LoadContent on the screen Managers.
+        /// Creates Lights, GameObjects and then UI and then calls LoadContent on the screen Managers.
         /// </summary>
         public override void LoadContent()
         {
             // Check if we should load
             CheckShouldLoad();
 
-            AddInitialUI();
-            AddInitialGameObjects();
+            // Create the lights and objects first as our UI will probably depend on their values
             AddInitialLights();
+            AddInitialGameObjects();
+            AddInitialUI();
 
             Lights.LoadContent();
             BackgroundObjects.LoadContent();

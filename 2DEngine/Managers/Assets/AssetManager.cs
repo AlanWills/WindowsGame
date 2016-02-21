@@ -1,12 +1,9 @@
 ﻿using _2DEngineData;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace _2DEngine
@@ -34,9 +31,14 @@ namespace _2DEngine
         public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
 
         public const string DefaultButtonTextureAsset = "Sprites\\UI\\ColourButtonTrial1";
+
         public const string DefaultTextBoxTextureAsset = "";
+
         public const string DefaultSliderBarTextureAsset = "Sprites\\UI\\SliderBar";
         public const string DefaultSliderHandleTextureAsset = "Sprites\\UI\\BlueSliderDown";
+
+        public const string DefaultBarForegroundTextureAsset = "Sprites\\UI\\BarBackground";
+        public const string DefaultBarBackgroundTextureAsset = "Sprites\\UI\\BarBackground";
 
         // Lights
         public const string DefaultPointLightTextureAsset = "Sprites\\Effects\\PointLightMask";

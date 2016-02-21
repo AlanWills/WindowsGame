@@ -29,9 +29,21 @@ namespace _2DEngine
 
         /// <summary>
         /// A class specific SpriteFont which can be used to draw text.
-        /// Must be created by this class.
         /// </summary>
-        protected SpriteFont SpriteFont { get; set; }
+        private SpriteFont spriteFont;
+        protected SpriteFont SpriteFont
+        {
+            get
+            {
+                if (spriteFont == null)
+                {
+                    spriteFont = AssetManager.GetSpriteFont(AssetManager.DefaultSpriteFontAsset);
+                }
+
+                return spriteFont;
+            }
+            set { spriteFont = value; }
+        }
 
         #endregion
 
@@ -60,16 +72,6 @@ namespace _2DEngine
                 // and will be cleared up by whatever manager is in charge of it
                 Die();
             }
-        }
-
-        #endregion
-
-        #region Utility Functions
-
-        protected void SetupSpriteFont(string spriteFontAsset = AssetManager.DefaultSpriteFontAsset)
-        {
-            SpriteFont = AssetManager.GetSpriteFont(spriteFontAsset);
-            DebugUtils.AssertNotNull(SpriteFont);
         }
 
         #endregion

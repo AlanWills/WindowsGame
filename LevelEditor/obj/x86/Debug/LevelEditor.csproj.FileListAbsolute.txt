@@ -116,3 +116,9 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Effects\LightEffect.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\SpriteFonts\DefaultSpriteFont.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Data\Screens\MainMenuScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\BlueSliderDown.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\SliderBar.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\BlueSliderDown.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\SliderBar.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\BarBackground.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\BarBackground.xnb

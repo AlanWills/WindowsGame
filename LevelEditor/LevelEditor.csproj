@@ -71,6 +71,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Effects\LightEffect.fx" />
+    <Content Include="Content\Sprites\UI\BarBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\UI\BlueSliderDown.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -244,6 +247,7 @@
     <None Include="Content\Sprites\Level\Tiles\Tile %287%29.xnb" />
     <None Include="Content\Sprites\Level\Tiles\Tile %288%29.xnb" />
     <None Include="Content\Sprites\Level\Tiles\Tile %289%29.xnb" />
+    <None Include="Content\Sprites\UI\BarBackground.xnb" />
     <None Include="Content\Sprites\UI\BlueSliderDown.xnb" />
     <None Include="Content\Sprites\UI\ColourButtonTrial1.xnb" />
     <None Include="Content\Sprites\UI\Cursor.xnb" />

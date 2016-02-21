@@ -55,6 +55,11 @@ namespace LevelEditor
         private Image CurrentSelectedObject { get; set; }
 
         /// <summary>
+        /// A map which determines which key corresponds to changing our current level design type
+        /// </summary>
+        private Dictionary<Keys, LevelDesignType> KeyTypeMap { get; set; }
+
+        /// <summary>
         /// UI Constants
         /// </summary>
         private Vector2 ButtonSize = new Vector2(32, 32);
@@ -67,6 +72,13 @@ namespace LevelEditor
             base(screenDataAsset)
         {
             LevelObjects = new Dictionary<LevelDesignType, List<LevelDesignObject>>((int)LevelDesignType.kNumTypes);
+            KeyTypeMap = new Dictionary<Keys, LevelDesignType>
+            {
+                { Keys.D1, LevelDesignType.kNormalTile },
+                { Keys.D2, LevelDesignType.kCollisionTile },
+                { Keys.D3, LevelDesignType.kNormalDecal },
+                { Keys.D4, LevelDesignType.kCollisionDecal }
+            };
 
             for (LevelDesignType type = LevelDesignType.kNormalTile; type < LevelDesignType.kNumTypes; type++)
             {
@@ -121,6 +133,16 @@ namespace LevelEditor
         #region Virtual Functions
 
         /// <summary>
+        /// Adds an initial ambient light
+        /// </summary>
+        protected override void AddInitialLights()
+        {
+            base.AddInitialLights();
+
+            AddLight(new AmbientLight(Color.White, 0.35f));
+        }
+
+        /// <summary>
         /// Adds the buttons for the available assets and loads our level
         /// </summary>
         protected override void AddInitialUI()
@@ -158,7 +180,21 @@ namespace LevelEditor
             serializeButton.ClickEvent += SerializeLevel;
             AddScreenUIObject(serializeButton);
 
-            Slider ambientColourRedSlider = new Slider()
+            float padding = ScreenDimensions.Y * 0.1f;
+
+            Color currentAmbientColour = Lights.AmbientLightReference.Colour;
+
+            Slider ambientColourRedSlider = (Slider)AddScreenUIObject(new Slider(0, 255, currentAmbientColour.R, "Ambient Red", new Vector2(ScreenDimensions.X * 0.9f, ScreenDimensions.Y * 0.5f)));
+            ambientColourRedSlider.OnValueChanged += OnAmbientRedChanged;
+
+            Slider ambientColourGreenSlider = (Slider)AddScreenUIObject(new Slider(0, 255, currentAmbientColour.G,  "Ambient Green", ambientColourRedSlider.WorldPosition +  new Vector2(0, padding)));
+            ambientColourGreenSlider.OnValueChanged += OnAmbientGreenChanged;
+
+            Slider ambientColourBlueSlider = (Slider)AddScreenUIObject(new Slider(0, 255, currentAmbientColour.B, "Ambient Blue", ambientColourGreenSlider.WorldPosition + new Vector2(0, padding)));
+            ambientColourBlueSlider.OnValueChanged += OnAmbientBlueChanged;
+
+            Slider ambientColourIntensitySlider = (Slider)AddScreenUIObject(new Slider(0, 1, Lights.AmbientLightReference.Opacity, "Ambient Intensity", ambientColourBlueSlider.WorldPosition + new Vector2(0, padding)));
+            ambientColourIntensitySlider.OnValueChanged += OnAmbientIntensityChanged;
 
             DeserializeLevel();
         }
@@ -173,14 +209,14 @@ namespace LevelEditor
         }
 
         /// <summary>
-        /// Handles mouse input for adding/removing objects and 
+        /// Handles mouse input for adding/removing objects and changing current level design object type
         /// </summary>
         /// <param name="elapsedGameTime"></param>
         /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         { 
             base.HandleInput(elapsedGameTime, mousePosition);
-
+            
             if (GameMouse.Instance.IsClicked(MouseButton.kLeftButton))
             {
                 if (CurrentSelectedObject.ShouldHandleInput)
@@ -193,25 +229,13 @@ namespace LevelEditor
                 CurrentSelectedObject.Hide();
             }
 
-            if (GameKeyboard.IsKeyPressed(Keys.D1))
+            foreach (Keys key in GameKeyboard.GetPressedKeys())
             {
-                CurrentType = LevelDesignType.kNormalTile;
-                CurrentTypeLabel.Text = GetLabelText();
-            }
-            else if (GameKeyboard.IsKeyPressed(Keys.D2))
-            {
-                CurrentType = LevelDesignType.kCollisionTile;
-                CurrentTypeLabel.Text = GetLabelText();
-            }
-            else if (GameKeyboard.IsKeyPressed(Keys.D3))
-            {
-                CurrentType = LevelDesignType.kNormalDecal;
-                CurrentTypeLabel.Text = GetLabelText();
-            }
-            else if (GameKeyboard.IsKeyPressed(Keys.D4))
-            {
-                CurrentType = LevelDesignType.kCollisionDecal;
-                CurrentTypeLabel.Text = GetLabelText();
+                if (KeyTypeMap.ContainsKey(key))
+                {
+                    CurrentType = KeyTypeMap[key];
+                    CurrentTypeLabel.Text = GetLabelText();
+                }
             }
         }
 
@@ -237,6 +261,33 @@ namespace LevelEditor
                     GameMouse.Instance.SetSnapping(false, Vector2.Zero);
                 }
             }
+        }
+
+        #endregion
+
+        #region Event Callbacks
+
+        private void OnAmbientRedChanged(Slider slider)
+        {
+            Color currentAmbientColour = Lights.AmbientLightReference.Colour;
+            Lights.AmbientLightReference.Colour = new Color(slider.CurrentValue, currentAmbientColour.G, currentAmbientColour.B, currentAmbientColour.A);
+        }
+        
+        private void OnAmbientGreenChanged(Slider slider)
+        {
+            Color currentAmbientColour = Lights.AmbientLightReference.Colour;
+            Lights.AmbientLightReference.Colour = new Color(currentAmbientColour.R, slider.CurrentValue, currentAmbientColour.B, currentAmbientColour.A);
+        }
+
+        private void OnAmbientBlueChanged(Slider slider)
+        {
+            Color currentAmbientColour = Lights.AmbientLightReference.Colour;
+            Lights.AmbientLightReference.Colour = new Color(currentAmbientColour.R, currentAmbientColour.G, slider.CurrentValue, currentAmbientColour.A);
+        }
+
+        private void OnAmbientIntensityChanged(Slider slider)
+        {
+            Lights.AmbientLightReference.Opacity = slider.CurrentValue;
         }
 
         #endregion

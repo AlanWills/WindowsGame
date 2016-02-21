@@ -103,7 +103,14 @@ namespace _2DEngine
             IsClicked = IsMouseOver && GameMouse.Instance.IsClicked(MouseButton.kLeftButton);
 
             // If the mouse is over this and the left mouse button is down, the object is pressed
-            IsPressed = IsMouseOver && GameMouse.Instance.IsDown(MouseButton.kLeftButton);
+            if (GameMouse.Instance.IsDown(MouseButton.kLeftButton))
+            {
+                IsPressed = IsPressed || IsMouseOver;
+            }
+            else
+            {
+                IsPressed = false;
+            }
         }
 
         /// <summary>

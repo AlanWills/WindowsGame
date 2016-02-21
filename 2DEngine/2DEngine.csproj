@@ -90,6 +90,7 @@
     <Compile Include="Screens\Splash Screens\LoadingScreen.cs" />
     <Compile Include="Screens\Splash Screens\StartupLogoScreen.cs" />
     <Compile Include="Scripts\Script.cs" />
+    <Compile Include="UI\Bar.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\ClickableImage.cs" />
     <Compile Include="UI\HUD.cs" />

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace _2DEngine
 {
@@ -18,10 +20,19 @@ namespace _2DEngine
         private static KeyboardState PreviousKeyboardState { get; set; }
 
         /// <summary>
+        /// A cached list of keys that have just been pressed to save us having to recalculate in the same frame for multiple calls of GetPressedKeys
+        /// </summary>
+        private static Keys[] PressedKeys { get; set; }
+
+        private static bool calculatedPressedKeys = false;
+
+        /// <summary>
         /// Updates the keyboard states
         /// </summary>
         public static void Update()
         {
+            calculatedPressedKeys = false;
+
             PreviousKeyboardState = CurrentKeyboardState;
             CurrentKeyboardState = Keyboard.GetState();
         }
@@ -46,6 +57,31 @@ namespace _2DEngine
         public static bool IsKeyPressed(Keys key)
         {
             return CurrentKeyboardState.IsKeyDown(key) && PreviousKeyboardState.IsKeyUp(key);
+        }
+
+        /// <summary>
+        /// Returns all the keys which are currently down
+        /// </summary>
+        /// <returns></returns>
+        public static Keys[] GetKeysDown()
+        {
+            return CurrentKeyboardState.GetPressedKeys();
+        }
+
+        /// <summary>
+        /// Returns all the keys which were not down last frame, but are up now
+        /// </summary>
+        /// <returns></returns>
+        public static Keys[] GetPressedKeys()
+        {
+            if (!calculatedPressedKeys)
+            {
+                // Get all the keys in thisFrame that weren't in last frame
+                PressedKeys = Array.FindAll(CurrentKeyboardState.GetPressedKeys(), x => Array.IndexOf(PreviousKeyboardState.GetPressedKeys(), x) == -1);
+                calculatedPressedKeys = true;
+            }
+
+            return PressedKeys;
         }
 
         #endregion

@@ -20,7 +20,7 @@ namespace _2DEngine
         /// The ambient light in our scene that will affect all the objects in our game world.
         /// Only one of these exists.
         /// </summary>
-        private AmbientLight AmbientLightReference { get; set; }
+        public AmbientLight AmbientLightReference { get; private set; }
 
         /// <summary>
         /// The colour we will use to reset our LightRenderTarget to create ambient light.
