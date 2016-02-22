@@ -86,8 +86,7 @@ namespace LevelEditor
             }
 
             CurrentType = LevelDesignType.kNormalTile;
-            CurrentTypeLabel = new Label(GetLabelText(), ScreenDimensions * 0.9f);
-            AddScreenUIObject(CurrentTypeLabel);
+            CurrentTypeLabel = AddScreenUIObject(new Label(GetLabelText(), ScreenDimensions * 0.9f)) as Label;
 
             AvailableAssets = new List<string>()
             {
@@ -154,10 +153,9 @@ namespace LevelEditor
             int currentButton = 1;
             for (int i = 0; i < AvailableAssets.Count; i++)
             {
-                ClickableImage assetImage = new ClickableImage(ButtonSize, new Vector2(currentButton * (ButtonSize.X + ButtonPadding), ButtonSize.Y * row), AvailableAssets[i]);
+                ClickableImage assetImage = AddScreenUIObject(new ClickableImage(ButtonSize, new Vector2(currentButton * (ButtonSize.X + ButtonPadding), ButtonSize.Y * row), AvailableAssets[i])) as ClickableImage;
                 assetImage.StoredObject = AvailableAssets[i];
-                assetImage.ClickEvent += SetCurrentSelectedObject;
-                AddScreenUIObject(assetImage);
+                assetImage.OnClicked += SetCurrentSelectedObject;
 
                 currentButton++;
 
@@ -170,30 +168,27 @@ namespace LevelEditor
 
             // Initialise the CurrentSelectedObject to a default rather than checking for whether it is null etc.
             Debug.Assert(AvailableAssets.Count > 0);
-            CurrentSelectedObject = new Image(Vector2.Zero, AvailableAssets[0]);
+            CurrentSelectedObject = AddScreenUIObject(new Image(Vector2.Zero, AvailableAssets[0])) as Image;
             CurrentSelectedObject.Parent = GameMouse.Instance;
             CurrentSelectedObject.Hide();
 
-            AddScreenUIObject(CurrentSelectedObject);
-
-            Button serializeButton = new Button("Serialize", new Vector2(ScreenDimensions.X * 0.1f, ScreenDimensions.Y * 0.9f));
-            serializeButton.ClickEvent += SerializeLevel;
-            AddScreenUIObject(serializeButton);
+            Button serializeButton = AddScreenUIObject(new Button("Serialize", new Vector2(ScreenDimensions.X * 0.1f, ScreenDimensions.Y * 0.9f))) as Button;
+            serializeButton.OnClicked += SerializeLevel;
 
             float padding = ScreenDimensions.Y * 0.1f;
 
             Color currentAmbientColour = Lights.AmbientLightReference.Colour;
 
-            Slider ambientColourRedSlider = (Slider)AddScreenUIObject(new Slider(0, 255, currentAmbientColour.R, "Ambient Red", new Vector2(ScreenDimensions.X * 0.9f, ScreenDimensions.Y * 0.5f)));
+            Slider ambientColourRedSlider = AddScreenUIObject(new Slider(0, 255, currentAmbientColour.R, "Ambient Red", new Vector2(ScreenDimensions.X * 0.9f, ScreenDimensions.Y * 0.5f))) as Slider;
             ambientColourRedSlider.OnValueChanged += OnAmbientRedChanged;
 
-            Slider ambientColourGreenSlider = (Slider)AddScreenUIObject(new Slider(0, 255, currentAmbientColour.G,  "Ambient Green", ambientColourRedSlider.WorldPosition +  new Vector2(0, padding)));
+            Slider ambientColourGreenSlider = AddScreenUIObject(new Slider(0, 255, currentAmbientColour.G,  "Ambient Green", ambientColourRedSlider.WorldPosition +  new Vector2(0, padding))) as Slider;
             ambientColourGreenSlider.OnValueChanged += OnAmbientGreenChanged;
 
-            Slider ambientColourBlueSlider = (Slider)AddScreenUIObject(new Slider(0, 255, currentAmbientColour.B, "Ambient Blue", ambientColourGreenSlider.WorldPosition + new Vector2(0, padding)));
+            Slider ambientColourBlueSlider = AddScreenUIObject(new Slider(0, 255, currentAmbientColour.B, "Ambient Blue", ambientColourGreenSlider.WorldPosition + new Vector2(0, padding))) as Slider;
             ambientColourBlueSlider.OnValueChanged += OnAmbientBlueChanged;
 
-            Slider ambientColourIntensitySlider = (Slider)AddScreenUIObject(new Slider(0, 1, Lights.AmbientLightReference.Opacity, "Ambient Intensity", ambientColourBlueSlider.WorldPosition + new Vector2(0, padding)));
+            Slider ambientColourIntensitySlider = AddScreenUIObject(new Slider(0, 1, Lights.AmbientLightReference.Opacity, "Ambient Intensity", ambientColourBlueSlider.WorldPosition + new Vector2(0, padding))) as Slider;
             ambientColourIntensitySlider.OnValueChanged += OnAmbientIntensityChanged;
 
             DeserializeLevel();
@@ -299,18 +294,15 @@ namespace LevelEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetCurrentSelectedObject(object sender, EventArgs e)
+        private void SetCurrentSelectedObject(ClickableImage image)
         {
-            ClickableImage image = sender as ClickableImage;
             DebugUtils.AssertNotNull(image);
 
             RemoveScreenUIObject(CurrentSelectedObject);
 
-            CurrentSelectedObject = new Image(TileSize, Vector2.Zero, (string)image.StoredObject);
+            CurrentSelectedObject = AddScreenUIObject(new Image(TileSize, Vector2.Zero, (string)image.StoredObject), true, true) as Image;
             CurrentSelectedObject.StoredObject = image.StoredObject;
             CurrentSelectedObject.Parent = GameMouse.Instance;
-
-            AddScreenUIObject(CurrentSelectedObject, true, true);
 
             GameMouse.Instance.IsFlushed = true;
         }
@@ -326,16 +318,15 @@ namespace LevelEditor
             // If we have a tile, use TileSize, otherwise use the natural object size
             if (CurrentType == LevelDesignType.kNormalTile || CurrentType == LevelDesignType.kCollisionTile)
             {
-                newObject = new LevelDesignObject(TileSize, GameMouse.Instance.InGamePosition, (string)CurrentSelectedObject.StoredObject);
+                newObject = AddInGameUIObject(new LevelDesignObject(TileSize, GameMouse.Instance.InGamePosition, (string)CurrentSelectedObject.StoredObject), true, true) as LevelDesignObject;
             }
             else
             {
-                newObject = new LevelDesignObject(GameMouse.Instance.InGamePosition, (string)CurrentSelectedObject.StoredObject);
+                newObject = AddInGameUIObject(new LevelDesignObject(GameMouse.Instance.InGamePosition, (string)CurrentSelectedObject.StoredObject), true, true) as LevelDesignObject;
             }
 
             DebugUtils.AssertNotNull(newObject);
 
-            LevelObjects[CurrentType].Add(newObject);
             AddInGameUIObject(newObject, true, true);
         }
 
@@ -397,12 +388,11 @@ namespace LevelEditor
         /// <returns>Returns the newly created UIObject we have made from the inputted data</returns>
         private LevelDesignObject DeserializeLevelObject(LevelObjectData data, LevelDesignType type, Vector2 size)
         {
-            LevelDesignObject newObject = new LevelDesignObject(size, data.Position, data.TextureAsset);
+            LevelDesignObject newObject = AddBackgroundObject(new LevelDesignObject(size, data.Position, data.TextureAsset)) as LevelDesignObject;
             newObject.LocalRotation = data.Rotation;
             newObject.UsesCollider = data.Collision;
 
             LevelObjects[type].Add(newObject);
-            AddBackgroundObject(newObject);
 
             return newObject;
         }
@@ -410,7 +400,7 @@ namespace LevelEditor
         /// <summary>
         /// Serializes all the UIObjects in our level editor into an XML data file.
         /// </summary>
-        protected void SerializeLevel(object sender, EventArgs e)
+        protected void SerializeLevel(ClickableImage image)
         {
             LevelDesignScreenData levelData = ScreenData.As<LevelDesignScreenData>();
             DebugUtils.AssertNotNull(levelData);

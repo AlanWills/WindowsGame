@@ -50,9 +50,8 @@ namespace WindowsGame
         {
             base.AddInitialGameObjects();
 
-            Player player = new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml");
+            Player player = AddGameObject(new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml")) as Player;
             player.Name = "Hero";
-            AddGameObject(player);
             AddCollisionObject(player);
         }
 
@@ -63,9 +62,9 @@ namespace WindowsGame
         {
             base.AddInitialLights();
 
+            // Not being added at the moment
             PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
             pointLight.Parent = FindGameObject<GameObject>("Hero");
-            //Lights.AddObject(pointLight);
         }
 
         #endregion
@@ -107,11 +106,9 @@ namespace WindowsGame
         /// <param name="size"></param>
         private void DeserializeLevelObject(LevelObjectData data, Vector2 size)
         {
-            Image newObject = new Image(size, data.Position, data.TextureAsset);
+            Image newObject = AddBackgroundObject(new Image(size, data.Position, data.TextureAsset)) as Image;
             newObject.LocalRotation = data.Rotation;
             newObject.UsesCollider = data.Collision;
-
-            AddBackgroundObject(newObject);
         }
 
         #endregion

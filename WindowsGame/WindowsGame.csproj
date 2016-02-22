@@ -294,6 +294,12 @@
     <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Data\Screens\OptionsScreen.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\UI\SliderBar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <Content Include="Content\Data\Animations\Hero\Jetpack Fly Fast.xml">
       <SubType>Designer</SubType>
@@ -399,6 +405,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Data\Levels\Level1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Options.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Data\Screens\StartupLogoScreen.xml">
@@ -774,6 +783,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="Content\Sprites\UI\BarBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\UI\BlueSliderDown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\UI\ColourButtonTrial1.png" />
     <Content Include="Content\Sprites\UI\Cursor.png" />
     <Content Include="Content\Sprites\UI\Logo.png" />
@@ -930,8 +945,17 @@
     <None Include="Content\Sprites\Level\Tiles\Tile %289%29.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Content\Sprites\UI\BarBackground.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\UI\BlueSliderDown.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\Sprites\UI\ColourButtonTrial1.xnb" />
     <None Include="Content\Sprites\UI\Cursor.xnb" />
+    <Content Include="Content\Sprites\UI\SliderBar.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -20,7 +20,7 @@ namespace _2DEngine
         /// <summary>
         /// A label for any text we wish to draw on top of our button texture
         /// </summary>
-        private Label ButtonText { get; set; }
+        public Label Label { get; private set; }
 
         #endregion
 
@@ -34,11 +34,12 @@ namespace _2DEngine
             base(size, localPosition, textureAsset, lifeTime)
         {
             // Create the label in the centre of the button
-            ButtonText = new Label(buttonText, Vector2.Zero);
-            ButtonText.Parent = this;
+            Label = new Label(buttonText, Vector2.Zero);
+            Label.Parent = this;
 
             DefaultColour = Color.Black;
             HighlightedColour = Color.DarkGray;
+            Colour = DefaultColour;
         }
 
         #region Virtual Functions
@@ -52,7 +53,7 @@ namespace _2DEngine
             CheckShouldLoad();
 
             // Loads the button text
-            ButtonText.LoadContent();
+            Label.LoadContent();
 
             base.LoadContent();
         }
@@ -66,7 +67,7 @@ namespace _2DEngine
             CheckShouldInitialise();
 
             // Initialises the button text
-            ButtonText.Initialise();
+            Label.Initialise();
 
             base.Initialise();
         }
@@ -100,7 +101,7 @@ namespace _2DEngine
         {
             base.Draw(spriteBatch);
 
-            ButtonText.Draw(spriteBatch);
+            Label.Draw(spriteBatch);
         }
 
         #endregion

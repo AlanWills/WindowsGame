@@ -42,7 +42,6 @@ namespace _2DEngine
 
         public static void LoadAssets(ContentManager content)
         {
-            //MediaPlayer.Volume = Options.MusicVolume;
             QueueSongNames = new Queue<string>();
             Songs = new Dictionary<string, Song>();
 

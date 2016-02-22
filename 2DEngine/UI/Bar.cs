@@ -257,7 +257,7 @@ namespace _2DEngine
             float valueMappedToZeroOne = (CurrentValue - MinValue) / (MaxValue - MinValue);
             float newX = Size.X * (valueMappedToZeroOne - 1) * 0.5f;
 
-            FrontImage.LocalPosition = new Vector2(newX, FrontImage.LocalPosition.Y);
+            FrontImage.LocalPosition = new Vector2(newX, 0);
             FrontImage.Size = new Vector2(valueMappedToZeroOne * Size.X, Size.Y);
 
             // Update our value label text

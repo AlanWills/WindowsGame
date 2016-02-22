@@ -20,6 +20,7 @@ namespace _2DEngine
         private const string SpritesPath = "\\Sprites";
         private const string EffectsPath = "\\Effects";
         private const string DataPath = "\\Data";
+        public const string OptionsPath = "Content\\Data\\Options.xml";
 
         #endregion
 
@@ -211,9 +212,9 @@ namespace _2DEngine
 
             using (FileStream readFileStream = File.Open(name, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                XmlRootAttribute rootAttr = new XmlRootAttribute(typeof(T).Name);
+                //XmlRootAttribute rootAttr = new XmlRootAttribute(typeof(T).Name);
 
-                XmlSerializer xml = new XmlSerializer(typeof(T), rootAttr);
+                XmlSerializer xml = new XmlSerializer(typeof(T));
                 data = (T)xml.Deserialize(readFileStream);
 
                 DebugUtils.AssertNotNull(data);
@@ -226,7 +227,7 @@ namespace _2DEngine
         {
             DebugUtils.AssertNotNull(data);
 
-            using (FileStream writeFileStream = new FileStream(name, FileMode.Create,FileAccess.Write))
+            using (FileStream writeFileStream = new FileStream(name, FileMode.Create, FileAccess.Write))
             {
                 XmlSerializer xml = new XmlSerializer(typeof(T));
                 xml.Serialize(writeFileStream, data);

@@ -122,3 +122,4 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\SliderBar.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\BarBackground.png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Sprites\UI\BarBackground.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditor\bin\Windows\Debug\Content\Data\Options.xml

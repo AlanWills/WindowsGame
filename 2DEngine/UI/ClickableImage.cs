@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 namespace _2DEngine
 {
+    public delegate void OnClicked(ClickableImage image);
+
     /// <summary>
     /// An enum to describe the state of a clickable object
     /// </summary>
@@ -25,13 +27,13 @@ namespace _2DEngine
         /// <summary>
         /// This represents a function which we want to execute when this object is clicked.
         /// To do this, construct a function of the form:
-        /// public void Function(object sender, EventArgs e) { ... }
+        /// public void Function(Button button) { ... }
         /// 
-        /// Then do ClickEvent += Function;
+        /// Then do OnClicked += Function;
         /// 
         /// In fact, more than one function can be set up in this way.
         /// </summary>
-        public EventHandler ClickEvent;
+        public OnClicked OnClicked;
 
         /// <summary>
         /// A variable to mark the current status of the clickable object
@@ -90,9 +92,9 @@ namespace _2DEngine
                 if (ClickState != ClickState.kPressed)
                 {
                     // The event should be set up if we have created this class
-                    DebugUtils.AssertNotNull(ClickEvent);
+                    DebugUtils.AssertNotNull(OnClicked);
 
-                    ClickEvent(this, EventArgs.Empty);
+                    OnClicked(this);
                     ClickState = ClickState.kPressed;
                     CurrentClickTimer = 0;
                 }

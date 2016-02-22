@@ -1,53 +1,64 @@
-﻿using Microsoft.Xna.Framework.Media;
-using System.IO;
-using System.Xml.Serialization;
+﻿using _2DEngineData;
+using Microsoft.Xna.Framework.Media;
 
 namespace _2DEngine
 {
-    public class OptionsData
+    public class OptionsData : BaseData
     {
-        public bool IsFullScreen
-        {
-            get;
-            set;
-        }
-
-        public float MusicVolume
-        {
-            get;
-            set;
-        }
-
-        public float SFXVolume
-        {
-            get;
-            set;
-        }
+        public bool IsFullScreen { get; set; }
+        public float MusicVolume { get; set; }
+        public float SFXVolume { get; set; }
     }
 
     public static class OptionsManager
     {
         #region Properties and Fields
 
+        /// <summary>
+        /// A bool to indicate whether our game is full screen or not.
+        /// </summary>
+        private static bool isFullScreen = false;
         public static bool IsFullScreen
         {
-            get;
-            set;
+            get { return isFullScreen; }
+            set
+            {
+                isFullScreen = value;
+
+                ScreenManager.Instance.GraphicsDeviceManager.IsFullScreen = IsFullScreen;
+                ScreenManager.Instance.GraphicsDeviceManager.ApplyChanges();
+            }
         }
 
+        /// <summary>
+        /// A float between 0 and 1 which determines the volume of our game music
+        /// </summary>
+        private static float musicVolume = 1;
         public static float MusicVolume
         {
-            get;
-            set;
+            get { return musicVolume; }
+            set
+            {
+                musicVolume = value;
+
+                MediaPlayer.Volume = musicVolume;
+            }
         }
 
+        /// <summary>
+        /// A float between 0 and 1 which determines the volume of our game SFX
+        /// </summary>
+        private static float sfxVolume = 1;
         public static float SFXVolume
         {
-            get;
-            set;
-        }
+            get { return sfxVolume; }
+            set
+            {
+                sfxVolume = value;
 
-        private static string OptionsFilePath { get; set; }
+                // Add volume control for SFX manager here
+            }
+        }
 
         #endregion
 
@@ -55,41 +66,19 @@ namespace _2DEngine
 
         public static void Load()
         {
-            if (string.IsNullOrEmpty(OptionsFilePath))
-            {
-                OptionsFilePath = ScreenManager.Instance.Content.RootDirectory + "\\Options.xml";
-            }
+            DebugUtils.AssertNotNull(AssetManager.OptionsPath);
 
-            OptionsData optionsData = new OptionsData();
+            OptionsData options = AssetManager.GetData<OptionsData>(AssetManager.OptionsPath);
+            DebugUtils.AssertNotNull(options);
 
-            XmlSerializer mySerializer = new XmlSerializer(typeof(OptionsData));
-            // To read the file, create a FileStream.
-
-            try
-            {
-                FileStream myFileStream = new FileStream(OptionsFilePath, FileMode.Open);
-                // Call the Deserialize method and cast to the object type.
-                optionsData = (OptionsData)mySerializer.Deserialize(myFileStream);
-
-                IsFullScreen = optionsData.IsFullScreen;
-                MusicVolume = optionsData.MusicVolume;
-                SFXVolume = optionsData.SFXVolume;
-            }
-            catch
-            {
-                IsFullScreen = false;
-                MusicVolume = 0.5f;
-                SFXVolume = 0.25f;
-            }
-
-            ScreenManager.Instance.GraphicsDeviceManager.IsFullScreen = IsFullScreen;
-            ScreenManager.Instance.GraphicsDeviceManager.ApplyChanges();
-            MediaPlayer.Volume = MusicVolume;
+            IsFullScreen = options.IsFullScreen;
+            MusicVolume = options.MusicVolume;
+            SFXVolume = options.SFXVolume;
         }
 
         public static void Save()
         {
-            if (string.IsNullOrEmpty(OptionsFilePath))
+            /*if (string.IsNullOrEmpty(OptionsFilePath))
             {
                 OptionsFilePath = ScreenManager.Instance.Content.RootDirectory + "\\Options.xml";
             }
@@ -103,7 +92,7 @@ namespace _2DEngine
             // To write to a file, create a StreamWriter object and overriding current file
             StreamWriter myWriter = new StreamWriter(OptionsFilePath, false);
             mySerializer.Serialize(myWriter, optionsData);
-            myWriter.Close();
+            myWriter.Close();*/
         }
 
         #endregion

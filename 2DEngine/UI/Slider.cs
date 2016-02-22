@@ -31,19 +31,19 @@ namespace _2DEngine
         public float CurrentValue { get; private set; }
 
         /// <summary>
-        /// The background bar for our slider
+        /// The handle for for our slider
         /// </summary>
-        private Image SliderBar { get; set; }
+        private Image SliderHandle { get; set; }
 
         /// <summary>
         /// Optional info label for this slider
         /// </summary>
-        private Label InfoLabel { get; set; }
+        public Label InfoLabel { get; private set; }
 
         /// <summary>
         /// A label to display the current value of the slider
         /// </summary>
-        private Label ValueLabel { get; set; }
+        public Label ValueLabel { get; private set; }
 
         /// <summary>
         /// An event handler used to call a function when the slider's value is changed.
@@ -52,12 +52,13 @@ namespace _2DEngine
         public event OnSliderValueChanged OnValueChanged;
 
         public Slider(
-            string text, 
+            float currentValue,
+            string infoText, 
             Vector2 localPosition, 
             string sliderHandleTextureAsset = AssetManager.DefaultSliderHandleTextureAsset,
             string sliderBarTextureAsset = AssetManager.DefaultSliderBarTextureAsset,
             float lifeTime = float.MaxValue) :
-            this(0, 1, 0.5f, text, localPosition, sliderHandleTextureAsset, sliderBarTextureAsset, lifeTime)
+            this(0, 1, currentValue, infoText, localPosition, sliderHandleTextureAsset, sliderBarTextureAsset, lifeTime)
         {
 
         }
@@ -66,26 +67,29 @@ namespace _2DEngine
             float minValue,
             float maxValue,
             float currentValue,
-            string text,
+            string infoText,
             Vector2 localPosition,
             string sliderHandleTextureAsset = AssetManager.DefaultSliderHandleTextureAsset,
             string sliderBarTextureAsset = AssetManager.DefaultSliderBarTextureAsset,
             float lifeTime = float.MaxValue) :
-            base(localPosition, sliderHandleTextureAsset, lifeTime)
+            base(localPosition, sliderBarTextureAsset, lifeTime)
         {
+            // We do not want to use collisions ourself, but rather for our handle
+            UsesCollider = false;
+
             // Our bar will not have any collision detection on it
-            SliderBar = new Image(localPosition, sliderBarTextureAsset, lifeTime);
-            SliderBar.UsesCollider = false;
+            SliderHandle = new Image(Vector2.Zero, sliderHandleTextureAsset, lifeTime);
+            SliderHandle.Parent = this;
 
             // Fix up our label position after all the textures are initialised
             // Parent it to the bar
-            InfoLabel = new Label(text, Vector2.Zero, AssetManager.DefaultSpriteFontAsset, lifeTime);
-            InfoLabel.Parent = SliderBar;
+            InfoLabel = new Label(infoText, Vector2.Zero, AssetManager.DefaultSpriteFontAsset, lifeTime);
+            InfoLabel.Parent = this;
 
             // Fix up our label position after all the textures are initialised
             // Parent it to the bar
             ValueLabel = new Label(currentValue.ToString(), Vector2.Zero);
-            ValueLabel.Parent = SliderBar;
+            ValueLabel.Parent = this;
 
             MaxValue = maxValue;
             MinValue = minValue;
@@ -101,7 +105,7 @@ namespace _2DEngine
         {
             CheckShouldLoad();
 
-            SliderBar.LoadContent();
+            SliderHandle.LoadContent();
             InfoLabel.LoadContent();
             ValueLabel.LoadContent();
 
@@ -115,19 +119,27 @@ namespace _2DEngine
         {
             CheckShouldInitialise();
 
-            SliderBar.Initialise();
+            SliderHandle.Initialise();
             InfoLabel.Initialise();
             ValueLabel.Initialise();
 
+            base.Initialise();
+        }
+
+        /// <summary>
+        /// Fix up UI positions now that we have all the sizes etc. for the slider bar texture.
+        /// </summary>
+        public override void Begin()
+        {
+            base.Begin();
+
             // Maps the current value between [0, 1]
             float currentValue = (CurrentValue - MinValue) / (MaxValue - MinValue);
-            LocalPosition += new Vector2((currentValue - 0.5f) * SliderBar.Size.X, 0);
+            SliderHandle.LocalPosition = new Vector2((currentValue - 0.5f) * Size.X, 0);
 
             float padding = 5f;
-            InfoLabel.LocalPosition = new Vector2(-(SliderBar.Size.X * 0.5f + InfoLabel.Size.X * 0.5f + padding), 0);
-            ValueLabel.LocalPosition = new Vector2(SliderBar.Size.X * 0.5f + InfoLabel.Size.X * 0.5f + padding, 0);
-
-            base.Initialise();
+            InfoLabel.LocalPosition = new Vector2(-(Size.X * 0.5f + InfoLabel.Size.X * 0.5f + SliderHandle.Size.X * 0.5f + padding), 0);
+            ValueLabel.LocalPosition = new Vector2(Size.X * 0.5f + InfoLabel.Size.X * 0.5f + SliderHandle.Size.X * 0.5f + padding, 0);
         }
 
         /// <summary>
@@ -140,15 +152,20 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            if (Collider.IsPressed)
-            {
-                float sliderBarHalfWidth = SliderBar.Size.X * 0.5f;
-                float newX = MathHelper.Clamp(mousePosition.X, SliderBar.WorldPosition.X - sliderBarHalfWidth, SliderBar.WorldPosition.X + sliderBarHalfWidth);
+            SliderHandle.HandleInput(elapsedGameTime, mousePosition);
 
-                LocalPosition = new Vector2(newX, LocalPosition.Y);
+            if (SliderHandle.Collider.IsPressed)
+            {
+                float sliderBarHalfWidth = Size.X * 0.5f;
+                float newX = MathHelper.Clamp(mousePosition.X - WorldPosition.X, -sliderBarHalfWidth, sliderBarHalfWidth);
+
+                SliderHandle.LocalPosition = new Vector2(newX, 0);
 
                 // Calculate our new value
-                CurrentValue = MinValue + (newX - (SliderBar.WorldPosition.X - sliderBarHalfWidth)) / (2 * sliderBarHalfWidth);
+                float multiplier = (newX + sliderBarHalfWidth) / (2 * sliderBarHalfWidth);
+                Debug.Assert(multiplier >= 0 && multiplier <= 1);
+
+                CurrentValue = (1 - multiplier) * MinValue + multiplier * MaxValue;
 
                 // Update our value label text
                 ValueLabel.Text = CurrentValue.ToString();
@@ -172,7 +189,7 @@ namespace _2DEngine
         {
             base.Update(elapsedGameTime);
 
-            SliderBar.Update(elapsedGameTime);
+            SliderHandle.Update(elapsedGameTime);
             InfoLabel.Update(elapsedGameTime);
             ValueLabel.Update(elapsedGameTime);
         }
@@ -183,10 +200,9 @@ namespace _2DEngine
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            SliderBar.Draw(spriteBatch);
-
             base.Draw(spriteBatch);
 
+            SliderHandle.Draw(spriteBatch);
             InfoLabel.Draw(spriteBatch);
             ValueLabel.Draw(spriteBatch);
         }
@@ -198,7 +214,7 @@ namespace _2DEngine
         {
             base.Die();
 
-            SliderBar.Die();
+            SliderHandle.Die();
             InfoLabel.Die();
             ValueLabel.Die();
         }

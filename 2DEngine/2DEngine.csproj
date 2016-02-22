@@ -58,6 +58,7 @@
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Screens\Menus\OptionsScreen.cs" />
     <Compile Include="Scripts\WaitScript.cs" />
     <Compile Include="Threading\CustomThread.cs" />
     <Compile Include="Effects\Lighting\AmbientLight.cs" />

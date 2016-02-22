@@ -74,5 +74,8 @@
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Effects/LightEffect.fx</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Effects/PointLightMask.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Backgrounds/MainMenuScreen.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/BarBackground.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/BlueSliderDown.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/SliderBar.png</File>
   </SourceFiles>
 </SourceFileCollection>

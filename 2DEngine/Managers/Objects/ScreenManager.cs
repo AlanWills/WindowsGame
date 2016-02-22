@@ -88,6 +88,7 @@ namespace _2DEngine
         {
             CheckShouldLoad();
 
+            OptionsManager.Load();
             ScriptManager.Instance.LoadContent();
             GameMouse.Instance.LoadContent();
 

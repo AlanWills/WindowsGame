@@ -24,7 +24,7 @@ namespace LevelEditor
             base.AddInitialUI();
 
             Button playButton = AddScreenUIObject(new Button("Play", ScreenCentre)) as Button;
-            playButton.ClickEvent += OnPlayGameButtonClicked;
+            playButton.OnClicked += OnPlayGameButtonClicked;
         }
 
         #endregion
@@ -36,7 +36,7 @@ namespace LevelEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void OnPlayGameButtonClicked(object sender, EventArgs e)
+        protected virtual void OnPlayGameButtonClicked(ClickableImage image)
         {
             Transition(new LevelDesignScreen("Content\\Data\\Levels\\Level1.xml"));
         }

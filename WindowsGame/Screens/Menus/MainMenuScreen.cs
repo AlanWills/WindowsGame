@@ -1,4 +1,5 @@
 ﻿using _2DEngine;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace WindowsGame
@@ -23,8 +24,14 @@ namespace WindowsGame
         {
             base.AddInitialUI();
 
+            float padding = ScreenDimensions.Y * 0.1f;
+
             Button playButton = AddScreenUIObject(new Button("Play", ScreenCentre)) as Button;
-            playButton.ClickEvent += OnPlayGameButtonClicked;
+            playButton.OnClicked += OnPlayGameButtonClicked;
+
+            Button optionsButton = AddScreenUIObject(new Button("Options", new Vector2(0, padding))) as Button;
+            optionsButton.Parent = playButton;
+            optionsButton.OnClicked += OnOptionsButtonClicked;
         }
 
         #endregion
@@ -34,11 +41,19 @@ namespace WindowsGame
         /// <summary>
         /// The callback to execute when we press the 'Play' button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected virtual void OnPlayGameButtonClicked(object sender, EventArgs e)
+        /// <param name="image">The image that was clicked</param>
+        protected virtual void OnPlayGameButtonClicked(ClickableImage image)
         {
             Transition(new PlatformGameplayScreen("Content\\Data\\Levels\\Level1.xml"));
+        }
+
+        /// <summary>
+        /// The callback to execute when we press the 'Options' button
+        /// </summary>
+        /// <param name="image">The image that was clicked</param>
+        protected virtual void OnOptionsButtonClicked(ClickableImage image)
+        {
+            Transition(new OptionsScreen());
         }
 
         #endregion
