@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace _2DEngine
 {
@@ -27,6 +28,11 @@ namespace _2DEngine
                 return instance;
             }
         }
+
+        /// <summary>
+        /// A reference to our game.  Used really for exiting.
+        /// </summary>
+        private Game Game { get; set; }
 
         /// <summary>
         /// The SpriteBatch we will use for all our rendering.
@@ -180,21 +186,22 @@ namespace _2DEngine
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch from our Game1 class</param>
         /// <param name="viewport">The Viewport corresponding to the window</param>
-        public void Setup(SpriteBatch spriteBatch, Viewport viewport, ContentManager content, GraphicsDeviceManager graphics)
+        public void Setup(Game game, SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
         {
             // Check that we have called this before loading and initialising
             CheckShouldLoad();
             CheckShouldInitialise();
 
+            Game = game;
             SpriteBatch = spriteBatch;
-            Content = content;
-            Viewport = viewport;
+            Content = game.Content;
+            Viewport = game.GraphicsDevice.Viewport;
             GraphicsDeviceManager = graphics;
 
             OptionsManager.Load();
 
-            ScreenDimensions = new Vector2(viewport.Width, viewport.Height);
-            ScreenCentre = new Vector2(viewport.Width * 0.5f, viewport.Height * 0.5f);
+            ScreenDimensions = new Vector2(Viewport.Width, Viewport.Height);
+            ScreenCentre = ScreenDimensions * 0.5f;
         }
 
         /// <summary>
@@ -226,6 +233,16 @@ namespace _2DEngine
         public void StartGame(BaseScreen screenAfterLoading)
         {
             AddObject(new StartupLogoScreen(screenAfterLoading), true, true);
+        }
+
+        /// <summary>
+        /// Closes the game and saves any necessary data
+        /// </summary>
+        public void EndGame()
+        {
+            OptionsManager.Save();
+
+            Game.Exit();
         }
 
         #endregion

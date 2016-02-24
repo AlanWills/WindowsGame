@@ -52,7 +52,7 @@ namespace _2DEngine
 
             foreach (GameObject collisionObject in CollisionObjects)
             {
-                foreach (UIObject backgroundObject in BackgroundObjects)
+                foreach (UIObject backgroundObject in EnvironmentObjects)
                 {
                     if (collisionObject.Collider.CheckCollisionWith(backgroundObject.Collider))
                     {

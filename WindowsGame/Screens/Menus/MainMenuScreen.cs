@@ -12,7 +12,7 @@ namespace WindowsGame
         public MainMenuScreen(string screenDataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
             base(screenDataAsset)
         {
-            
+
         }
 
         #region Virtual Functions
@@ -32,6 +32,10 @@ namespace WindowsGame
             Button optionsButton = AddScreenUIObject(new Button("Options", new Vector2(0, padding))) as Button;
             optionsButton.Parent = playButton;
             optionsButton.OnClicked += OnOptionsButtonClicked;
+
+            Button exitGameButton = AddScreenUIObject(new Button("Exit", new Vector2(0, padding))) as Button;
+            exitGameButton.Parent = optionsButton;
+            exitGameButton.OnClicked += OnExitGameButtonClicked;
         }
 
         #endregion
@@ -54,6 +58,15 @@ namespace WindowsGame
         protected virtual void OnOptionsButtonClicked(ClickableImage image)
         {
             Transition(new OptionsScreen());
+        }
+
+        /// <summary>
+        /// The callback to execute when we press the 'Exit' button
+        /// </summary>
+        /// <param name="image">Unused</param>
+        protected virtual void OnExitGameButtonClicked(ClickableImage image)
+        {
+            ScreenManager.Instance.EndGame();
         }
 
         #endregion

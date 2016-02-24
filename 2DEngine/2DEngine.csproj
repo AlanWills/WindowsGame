@@ -52,12 +52,14 @@
     <Compile Include="Animation\State.cs" />
     <Compile Include="Animation\StateMachine.cs" />
     <Compile Include="Animation\Transition.cs" />
+    <Compile Include="Attribute.cs" />
     <Compile Include="Camera and Input\Camera.cs" />
     <Compile Include="Camera and Input\GameMouse.cs" />
     <Compile Include="Camera and Input\GameKeyboard.cs" />
     <Compile Include="Camera and Input\InputMap.cs" />
     <Compile Include="Colliders\Collider.cs" />
     <Compile Include="Colliders\RectangleCollider.cs" />
+    <Compile Include="Object Properties\Property.cs" />
     <Compile Include="Screens\Menus\OptionsScreen.cs" />
     <Compile Include="Scripts\WaitScript.cs" />
     <Compile Include="Threading\CustomThread.cs" />
@@ -120,6 +122,7 @@
       <Name>2DEngineData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <PropertyGroup>

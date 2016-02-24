@@ -297,6 +297,7 @@
     <Content Include="Content\Data\Screens\OptionsScreen.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\UI\Logo.png" />
     <Content Include="Content\Sprites\UI\SliderBar.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -791,10 +792,6 @@
     </Content>
     <Content Include="Content\Sprites\UI\ColourButtonTrial1.png" />
     <Content Include="Content\Sprites\UI\Cursor.png" />
-    <Content Include="Content\Sprites\UI\Logo.png" />
-    <Content Include="Content\Sprites\UI\Logo.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <Content Include="Content\Effects\LightEffect.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -956,6 +953,7 @@
     <Content Include="Content\Sprites\UI\SliderBar.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\Sprites\UI\Logo.xnb" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,5 @@
-﻿using _2DEngine;
+﻿using System;
+using _2DEngine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -51,7 +52,7 @@ namespace WindowsGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ScreenManager.Instance.Setup(spriteBatch, GraphicsDevice.Viewport, Content, graphics);
+            ScreenManager.Instance.Setup(this, spriteBatch, graphics);
             ScreenManager.Instance.LoadContent();
         }
 

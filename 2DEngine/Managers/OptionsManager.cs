@@ -78,26 +78,15 @@ namespace _2DEngine
 
         public static void Save()
         {
-            /*if (string.IsNullOrEmpty(OptionsFilePath))
-            {
-                OptionsFilePath = ScreenManager.Instance.Content.RootDirectory + "\\Options.xml";
-            }
+            DebugUtils.AssertNotNull(AssetManager.OptionsPath);
 
-            OptionsData optionsData = new OptionsData();
-            optionsData.IsFullScreen = IsFullScreen;
-            optionsData.MusicVolume = MusicVolume;
-            optionsData.SFXVolume = SFXVolume;
+            OptionsData options = new OptionsData();
+            options.IsFullScreen = IsFullScreen;
+            options.MusicVolume = MusicVolume;
+            options.SFXVolume = SFXVolume;
 
-            XmlSerializer mySerializer = new XmlSerializer(typeof(OptionsData));
-            // To write to a file, create a StreamWriter object and overriding current file
-            StreamWriter myWriter = new StreamWriter(OptionsFilePath, false);
-            mySerializer.Serialize(myWriter, optionsData);
-            myWriter.Close();*/
+            AssetManager.SaveData(options, AssetManager.OptionsPath);
         }
-
-        #endregion
-
-        #region Virtual Methods
 
         #endregion
     }

@@ -93,7 +93,7 @@ namespace _2DEngine
 
             CameraMode = CameraMode.kFixed;
             Position = Vector2.Zero;
-            PanSpeed = 300;
+            PanSpeed = 500;
             Zoom = 1;
             ViewportRectangle = new Rectangle(0, 0, ScreenManager.Instance.Viewport.Width, ScreenManager.Instance.Viewport.Height);
 
@@ -146,22 +146,22 @@ namespace _2DEngine
             // Handles panning in all four directions
             if (GameKeyboard.IsKeyDown(InputMap.PanLeft))
             {
-                delta += new Vector2(-1, 0);
+                delta += new Vector2(1, 0);
             }
 
             if (GameKeyboard.IsKeyDown(InputMap.PanRight))
             {
-                delta += new Vector2(1, 0);
+                delta += new Vector2(-1, 0);
             }
 
             if (GameKeyboard.IsKeyDown(InputMap.PanUp))
             {
-                delta += new Vector2(0, -1);
+                delta += new Vector2(0, 1);
             }
 
             if (GameKeyboard.IsKeyDown(InputMap.PanDown))
             {
-                delta += new Vector2(0, 1);
+                delta += new Vector2(0, -1);
             }
 
             if (delta != Vector2.Zero)

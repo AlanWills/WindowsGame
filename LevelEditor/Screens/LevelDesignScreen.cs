@@ -177,7 +177,7 @@ namespace LevelEditor
 
             float padding = ScreenDimensions.Y * 0.1f;
 
-            Color currentAmbientColour = Lights.AmbientLightReference.Colour;
+            /*Color currentAmbientColour = Lights.AmbientLightReference.Colour;
 
             Slider ambientColourRedSlider = AddScreenUIObject(new Slider(0, 255, currentAmbientColour.R, "Ambient Red", new Vector2(ScreenDimensions.X * 0.9f, ScreenDimensions.Y * 0.5f))) as Slider;
             ambientColourRedSlider.OnValueChanged += OnAmbientRedChanged;
@@ -189,9 +189,13 @@ namespace LevelEditor
             ambientColourBlueSlider.OnValueChanged += OnAmbientBlueChanged;
 
             Slider ambientColourIntensitySlider = AddScreenUIObject(new Slider(0, 1, Lights.AmbientLightReference.Opacity, "Ambient Intensity", ambientColourBlueSlider.WorldPosition + new Vector2(0, padding))) as Slider;
-            ambientColourIntensitySlider.OnValueChanged += OnAmbientIntensityChanged;
+            ambientColourIntensitySlider.OnValueChanged += OnAmbientIntensityChanged;*/
 
             DeserializeLevel();
+
+            Button procedurallyGenerate = AddScreenUIObject(new Button("Generate", new Vector2(ScreenDimensions.X * 0.15f, 0))) as Button;
+            procedurallyGenerate.Parent = serializeButton;
+            procedurallyGenerate.OnClicked += Generate;
         }
 
         /// <summary>
@@ -283,6 +287,12 @@ namespace LevelEditor
         private void OnAmbientIntensityChanged(Slider slider)
         {
             Lights.AmbientLightReference.Opacity = slider.CurrentValue;
+        }
+
+        private void Generate(ClickableImage image)
+        {
+            GenerationEngine engine = new GenerationEngine(this);
+            engine.GenerateBackground();
         }
 
         #endregion
@@ -388,7 +398,7 @@ namespace LevelEditor
         /// <returns>Returns the newly created UIObject we have made from the inputted data</returns>
         private LevelDesignObject DeserializeLevelObject(LevelObjectData data, LevelDesignType type, Vector2 size)
         {
-            LevelDesignObject newObject = AddBackgroundObject(new LevelDesignObject(size, data.Position, data.TextureAsset)) as LevelDesignObject;
+            LevelDesignObject newObject = AddEnvironmentObject(new LevelDesignObject(size, data.Position, data.TextureAsset)) as LevelDesignObject;
             newObject.LocalRotation = data.Rotation;
             newObject.UsesCollider = data.Collision;
 

@@ -106,7 +106,7 @@ namespace WindowsGame
         /// <param name="size"></param>
         private void DeserializeLevelObject(LevelObjectData data, Vector2 size)
         {
-            Image newObject = AddBackgroundObject(new Image(size, data.Position, data.TextureAsset)) as Image;
+            Image newObject = AddEnvironmentObject(new Image(size, data.Position, data.TextureAsset)) as Image;
             newObject.LocalRotation = data.Rotation;
             newObject.UsesCollider = data.Collision;
         }

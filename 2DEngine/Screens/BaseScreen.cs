@@ -41,9 +41,9 @@ namespace _2DEngine
         protected LightManager Lights { get; private set; }
 
         /// <summary>
-        /// A Manager for all the In Game background UI Objects (that will appear behind the Game Objects)
+        /// A Manager for all the In Game background UI Objects (that will appear behind the Game Objects) which constitute the level environment
         /// </summary>
-        protected ObjectManager<UIObject> BackgroundObjects { get; private set; }
+        protected ObjectManager<UIObject> EnvironmentObjects { get; private set; }
 
         /// <summary>
         /// A Manager for the GameObjects in our screen
@@ -126,7 +126,7 @@ namespace _2DEngine
             ScreenUIRenderTarget = new RenderTarget2D(graphicsDevice, pp.BackBufferWidth, pp.BackBufferHeight);
 
             Lights = new LightManager();
-            BackgroundObjects = new ObjectManager<UIObject>();
+            EnvironmentObjects = new ObjectManager<UIObject>();
             GameObjects = new ObjectManager<GameObject>();
             InGameUIObjects = new ObjectManager<UIObject>();
             ScreenUIObjects = new ObjectManager<UIObject>();
@@ -190,7 +190,7 @@ namespace _2DEngine
             AddInitialUI();
 
             Lights.LoadContent();
-            BackgroundObjects.LoadContent();
+            EnvironmentObjects.LoadContent();
             GameObjects.LoadContent();
             InGameUIObjects.LoadContent();
             ScreenUIObjects.LoadContent();
@@ -209,7 +209,7 @@ namespace _2DEngine
             CheckShouldInitialise();
 
             Lights.Initialise();
-            BackgroundObjects.Initialise();
+            EnvironmentObjects.Initialise();
             GameObjects.Initialise();
             InGameUIObjects.Initialise();
             ScreenUIObjects.Initialise();
@@ -243,7 +243,7 @@ namespace _2DEngine
 
             Vector2 gameMouseCoords = Camera.ScreenToGameCoords(mousePosition);
 
-            if (BackgroundObjects.ShouldHandleInput) { BackgroundObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
+            if (EnvironmentObjects.ShouldHandleInput) { EnvironmentObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
             if (GameObjects.ShouldHandleInput) { GameObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
             if (InGameUIObjects.ShouldHandleInput) { InGameUIObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
             if (ScreenUIObjects.ShouldHandleInput) { ScreenUIObjects.HandleInput(elapsedGameTime, mousePosition); }
@@ -258,7 +258,7 @@ namespace _2DEngine
             base.Update(elapsedGameTime);
 
             if (Lights.ShouldUpdate) { Lights.Update(elapsedGameTime); }
-            if (BackgroundObjects.ShouldUpdate) { BackgroundObjects.Update(elapsedGameTime); }
+            if (EnvironmentObjects.ShouldUpdate) { EnvironmentObjects.Update(elapsedGameTime); }
             if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
             if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
             if (ScreenUIObjects.ShouldUpdate) { ScreenUIObjects.Update(elapsedGameTime); }
@@ -312,7 +312,7 @@ namespace _2DEngine
                 // Draw the camera dependent objects using the camera transformation matrix
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
                 {
-                    if (BackgroundObjects.ShouldDraw) { BackgroundObjects.Draw(spriteBatch); }
+                    if (EnvironmentObjects.ShouldDraw) { EnvironmentObjects.Draw(spriteBatch); }
                     if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
                 }
 
@@ -404,34 +404,34 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Adds a UIObject to this screen's BackgroundObjects manager
+        /// Adds a UIObject to this screen's EnvironmentObjects manager
         /// </summary>
-        /// <param name="gameObjectToAdd">The object to add</param>
+        /// <param name="environmentObjectToAdd">The object to add</param>
         /// <param name="load">A flag to indicate whether LoadContent should be called on this object when adding</param>
         /// <param name="initialise">A flag to indicate whether Initialise should be called on this object when adding</param>
-        public UIObject AddBackgroundObject(UIObject backgroundObjectToAdd, bool load = false, bool initialise = false)
+        public UIObject AddEnvironmentObject(UIObject environmentObjectToAdd, bool load = false, bool initialise = false)
         {
-            return BackgroundObjects.AddObject(backgroundObjectToAdd, load, initialise);
+            return EnvironmentObjects.AddObject(environmentObjectToAdd, load, initialise);
         }
 
         /// <summary>
-        /// Removes a UIObject from this screen's BackgroundObjects manager
+        /// Removes a UIObject from this screen's EnvironmentObjects manager
         /// </summary>
-        /// <param name="backgroundObjectToRemove">The background object to remove</param>
-        public void RemoveBackgroundObject(UIObject backgroundObjectToRemove)
+        /// <param name="environmentObjectToRemove">The environment object to remove</param>
+        public void RemoveEnvironmentObject(UIObject environmentObjectToRemove)
         {
-            BackgroundObjects.RemoveObject(backgroundObjectToRemove);
+            EnvironmentObjects.RemoveObject(environmentObjectToRemove);
         }
 
         /// <summary>
-        /// Finds a UIObject in this screen's BackgroundObjects manager
+        /// Finds a UIObject in this screen's EnvironmentObjects manager
         /// </summary>
         /// <typeparam name="K">The type that we wish to return the found object as</typeparam>
-        /// <param name="backgroundObjectName">The name of the object to find</param>
+        /// <param name="envrionmentObjectToRemove">The name of the object to find</param>
         /// <returns>Returns the found object casted to type K, or null</returns>
-        public K FindBackgroundObject<K>(string backgroundObjectName) where K : UIObject
+        public K FindEnvironmentObject<K>(string envrionmentObjectToRemove) where K : UIObject
         {
-            return BackgroundObjects.FindObject<K>(backgroundObjectName);
+            return EnvironmentObjects.FindObject<K>(envrionmentObjectToRemove);
         }
 
         /// <summary>
