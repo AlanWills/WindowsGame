@@ -138,7 +138,7 @@ namespace LevelEditor
         {
             base.AddInitialLights();
 
-            AddLight(new AmbientLight(Color.White, 0.35f));
+            AddLight(new AmbientLight(Color.White, 1f));
         }
 
         /// <summary>

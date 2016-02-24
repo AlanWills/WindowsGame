@@ -177,14 +177,21 @@ namespace _2DEngine
 
         /// <summary>
         /// A function used to position the camera so that the inputted position is in the centre of the screen.
-        /// Since the camera position corresponds to the top left, this involves removed half the screen dimensions from the inputted position.
         /// </summary>
         /// <param name="focusPosition">The position that we wish to have in the centre of the screen</param>
-        public static void FocusOnPosition(Vector2 focusPosition)
+        /// <param name="screenSpace">A flag to indicate whether the focus position is in screen space or game space.  The camera will transform the point if necessary</param>
+        public static void FocusOnPosition(Vector2 focusPosition, bool screenSpace)
         {
             Debug.Assert(IsInitialised);
 
-            Position = focusPosition - new Vector2(ViewportRectangle.Width, ViewportRectangle.Height) * 0.5f;
+            if (!screenSpace)
+            {
+                // Transform into screen space if necessary
+                focusPosition = GameToScreenCoords(focusPosition);
+            }
+
+            /// Since the camera position corresponds to the opposite of what we expect (just look at movement in update function) and the top left is the position, we subtract the focus position from the screen centre
+            Position = new Vector2(ViewportRectangle.Width, ViewportRectangle.Height) * 0.5f - focusPosition;
         }
 
         /// <summary>
