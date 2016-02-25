@@ -54,7 +54,7 @@ namespace _2DEngine
             {
                 foreach (UIObject backgroundObject in EnvironmentObjects)
                 {
-                    if (collisionObject.Collider.CheckCollisionWith(backgroundObject.Collider))
+                    if (backgroundObject.UsesCollider && collisionObject.Collider.CheckCollisionWith(backgroundObject.Collider))
                     {
                         break;
                     }
@@ -62,6 +62,7 @@ namespace _2DEngine
 
                 foreach (GameObject gameObject in GameObjects)
                 {
+                    DebugUtils.AssertNotNull(gameObject.Collider);
                     if (collisionObject != gameObject && collisionObject.Collider.CheckCollisionWith(gameObject.Collider))
                     {
                         break;
