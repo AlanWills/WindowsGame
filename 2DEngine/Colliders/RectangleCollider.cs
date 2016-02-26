@@ -46,6 +46,11 @@ namespace _2DEngine
             return result;
         }
 
+        public override bool CheckIntersects(Rectangle rectangle)
+        {
+            return rectangle.Intersects(Bounds);
+        }
+
         #endregion
 
         #region Collider Update Functions

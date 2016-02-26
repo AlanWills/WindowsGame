@@ -250,7 +250,7 @@ namespace _2DEngine
         }
 
         /// <summary>
-        /// Call Update on the screen managers.
+        /// Call Update on the screen managers and check their visibility against the camera viewport.
         /// </summary>
         /// <param name="elapsedGameTime">The time in seconds since the last frame</param>
         public override void Update(float elapsedGameTime)
@@ -262,6 +262,12 @@ namespace _2DEngine
             if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
             if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
             if (ScreenUIObjects.ShouldUpdate) { ScreenUIObjects.Update(elapsedGameTime); }
+
+            Camera.CheckVisibility(Lights, false);
+            Camera.CheckVisibility(EnvironmentObjects, false);
+            Camera.CheckVisibility(GameObjects, false);
+            Camera.CheckVisibility(InGameUIObjects, false);
+            Camera.CheckVisibility(ScreenUIObjects, true);
         }
 
         /// <summary>

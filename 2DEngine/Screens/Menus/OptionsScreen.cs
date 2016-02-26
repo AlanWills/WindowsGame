@@ -8,8 +8,8 @@ namespace _2DEngine
     /// </summary>
     public class OptionsScreen : MenuScreen
     {
-        public OptionsScreen(string screenDataAsset = "Content\\Data\\Screens\\OptionsScreen.xml") :
-            base(screenDataAsset)
+        public OptionsScreen(MenuScreen previousMenuScreen, string screenDataAsset = "Content\\Data\\Screens\\OptionsScreen.xml") :
+            base(previousMenuScreen, screenDataAsset)
         {
 
         }

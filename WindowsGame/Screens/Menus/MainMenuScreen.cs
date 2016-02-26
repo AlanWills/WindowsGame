@@ -9,8 +9,8 @@ namespace WindowsGame
     /// </summary>
     public class MainMenuScreen : MenuScreen
     {
-        public MainMenuScreen(string screenDataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
-            base(screenDataAsset)
+        public MainMenuScreen(MenuScreen previousMenuScreen, string screenDataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
+            base(previousMenuScreen, screenDataAsset)
         {
 
         }
@@ -57,7 +57,7 @@ namespace WindowsGame
         /// <param name="image">The image that was clicked</param>
         protected virtual void OnOptionsButtonClicked(ClickableImage image)
         {
-            Transition(new OptionsScreen());
+            Transition(new OptionsScreen(this));
         }
 
         /// <summary>

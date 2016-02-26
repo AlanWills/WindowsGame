@@ -83,6 +83,13 @@ namespace _2DEngine
         /// <returns>Returns true if a collision occurred</returns>
         public abstract bool CheckCollisionWith(RectangleCollider rectangleCollider);
 
+        /// <summary>
+        /// Check whether this collider intersects the inputted rectangle.  Does not update CollidedThisFrame bool.
+        /// </summary>
+        /// <param name="rectangle">The inputted rectangle to test against</param>
+        /// <returns>Returns true if the collider intersects the rectangle</returns>
+        public abstract bool CheckIntersects(Rectangle rectangle);
+
         #endregion
 
         #region Collider Update and Handle Input Functions
@@ -116,10 +123,7 @@ namespace _2DEngine
         /// <summary>
         /// Updates collider positions and collision bools
         /// </summary>
-        public virtual void Update()
-        {
-            
-        }
+        public virtual void Update() { }
 
         #endregion
     }

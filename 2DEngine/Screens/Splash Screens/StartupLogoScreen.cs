@@ -19,7 +19,7 @@ namespace _2DEngine
         #endregion
 
         public StartupLogoScreen(BaseScreen screenAfterLoading, string screenDataAsset = "Content\\Data\\Screens\\StartupLogoScreen.xml") :
-            base(screenDataAsset)
+            base(null, screenDataAsset)
         {
             ScreenAfterLoading = screenAfterLoading;
         }

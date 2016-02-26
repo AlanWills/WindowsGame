@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace _2DEngine
 {
@@ -12,21 +13,25 @@ namespace _2DEngine
 
         /// <summary>
         /// The previous screen which we will transition to if we press Esc.
-        /// Going to need to think this through - currently ScreenManager removes it from active screens on transitioning.
-        /// Clone it or something?
         /// </summary>
-        //private MenuScreen PreviousMenuScreen { get; set; }
+        private MenuScreen PreviousMenuScreen { get; set; }
+
+        private Type type;
 
         #endregion
 
-        public MenuScreen(string screenDataAsset) :
+        public MenuScreen(MenuScreen previousMenuScreen, string screenDataAsset) :
             base(screenDataAsset)
         {
             Lights.ShouldDraw = false;
+            PreviousMenuScreen = previousMenuScreen;
         }
 
         #region Virtual Functions
 
+        /// <summary>
+        /// Set up the camera to be fixed and resset it to it's default position of zero
+        /// </summary>
         public override void Initialise()
         {
             base.Initialise();
@@ -34,13 +39,21 @@ namespace _2DEngine
             Camera.SetFixed(Vector2.Zero);
         }
 
+        /// <summary>
+        /// Handle input and check whether we are transitioning to the previous screen if it exists (press escape)
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
+        /// <param name="mousePosition"></param>
         public override void HandleInput(float elapsedGameTime, Vector2 mousePosition)
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            if (GameKeyboard.IsKeyPressed(Keys.Escape))
+            if (PreviousMenuScreen != null && GameKeyboard.IsKeyPressed(Keys.Escape))
             {
-                // Transition(PreviousMenuScreen);
+                // Yeah I know - eurgh
+                var parameters = new object[2] { this, PreviousMenuScreen.ScreenDataAsset };
+                var newScreen = Activator.CreateInstance(PreviousMenuScreen.GetType(), parameters);
+                Transition((BaseScreen)newScreen);
             }
         }
 

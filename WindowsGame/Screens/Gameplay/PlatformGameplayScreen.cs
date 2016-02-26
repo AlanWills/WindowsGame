@@ -68,7 +68,7 @@ namespace WindowsGame
             PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
             pointLight.Parent = FindGameObject<GameObject>("Hero");
 
-            AddLight(new AmbientLight(Color.White, 1f));
+            AddLight(new AmbientLight(Color.White, 0.35f));
         }
 
         #endregion

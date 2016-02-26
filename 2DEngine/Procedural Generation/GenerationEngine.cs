@@ -300,14 +300,6 @@ namespace _2DEngine
 
         private void GenerateBackgroundAboveWalkableLayer()
         {
-
-
-            add lights
-
-
-
-
-
             int backgroundHeight = 4;
             int minY = walkingLayerPoints[0].Key.Y;
 
@@ -333,6 +325,11 @@ namespace _2DEngine
                 {
                     UIObject addedObject = LevelScreen.AddEnvironmentObject(new Image(new Vector2(currentPoint.X, y) * tileDimensions, background));
                     addedObject.UsesCollider = false;
+                }
+
+                if (index % 3 == 0)
+                {
+                    LevelScreen.AddLight(new PointLight(new Vector2(750, 750), new Vector2(currentPoint.X * tileDimensions.X, (minY - 1) * tileDimensions.Y), Color.White));
                 }
             }
         }

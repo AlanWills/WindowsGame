@@ -70,11 +70,12 @@ namespace _2DEngine
         /// This will be used in determining whether an object is visible or not.
         /// It will need to be set up once, or when our screen size changes.
         /// </summary>
-        public static Rectangle ViewportRectangle
-        {
-            get;
-            private set;
-        }
+        public static Rectangle ViewportRectangleScreenSpace { get; private set; }
+
+        /// <summary>
+        /// Corresponds to our viewport rectangle but in game space - means we can check objects in the game world to see whether we should draw them.
+        /// </summary>
+        public static Rectangle ViewportRectangleGameSpace { get; private set; }
 
         /// <summary>
         /// A bool just to track whether we have called Initialise.  This will be checked in Update and HandleInput
@@ -95,7 +96,10 @@ namespace _2DEngine
             Position = Vector2.Zero;
             PanSpeed = 500;
             Zoom = 1;
-            ViewportRectangle = new Rectangle(0, 0, ScreenManager.Instance.Viewport.Width, ScreenManager.Instance.Viewport.Height);
+            ViewportRectangleScreenSpace = new Rectangle(0, 0, ScreenManager.Instance.Viewport.Width, ScreenManager.Instance.Viewport.Height);
+
+            // This can be improved upon by using zoom to affect the length
+            ViewportRectangleGameSpace = new Rectangle((int)-Position.X, (int)-Position.Y, ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height);
 
             IsInitialised = true;
         }
@@ -109,6 +113,9 @@ namespace _2DEngine
         public static void Update(float elapsedSeconds)
         {
             Debug.Assert(IsInitialised);
+
+            // This can be improved upon by using zoom to affect the length
+            ViewportRectangleGameSpace = new Rectangle((int)-Position.X, (int)-Position.Y, ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height);
 
             // Only the follow mode requires no user input to update
             if (CameraMode != CameraMode.kFollow) { return; }
@@ -191,7 +198,7 @@ namespace _2DEngine
             }
 
             /// Since the camera position corresponds to the opposite of what we expect (just look at movement in update function) and the top left is the position, we subtract the focus position from the screen centre
-            Position = new Vector2(ViewportRectangle.Width, ViewportRectangle.Height) * 0.5f - focusPosition;
+            Position = new Vector2(ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height) * 0.5f - focusPosition;
         }
 
         /// <summary>
@@ -218,6 +225,33 @@ namespace _2DEngine
 
             // This could be done using ordinary mathematical operators - +, / etc. but this is an optimisation
             return Vector2.Subtract(Vector2.Multiply(gamePosition, Zoom), Position);
+        }
+
+        /// <summary>
+        /// Checks each object in the inputted ObjectManager to determine whether it should be drawn this frame.
+        /// </summary>
+        /// <param name="objectManager"></param>
+        /// <param name="screenSpace"></param>
+        public static void CheckVisibility<T>(ObjectManager<T> objectManager, bool screenSpace) where T : BaseObject
+        {
+            Rectangle rectangleToUse = screenSpace ? ViewportRectangleScreenSpace : ViewportRectangleGameSpace;
+            Vector2 centre = rectangleToUse.Center.ToVector2();
+
+            foreach (BaseObject baseObject in objectManager)
+            {
+                if (baseObject.UsesCollider)
+                {
+                    DebugUtils.AssertNotNull(baseObject.Collider);
+                    baseObject.ShouldDraw = baseObject.Collider.CheckIntersects(rectangleToUse);
+                }
+                else
+                {
+                    // Crude circle check, can definitely be improved upon
+                    float x = rectangleToUse.Width + baseObject.Size.X;
+                    float y = rectangleToUse.Height + baseObject.Size.Y;
+                    baseObject.ShouldDraw = (centre - baseObject.WorldPosition).LengthSquared() <= x * x + y * y;
+                }
+            }
         }
 
         #endregion

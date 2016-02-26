@@ -8,8 +8,8 @@ namespace LevelEditor
     /// </summary>
     public class MainMenuScreen : MenuScreen
     {
-        public MainMenuScreen(string dataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
-            base(dataAsset)
+        public MainMenuScreen(MenuScreen previousMenuScreen, string dataAsset = "Content\\Data\\Screens\\MainMenuScreen.xml") :
+            base(previousMenuScreen, dataAsset)
         {
 
         }
