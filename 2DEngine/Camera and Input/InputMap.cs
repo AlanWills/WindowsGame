@@ -24,5 +24,8 @@ namespace _2DEngine
         public static Keys PanRight = Keys.Right;
         public static Keys PanUp = Keys.Up;
         public static Keys PanDown = Keys.Down;
+
+        // Menu Navigation
+        public static Keys BackToPreviousScreen = Keys.Escape;
     }
 }

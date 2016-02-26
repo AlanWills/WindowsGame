@@ -48,7 +48,7 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            if (PreviousMenuScreen != null && GameKeyboard.IsKeyPressed(Keys.Escape))
+            if (PreviousMenuScreen != null && GameKeyboard.IsKeyPressed(InputMap.BackToPreviousScreen))
             {
                 // Yeah I know - eurgh
                 var parameters = new object[2] { this, PreviousMenuScreen.ScreenDataAsset };
