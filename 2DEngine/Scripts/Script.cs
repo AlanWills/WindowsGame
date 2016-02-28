@@ -82,13 +82,13 @@ namespace _2DEngine
         {
             if (ScreenManager.Instance.CurrentScreen != ParentScreen)
             {
-                ShouldHandleInput = false;
-                ShouldUpdate = false;
+                ShouldHandleInput.Value = false;
+                ShouldUpdate.Value = false;
             }
             else if (PreviousScript != null)
             {
-                ShouldHandleInput = !PreviousScript.IsAlive;
-                ShouldUpdate = !PreviousScript.IsAlive;
+                ShouldHandleInput.Value = !PreviousScript.IsAlive.Value;
+                ShouldUpdate.Value = !PreviousScript.IsAlive.Value;
             }
             else if (CanRunEvent != null)
             {
@@ -96,8 +96,8 @@ namespace _2DEngine
             }
             else
             {
-                ShouldHandleInput = true;
-                ShouldUpdate = true;
+                ShouldHandleInput.Value = true;
+                ShouldUpdate.Value = true;
             }
         }
 

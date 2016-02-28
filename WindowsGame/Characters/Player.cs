@@ -33,6 +33,7 @@ namespace WindowsGame
             base(localPosition, dataAsset)
         {
             NumBehaviours = (uint)PlayerBehaviours.kNumBehaviours;
+            AddPhysicsBody();
         }
 
         #region Virtual Functions
@@ -146,16 +147,6 @@ namespace WindowsGame
                 default:
                     break;
             }
-        }
-
-        /// <summary>
-        /// Adds a PhysicsBody to the player
-        /// </summary>
-        public override void Initialise()
-        {
-            base.Initialise();
-
-            AddPhysicsBody();
         }
 
         #endregion
@@ -402,9 +393,9 @@ namespace WindowsGame
                 float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
 
                 LocalPosition += new Vector2(0, 10);
-                PhysicsBody.LinearVelocity += new Vector2(0, CharacterData.JumpHeight);
+                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.LinearVelocity.X, CharacterData.JumpHeight);
             }
-            else if (!Collider.CollidedThisFrame && !Collider.CollidedLastFrame)
+            else if (PhysicsBody.LinearVelocity.Y < -5 * PhysicsConstants.Gravity * 0.016f)
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kJumpFall;
             }

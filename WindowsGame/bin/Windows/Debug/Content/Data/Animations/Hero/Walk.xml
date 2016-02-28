@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <AnimationData>
-  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized</AnimationTextureAsset>
-  <TextureFramesX>1</TextureFramesX>
-  <TextureFramesY>16</TextureFramesY>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Walk_000_16x1_Resized</AnimationTextureAsset>
+  <TextureFramesX>16</TextureFramesX>
+  <TextureFramesY>1</TextureFramesY>
   <Continual>true</Continual>
   <IsGlobal>false</IsGlobal>
 </AnimationData>

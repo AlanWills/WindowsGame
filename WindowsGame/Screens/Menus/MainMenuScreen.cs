@@ -30,11 +30,11 @@ namespace WindowsGame
             playButton.OnClicked += OnPlayGameButtonClicked;
 
             Button optionsButton = AddScreenUIObject(new Button("Options", new Vector2(0, padding))) as Button;
-            optionsButton.Parent = playButton;
+            optionsButton.SetParent(playButton);
             optionsButton.OnClicked += OnOptionsButtonClicked;
 
             Button exitGameButton = AddScreenUIObject(new Button("Exit", new Vector2(0, padding))) as Button;
-            exitGameButton.Parent = optionsButton;
+            exitGameButton.SetParent(optionsButton);
             exitGameButton.OnClicked += OnExitGameButtonClicked;
         }
 

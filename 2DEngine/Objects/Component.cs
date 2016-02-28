@@ -41,22 +41,22 @@ namespace _2DEngine
         /// <summary>
         /// A bool used to clear up this component - if set to false it will be removed from the manager it is in automatically
         /// </summary>
-        public bool IsAlive { get; private set; }
+        public Property<bool> IsAlive { get; private set; }
 
         /// <summary>
         /// A bool used to indicate whether we should call HandleInput on this object
         /// </summary>
-        public bool ShouldHandleInput { get; set; }
+        public Property<bool> ShouldHandleInput { get; private set; }
 
         /// <summary>
         /// A bool used to indicate whether we should call Update on this object
         /// </summary>
-        public bool ShouldUpdate { get; set; }
+        public Property<bool> ShouldUpdate { get; private set; }
 
         /// <summary>
         /// A bool used to indicate whether we should call Draw on this object
         /// </summary>
-        public bool ShouldDraw { get; set; }
+        public Property<bool> ShouldDraw { get; set; }
 
         /// <summary>
         /// A name identifier
@@ -74,11 +74,11 @@ namespace _2DEngine
             ShouldInitialise = true;
             IsBegun = false;
 
-            IsAlive = true;
+            IsAlive = new Property<bool>(true);
             // Don't call Show here - because we are in a constructor and it is a virtual function, it can have bad knock on effects
-            ShouldHandleInput = true;
-            ShouldUpdate = true;
-            ShouldDraw = true;
+            ShouldHandleInput = new Property<bool>(true);
+            ShouldUpdate = new Property<bool>(true);
+            ShouldDraw = new Property<bool>(true);
         }
 
         #region Virtual Functions
@@ -144,7 +144,7 @@ namespace _2DEngine
         /// </summary>
         public virtual void Die()
         {
-            IsAlive = false;
+            IsAlive.Value = false;
             Hide();
         }
 
@@ -158,9 +158,9 @@ namespace _2DEngine
         /// </summary>
         public virtual void Show()
         {
-            ShouldHandleInput = true;
-            ShouldUpdate = true;
-            ShouldDraw = true;
+            ShouldHandleInput.Value = true;
+            ShouldUpdate.Value = true;
+            ShouldDraw.Value = true;
         }
 
         /// <summary>
@@ -168,9 +168,9 @@ namespace _2DEngine
         /// </summary>
         public virtual void Hide()
         {
-            ShouldHandleInput = false;
-            ShouldUpdate = false;
-            ShouldDraw = false;
+            ShouldHandleInput.Value = false;
+            ShouldUpdate.Value = false;
+            ShouldDraw.Value = false;
         }
 
         #endregion

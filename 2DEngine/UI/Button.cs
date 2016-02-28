@@ -35,7 +35,7 @@ namespace _2DEngine
         {
             // Create the label in the centre of the button
             Label = new Label(buttonText, Vector2.Zero);
-            Label.Parent = this;
+            Label.SetParent(this);
 
             DefaultColour = Color.Black;
             HighlightedColour = Color.DarkGray;

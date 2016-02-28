@@ -32,7 +32,7 @@ namespace _2DEngine
         /// The position of the Camera - corresponds to where the top left of the screen is.  Again we should not be able to set this outside of this class.
         /// Ways to change the camera position are determined by the CameraMode, and also by a parameter passed in when changing mode ONLY.
         /// </summary>
-        public static Vector2 Position { get; private set; }
+        public static Property<Vector2> Position { get; private set; }
 
         /// <summary>
         /// A value to determine how fast the camera should move in Free mode.  This should be freely available for alteration.
@@ -61,7 +61,7 @@ namespace _2DEngine
                 Debug.Assert(IsInitialised);
 
                 // This could be done with usual operators - *, + etc., but this is an optimisation
-                return Matrix.Multiply(Matrix.CreateTranslation(Position.X, Position.Y, 0), Matrix.CreateScale(Zoom));
+                return Matrix.Multiply(Matrix.CreateTranslation(Position.Value.X, Position.Value.Y, 0), Matrix.CreateScale(Zoom));
             }
         }
 
@@ -93,13 +93,13 @@ namespace _2DEngine
             if (IsInitialised) { return; }
 
             CameraMode = CameraMode.kFixed;
-            Position = Vector2.Zero;
+            Position = new Property<Vector2>(Vector2.Zero);
             PanSpeed = 500;
             Zoom = 1;
             ViewportRectangleScreenSpace = new Rectangle(0, 0, ScreenManager.Instance.Viewport.Width, ScreenManager.Instance.Viewport.Height);
 
             // This can be improved upon by using zoom to affect the length
-            ViewportRectangleGameSpace = new Rectangle((int)-Position.X, (int)-Position.Y, ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height);
+            ViewportRectangleGameSpace = new Rectangle((int)-Position.Value.X, (int)-Position.Value.Y, ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height);
 
             IsInitialised = true;
         }
@@ -115,7 +115,7 @@ namespace _2DEngine
             Debug.Assert(IsInitialised);
 
             // This can be improved upon by using zoom to affect the length
-            ViewportRectangleGameSpace = new Rectangle((int)-Position.X, (int)-Position.Y, ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height);
+            ViewportRectangleGameSpace = new Rectangle((int)-Position.Value.X, (int)-Position.Value.Y, ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height);
 
             // Only the follow mode requires no user input to update
             if (CameraMode != CameraMode.kFollow) { return; }
@@ -174,7 +174,7 @@ namespace _2DEngine
             if (delta != Vector2.Zero)
             {
                 delta.Normalize();
-                Position += delta * PanSpeed * elapsedGameTime;
+                Position.Value += delta * PanSpeed * elapsedGameTime;
             }
         }
 
@@ -198,7 +198,7 @@ namespace _2DEngine
             }
 
             /// Since the camera position corresponds to the opposite of what we expect (just look at movement in update function) and the top left is the position, we subtract the focus position from the screen centre
-            Position = new Vector2(ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height) * 0.5f - focusPosition;
+            Position.Value = new Vector2(ViewportRectangleScreenSpace.Width, ViewportRectangleScreenSpace.Height) * 0.5f - focusPosition;
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace _2DEngine
             Debug.Assert(IsInitialised);
 
             // This could be done using ordinary mathematical operators - +, / etc. but this is an optimisation
-            return Vector2.Divide(Vector2.Add(Position, screenPosition), Zoom);
+            return Vector2.Divide(Vector2.Add(Position.Value, screenPosition), Zoom);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace _2DEngine
             Debug.Assert(IsInitialised);
 
             // This could be done using ordinary mathematical operators - +, / etc. but this is an optimisation
-            return Vector2.Subtract(Vector2.Multiply(gamePosition, Zoom), Position);
+            return Vector2.Subtract(Vector2.Multiply(gamePosition, Zoom), Position.Value);
         }
 
         /// <summary>
@@ -239,17 +239,23 @@ namespace _2DEngine
 
             foreach (BaseObject baseObject in objectManager)
             {
+                // If our object's visibility is driven by another object we do not need to perform visibility checks
+                if (baseObject.ShouldDraw.IsOutput)
+                {
+                    continue;
+                }
+
                 if (baseObject.UsesCollider)
                 {
                     DebugUtils.AssertNotNull(baseObject.Collider);
-                    baseObject.ShouldDraw = baseObject.Collider.CheckIntersects(rectangleToUse);
+                    baseObject.ShouldDraw.Value = baseObject.Collider.CheckIntersects(rectangleToUse);
                 }
                 else
                 {
                     // Crude circle check, can definitely be improved upon
                     float x = rectangleToUse.Width + baseObject.Size.X;
                     float y = rectangleToUse.Height + baseObject.Size.Y;
-                    baseObject.ShouldDraw = (centre - baseObject.WorldPosition).LengthSquared() <= x * x + y * y;
+                    baseObject.ShouldDraw.Value = (centre - baseObject.WorldPosition).LengthSquared() <= x * x + y * y;
                 }
             }
         }
@@ -264,6 +270,11 @@ namespace _2DEngine
         public static void SetFree()
         {
             CameraMode = CameraMode.kFree;
+
+            if (Position.IsOutput)
+            {
+                Position.Disconnect();
+            }
         }
 
         /// <summary>
@@ -273,7 +284,17 @@ namespace _2DEngine
         public static void SetFree(Vector2 resetPosition)
         {
             SetFree();
-            Position = resetPosition;
+            Position.Value = resetPosition;
+        }
+
+        /// <summary>
+        /// Connects up the camera position to the inputted objects WorldPosition property.
+        /// </summary>
+        /// <param name="baseObject">The object to follow</param>
+        public static void SetFollow(BaseObject baseObject)
+        {
+            Debug.Assert(!Position.IsOutput);
+            //Position.Connect(baseObject.WorldPosition);
         }
 
         /// <summary>
@@ -282,6 +303,11 @@ namespace _2DEngine
         public static void SetFixed()
         {
             CameraMode = CameraMode.kFixed;
+
+            if (Position.IsOutput)
+            {
+                Position.Disconnect();
+            }
         }
 
         /// <summary>
@@ -291,10 +317,8 @@ namespace _2DEngine
         public static void SetFixed(Vector2 resetPosition)
         {
             SetFixed();
-            Position = resetPosition;
+            Position.Value = resetPosition;
         }
-
-        // TODO Implement follow when we have objects
 
         #endregion
     }

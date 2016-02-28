@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelEditor", "LevelEditor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelEditorData", "LevelEditorData\LevelEditorData.csproj", "{330B7B81-D484-4FEA-83B1-76E746C6C381}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test2DEngine", "Test2DEngine\Test2DEngine.csproj", "{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{330B7B81-D484-4FEA-83B1-76E746C6C381}.Release|Any CPU.ActiveCfg = Release|x86
 		{330B7B81-D484-4FEA-83B1-76E746C6C381}.Release|x86.ActiveCfg = Release|x86
 		{330B7B81-D484-4FEA-83B1-76E746C6C381}.Release|x86.Build.0 = Release|x86
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Debug|x86.Build.0 = Debug|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Release|x86.ActiveCfg = Release|Any CPU
+		{0BFD4CC0-EC54-4960-8D01-2C96CC3FECA9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

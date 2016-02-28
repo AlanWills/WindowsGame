@@ -33,31 +33,19 @@ namespace _2DEngine
         /// <summary>
         /// A float between 0 and 1 which determines the volume of our game music
         /// </summary>
-        private static float musicVolume = 1;
-        public static float MusicVolume
+        private static Property<float> musicVolume = new Property<float>(1);
+        public static Property<float> MusicVolume
         {
             get { return musicVolume; }
-            set
-            {
-                musicVolume = value;
-
-                MediaPlayer.Volume = musicVolume;
-            }
         }
 
         /// <summary>
         /// A float between 0 and 1 which determines the volume of our game SFX
         /// </summary>
-        private static float sfxVolume = 1;
-        public static float SFXVolume
+        private static Property<float> sfxVolume = new Property<float>(1);
+        public static Property<float> SFXVolume
         {
             get { return sfxVolume; }
-            set
-            {
-                sfxVolume = value;
-
-                // Add volume control for SFX manager here
-            }
         }
 
         #endregion
@@ -72,8 +60,8 @@ namespace _2DEngine
             DebugUtils.AssertNotNull(options);
 
             IsFullScreen = options.IsFullScreen;
-            MusicVolume = options.MusicVolume;
-            SFXVolume = options.SFXVolume;
+            MusicVolume.Value = options.MusicVolume;
+            SFXVolume.Value = options.SFXVolume;
         }
 
         public static void Save()
@@ -82,8 +70,8 @@ namespace _2DEngine
 
             OptionsData options = new OptionsData();
             options.IsFullScreen = IsFullScreen;
-            options.MusicVolume = MusicVolume;
-            options.SFXVolume = SFXVolume;
+            options.MusicVolume = MusicVolume.Value;
+            options.SFXVolume = SFXVolume.Value;
 
             AssetManager.SaveData(options, AssetManager.OptionsPath);
         }

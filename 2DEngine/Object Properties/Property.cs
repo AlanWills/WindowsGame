@@ -2,10 +2,10 @@
 
 namespace _2DEngine
 {
-    public delegate void ComputeFunction();
-
     public class Property<T>
     {
+        public delegate void ComputeFunctionEvent(Property<T> property, Property<T> parentProperty);
+
         // Expand on this
         // Having checking for connectedness when setting
         // Compute sets
@@ -17,6 +17,20 @@ namespace _2DEngine
         private Property<T> Parent { get; set; }
 
         /// <summary>
+        /// Optional event handler which can be used to perform a compute on this property and it's parent's values.
+        /// Must be connected to a property to do this.
+        /// </summary>
+        public event ComputeFunctionEvent ComputeFunction;
+
+        /// <summary>
+        /// Returns whether this property is driven by another property.
+        /// </summary>
+        public bool IsOutput
+        {
+            get { return Parent != null; }
+        }
+
+        /// <summary>
         /// The value of this Property
         /// </summary>
         private T value;
@@ -26,6 +40,11 @@ namespace _2DEngine
             {
                 if (Parent != null)
                 {
+                    if (ComputeFunction != null)
+                    {
+                        DebugUtils.AssertNotNull(Parent);
+                    }
+
                     return Parent.Value;
                 }
 

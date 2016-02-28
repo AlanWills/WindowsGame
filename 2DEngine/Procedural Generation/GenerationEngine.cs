@@ -58,7 +58,7 @@ namespace _2DEngine
 
         private float surfaceWidthFrequency = 0.75f;
         private float surfaceHeightFrequency = 0.15f;
-        private int maximumHeightChange = 2;
+        private int maximumHeightChange = 1;
         private Vector2 tileDimensions;
 
         private Dictionary<Position, string> TileData { get; set; }

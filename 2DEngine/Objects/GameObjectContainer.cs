@@ -98,7 +98,7 @@ namespace _2DEngine
         /// <param name="initialise"></param>
         public void AddObject(GameObject gameObjectToAdd, bool load = false, bool initialise = false)
         {
-            gameObjectToAdd.Parent = this;
+            gameObjectToAdd.SetParent(this);
 
             GameObjects.AddObject(gameObjectToAdd, load, initialise);
         }

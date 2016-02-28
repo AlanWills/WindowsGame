@@ -33,7 +33,7 @@ namespace _2DEngine
 
             DebugUtils.AssertNotNull(Collider);
 
-            if (GameMouse.Instance.IsClicked(MouseButton.kRightButton) && Collider.CheckCollisionWith(GameMouse.Instance.InGamePosition))
+            if (GameMouse.Instance.IsClicked(MouseButton.kRightButton) && Collider.CheckIntersects(GameMouse.Instance.InGamePosition))
             {
                 Die();
             }

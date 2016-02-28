@@ -96,7 +96,7 @@ namespace _2DEngine
             foreach (T obj in ActiveObjects)
             {
                 // Handle input for the object
-                if (obj.ShouldHandleInput)
+                if (obj.ShouldHandleInput.Value)
                 {
                     obj.HandleInput(elapsedGameTime, mousePosition);
                 }
@@ -119,7 +119,7 @@ namespace _2DEngine
             // Loop through the active object
             foreach (T obj in ActiveObjects)
             {
-                if (obj.ShouldUpdate)
+                if (obj.ShouldUpdate.Value)
                 {
                     // Update the object
                     obj.Update(elapsedGameTime);
@@ -127,7 +127,7 @@ namespace _2DEngine
             }
 
             // Remove all the objects that are no longer alive
-            ActiveObjects.RemoveAll(x => x.IsAlive == false);
+            ActiveObjects.RemoveAll(x => x.IsAlive.Value == false);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace _2DEngine
 
             foreach (T obj in ActiveObjects)
             {
-                if (obj.ShouldDraw)
+                if (obj.ShouldDraw.Value)
                 {
                     // Draw the object
                     obj.Draw(spriteBatch);

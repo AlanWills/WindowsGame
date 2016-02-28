@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <AnimationData>
-  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized</AnimationTextureAsset>
-  <TextureFramesX>1</TextureFramesX>
-  <TextureFramesY>14</TextureFramesY>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized</AnimationTextureAsset>
+  <TextureFramesX>14</TextureFramesX>
+  <TextureFramesY>1</TextureFramesY>
   <Continual>true</Continual>
   <IsGlobal>false</IsGlobal>
 </AnimationData>

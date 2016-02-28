@@ -118,17 +118,17 @@ namespace _2DEngine
         {
             FrontImage = new Image(Vector2.Zero, foregroundTextureAsset, lifeTime);
             FrontImage.Colour = Color.Blue;
-            FrontImage.Parent = this;
+            FrontImage.SetParent(this);
 
             // Fix up our label position after all the textures are initialised
             // Parent it to the bar
             InfoLabel = new Label(text, Vector2.Zero, AssetManager.DefaultSpriteFontAsset, lifeTime);
-            InfoLabel.Parent = this;
+            InfoLabel.SetParent(this);
 
             // Fix up our label position after all the textures are initialised
             // Parent it to the bar
             ValueLabel = new Label(currentValue.ToString(), Vector2.Zero, AssetManager.DefaultSpriteFontAsset, lifeTime);
-            ValueLabel.Parent = this;
+            ValueLabel.SetParent(this);
 
             MinValue = minValue;
             MaxValue = maxValue;

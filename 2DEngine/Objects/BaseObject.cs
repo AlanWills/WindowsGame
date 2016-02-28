@@ -58,7 +58,7 @@ namespace _2DEngine
         /// <summary>
         /// An object which we can parent this object off of.  Positions and rotations are then relative to this object
         /// </summary>
-        public BaseObject Parent { get; set; }
+        private Property<BaseObject> Parent { get; set; }
 
         /// <summary>
         /// The local offset from the parent.
@@ -88,13 +88,13 @@ namespace _2DEngine
         {
             get
             {
-                if (Parent == null)
+                if (Parent.Value == null)
                 {
                     return LocalPosition;
                 }
 
                 // This syntax is for optimisation
-                return Vector2.Add(Parent.WorldPosition, Vector2.Transform(LocalPosition, Matrix.CreateRotationZ(WorldRotation)));
+                return Vector2.Add(Parent.Value.WorldPosition, Vector2.Transform(LocalPosition, Matrix.CreateRotationZ(WorldRotation)));
             }
         }
 
@@ -107,13 +107,13 @@ namespace _2DEngine
             get
             {
                 // If we have no parent, return the local rotation
-                if (Parent == null)
+                if (Parent.Value == null)
                 {
                     return LocalRotation;
                 }
 
                 // Wrap the angle between -PI and PI
-                return MathHelper.WrapAngle(Parent.WorldRotation + localRotation);
+                return MathHelper.WrapAngle(Parent.Value.WorldRotation + localRotation);
             }
         }
 
@@ -160,6 +160,8 @@ namespace _2DEngine
             Opacity = 1;
             UsesCollider = true;
             SpriteEffect = SpriteEffects.None;
+
+            Parent = new Property<BaseObject>(null);
         }
 
         public BaseObject(Vector2 size, Vector2 localPosition, string textureAsset) :
@@ -291,6 +293,23 @@ namespace _2DEngine
                 Colour * Opacity,
                 SpriteEffect,
                 0);
+        }
+
+        #endregion
+
+        #region Utility Functions
+
+        /// <summary>
+        /// Set this object's parent attribute to the inputted object and connect up appropriate attributes like IsAlive.
+        /// Can override to connect up extra attributes such as ShouldDraw if we have an object we know will be contained in the parent.
+        /// </summary>
+        /// <param name="parent">The object we wish to set as the parent</param>
+        public virtual void SetParent(BaseObject parent)
+        {
+            Parent.Value = parent;
+
+            // Connect up our object's IsAlive property to our parent's so that we will die automatically when our parent dies
+            IsAlive.Connect(parent.IsAlive);
         }
 
         #endregion

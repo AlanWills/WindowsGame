@@ -61,6 +61,10 @@ namespace _2DEngine
 
         #region Virtual Functions
 
+        /// <summary>
+        /// Updates the lifetime of this UIObject
+        /// </summary>
+        /// <param name="elapsedGameTime"></param>
         public override void Update(float elapsedGameTime)
         {
             base.Update(elapsedGameTime);

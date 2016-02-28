@@ -28,7 +28,7 @@ namespace _2DEngine
         /// <summary>
         /// The current value of our slider
         /// </summary>
-        public float CurrentValue { get; private set; }
+        public Property<float> CurrentValue { get; private set; }
 
         /// <summary>
         /// The handle for for our slider
@@ -79,21 +79,21 @@ namespace _2DEngine
 
             // Our bar will not have any collision detection on it
             SliderHandle = new Image(Vector2.Zero, sliderHandleTextureAsset, lifeTime);
-            SliderHandle.Parent = this;
+            SliderHandle.SetParent(this);
 
             // Fix up our label position after all the textures are initialised
             // Parent it to the bar
             InfoLabel = new Label(infoText, Vector2.Zero, AssetManager.DefaultSpriteFontAsset, lifeTime);
-            InfoLabel.Parent = this;
+            InfoLabel.SetParent(this);
 
             // Fix up our label position after all the textures are initialised
             // Parent it to the bar
             ValueLabel = new Label(currentValue.ToString(), Vector2.Zero);
-            ValueLabel.Parent = this;
+            ValueLabel.SetParent(this);
 
             MaxValue = maxValue;
             MinValue = minValue;
-            CurrentValue = currentValue;
+            CurrentValue = new Property<float>(currentValue);
         }
 
         #region Virtual Functions
@@ -134,7 +134,7 @@ namespace _2DEngine
             base.Begin();
 
             // Maps the current value between [0, 1]
-            float currentValue = (CurrentValue - MinValue) / (MaxValue - MinValue);
+            float currentValue = (CurrentValue.Value - MinValue) / (MaxValue - MinValue);
             SliderHandle.LocalPosition = new Vector2((currentValue - 0.5f) * Size.X, 0);
 
             float padding = 5f;
@@ -165,14 +165,14 @@ namespace _2DEngine
                 float multiplier = (newX + sliderBarHalfWidth) / (2 * sliderBarHalfWidth);
                 Debug.Assert(multiplier >= 0 && multiplier <= 1);
 
-                CurrentValue = (1 - multiplier) * MinValue + multiplier * MaxValue;
+                CurrentValue.Value = (1 - multiplier) * MinValue + multiplier * MaxValue;
 
                 // Update our value label text
                 ValueLabel.Text = CurrentValue.ToString();
 
                 // We do asserts rather than actual clamping, because if these asserts are false the slider is behaving incorrectly
-                Debug.Assert(CurrentValue >= MinValue);
-                Debug.Assert(CurrentValue <= MaxValue);
+                Debug.Assert(CurrentValue.Value >= MinValue);
+                Debug.Assert(CurrentValue.Value <= MaxValue);
 
                 if (OnValueChanged != null)
                 {

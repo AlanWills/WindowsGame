@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 
 namespace _2DEngine
 {
@@ -27,22 +28,22 @@ namespace _2DEngine
 
             Label titleLabel = AddScreenUIObject(new Label("Options", new Vector2(ScreenCentre.X, ScreenDimensions.Y * 0.1f))) as Label;
 
-            Slider musicVolumeSlider = AddScreenUIObject(new Slider(OptionsManager.MusicVolume, "Music Volume", new Vector2(0, padding))) as Slider;
-            musicVolumeSlider.Parent = titleLabel;
-            musicVolumeSlider.OnValueChanged += SyncOptionsMusicVolume;
+            Slider musicVolumeSlider = AddScreenUIObject(new Slider(OptionsManager.MusicVolume.Value, "Music Volume", new Vector2(0, padding))) as Slider;
+            musicVolumeSlider.SetParent(titleLabel);
+            OptionsManager.MusicVolume.Connect(musicVolumeSlider.CurrentValue);
 
-            Slider sfxVolumeSlider = AddScreenUIObject(new Slider(OptionsManager.SFXVolume, "SFX Volume", new Vector2(0, padding))) as Slider;
-            sfxVolumeSlider.Parent = musicVolumeSlider;
-            sfxVolumeSlider.OnValueChanged += SyncOptionsSFXVolume;
+            Slider sfxVolumeSlider = AddScreenUIObject(new Slider(OptionsManager.SFXVolume.Value, "SFX Volume", new Vector2(0, padding))) as Slider;
+            sfxVolumeSlider.SetParent(musicVolumeSlider);
+            // Connect up SFX manager
 
             Button fullScreenButton = AddScreenUIObject(new Button(OptionsManager.IsFullScreen.ToString(), new Vector2(0, padding))) as Button;
             fullScreenButton.Name = "Fullscreen Button";
-            fullScreenButton.Parent = sfxVolumeSlider;
+            fullScreenButton.SetParent(sfxVolumeSlider);
             fullScreenButton.OnClicked += SyncOptionsIsFullScreen;
 
             Label fullScreenLabel = AddScreenUIObject(new Label("Fullscreen", Vector2.Zero)) as Label;
             fullScreenLabel.Name = "Fullscreen Label";
-            fullScreenLabel.Parent = fullScreenButton;
+            fullScreenLabel.SetParent(fullScreenButton);
         }
 
         /// <summary>
@@ -64,24 +65,6 @@ namespace _2DEngine
         #endregion
 
         #region Callbacks
-
-        /// <summary>
-        /// Syncs our slider's value with our options music volume
-        /// </summary>
-        /// <param name="slider"></param>
-        private void SyncOptionsMusicVolume(Slider slider)
-        {
-            OptionsManager.MusicVolume = slider.CurrentValue;
-        }
-
-        /// <summary>
-        /// Syncs our slider's value with our options sfx volume
-        /// </summary>
-        /// <param name="slider"></param>
-        private void SyncOptionsSFXVolume(Slider slider)
-        {
-            OptionsManager.SFXVolume = slider.CurrentValue;
-        }
 
         /// <summary>
         /// Syncs our button's value with our options is full screen option

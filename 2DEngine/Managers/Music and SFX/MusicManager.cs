@@ -117,6 +117,8 @@ namespace _2DEngine
 
         public static void Update()
         {
+            MediaPlayer.Volume = OptionsManager.MusicVolume.Value;
+
             if (MediaPlayer.State == MediaState.Stopped)
             {
                 // If we have songs still queued then dequeue the next song name

@@ -169,7 +169,7 @@ namespace LevelEditor
             // Initialise the CurrentSelectedObject to a default rather than checking for whether it is null etc.
             Debug.Assert(AvailableAssets.Count > 0);
             CurrentSelectedObject = AddScreenUIObject(new Image(Vector2.Zero, AvailableAssets[0])) as Image;
-            CurrentSelectedObject.Parent = GameMouse.Instance;
+            CurrentSelectedObject.SetParent(GameMouse.Instance);
             CurrentSelectedObject.Hide();
 
             Button serializeButton = AddScreenUIObject(new Button("Serialize", new Vector2(ScreenDimensions.X * 0.1f, ScreenDimensions.Y * 0.9f))) as Button;
@@ -194,7 +194,7 @@ namespace LevelEditor
             DeserializeLevel();
 
             Button procedurallyGenerate = AddScreenUIObject(new Button("Generate", new Vector2(ScreenDimensions.X * 0.15f, 0))) as Button;
-            procedurallyGenerate.Parent = serializeButton;
+            procedurallyGenerate.SetParent(serializeButton);
             procedurallyGenerate.OnClicked += Generate;
         }
 
@@ -218,7 +218,7 @@ namespace LevelEditor
             
             if (GameMouse.Instance.IsClicked(MouseButton.kLeftButton))
             {
-                if (CurrentSelectedObject.ShouldHandleInput)
+                if (CurrentSelectedObject.ShouldHandleInput.Value)
                 {
                     AddLevelObject();
                 }
@@ -246,7 +246,7 @@ namespace LevelEditor
         {
             base.Update(elapsedGameTime);
 
-            if (CurrentSelectedObject.ShouldUpdate && (CurrentType == LevelDesignType.kNormalTile || CurrentType == LevelDesignType.kCollisionTile))
+            if (CurrentSelectedObject.ShouldUpdate.Value && (CurrentType == LevelDesignType.kNormalTile || CurrentType == LevelDesignType.kCollisionTile))
             {
                 if (GameMouse.Instance.Snapping == false)
                 {
@@ -269,24 +269,24 @@ namespace LevelEditor
         private void OnAmbientRedChanged(Slider slider)
         {
             Color currentAmbientColour = Lights.AmbientLightReference.Colour;
-            Lights.AmbientLightReference.Colour = new Color(slider.CurrentValue, currentAmbientColour.G, currentAmbientColour.B, currentAmbientColour.A);
+            Lights.AmbientLightReference.Colour = new Color(slider.CurrentValue.Value, currentAmbientColour.G, currentAmbientColour.B, currentAmbientColour.A);
         }
         
         private void OnAmbientGreenChanged(Slider slider)
         {
             Color currentAmbientColour = Lights.AmbientLightReference.Colour;
-            Lights.AmbientLightReference.Colour = new Color(currentAmbientColour.R, slider.CurrentValue, currentAmbientColour.B, currentAmbientColour.A);
+            Lights.AmbientLightReference.Colour = new Color(currentAmbientColour.R, slider.CurrentValue.Value, currentAmbientColour.B, currentAmbientColour.A);
         }
 
         private void OnAmbientBlueChanged(Slider slider)
         {
             Color currentAmbientColour = Lights.AmbientLightReference.Colour;
-            Lights.AmbientLightReference.Colour = new Color(currentAmbientColour.R, currentAmbientColour.G, slider.CurrentValue, currentAmbientColour.A);
+            Lights.AmbientLightReference.Colour = new Color(currentAmbientColour.R, currentAmbientColour.G, slider.CurrentValue.Value, currentAmbientColour.A);
         }
 
         private void OnAmbientIntensityChanged(Slider slider)
         {
-            Lights.AmbientLightReference.Opacity = slider.CurrentValue;
+            Lights.AmbientLightReference.Opacity = slider.CurrentValue.Value;
         }
 
         private void Generate(ClickableImage image)
@@ -312,7 +312,7 @@ namespace LevelEditor
 
             CurrentSelectedObject = AddScreenUIObject(new Image(TileSize, Vector2.Zero, (string)image.StoredObject), true, true) as Image;
             CurrentSelectedObject.StoredObject = image.StoredObject;
-            CurrentSelectedObject.Parent = GameMouse.Instance;
+            CurrentSelectedObject.SetParent(GameMouse.Instance);
 
             GameMouse.Instance.IsFlushed = true;
         }
@@ -420,25 +420,25 @@ namespace LevelEditor
             // Need to check for the alive ones because although the objects are cleaned up from the Screen Managers, they will still linger in the other lists
 
             // Serialize normal tiles to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalTile].FindAll(x => x.IsAlive))
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalTile].FindAll(x => x.IsAlive.Value))
             {
                 levelData.NormalTiles.Add(SerializeLevelObject(levelObject));
             }
 
             // Serialize collision tiles to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionTile].FindAll(x => x.IsAlive))
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionTile].FindAll(x => x.IsAlive.Value))
             {
                 levelData.CollisionTiles.Add(SerializeLevelObject(levelObject));
             }
 
             // Serialize normal decals to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalDecal].FindAll(x => x.IsAlive))
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kNormalDecal].FindAll(x => x.IsAlive.Value))
             {
                 levelData.NormalDecals.Add(SerializeLevelObject(levelObject));
             }
 
             // Serialize collision decals to level data
-            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionDecal].FindAll(x => x.IsAlive))
+            foreach (LevelDesignObject levelObject in LevelObjects[LevelDesignType.kCollisionDecal].FindAll(x => x.IsAlive.Value))
             {
                 levelData.CollisionDecals.Add(SerializeLevelObject(levelObject));
             }

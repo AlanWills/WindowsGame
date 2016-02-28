@@ -60,24 +60,22 @@ namespace _2DEngine
 
         public void Update(float elapsedGameTime)
         {
-            if (GameObject.Collider.CollidedThisFrame && !GameObject.Collider.CollidedLastFrame)
-            {
-                FullLinearStop(Dimensions.kY);
-            }
-
             // Update the angular components
             AngularVelocity += AngularAcceleration * elapsedGameTime;
             GameObject.LocalRotation += AngularVelocity * elapsedGameTime;
 
             // Update the linear components
-            LinearVelocity += LinearAcceleration * elapsedGameTime;
+            //LinearVelocity += LinearAcceleration * elapsedGameTime;
 
-            if (!GameObject.Collider.CollidedThisFrame)
+            if (!GameObject.Collider.CollidedThisFrame && !GameObject.Collider.CollidedLastFrame)
             {
                 LinearVelocity -= new Vector2(0, PhysicsConstants.Gravity * elapsedGameTime);
+                GameObject.LocalPosition -= Vector2.Transform(LinearVelocity, Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
             }
-
-            GameObject.LocalPosition -= Vector2.Transform(LinearVelocity, Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
+            else
+            {
+                LinearVelocity = new Vector2(LinearVelocity.X, MathHelper.Max(LinearVelocity.Y, 0));
+            }
         }
 
         #region Utility Functions

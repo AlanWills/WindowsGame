@@ -34,7 +34,7 @@ namespace _2DEngine
         /// <summary>
         /// A potentially null physics body used to apply physics to this GameObject
         /// </summary>
-        protected PhysicsBody PhysicsBody { get; private set; }
+        public PhysicsBody PhysicsBody { get; private set; }
 
         /// <summary>
         /// The health of this object.  If below zero, it will be killed and cleaned up.

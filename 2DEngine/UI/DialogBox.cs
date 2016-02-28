@@ -29,7 +29,7 @@ namespace _2DEngine
         {
             // Set the text to be in the centre of the text box
             Text = new Label(text, Vector2.Zero);
-            Text.Parent = this;
+            Text.SetParent(this);
         }
 
         #region Virtual Functions

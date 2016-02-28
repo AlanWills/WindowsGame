@@ -879,3 +879,51 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/UI/SliderBar.png
 
+#begin Sprites/CharacterSpriteSheets/Hero/Idle_000_12x1_Resized.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/CharacterSpriteSheets/Hero/Idle_000_12x1_Resized.png
+
+#begin Sprites/CharacterSpriteSheets/Hero/Walk_000_16x1_Resized.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/CharacterSpriteSheets/Hero/Walk_000_16x1_Resized.png
+
+#begin Sprites/CharacterSpriteSheets/Hero/Run_000_14x1_Resized.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/CharacterSpriteSheets/Hero/Run_000_14x1_Resized.png
+
+#begin Sprites/CharacterSpriteSheets/Hero/Shoot_000_16x1_Resized.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/CharacterSpriteSheets/Hero/Shoot_000_16x1_Resized.png
+

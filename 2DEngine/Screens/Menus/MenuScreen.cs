@@ -16,14 +16,12 @@ namespace _2DEngine
         /// </summary>
         private MenuScreen PreviousMenuScreen { get; set; }
 
-        private Type type;
-
         #endregion
 
         public MenuScreen(MenuScreen previousMenuScreen, string screenDataAsset) :
             base(screenDataAsset)
         {
-            Lights.ShouldDraw = false;
+            Lights.ShouldDraw.Value = false;
             PreviousMenuScreen = previousMenuScreen;
         }
 

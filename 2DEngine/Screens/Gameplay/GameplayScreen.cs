@@ -22,8 +22,7 @@ namespace _2DEngine
         public GameplayScreen(string screenDataAsset) :
             base(screenDataAsset)
         {
-            Lights.ShouldDraw = true;
-
+            Lights.ShouldDraw.Value = true;
             CollisionObjects = new List<GameObject>();
         }
 
@@ -48,7 +47,7 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            CollisionObjects.RemoveAll(x => !x.IsAlive);
+            CollisionObjects.RemoveAll(x => !x.IsAlive.Value);
 
             foreach (GameObject collisionObject in CollisionObjects)
             {
@@ -56,7 +55,40 @@ namespace _2DEngine
                 {
                     if (backgroundObject.UsesCollider && collisionObject.Collider.CheckCollisionWith(backgroundObject.Collider))
                     {
-                        break;
+                        float angle = MathUtils.AngleBetweenPoints(backgroundObject.WorldPosition, collisionObject.WorldPosition);
+
+                        Vector2 collisionObjectWorldPosition = collisionObject.WorldPosition;
+                        Vector2 backgroundObjectWorldPosition = backgroundObject.WorldPosition;
+                        Vector2 collisionObjectHalfSize = collisionObject.Collider.Size * 0.5f;
+                        Vector2 backgroundObjectHalfSize = backgroundObject.Collider.Size * 0.5f;
+
+                        Vector2 correction = Vector2.Zero;
+
+                        if (MathUtils.CheckCollisionFromAbove(angle))
+                        {
+                            // Collided from the top or bottom so stop Y velocity and acceleration
+                            //collisionObject.PhysicsBody.FullLinearStop(Dimensions.kY);
+                            // Diff between bottom of object and top of collider
+                            correction.Y += (backgroundObjectWorldPosition.Y - backgroundObjectHalfSize.Y) - (collisionObjectWorldPosition.Y + collisionObjectHalfSize.Y);
+                        }
+                        else if (MathUtils.CheckCollisionFromBelow(angle))
+                        {
+                            //collisionObject.PhysicsBody.FullLinearStop(Dimensions.kY);
+                            correction.Y += (backgroundObjectWorldPosition.Y + backgroundObjectHalfSize.Y) - (collisionObjectWorldPosition.Y - collisionObjectHalfSize.Y);
+                        }
+
+                        if (MathUtils.CheckCollisionFromLeft(angle))
+                        {
+                            //collisionObject.PhysicsBody.FullLinearStop(Dimensions.kX);
+                            correction.X += (backgroundObjectWorldPosition.X - backgroundObjectHalfSize.X) - (collisionObjectWorldPosition.X + collisionObjectHalfSize.X);
+                        }
+                        else if (MathUtils.CheckCollisionFromRight(angle))
+                        {
+                            //collisionObject.PhysicsBody.FullLinearStop(Dimensions.kX);
+                            correction.X += (backgroundObjectWorldPosition.X + backgroundObjectHalfSize.X) - (collisionObjectWorldPosition.X - collisionObjectHalfSize.X);
+                        }
+
+                        collisionObject.LocalPosition += correction;
                     }
                 }
 
@@ -82,6 +114,7 @@ namespace _2DEngine
         protected void AddCollisionObject(GameObject collisionObject)
         {
             Debug.Assert(collisionObject.UsesCollider);
+            DebugUtils.AssertNotNull(collisionObject.PhysicsBody);
 
             CollisionObjects.Add(collisionObject);
         }

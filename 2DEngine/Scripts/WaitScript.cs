@@ -30,8 +30,8 @@
         {
             base.Begin();
 
-            ParentScreen.ShouldHandleInput = false;
-            ParentScreen.ShouldUpdate = false;
+            ParentScreen.ShouldHandleInput.Value = false;
+            ParentScreen.ShouldUpdate.Value = false;
         }
 
         /// <summary>
@@ -57,8 +57,8 @@
         {
             base.Die();
 
-            ParentScreen.ShouldHandleInput = true;
-            ParentScreen.ShouldUpdate = true;
+            ParentScreen.ShouldHandleInput.Value = true;
+            ParentScreen.ShouldUpdate.Value = true;
         }
 
         #endregion

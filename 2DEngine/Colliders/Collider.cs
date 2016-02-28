@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace _2DEngine
@@ -43,6 +44,11 @@ namespace _2DEngine
         /// </summary>
         public bool IsMouseOver { get; private set; }
 
+        /// <summary>
+        /// The size of the collider.
+        /// </summary>
+        public Vector2 Size { get; protected set; }
+
         #endregion
 
         public Collider(BaseObject parent)
@@ -51,13 +57,6 @@ namespace _2DEngine
         }
 
         #region Abstract Collision Functions
-
-        /// <summary>
-        /// Checks collision with inputted point and updates the CollidedThisFrame bool
-        /// </summary>
-        /// <param name="point">The point to check</param>
-        /// <returns>Returns true if a collision occurred</returns>
-        public abstract bool CheckCollisionWith(Vector2 point);
 
         /// <summary>
         /// Calls the appropriate check function against the type of the inputted collider.
@@ -84,6 +83,13 @@ namespace _2DEngine
         public abstract bool CheckCollisionWith(RectangleCollider rectangleCollider);
 
         /// <summary>
+        /// Checks collision with inputted point.  Does not update CollidedThisFrame bool
+        /// </summary>
+        /// <param name="point">The point to check</param>
+        /// <returns>Returns true if a collision occurred</returns>
+        public abstract bool CheckIntersects(Vector2 point);
+
+        /// <summary>
         /// Check whether this collider intersects the inputted rectangle.  Does not update CollidedThisFrame bool.
         /// </summary>
         /// <param name="rectangle">The inputted rectangle to test against</param>
@@ -104,7 +110,7 @@ namespace _2DEngine
             CollidedThisFrame = false;
 
             // If the mouse position and this have collided the mouse is over it
-            IsMouseOver = CheckCollisionWith(mousePosition);
+            IsMouseOver = CheckIntersects(mousePosition);
 
             // If the mouse is over this and the left mouse button is clicked, the object is clicked
             IsClicked = IsMouseOver && GameMouse.Instance.IsClicked(MouseButton.kLeftButton);

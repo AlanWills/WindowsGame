@@ -30,17 +30,9 @@ namespace _2DEngine
 
         #region Abstract Collision Functions
 
-        public override bool CheckCollisionWith(Vector2 point)
-        {
-            bool result = bounds.Contains(point);
-            CollidedThisFrame = CollidedThisFrame || result;
-
-            return result;
-        }
-
         public override bool CheckCollisionWith(RectangleCollider rectangleCollider)
         {
-            bool result = bounds.Intersects(rectangleCollider.Bounds);
+            bool result = rectangleCollider.Bounds.Intersects(bounds);
             CollidedThisFrame = CollidedThisFrame || result;
 
             return result;
@@ -49,6 +41,11 @@ namespace _2DEngine
         public override bool CheckIntersects(Rectangle rectangle)
         {
             return rectangle.Intersects(Bounds);
+        }
+
+        public override bool CheckIntersects(Vector2 point)
+        {
+            return bounds.Contains(point); ;
         }
 
         #endregion
@@ -65,6 +62,7 @@ namespace _2DEngine
             Vector2 parentWorldPos = Vector2.Zero, parentSize = Vector2.Zero;
 
             Parent.UpdateCollider(ref parentWorldPos, ref parentSize);
+            Size = parentSize;
 
             // Update the bounds location (top left)
             bounds.Location = new Point(
@@ -72,7 +70,7 @@ namespace _2DEngine
                 (int)(parentWorldPos.Y - parentSize.Y * 0.5f));
 
             // Update the bounds size
-            bounds.Size = new Point((int)parentSize.X, (int)parentSize.Y);
+            bounds.Size = Size.ToPoint();
         }
 
         #endregion

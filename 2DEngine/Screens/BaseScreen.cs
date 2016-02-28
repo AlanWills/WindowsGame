@@ -243,10 +243,10 @@ namespace _2DEngine
 
             Vector2 gameMouseCoords = Camera.ScreenToGameCoords(mousePosition);
 
-            if (EnvironmentObjects.ShouldHandleInput) { EnvironmentObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
-            if (GameObjects.ShouldHandleInput) { GameObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
-            if (InGameUIObjects.ShouldHandleInput) { InGameUIObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
-            if (ScreenUIObjects.ShouldHandleInput) { ScreenUIObjects.HandleInput(elapsedGameTime, mousePosition); }
+            if (EnvironmentObjects.ShouldHandleInput.Value) { EnvironmentObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
+            if (GameObjects.ShouldHandleInput.Value) { GameObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
+            if (InGameUIObjects.ShouldHandleInput.Value) { InGameUIObjects.HandleInput(elapsedGameTime, gameMouseCoords); }
+            if (ScreenUIObjects.ShouldHandleInput.Value) { ScreenUIObjects.HandleInput(elapsedGameTime, mousePosition); }
         }
 
         /// <summary>
@@ -257,11 +257,11 @@ namespace _2DEngine
         {
             base.Update(elapsedGameTime);
 
-            if (Lights.ShouldUpdate) { Lights.Update(elapsedGameTime); }
-            if (EnvironmentObjects.ShouldUpdate) { EnvironmentObjects.Update(elapsedGameTime); }
-            if (GameObjects.ShouldUpdate) { GameObjects.Update(elapsedGameTime); }
-            if (InGameUIObjects.ShouldUpdate) { InGameUIObjects.Update(elapsedGameTime); }
-            if (ScreenUIObjects.ShouldUpdate) { ScreenUIObjects.Update(elapsedGameTime); }
+            if (Lights.ShouldUpdate.Value) { Lights.Update(elapsedGameTime); }
+            if (EnvironmentObjects.ShouldUpdate.Value) { EnvironmentObjects.Update(elapsedGameTime); }
+            if (GameObjects.ShouldUpdate.Value) { GameObjects.Update(elapsedGameTime); }
+            if (InGameUIObjects.ShouldUpdate.Value) { InGameUIObjects.Update(elapsedGameTime); }
+            if (ScreenUIObjects.ShouldUpdate.Value) { ScreenUIObjects.Update(elapsedGameTime); }
 
             Camera.CheckVisibility(Lights, false);
             Camera.CheckVisibility(EnvironmentObjects, false);
@@ -286,7 +286,7 @@ namespace _2DEngine
             {
                 graphicsDevice.SetRenderTarget(LightRenderTarget);
 
-                if (Lights.ShouldDraw)
+                if (Lights.ShouldDraw.Value)
                 {
                     graphicsDevice.Clear(Color.Black);
 
@@ -309,7 +309,7 @@ namespace _2DEngine
                 {
                     spriteBatch.Begin();
                     {
-                        if (Background.ShouldDraw) { Background.Draw(spriteBatch); }
+                        if (Background.ShouldDraw.Value) { Background.Draw(spriteBatch); }
                     }
 
                     spriteBatch.End();
@@ -318,8 +318,8 @@ namespace _2DEngine
                 // Draw the camera dependent objects using the camera transformation matrix
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
                 {
-                    if (EnvironmentObjects.ShouldDraw) { EnvironmentObjects.Draw(spriteBatch); }
-                    if (GameObjects.ShouldDraw) { GameObjects.Draw(spriteBatch); }
+                    if (EnvironmentObjects.ShouldDraw.Value) { EnvironmentObjects.Draw(spriteBatch); }
+                    if (GameObjects.ShouldDraw.Value) { GameObjects.Draw(spriteBatch); }
                 }
 
                 spriteBatch.End();
@@ -332,7 +332,7 @@ namespace _2DEngine
 
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, Camera.TransformationMatrix);
                 {
-                    if (InGameUIObjects.ShouldDraw) { InGameUIObjects.Draw(spriteBatch); }
+                    if (InGameUIObjects.ShouldDraw.Value) { InGameUIObjects.Draw(spriteBatch); }
                 }
 
                 spriteBatch.End();
@@ -346,8 +346,8 @@ namespace _2DEngine
                 // Draw the camera independent objects and the mouse last
                 spriteBatch.Begin();
                 {
-                    if (ScreenUIObjects.ShouldDraw) { ScreenUIObjects.Draw(spriteBatch); }
-                    if (GameMouse.Instance.ShouldDraw) { GameMouse.Instance.Draw(spriteBatch); }
+                    if (ScreenUIObjects.ShouldDraw.Value) { ScreenUIObjects.Draw(spriteBatch); }
+                    if (GameMouse.Instance.ShouldDraw.Value) { GameMouse.Instance.Draw(spriteBatch); }
                 }
 
                 spriteBatch.End();
