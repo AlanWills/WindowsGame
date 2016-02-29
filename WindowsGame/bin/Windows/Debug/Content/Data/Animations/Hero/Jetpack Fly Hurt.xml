@@ -7,4 +7,8 @@
   <IsGlobal>false</IsGlobal>
   <FixupX>0</FixupX>
   <FixupY>0</FixupY>
+  <ColliderCentrePositionOffsetX>0</ColliderCentrePositionOffsetX>
+  <ColliderCentrePositionOffsetY>0</ColliderCentrePositionOffsetY>
+  <ColliderWidthProportion>0.5</ColliderWidthProportion>
+  <ColliderHeightProportion>1</ColliderHeightProportion>
 </AnimationData>

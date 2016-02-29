@@ -9,6 +9,6 @@
   <FixupY>0</FixupY>
   <ColliderCentrePositionOffsetX>0</ColliderCentrePositionOffsetX>
   <ColliderCentrePositionOffsetY>0</ColliderCentrePositionOffsetY>
-  <ColliderWidthProportion>0.5f</ColliderWidthProportion>
+  <ColliderWidthProportion>0.5</ColliderWidthProportion>
   <ColliderHeightProportion>1</ColliderHeightProportion>
 </AnimationData>

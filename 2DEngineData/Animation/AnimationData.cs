@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace _2DEngineData
+﻿namespace _2DEngineData
 {
     /// <summary>
     /// A class to hold all the information necessary for an animation.
@@ -43,12 +41,14 @@ namespace _2DEngineData
         /// Specifies where the collider centre is as a proportion of the animation frame dimensions - Zero means the centre remains unchanged
         /// </summary>
         public float ColliderCentrePositionOffsetX { get; set; }
+
         public float ColliderCentrePositionOffsetY { get; set; }
 
         /// <summary>
         /// Specifies the width and heigh of the collider as a proportion of the animation frame
         /// </summary>
         public float ColliderWidthProportion { get; set; }
+
         public float ColliderHeightProportion { get; set; }
     }
 }
