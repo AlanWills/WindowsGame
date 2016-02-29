@@ -103,6 +103,9 @@ namespace _2DEngine
         {
             Animations = new Dictionary<string, Animation>();
             NumBehaviours = (uint)CharacterBehaviours.kNumBehaviours;
+
+            AddPhysicsBody();
+            PhysicsBody.OnDirectionChange += OnDirectionChange;
         }
 
         #region Virtual Functions
@@ -265,6 +268,20 @@ namespace _2DEngine
         {
             Debug.Assert(id < NumBehaviours);
             return StateMachine.GetState(id);
+        }
+
+        /// <summary>
+        /// A callback for when our direction changes.  Used for flipping sprites and for re-fixing animations.
+        /// </summary>
+        /// <param name="oldDirection"></param>
+        /// <param name="newDirection"></param>
+        public void OnDirectionChange(int oldDirection, int newDirection)
+        {
+            DebugUtils.AssertNotNull(StateMachine);
+            DebugUtils.AssertNotNull(PhysicsBody);
+
+            SpriteEffect = newDirection == PhysicsConstants.LeftDirection ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            LocalPosition += new Vector2(2 * StateMachine.ActiveState.Animation.AnimationFixup.X * newDirection, 0);
         }
 
         #endregion

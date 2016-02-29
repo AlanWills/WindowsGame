@@ -32,5 +32,8 @@ namespace _2DEngineData
         /// Assign true if it should be reachable from every other state in our state machine.
         /// </summary>
         public bool IsGlobal { get; set; }
+
+        public float FixupX { get; set; }
+        public float FixupY { get; set; }
     }
 }

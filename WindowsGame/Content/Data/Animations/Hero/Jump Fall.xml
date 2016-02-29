@@ -5,4 +5,6 @@
   <TextureFramesY>1</TextureFramesY>
   <Continual>true</Continual>
   <IsGlobal>true</IsGlobal>
+  <FixupX>0</FixupX>
+  <FixupY>0</FixupY>
 </AnimationData>

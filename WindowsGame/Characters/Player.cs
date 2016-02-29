@@ -33,7 +33,6 @@ namespace WindowsGame
             base(localPosition, dataAsset)
         {
             NumBehaviours = (uint)PlayerBehaviours.kNumBehaviours;
-            AddPhysicsBody();
         }
 
         #region Virtual Functions
@@ -168,22 +167,18 @@ namespace WindowsGame
             // This should always be checked
             if (isMoveLeftDown || isMoveRightDown)
             {
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-
                 if (GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
 
-                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
                 }
                 else
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;
 
-                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
                 }
-
-                SpriteEffect = isMoveLeftDown ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             }
             else
             {
@@ -220,30 +215,24 @@ namespace WindowsGame
             }
             else if (isMoveLeftDown || isMoveRightDown)
             {
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-
                 if (GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
 
-                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
                 }
                 else
                 {
                     // We are already walking so no need to set the CurrentBehaviour, but update the linear velocity
-                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
                 }
-
-                SpriteEffect = isMoveLeftDown ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             }
 
             // The other states should always be checked no matter the movement input
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kWalkShoot;
-
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-                PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
+                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
             }
             else 
             {
@@ -268,30 +257,24 @@ namespace WindowsGame
             }
             else if (isMoveLeftDown || isMoveRightDown)
             {
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-
                 if (!GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;
 
-                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
                 }
                 else
                 {
                     // We are already running so no need to set the CurrentBehaviour, but update the linear velocity
-                    PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
                 }
-
-                SpriteEffect = isMoveLeftDown ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             }
 
             // The other states should always be checked no matter the movement input
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kRunShoot;
-
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-                PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.RunSpeed, 0);
+                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
             }
             else
             {
@@ -379,23 +362,14 @@ namespace WindowsGame
             else if (GameKeyboard.IsKeyPressed(InputMap.ForwardRoll))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kForwardRoll;
-
-                bool isMoveRightDown = GameKeyboard.IsKeyDown(InputMap.MoveRight);
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-
-                PhysicsBody.LinearVelocity = new Vector2(direction * CharacterData.WalkSpeed, 0);
+                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
             }
             else if (GameKeyboard.IsKeyPressed(InputMap.Jump))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kJumpStart;
-
-                bool isMoveRightDown = GameKeyboard.IsKeyDown(InputMap.MoveRight);
-                float direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
-
-                LocalPosition += new Vector2(0, 10);
-                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.LinearVelocity.X, CharacterData.JumpHeight);
+                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * PhysicsBody.LinearVelocity.X, CharacterData.JumpHeight);
             }
-            else if (PhysicsBody.LinearVelocity.Y < -5 * PhysicsConstants.Gravity * 0.016f)
+            else if (PhysicsBody.LinearVelocity.Y < -PhysicsConstants.Gravity)
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kJumpFall;
             }

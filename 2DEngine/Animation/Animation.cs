@@ -77,6 +77,11 @@ namespace _2DEngine
         public Rectangle CurrentSourceRectangle { get; private set; }
 
         /// <summary>
+        /// A Vector2 to apply to keep the animation centred.
+        /// </summary>
+        public Vector2 AnimationFixup { get; private set; }
+
+        /// <summary>
         /// Can only be used by non continual animations.
         /// Used to perform a function after the animation has completed.
         /// </summary>
@@ -110,6 +115,7 @@ namespace _2DEngine
             Frames = new Point(data.TextureFramesX, data.TextureFramesY);
             Continual = data.Continual;
             IsGlobal = data.IsGlobal;
+            AnimationFixup = new Vector2(data.FixupX, data.FixupY);
 
             TimePerFrame = defaultTimePerFrame;
             FrameDimensions = new Point(Texture.Width / Frames.X, Texture.Height / Frames.Y);

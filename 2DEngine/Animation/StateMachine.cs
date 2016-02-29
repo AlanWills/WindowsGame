@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -39,6 +40,11 @@ namespace _2DEngine
         /// </summary>
         private bool ShouldLoad { get; set; }
 
+        /// <summary>
+        /// A reference to the Character that this state machine is animating.
+        /// </summary>
+        private Character Character { get; set; }
+
         // A field just used for validating addition of states in the correct order.
         private uint currentAddedStates = 0;
 
@@ -46,7 +52,8 @@ namespace _2DEngine
 
         public StateMachine(Character character, uint numAnimations)
         {
-            character.BehaviourChanged += HandleBehaviourChange;
+            Character = character;
+            Character.BehaviourChanged += HandleBehaviourChange;
 
             States = new State[numAnimations];
             GlobalStates = new List<State>();
@@ -233,8 +240,14 @@ namespace _2DEngine
             // Reset the old states's animation
             ActiveState.Animation.Reset();
 
+            // Remove old animation fixup
+            Character.LocalPosition -= new Vector2(ActiveState.Animation.AnimationFixup.X * Character.PhysicsBody.Direction, ActiveState.Animation.AnimationFixup.Y);
+
             // Set the new state
             ActiveState = States[newBehaviourState];
+
+            // Apply new animation fixup
+            Character.LocalPosition += new Vector2(ActiveState.Animation.AnimationFixup.X * Character.PhysicsBody.Direction, ActiveState.Animation.AnimationFixup.Y);
         }
 
         #endregion

@@ -9,6 +9,8 @@ namespace _2DEngine
         kXAndY = 4,
     }
 
+    public delegate void DirectionChangedEvent(int oldDirection, int newDirection);
+
     /// <summary>
     /// A class which uses physics equations to update a GameObject's position
     /// </summary>
@@ -50,16 +52,54 @@ namespace _2DEngine
         /// </summary>
         public float AngularAcceleration { get; set; }
 
+        /// <summary>
+        /// An int representing the direction our character is facing - based on our animations.
+        /// Since our animations are by default to the right, we use 1 to be facing right and -1 to be facing left.
+        /// </summary>
+        private int direction = PhysicsConstants.RightDirection;
+        public int Direction
+        {
+            get { return direction; }
+            private set
+            {
+                if (OnDirectionChange != null)
+                {
+                    OnDirectionChange(direction, value);
+                }
+
+                direction = value;
+            }
+        }
+
+        public event DirectionChangedEvent OnDirectionChange;
+
         #endregion
 
         public PhysicsBody(GameObject gameObject)
         {
             GameObject = gameObject;
             LinearAcceleration = Vector2.Zero;
+            Direction = PhysicsConstants.RightDirection;
         }
 
         public void Update(float elapsedGameTime)
         {
+            bool moveLeft = GameKeyboard.IsKeyDown(InputMap.MoveLeft);
+            bool moveRight = GameKeyboard.IsKeyDown(InputMap.MoveRight);
+
+            // We want to make sure that both movement keys are not pressed down
+            if (!(moveLeft && moveRight))
+            {
+                if (Direction != PhysicsConstants.RightDirection && moveRight)
+                {
+                    Direction = PhysicsConstants.RightDirection;
+                }
+                else if (Direction != PhysicsConstants.LeftDirection && moveLeft)
+                {
+                    Direction = PhysicsConstants.LeftDirection;
+                }
+            }
+
             // Update the angular components
             AngularVelocity += AngularAcceleration * elapsedGameTime;
             GameObject.LocalRotation += AngularVelocity * elapsedGameTime;
@@ -70,7 +110,7 @@ namespace _2DEngine
             if (!GameObject.Collider.CollidedThisFrame && !GameObject.Collider.CollidedLastFrame)
             {
                 LinearVelocity -= new Vector2(0, PhysicsConstants.Gravity * elapsedGameTime);
-                GameObject.LocalPosition -= Vector2.Transform(LinearVelocity, Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
+                GameObject.LocalPosition -= Vector2.Transform(new Vector2(-LinearVelocity.X, LinearVelocity.Y), Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
             }
             else
             {
