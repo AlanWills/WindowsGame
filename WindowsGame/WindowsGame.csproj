@@ -300,13 +300,21 @@
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.png" />
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run &amp; Shoot_000_1x15_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_16x1_Resized.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_16x1_Resized.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.png" />
+    <Content Include="Content\Sprites\Weapons\Good_Old_Magnum.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sprites\UI\Logo.png" />
@@ -767,6 +775,10 @@
       <Project>{b56f5aa9-69a8-454a-9ee5-a815735804b7}</Project>
       <Name>2DEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameData\GameData.csproj">
+      <Project>{62ec8984-c351-4cee-abce-7552f3dd4e01}</Project>
+      <Name>GameData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LevelEditorData\LevelEditorData.csproj">
       <Project>{330b7b81-d484-4fea-83b1-76e746c6c381}</Project>
       <Name>LevelEditorData</Name>
@@ -952,6 +964,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Content\Sprites\UI\Logo.xnb" />
+    <Content Include="Content\Sprites\Weapons\Good_Old_Magnum.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

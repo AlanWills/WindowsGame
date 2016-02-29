@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_000_1x14_Resized.png</SourceFile>
-  <SourceTime>2016-02-04T21:38:54.2570202+00:00</SourceTime>
+  <SourceTime>2016-02-29T22:53:33.3435477+00:00</SourceTime>
   <DestFile>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/bin/Windows/Sprites/CharacterSpriteSheets/Hero/Run_000_1x14_Resized.xnb</DestFile>
-  <DestTime>2016-02-04T21:53:31.739438+00:00</DestTime>
+  <DestTime>2016-02-29T22:54:21.7327375+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-01-09T01:35:18+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

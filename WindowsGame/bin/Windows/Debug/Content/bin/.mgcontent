@@ -4,11 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Shoot_000_1x16_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_Shoot_000_1x15_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Slide_000_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Throw_Grenade_000_1x15_Resized.png</File>
-    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Walk_000_1x16_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Walk_Shoot_000_1x16_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Knockback_000_1x16_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jump Start_000_1x10_Resized.png</File>
@@ -22,13 +20,11 @@
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Dizzy_000_1x15_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Backward_000_1x12_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fall_000_1x16_Resized.png</File>
-    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Idle_000_1x12_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Hurt_000_1x10_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Forward Roll_000_1x13_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Dizzy_000_1x15_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Death_000_1x15_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Balance_000_1x14_Resized.png</File>
-    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_000_1x14_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Barrel (1).png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Barrel (2).png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Box.png</File>
@@ -81,5 +77,11 @@
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Walk_000_16x1_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_000_14x1_Resized.png</File>
     <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Shoot_000_16x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Weapons/Good_Old_Magnum.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Idle_000_1x12_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_000_1x14_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Shoot_000_1x16_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Walk_000_1x16_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run &amp; Shoot_000_1x15_Resized.png</File>
   </SourceFiles>
 </SourceFileCollection>

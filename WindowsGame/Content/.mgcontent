@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_Shoot_000_1x15_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Slide_000_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Throw_Grenade_000_1x15_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Walk_Shoot_000_1x16_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Knockback_000_1x16_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jump Start_000_1x10_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jump On Air_000_1x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jump Fall_000_1x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Shoot_000_1x12_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Idle_000_1x12_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Hurt_000_1x10_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Fast_000_1x12_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Forward_000_1x12_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Dizzy_000_1x15_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fly Backward_000_1x12_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Jetpack Fall_000_1x16_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Hurt_000_1x10_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Forward Roll_000_1x13_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Dizzy_000_1x15_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Death_000_1x15_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Balance_000_1x14_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Barrel (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Barrel (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Box.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/DoorLocked.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/DoorOpen.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/DoorUnlocked.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Saw.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Switch (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Objects/Switch (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Acid (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Acid (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (3).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (4).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (5).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (6).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/BGTile (7).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Fence (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Fence (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Fence (3).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Spike.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (1).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (2).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (3).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (4).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (5).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (6).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (7).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (8).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (9).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (10).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (11).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (12).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (13).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (14).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Level/Tiles/Tile (15).png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/ColourButtonTrial1.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/Cursor.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/Logo.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/SpriteFonts/DefaultSpriteFont.spritefont</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Effects/TrialParticle.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Effects/LightEffect.fx</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Effects/PointLightMask.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Backgrounds/MainMenuScreen.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/BarBackground.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/BlueSliderDown.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/UI/SliderBar.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Idle_000_12x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Walk_000_16x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Run_000_14x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/CharacterSpriteSheets/Hero/Shoot_000_16x1_Resized.png</File>
+    <File>C:/Users/Alan/Documents/Visual Studio 2015/Projects/WindowsGame/WindowsGame/Content/Sprites/Weapons/Good_Old_Magnum.png</File>
+  </SourceFiles>
+</SourceFileCollection>
