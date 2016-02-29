@@ -15,18 +15,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Sprites/CharacterSpriteSheets/Hero/Shoot_000_1x16_Resized.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/CharacterSpriteSheets/Hero/Shoot_000_1x16_Resized.png
-
 #begin Sprites/CharacterSpriteSheets/Hero/Run_Shoot_000_1x15_Resized.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -62,18 +50,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/CharacterSpriteSheets/Hero/Throw_Grenade_000_1x15_Resized.png
-
-#begin Sprites/CharacterSpriteSheets/Hero/Walk_000_1x16_Resized.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/CharacterSpriteSheets/Hero/Walk_000_1x16_Resized.png
 
 #begin Sprites/CharacterSpriteSheets/Hero/Walk_Shoot_000_1x16_Resized.png
 /importer:TextureImporter
@@ -231,18 +207,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/CharacterSpriteSheets/Hero/Jetpack Fall_000_1x16_Resized.png
 
-#begin Sprites/CharacterSpriteSheets/Hero/Idle_000_1x12_Resized.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/CharacterSpriteSheets/Hero/Idle_000_1x12_Resized.png
-
 #begin Sprites/CharacterSpriteSheets/Hero/Hurt_000_1x10_Resized.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -302,18 +266,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/CharacterSpriteSheets/Hero/Balance_000_1x14_Resized.png
-
-#begin Sprites/CharacterSpriteSheets/Hero/Run_000_1x14_Resized.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/CharacterSpriteSheets/Hero/Run_000_1x14_Resized.png
 
 #begin Sprites/Level/Objects/Barrel (1).png
 /importer:TextureImporter

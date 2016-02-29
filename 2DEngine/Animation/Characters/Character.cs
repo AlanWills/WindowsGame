@@ -183,8 +183,8 @@ namespace _2DEngine
         /// <param name="size"></param>
         public override void UpdateCollider(ref Vector2 position, ref Vector2 size)
         {
-            position = WorldPosition;
-            size = new Vector2(TextureCentre.X, 2 * TextureCentre.Y);
+            position = WorldPosition + StateMachine.ActiveState.Animation.ColliderCentreOffset;
+            size = StateMachine.ActiveState.Animation.ColliderDimensions;
         }
 
         /// <summary>

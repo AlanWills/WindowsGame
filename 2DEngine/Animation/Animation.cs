@@ -81,6 +81,9 @@ namespace _2DEngine
         /// </summary>
         public Vector2 AnimationFixup { get; private set; }
 
+        public Vector2 ColliderCentreOffset { get; private set; }
+        public Vector2 ColliderDimensions { get; private set; }
+
         /// <summary>
         /// Can only be used by non continual animations.
         /// Used to perform a function after the animation has completed.
@@ -120,6 +123,9 @@ namespace _2DEngine
             TimePerFrame = defaultTimePerFrame;
             FrameDimensions = new Point(Texture.Width / Frames.X, Texture.Height / Frames.Y);
             Centre = new Vector2(FrameDimensions.X * 0.5f, FrameDimensions.Y * 0.5f);
+
+            ColliderCentreOffset = new Vector2(data.ColliderCentrePositionOffsetX * FrameDimensions.X, data.ColliderCentrePositionOffsetY * FrameDimensions.Y);
+            ColliderDimensions = new Vector2(FrameDimensions.X * data.ColliderWidthProportion, FrameDimensions.Y * data.ColliderHeightProportion);
 
             CalculateSourceRectangle();
         }

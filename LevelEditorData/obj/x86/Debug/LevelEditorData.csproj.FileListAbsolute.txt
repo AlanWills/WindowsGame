@@ -1,4 +1,3 @@
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\obj\x86\Debug\LevelEditorData.csprojResolveAssemblyReference.cache
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\bin\Windows\Debug\LevelEditorData.dll.config
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\bin\Windows\Debug\LevelEditorData.dll
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\bin\Windows\Debug\LevelEditorData.pdb
@@ -24,5 +23,6 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\bin\Windows\Debug\SharpDX.XInput.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\obj\x86\Debug\LevelEditorData.csprojResolveAssemblyReference.cache
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\obj\x86\Debug\LevelEditorData.dll
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\LevelEditorData\obj\x86\Debug\LevelEditorData.pdb

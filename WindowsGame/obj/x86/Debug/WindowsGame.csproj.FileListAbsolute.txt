@@ -1,57 +1,4 @@
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.csprojResolveAssemblyReference.cache
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\WindowsGame.exe.config
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\WindowsGame.exe
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\WindowsGame.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngine.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MonoGame.Framework.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.MediaFoundation.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XAudio2.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.DXGI.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D11.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct2D1.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XInput.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.RawInput.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D9.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngine.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MonoGame.Framework.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.MediaFoundation.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XAudio2.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.DXGI.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D11.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct2D1.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XInput.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.RawInput.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D9.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.exe
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run & Shoot_000_1x15_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb
@@ -129,7 +76,44 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\OptionsScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_16x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_16x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\SliderBar.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Fast.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Dizzy.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Backward.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fall.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Hurt.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Forward Roll.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Dizzy.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Death.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Character Data\Hero.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Balance.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Forward.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Hurt.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Idle.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump On Air.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump Start.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump Fall.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Melee.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Idle Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Run Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Run.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Slide.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Throw Grenade.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Walk Shoot.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Walk.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Idle.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Levels\Level1.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Options.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\StartupLogoScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\LoadingScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\MainMenuScreen.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Effects\LightEffect.fx
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.mgcontent
@@ -158,96 +142,47 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\obj\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.mgcontent
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Forward Roll_000_1x13_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Hurt_000_1x10_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fall_000_1x16_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Backward_000_1x12_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Dizzy_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Fast_000_1x12_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Forward_000_1x12_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Hurt_000_1x10_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Fly Shoot_000_1x12_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jetpack Idle_000_1x12_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump On Air_000_1x1_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Jump Start_000_1x10_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Knockback_000_1x16_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_Shoot_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Slide_000_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Throw_Grenade_000_1x15_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngineData.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngineData.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\StartupLogoScreen.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\LoadingScreen.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\MainMenuScreen.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Fast.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Dizzy.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Backward.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fall.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Hurt.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Forward Roll.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Dizzy.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Death.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Balance.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Forward.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Hurt.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Fly Shoot.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jetpack Idle.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump On Air.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump Start.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Jump Fall.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Run Shoot.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Run.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Slide.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Throw Grenade.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Walk Shoot.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Walk.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Idle Shoot.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Animations\Hero\Melee.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (1).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (2).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Box.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorLocked.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorOpen.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorUnlocked.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Saw.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (1).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (2).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (1).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (2).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (1).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (2).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (3).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (4).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (5).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (6).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (7).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (1).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (2).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (3).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Spike.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (1).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (10).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (11).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (12).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (13).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (14).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (15).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (2).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (3).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (4).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (5).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (6).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (7).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (8).xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (9).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\PointLightMask.png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (1).png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (2).png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Box.png
@@ -285,38 +220,98 @@ C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (7).png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (8).png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (9).png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\Logo.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\ColourButtonTrial1.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\Cursor.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Levels\Level1.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\SpriteFonts\DefaultSpriteFont.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\TrialParticle.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Character Data\Hero.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Effects\LightEffect.fx
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Effects\LightEffect.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\LightMask.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\PointLightMask.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\PointLightMask.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Backgrounds\MainMenuScreen.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MoonSharp.Interpreter.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MoonSharp.Interpreter.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MoonSharp.Interpreter.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Scripts\Test.lua
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\LevelEditorData.dll
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\LevelEditorData.pdb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\SliderBar.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Options.xml
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\BarBackground.png
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\BlueSliderDown.png
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Effects\LightEffect.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_16x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\PointLightMask.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_16x1_Resized.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\BarBackground.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\BlueSliderDown.xnb
 C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\SliderBar.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Data\Screens\OptionsScreen.xml
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_16x1_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_16x1_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized.xnb
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_16x1_Resized.png
-C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_16x1_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\SpriteFonts\DefaultSpriteFont.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Backgrounds\MainMenuScreen.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Effects\TrialParticle.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Barrel (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Box.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorLocked.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorOpen.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\DoorUnlocked.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Saw.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Objects\Switch (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Acid (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (3).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (4).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (5).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (6).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\BGTile (7).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Fence (3).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Spike.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (1).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (10).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (11).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (12).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (13).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (14).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (15).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (2).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (3).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (4).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (5).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (6).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (7).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (8).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\Level\Tiles\Tile (9).xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\ColourButtonTrial1.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\Cursor.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\UI\Logo.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Scripts\Test.lua
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngine.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngineData.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\LevelEditorData.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MoonSharp.Interpreter.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngineData.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\2DEngine.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\LevelEditorData.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MoonSharp.Interpreter.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\MoonSharp.Interpreter.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.csprojResolveAssemblyReference.cache
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.exe
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\obj\x86\Debug\WindowsGame.pdb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_1x12_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run & Shoot_000_1x15_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Run_000_1x14_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Shoot_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.xnb
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\WindowsGame.exe
+C:\Users\Alan\Documents\Visual Studio 2015\Projects\WindowsGame\WindowsGame\bin\Windows\Debug\WindowsGame.pdb
