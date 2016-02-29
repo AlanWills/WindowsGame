@@ -110,7 +110,7 @@ namespace _2DEngine
             if (!GameObject.Collider.CollidedThisFrame && !GameObject.Collider.CollidedLastFrame)
             {
                 LinearVelocity -= new Vector2(0, PhysicsConstants.Gravity * elapsedGameTime);
-                GameObject.LocalPosition -= Vector2.Transform(new Vector2(-LinearVelocity.X, LinearVelocity.Y), Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
+                GameObject.LocalPosition -= Vector2.Transform(new Vector2(-Direction * LinearVelocity.X, LinearVelocity.Y), Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
             }
             else
             {

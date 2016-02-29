@@ -88,6 +88,16 @@ namespace _2DEngine
                             correction.X += (backgroundObjectWorldPosition.X + backgroundObjectHalfSize.X) - (collisionObjectWorldPosition.X - collisionObjectHalfSize.X);
                         }
 
+                        // Stops small oscillations when in contact with surface - FORGET THIS FOR NOW, BUT LATER WE WILL NEED TO CHANGE INTERSECTION CODE TOO
+                        /*if (-PhysicsConstants.IntersectionDelta <= correction.X && correction.X <= PhysicsConstants.IntersectionDelta)
+                        {
+                            correction.X = 0;
+                        }
+                        if (-PhysicsConstants.IntersectionDelta <= correction.Y && correction.Y <= PhysicsConstants.IntersectionDelta)
+                        {
+                            correction.Y = 0;
+                        }*/
+
                         collisionObject.LocalPosition += correction;
                     }
                 }

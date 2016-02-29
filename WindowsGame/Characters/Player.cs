@@ -171,13 +171,13 @@ namespace WindowsGame
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
 
-                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(CharacterData.RunSpeed, PhysicsBody.LinearVelocity.Y);
                 }
                 else
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;
 
-                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(CharacterData.WalkSpeed, PhysicsBody.LinearVelocity.Y);
                 }
             }
             else
@@ -219,12 +219,12 @@ namespace WindowsGame
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
 
-                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(CharacterData.RunSpeed, PhysicsBody.LinearVelocity.Y);
                 }
                 else
                 {
                     // We are already walking so no need to set the CurrentBehaviour, but update the linear velocity
-                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(CharacterData.WalkSpeed, PhysicsBody.LinearVelocity.Y);
                 }
             }
 
@@ -232,7 +232,7 @@ namespace WindowsGame
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kWalkShoot;
-                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
+                PhysicsBody.LinearVelocity = new Vector2(CharacterData.WalkSpeed, PhysicsBody.LinearVelocity.Y);
             }
             else 
             {
@@ -261,12 +261,12 @@ namespace WindowsGame
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;
 
-                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(CharacterData.WalkSpeed, PhysicsBody.LinearVelocity.Y);
                 }
                 else
                 {
                     // We are already running so no need to set the CurrentBehaviour, but update the linear velocity
-                    PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
+                    PhysicsBody.LinearVelocity = new Vector2(CharacterData.RunSpeed, PhysicsBody.LinearVelocity.Y);
                 }
             }
 
@@ -274,7 +274,7 @@ namespace WindowsGame
             if (GameMouse.Instance.IsClicked(InputMap.Shoot))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kRunShoot;
-                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.RunSpeed, 0);
+                PhysicsBody.LinearVelocity = new Vector2(CharacterData.RunSpeed, PhysicsBody.LinearVelocity.Y);
             }
             else
             {
@@ -362,12 +362,12 @@ namespace WindowsGame
             else if (GameKeyboard.IsKeyPressed(InputMap.ForwardRoll))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kForwardRoll;
-                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * CharacterData.WalkSpeed, 0);
+                PhysicsBody.LinearVelocity = new Vector2(CharacterData.WalkSpeed, PhysicsBody.LinearVelocity.Y);
             }
             else if (GameKeyboard.IsKeyPressed(InputMap.Jump))
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kJumpStart;
-                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.Direction * PhysicsBody.LinearVelocity.X, CharacterData.JumpHeight);
+                PhysicsBody.LinearVelocity = new Vector2(PhysicsBody.LinearVelocity.X, CharacterData.JumpHeight);
             }
             else if (PhysicsBody.LinearVelocity.Y < -PhysicsConstants.Gravity)
             {

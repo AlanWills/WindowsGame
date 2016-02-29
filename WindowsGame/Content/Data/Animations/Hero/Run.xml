@@ -6,9 +6,9 @@
   <Continual>true</Continual>
   <IsGlobal>false</IsGlobal>
   <FixupX>0</FixupX>
-  <FixupY>0</FixupY>
+  <FixupY>20</FixupY>
   <ColliderCentrePositionOffsetX>0</ColliderCentrePositionOffsetX>
-  <ColliderCentrePositionOffsetY>0</ColliderCentrePositionOffsetY>
+  <ColliderCentrePositionOffsetY>-0.1</ColliderCentrePositionOffsetY>
   <ColliderWidthProportion>0.5</ColliderWidthProportion>
-  <ColliderHeightProportion>0.7</ColliderHeightProportion>
+  <ColliderHeightProportion>0.8</ColliderHeightProportion>
 </AnimationData>
