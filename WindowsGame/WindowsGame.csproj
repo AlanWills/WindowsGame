@@ -44,12 +44,15 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Characters\ArmedCharacter.cs" />
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Screens\Gameplay\PlatformGameplayScreen.cs" />
     <Compile Include="Screens\Menus\MainMenuScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weapons\Bullet.cs" />
+    <Compile Include="Weapons\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -294,7 +297,13 @@
     <Content Include="Content\bin\Windows\Sprites\CharacterSpriteSheets\Hero\Walk_Shoot_000_1x16_Resized.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Data\Bullets\GoodOldMagnumBullet.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Data\Screens\OptionsScreen.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Data\Weapons\GoodOldMagnum.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.png">

@@ -27,7 +27,7 @@ namespace WindowsGame
     /// A class representing the player's character.
     /// Set's up the animations for our player and handles input for movement etc.
     /// </summary>
-    public class Player : Character
+    public class Player : ArmedCharacter
     {
         public Player(Vector2 localPosition, string dataAsset) :
             base(localPosition, dataAsset)
@@ -160,6 +160,7 @@ namespace WindowsGame
             base.IdleState();
 
             DebugUtils.AssertNotNull(PhysicsBody);
+            DebugUtils.AssertNotNull(CharacterData);
 
             bool isMoveLeftDown = GameKeyboard.IsKeyDown(InputMap.MoveLeft);
             bool isMoveRightDown = GameKeyboard.IsKeyDown(InputMap.MoveRight);
@@ -186,7 +187,7 @@ namespace WindowsGame
             }
 
             // The other states should always be checked no matter the movement input
-            if (GameMouse.Instance.IsClicked(InputMap.Shoot))
+            if (Weapon.CurrentWeaponState == WeaponState.kFiring && Weapon.PreviousWeaponState == WeaponState.kReady)
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kIdleShoot;
 
@@ -229,7 +230,7 @@ namespace WindowsGame
             }
 
             // The other states should always be checked no matter the movement input
-            if (GameMouse.Instance.IsClicked(InputMap.Shoot))
+            if (Weapon.CurrentWeaponState == WeaponState.kFiring && Weapon.PreviousWeaponState == WeaponState.kReady)
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kWalkShoot;
                 PhysicsBody.LinearVelocity = new Vector2(CharacterData.WalkSpeed, PhysicsBody.LinearVelocity.Y);
@@ -271,7 +272,7 @@ namespace WindowsGame
             }
 
             // The other states should always be checked no matter the movement input
-            if (GameMouse.Instance.IsClicked(InputMap.Shoot))
+            if (Weapon.CurrentWeaponState == WeaponState.kFiring && Weapon.PreviousWeaponState == WeaponState.kReady)
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kRunShoot;
                 PhysicsBody.LinearVelocity = new Vector2(CharacterData.RunSpeed, PhysicsBody.LinearVelocity.Y);
@@ -353,7 +354,8 @@ namespace WindowsGame
         /// </summary>
         private void CheckMeleeRollJumpFall()
         {
-            if (GameMouse.Instance.IsClicked(InputMap.Melee))
+            // Only melee if we are not reloading or firing
+            if (GameMouse.Instance.IsClicked(InputMap.Melee) && Weapon.CurrentWeaponState == WeaponState.kReady)
             {
                 CurrentBehaviour = (uint)PlayerBehaviours.kMelee;
 

@@ -27,6 +27,11 @@ namespace _2DEngine
         public event BehaviourChangeHandler BehaviourChanged;
 
         /// <summary>
+        /// A cached cast of the loaded GameObject data to stop us from having to do lots of casts
+        /// </summary>
+        protected CharacterData CharacterData { get; set; }
+
+        /// <summary>
         /// A property to indicate the current behaviour that this character is in.
         /// Handles behaviour changing event after the value is set.
         /// </summary>
@@ -60,11 +65,6 @@ namespace _2DEngine
         /// The state machine for this character.
         /// </summary>
         protected StateMachine StateMachine { get; set; }
-
-        /// <summary>
-        /// A cached cast of the loaded GameObject data to stop us from having to do lots of casts
-        /// </summary>
-        protected CharacterData CharacterData { get; set; }
 
         /// <summary>
         /// Get the current texture based on the state machine active state.
@@ -162,6 +162,8 @@ namespace _2DEngine
             StateMachine.LoadContent();
 
             base.LoadContent();
+
+            DebugUtils.AssertNotNull(CharacterData);
         }
 
         /// <summary>

@@ -14,7 +14,8 @@ namespace _2DEngine
         public static Keys ForwardRoll = Keys.LeftAlt;
 
         // Weapons
-        public static MouseButton Shoot = MouseButton.kLeftButton;
+        public static MouseButton Fire = MouseButton.kLeftButton;
+        public static Keys Reload = Keys.R;
         public static MouseButton Melee = MouseButton.kRightButton;
 
         // Camera

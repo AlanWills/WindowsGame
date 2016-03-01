@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<CharacterData>
+<ArmedCharacterData>
   <TextureAsset></TextureAsset>
   <FolderPath>Content\Data\Animations\Hero\</FolderPath>
   <AnimationInfo>
@@ -24,4 +24,5 @@
   <WalkSpeed>250</WalkSpeed>
   <RunSpeed>600</RunSpeed>
   <JumpHeight>650</JumpHeight>
-</CharacterData>
+  <WeaponDataAsset>Content\Data\Weapons\GoodOldMagnum.xml</WeaponDataAsset>
+</ArmedCharacterData>

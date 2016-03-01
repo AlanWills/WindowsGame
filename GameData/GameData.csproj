@@ -47,6 +47,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Characters\ArmedCharacterData.cs" />
+    <Compile Include="Weapons\BulletData.cs" />
     <Compile Include="Weapons\WeaponData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
