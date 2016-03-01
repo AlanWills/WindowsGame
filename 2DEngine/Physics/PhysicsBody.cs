@@ -24,6 +24,12 @@ namespace _2DEngine
         private GameObject GameObject { get; set; }
 
         /// <summary>
+        /// A flag to indicate whether we should apply gravity to the object attached to this physics body.
+        /// By default this is true.
+        /// </summary>
+        public bool AffectedByGravity { get; set; }
+
+        /// <summary>
         /// The object's linear velocity
         /// </summary>
         public Vector2 LinearVelocity { get; set; }
@@ -60,46 +66,31 @@ namespace _2DEngine
         public int Direction
         {
             get { return direction; }
-            private set
+            set
             {
-                if (OnDirectionChange != null)
+                /*if (OnDirectionChange != null)
                 {
                     OnDirectionChange(direction, value);
-                }
+                }*/
 
                 direction = value;
             }
         }
 
-        public event DirectionChangedEvent OnDirectionChange;
+        //public event DirectionChangedEvent OnDirectionChange;
 
         #endregion
 
         public PhysicsBody(GameObject gameObject)
         {
             GameObject = gameObject;
+            AffectedByGravity = true;
             LinearAcceleration = Vector2.Zero;
             Direction = PhysicsConstants.RightDirection;
         }
 
         public void Update(float elapsedGameTime)
         {
-            bool moveLeft = GameKeyboard.IsKeyDown(InputMap.MoveLeft);
-            bool moveRight = GameKeyboard.IsKeyDown(InputMap.MoveRight);
-
-            // We want to make sure that both movement keys are not pressed down
-            if (!(moveLeft && moveRight))
-            {
-                if (Direction != PhysicsConstants.RightDirection && moveRight)
-                {
-                    Direction = PhysicsConstants.RightDirection;
-                }
-                else if (Direction != PhysicsConstants.LeftDirection && moveLeft)
-                {
-                    Direction = PhysicsConstants.LeftDirection;
-                }
-            }
-
             // Update the angular components
             AngularVelocity += AngularAcceleration * elapsedGameTime;
             GameObject.LocalRotation += AngularVelocity * elapsedGameTime;
@@ -107,13 +98,21 @@ namespace _2DEngine
             // Update the linear components
             //LinearVelocity += LinearAcceleration * elapsedGameTime;
 
+            // If we have not collided this frame or last frame then we can move our character using our velocity
             if (!GameObject.Collider.CollidedThisFrame && !GameObject.Collider.CollidedLastFrame)
             {
-                LinearVelocity -= new Vector2(0, PhysicsConstants.Gravity * elapsedGameTime);
+                if (AffectedByGravity)
+                {
+                    // If we are affected by gravity, then apply it
+                    LinearVelocity -= new Vector2(0, PhysicsConstants.Gravity * elapsedGameTime);
+                }
+
+                // Update our character's position using our velocity etc.
                 GameObject.LocalPosition -= Vector2.Transform(new Vector2(-Direction * LinearVelocity.X, LinearVelocity.Y), Matrix.CreateRotationZ(GameObject.LocalRotation)) * elapsedGameTime;
             }
             else
             {
+                // If we've collided, either set the Y component of the velocity to zero, or if it's positive (i.e. we are moving up) then set it to that and don't bother to update the position
                 LinearVelocity = new Vector2(LinearVelocity.X, MathHelper.Max(LinearVelocity.Y, 0));
             }
         }

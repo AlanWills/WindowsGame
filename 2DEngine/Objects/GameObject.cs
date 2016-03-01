@@ -116,6 +116,9 @@ namespace _2DEngine
 
         #region Utility Functions
 
+        /// <summary>
+        /// Add a physics body to this object
+        /// </summary>
         protected void AddPhysicsBody()
         {
             PhysicsBody = new PhysicsBody(this);

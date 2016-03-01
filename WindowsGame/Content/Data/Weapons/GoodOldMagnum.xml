@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WeaponData>
   <TextureAsset>Sprites\Weapons\Good_Old_Magnum</TextureAsset>
-  <BulletDataAsset>Content\Data\Bullets\GoodOldMagnumBullet</BulletDataAsset>
+  <BulletDataAsset>Content\Data\Bullets\GoodOldMagnumBullet.xml</BulletDataAsset>
   <DisplayName>Good Old Magnum</DisplayName>
   <MagazineSize>6</MagazineSize>
   <TimeBetweenShots>1.1</TimeBetweenShots>

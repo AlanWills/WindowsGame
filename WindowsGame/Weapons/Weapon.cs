@@ -26,6 +26,11 @@ namespace WindowsGame
         public WeaponData WeaponData { get; private set; }
 
         /// <summary>
+        /// The data for the bullet this weapon fires - don't want to load this for every bullet we fire.
+        /// </summary>
+        private BulletData BulletData { get; set; }
+
+        /// <summary>
         /// The data asset for this weapon.
         /// </summary>
         private string DataAsset { get; set; }
@@ -57,12 +62,13 @@ namespace WindowsGame
 
         #endregion
 
-        public Weapon(ArmedCharacter character, string dataAsset) :
+        public Weapon(ArmedCharacter armedCharacter, string dataAsset) :
             base()
         {
             CurrentWeaponState = WeaponState.kReady;
             PreviousWeaponState = CurrentWeaponState;
             DataAsset = dataAsset;
+            ArmedCharacter = armedCharacter;
         }
 
         #region Virtual Functions
@@ -77,6 +83,10 @@ namespace WindowsGame
             DebugUtils.AssertNotNull(DataAsset);
             WeaponData = AssetManager.GetData<WeaponData>(DataAsset);
             DebugUtils.AssertNotNull(WeaponData);
+
+            BulletData = AssetManager.GetData<BulletData>(WeaponData.BulletDataAsset);
+            DebugUtils.AssertNotNull(BulletData);
+            DebugUtils.AssertNotNull(BulletData.TextureAsset);
 
             base.LoadContent();
         }
@@ -158,8 +168,15 @@ namespace WindowsGame
         /// </summary>
         private void Fire()
         {
+            DebugUtils.AssertNotNull(ArmedCharacter.PhysicsBody);
+
             CurrentWeaponState = WeaponState.kFiring;
             CurrentFireTimer = 0;
+
+            Bullet bullet = AddObject(new Bullet(ArmedCharacter.WorldPosition, BulletData.TextureAsset), true, true);
+            DebugUtils.AssertNotNull(bullet.PhysicsBody);
+
+            bullet.PhysicsBody.LinearVelocity = new Vector2(BulletData.Speed * ArmedCharacter.PhysicsBody.Direction, 0);
         }
 
         /// <summary>
