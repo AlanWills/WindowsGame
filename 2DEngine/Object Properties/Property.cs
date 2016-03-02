@@ -4,7 +4,7 @@ namespace _2DEngine
 {
     public class Property<T>
     {
-        public delegate void ComputeFunctionEvent(Property<T> property, Property<T> parentProperty);
+        public delegate T ComputeFunctionEvent(Property<T> property, Property<T> parentProperty);
 
         // Expand on this
         // Having checking for connectedness when setting
@@ -43,6 +43,7 @@ namespace _2DEngine
                     if (ComputeFunction != null)
                     {
                         DebugUtils.AssertNotNull(Parent);
+                        return ComputeFunction(this, Parent);
                     }
 
                     return Parent.Value;
@@ -61,6 +62,8 @@ namespace _2DEngine
                 this.value = value;
             }
         }
+
+        public Property() { }
 
         public Property(T value)
         {

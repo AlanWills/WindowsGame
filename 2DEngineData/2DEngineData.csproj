@@ -47,6 +47,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Levels and Generation\LevelGenerationData.cs" />
     <Compile Include="Objects\CharacterData.cs" />
     <Compile Include="Animation\AnimationData.cs" />
     <Compile Include="BaseData.cs" />

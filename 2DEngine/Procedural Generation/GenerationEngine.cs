@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using _2DEngineData;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +7,9 @@ using System.Diagnostics;
 namespace _2DEngine
 {
     /// <summary>
-    /// A class which generates a level using a custom algorithm
+    /// A class which generates a level using a custom algorithm.
+    /// Makes a walkable layer, then adds hazards.
+    /// Finally it fills in the above and below areas and adds lights.
     /// </summary>
     public class GenerationEngine
     {
@@ -26,6 +29,16 @@ namespace _2DEngine
         }
 
         /// <summary>
+        /// A reference to the level we will add the generated objects too
+        /// </summary>
+        private GameplayScreen LevelScreen { get; set; }
+
+        /// <summary>
+        /// The xml data for the level we will use in our generation algorithm
+        /// </summary>
+        private LevelGenerationData GenerationData { get; set; }
+
+        /// <summary>
         /// Whether the previous object in our array was used 
         /// </summary>
         private bool PreviousObjectExists { get; set; }
@@ -41,54 +54,43 @@ namespace _2DEngine
         private bool NextObjectExists { get; set; }
 
         /// <summary>
-        /// A reference to the level we will add the generated objects too
+        /// The dimensions of our tiles
         /// </summary>
-        private GameplayScreen LevelScreen { get; set; }
+        private Vector2 TileDimensions { get; set; }
 
         /// <summary>
-        /// An array of our objects
+        /// An array of our walkable and hazard objects
         /// </summary>
-        private UIObject[,] levelObjects;
+        private UIObject[,] LevelObjects { get; set; }
 
+        /// <summary>
+        /// A list marking all of our walkable layer points (including hazards) and what type they were
+        /// </summary>
         private List<KeyValuePair<Point, Type>> walkingLayerPoints = new List<KeyValuePair<Point, Type>>();
-
-        private int width = 20;
-        private int height = 10;
-        private int currentHeight = 7;
-
-        private float surfaceWidthFrequency = 0.75f;
-        private float surfaceHeightFrequency = 0.15f;
-        private int maximumHeightChange = 1;
-        private Vector2 tileDimensions;
-
-        private Dictionary<Position, string> TileData { get; set; }
+        private int currentHeight = 7;        
 
         /*
         Improvements :
-            have a 2D array with width and height
-            when moving up and down, only go up and down based on our current position in the grid
-            then we can create extra walking layers and other non-collision layers (possibly in other generation engines)
+            when max GenerationData.Height change is greater than one, we need to add colliders for the appropriate 'underneath' textures
         */
 
-        public GenerationEngine(GameplayScreen levelScreen)
+        public GenerationEngine(GameplayScreen levelScreen, string generationDataAsset)
         {
             LevelScreen = levelScreen;
 
-            TileData = new Dictionary<Position, string>()
-            {
-                //{ Position.kLeft, "Sprites\\Level\\Tiles\\Tile (1)" },
-                { Position.kLeft, "Sprites\\Level\\Tiles\\Tile (2)" },
-                { Position.kMiddle, "Sprites\\Level\\Tiles\\Tile (2)" },
-                { Position.kRight, "Sprites\\Level\\Tiles\\Tile (2)" },
-                //{ Position.kRight, "Sprites\\Level\\Tiles\\Tile (3)" },
-            };
+            DebugUtils.AssertNotNull(generationDataAsset);
+            GenerationData = AssetManager.GetData<LevelGenerationData>(generationDataAsset);
+            DebugUtils.AssertNotNull(GenerationData);
 
-            Texture2D tex = AssetManager.GetSprite(TileData[Position.kMiddle]);
-            tileDimensions = new Vector2(tex.Width, tex.Height);
+            Texture2D tex = AssetManager.GetSprite(GenerationData.WalkableLayerMiddleTextureAsset);
+            TileDimensions = new Vector2(tex.Width, tex.Height);
 
-            levelObjects = new UIObject[height, width];
+            LevelObjects = new UIObject[GenerationData.Height, GenerationData.Width];
         }
 
+        /// <summary>
+        /// Generates our walkable layer, hazards and background above and below layers.
+        /// </summary>
         public void GenerateLevel()
         {
             GenerateWalkableLayer();
@@ -99,17 +101,20 @@ namespace _2DEngine
             AddObjectsInFrontOfBackground();
         }
 
+        /// <summary>
+        /// Adds the hazards and walkable layers to our LevelScreen Environment manager - this should happen after we add our background objects so the draw order is correct
+        /// </summary>
         private void AddObjectsInFrontOfBackground()
         {
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < GenerationData.Height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < GenerationData.Width; x++)
                 {
-                    if (levelObjects[y, x] != null)
+                    if (LevelObjects[y, x] != null)
                     {
                         // Do we want to add environment objects for these guys?
                         // Or should it be game objects?
-                        LevelScreen.AddEnvironmentObject(levelObjects[y, x]);
+                        LevelScreen.AddEnvironmentObject(LevelObjects[y, x]);
                     }
                 }
             }
@@ -117,11 +122,14 @@ namespace _2DEngine
 
         #region Walkable Layer
 
+        /// <summary>
+        /// Generate our main walkable layer for this level
+        /// </summary>
         private void GenerateWalkableLayer()
         {
             UIObject previousObject = Setup();
 
-            for (int x = 2; x < width - 1; x++)
+            for (int x = 2; x < GenerationData.Width - 1; x++)
             {
                 ShiftExistenceFlags();
                 previousObject = Create(x);
@@ -130,6 +138,10 @@ namespace _2DEngine
             TakeDown();
         }
 
+        /// <summary>
+        /// We should always have the first two tiles as added, so do this here
+        /// </summary>
+        /// <returns></returns>
         private UIObject Setup()
         {
             Vector2 screenDimensions = ScreenManager.Instance.ScreenDimensions;
@@ -140,69 +152,80 @@ namespace _2DEngine
 
             Create(0);
 
-            //Camera.FocusOnPosition(levelObjects[currentHeight, 0].WorldPosition, false);
+            //Camera.FocusOnPosition(LevelObjects[currentHeight, 0].WorldPosition, false);
 
             PreviousObjectExists = true;
             CurrentObjectExists = true;
-            NextObjectExists = ShouldCreate(surfaceWidthFrequency);
+            NextObjectExists = MathUtils.GenerateFloat(0, 1) <= GenerationData.WalkableLayerProbability;
 
             Create(1);
 
-            return levelObjects[currentHeight, 1];
+            return LevelObjects[currentHeight, 1];
         }
 
+        /// <summary>
+        /// We should also always add the last walkable tile too
+        /// </summary>
         private void TakeDown()
         {
             PreviousObjectExists = CurrentObjectExists;
             CurrentObjectExists = true;
             NextObjectExists = false;
 
-            Create(width - 1);
+            Create(GenerationData.Width - 1);
         }
 
-        private bool ShouldCreate(float bound)
-        {
-            return MathUtils.GenerateFloat(0, 1) <= bound;
-        }
-
+        /// <summary>
+        /// Determines whether we should add an object based on our CurrentObjectExists flag.
+        /// If so, we generate a possible height change using our probability and add our tile to our LevelObjects array
+        /// </summary>
+        /// <param name="xIndex"></param>
+        /// <returns></returns>
         private UIObject Create(int xIndex)
         {
             if (!CurrentObjectExists)
             {
-                levelObjects[currentHeight, xIndex] = null;
+                LevelObjects[currentHeight, xIndex] = null;
             }
             else
             {
                 float yDelta = 0;
 
-                if (MathUtils.GenerateFloat(0, 1) <= surfaceHeightFrequency)
+                if (MathUtils.GenerateFloat(0, 1) <= GenerationData.HeightChangeProbability)
                 {
-                    int amount = MathUtils.GenerateInt(-maximumHeightChange, maximumHeightChange);
+                    int amount = MathUtils.GenerateInt(-GenerationData.MaximumHeightChange, GenerationData.MaximumHeightChange);
 
                     currentHeight += amount;
-                    currentHeight = MathHelper.Clamp(currentHeight, 0, height - 1);
+                    currentHeight = MathHelper.Clamp(currentHeight, 0, GenerationData.Height - 1);
 
-                    yDelta = amount * tileDimensions.Y;
+                    yDelta = amount * TileDimensions.Y;
                 }
 
-                levelObjects[currentHeight, xIndex] = new Image(new Vector2(tileDimensions.X * xIndex, tileDimensions.Y * currentHeight), QueryTextureAsset());
-                levelObjects[currentHeight, xIndex].StoredObject = QueryPositionType();
+                LevelObjects[currentHeight, xIndex] = new Image(new Vector2(TileDimensions.X * xIndex, TileDimensions.Y * currentHeight), QueryTextureAsset());
+                LevelObjects[currentHeight, xIndex].StoredObject = QueryPositionType();
 
                 Point thisPoint = new Point(xIndex, currentHeight);
                 Debug.Assert(!walkingLayerPoints.Exists(x => x.Key == thisPoint));
                 walkingLayerPoints.Add(new KeyValuePair<Point, Type>(thisPoint, Type.kWalkableLayer));
             }
 
-            return levelObjects[currentHeight, xIndex];
+            return LevelObjects[currentHeight, xIndex];
         }
 
+        /// <summary>
+        /// Shifts our flags determining what tiles have been created.
+        /// </summary>
         private void ShiftExistenceFlags()
         {
             PreviousObjectExists = CurrentObjectExists;
             CurrentObjectExists = NextObjectExists;
-            NextObjectExists = ShouldCreate(surfaceWidthFrequency);
+            NextObjectExists = MathUtils.GenerateFloat(0, 1) <= GenerationData.WalkableLayerProbability;
         }
 
+        /// <summary>
+        /// Determines what type of tile we should create using our existence flags
+        /// </summary>
+        /// <returns></returns>
         private Position QueryPositionType()
         {
             if (PreviousObjectExists && NextObjectExists)
@@ -223,21 +246,39 @@ namespace _2DEngine
             }
         }
 
+        /// <summary>
+        /// Returns the appropriate texture based on what type of tile we are creating
+        /// </summary>
+        /// <returns></returns>
         private string QueryTextureAsset()
         {
-            return TileData[QueryPositionType()];
+            switch (QueryPositionType())
+            {
+                case Position.kLeft:
+                    return GenerationData.WalkableLayerLeftTextureAsset;
+
+                case Position.kMiddle:
+                    return GenerationData.WalkableLayerMiddleTextureAsset;
+
+                case Position.kRight:
+                    return GenerationData.WalkableLayerRightTextureAsset;
+
+                default:
+                    Debug.Fail("No texture asset for this direction");
+                    return "";
+            }
         }
 
         #endregion
 
         #region Hazards
 
+        /// <summary>
+        /// Create randomly selected hazards in the gaps of our walkable layer
+        /// </summary>
         private void GenerateHazards()
         {
-            string hazard1 = "Sprites\\Level\\Tiles\\Acid (1)";
-            string hazard2 = "Sprites\\Level\\Tiles\\Spike";
-
-            Debug.Assert(width > 2);
+            Debug.Assert(GenerationData.Width > 2);
 
             List<KeyValuePair<Point, Type>> tempListOfHazards = new List<KeyValuePair<Point, Type>>();
 
@@ -251,14 +292,15 @@ namespace _2DEngine
                 int y = MathHelper.Max(nextPoint.Y, currentPoint.Y);
 
                 // Use the same hazard texture for all the hazards in this block
-                string chosenTexture = MathUtils.GenerateFloat(0, 1) < 0.5f ? hazard1 : hazard2;
+                int numberOfHazards = GenerationData.HazardTextureAssets.Count;
+                string chosenTexture = GenerationData.HazardTextureAssets[MathUtils.GenerateInt(0, numberOfHazards - 1)];
 
                 while (diff > 0)
                 {
                     Point thisPoint = new Point(nextPoint.X - diff, y);
 
-                    levelObjects[y, thisPoint.X] = new Image(new Vector2(thisPoint.X * tileDimensions.X, thisPoint.Y * tileDimensions.Y), chosenTexture);
-                    levelObjects[y, thisPoint.X].StoredObject = Position.kMiddle;
+                    LevelObjects[y, thisPoint.X] = new Image(new Vector2(thisPoint.X * TileDimensions.X, thisPoint.Y * TileDimensions.Y), chosenTexture);
+                    LevelObjects[y, thisPoint.X].StoredObject = Position.kMiddle;
                     
                     Debug.Assert(!walkingLayerPoints.Exists(x => x.Key == thisPoint));
                     Debug.Assert(!tempListOfHazards.Exists(x => x.Key == thisPoint));
@@ -274,30 +316,36 @@ namespace _2DEngine
 
         #region Background
 
+        /// <summary>
+        /// Generate background below our walkable layer and add them to our LevelScreen
+        /// </summary>
         private void GenerateBackgroundBelowWalkableLayer()
         {
             Dictionary<Position, string> belowWalkableLayer = new Dictionary<Position, string>()
             {
                 //{ Position.kLeft, "Sprites\\Level\\Tiles\\Tile (4)" },
-                { Position.kLeft, "Sprites\\Level\\Tiles\\Tile (5)" },
-                { Position.kMiddle, "Sprites\\Level\\Tiles\\Tile (5)" },
-                { Position.kRight, "Sprites\\Level\\Tiles\\Tile (5)" },
+                { Position.kLeft, GenerationData.AboveWalkableLayerTextureAsset },
+                { Position.kMiddle, GenerationData.AboveWalkableLayerTextureAsset },
+                { Position.kRight, GenerationData.AboveWalkableLayerTextureAsset },
                 //{ Position.kRight, "Sprites\\Level\\Tiles\\Tile (6)" },
             };
 
             for (int index = 0; index < walkingLayerPoints.Count; index++)
             {
                 Point point = walkingLayerPoints[index].Key;
-                Position positionType = (Position)levelObjects[point.Y, point.X].StoredObject;
+                Position positionType = (Position)LevelObjects[point.Y, point.X].StoredObject;
 
-                for (int y = point.Y + 1; y < height; y++)
+                for (int y = point.Y + 1; y < GenerationData.Height; y++)
                 {
-                    UIObject addedObject = LevelScreen.AddEnvironmentObject(new Image(new Vector2(point.X * tileDimensions.X, y * tileDimensions.Y), belowWalkableLayer[positionType]));
+                    UIObject addedObject = LevelScreen.AddEnvironmentObject(new Image(new Vector2(point.X * TileDimensions.X, y * TileDimensions.Y), belowWalkableLayer[positionType]));
                     addedObject.UsesCollider = false;
                 }
             }
         }
 
+        /// <summary>
+        /// Generate background above our walkable layer and add them to our LevelScreen
+        /// </summary>
         private void GenerateBackgroundAboveWalkableLayer()
         {
             int backgroundHeight = 4;
@@ -323,13 +371,13 @@ namespace _2DEngine
 
                 for (int y = currentPoint.Y - 1; y > minY - 1 - backgroundHeight; y--)
                 {
-                    UIObject addedObject = LevelScreen.AddEnvironmentObject(new Image(new Vector2(currentPoint.X, y) * tileDimensions, background));
+                    UIObject addedObject = LevelScreen.AddEnvironmentObject(new Image(new Vector2(currentPoint.X, y) * TileDimensions, background));
                     addedObject.UsesCollider = false;
                 }
 
                 if (index % 3 == 0)
                 {
-                    LevelScreen.AddLight(new PointLight(new Vector2(750, 750), new Vector2(currentPoint.X * tileDimensions.X, (minY - 1) * tileDimensions.Y), Color.White));
+                    LevelScreen.AddLight(new PointLight(new Vector2(750, 750), new Vector2(currentPoint.X * TileDimensions.X, (minY - 1) * TileDimensions.Y), Color.White));
                 }
             }
         }

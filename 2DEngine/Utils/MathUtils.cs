@@ -41,7 +41,6 @@ namespace _2DEngine
         public static int GenerateInt(int inclusiveMin, int inclusiveMax)
         {
             Debug.Assert(inclusiveMin < inclusiveMax);
-            Debug.Assert(inclusiveMax - inclusiveMin >= 2);
 
             return Random.Next(inclusiveMin, inclusiveMax + 1);
         }

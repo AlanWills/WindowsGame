@@ -1,5 +1,6 @@
 ﻿using _2DEngine;
 using _2DEngineData;
+using GameData;
 using LevelEditorData;
 using Microsoft.Xna.Framework;
 
@@ -30,7 +31,7 @@ namespace WindowsGame
         /// <returns></returns>
         protected override BaseScreenData LoadScreenData()
         {
-            return AssetManager.GetData<LevelDesignScreenData>(ScreenDataAsset);
+            return AssetManager.GetData<PlatformGameplayScreenData>(ScreenDataAsset);
         }
 
         /// <summary>
@@ -41,7 +42,10 @@ namespace WindowsGame
             base.AddInitialUI();
 
             //DeserializeLevel();
-            GenerationEngine generationEngine = new GenerationEngine(this);
+            PlatformGameplayScreenData data = ScreenData as PlatformGameplayScreenData;
+            DebugUtils.AssertNotNull(data);
+
+            GenerationEngine generationEngine = new GenerationEngine(this, data.LevelGenerationDataAsset);
             generationEngine.GenerateLevel();
         }
 

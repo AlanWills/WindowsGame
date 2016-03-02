@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LevelGenerationData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Width>20</Width>
+  <Height>10</Height>
+  <WalkableLayerProbability>0.75</WalkableLayerProbability>
+  <HeightChangeProbability>0.15</HeightChangeProbability>
+  <MaximumHeightChange>1</MaximumHeightChange>
+  <WalkableLayerLeftTextureAsset>Sprites\Level\Tiles\Tile (1)</WalkableLayerLeftTextureAsset>
+  <WalkableLayerMiddleTextureAsset>Sprites\Level\Tiles\Tile (2)</WalkableLayerMiddleTextureAsset>
+  <WalkableLayerRightTextureAsset>Sprites\Level\Tiles\Tile (3)</WalkableLayerRightTextureAsset>
+  <HazardTextureAssets>
+    <Item>Sprites\Level\Tiles\Spike</Item>
+    <Item>Sprites\Level\Tiles\Acid (1)</Item>
+  </HazardTextureAssets>
+  <BelowWalkableLayerTextureAsset>Sprites\Level\Tiles\Tile (5)</BelowWalkableLayerTextureAsset>
+  <AboveWalkableLayerTextureAsset>Sprites\Level\Tiles\BGTile (3)</AboveWalkableLayerTextureAsset>
+</LevelGenerationData>

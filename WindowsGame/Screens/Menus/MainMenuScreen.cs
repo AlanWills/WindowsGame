@@ -48,7 +48,7 @@ namespace WindowsGame
         /// <param name="image">The image that was clicked</param>
         protected virtual void OnPlayGameButtonClicked(ClickableImage image)
         {
-            Transition(new PlatformGameplayScreen("Content\\Data\\Levels\\Level1.xml"));
+            Transition(new PlatformGameplayScreen("Content\\Data\\Screens\\Levels\\Level1.xml"));
         }
 
         /// <summary>
