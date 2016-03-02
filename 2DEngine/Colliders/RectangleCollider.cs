@@ -22,8 +22,8 @@ namespace _2DEngine
             Vector2 parentWorldPos = parent.WorldPosition;
             Vector2 parentSize = parent.Size;
             bounds = new Rectangle(
-                (int)parentWorldPos.X, 
-                (int)parentWorldPos.Y, 
+                (int)(parentWorldPos.X - parentSize.X * 0.5f), 
+                (int)(parentWorldPos.Y - parentSize.Y * 0.5f), 
                 (int)parentSize.X, 
                 (int)parentSize.Y);
         }

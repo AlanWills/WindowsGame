@@ -291,7 +291,7 @@ namespace LevelEditor
 
         private void Generate(ClickableImage image)
         {
-            GenerationEngine engine = new GenerationEngine(this);
+            GenerationEngine engine = new GenerationEngine(this, null);
             engine.GenerateLevel();
         }
 
