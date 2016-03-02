@@ -168,6 +168,8 @@ namespace WindowsGame
             // This should always be checked
             if (isMoveLeftDown || isMoveRightDown)
             {
+                PhysicsBody.Direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
                 if (GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
@@ -216,6 +218,8 @@ namespace WindowsGame
             }
             else if (isMoveLeftDown || isMoveRightDown)
             {
+                PhysicsBody.Direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
                 if (GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kRun;
@@ -258,6 +262,8 @@ namespace WindowsGame
             }
             else if (isMoveLeftDown || isMoveRightDown)
             {
+                PhysicsBody.Direction = isMoveRightDown ? PhysicsConstants.RightDirection : PhysicsConstants.LeftDirection;
+
                 if (!GameKeyboard.IsKeyDown(InputMap.Run))
                 {
                     CurrentBehaviour = (uint)PlayerBehaviours.kWalk;

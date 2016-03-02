@@ -105,7 +105,7 @@ namespace _2DEngine
             NumBehaviours = (uint)CharacterBehaviours.kNumBehaviours;
 
             AddPhysicsBody();
-            //PhysicsBody.OnDirectionChange += OnDirectionChange;
+            PhysicsBody.OnDirectionChange += OnDirectionChange;
         }
 
         #region Virtual Functions
@@ -198,28 +198,6 @@ namespace _2DEngine
         {
             base.HandleInput(elapsedGameTime, mousePosition);
 
-            DebugUtils.AssertNotNull(PhysicsBody);
-
-            bool moveLeft = GameKeyboard.IsKeyDown(InputMap.MoveLeft);
-            bool moveRight = GameKeyboard.IsKeyDown(InputMap.MoveRight);
-
-            // We want to make sure that both movement keys are not pressed down
-            if (!(moveLeft && moveRight))
-            {
-                if (PhysicsBody.Direction != PhysicsConstants.RightDirection && moveRight)
-                {
-                    PhysicsBody.Direction = PhysicsConstants.RightDirection;
-                    OnDirectionChange(PhysicsBody.Direction);
-                }
-                else if (PhysicsBody.Direction != PhysicsConstants.LeftDirection && moveLeft)
-                {
-                    PhysicsBody.Direction = PhysicsConstants.LeftDirection;
-                    OnDirectionChange(PhysicsBody.Direction);
-                }
-
-                // Don't break out OnDirectionChange because we are not guaranteed to always enter one of the above conditions.
-            }
-
             UpdateBehaviour();
         }
 
@@ -298,7 +276,7 @@ namespace _2DEngine
         /// A function for when our direction changes.  Used for flipping sprites and for re-fixing animations.
         /// </summary>
         /// <param name="newDirection"></param>
-        public void OnDirectionChange(int newDirection)
+        public void OnDirectionChange(int oldDirection, int newDirection)
         {
             DebugUtils.AssertNotNull(StateMachine);
             DebugUtils.AssertNotNull(PhysicsBody);

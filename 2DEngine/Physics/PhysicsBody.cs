@@ -37,16 +37,7 @@ namespace _2DEngine
         /// <summary>
         /// The object's linear acceleration
         /// </summary>
-        private Vector2 linearAcceleration;
-        public Vector2 LinearAcceleration
-        {
-            get { return linearAcceleration; }
-            set
-            {
-                //linearAcceleration = value - new Vector2(0, PhysicsConstants.Gravity);
-                linearAcceleration = value;
-            }
-        }
+        public Vector2 LinearAcceleration { get; set; }
 
         /// <summary>
         /// The object's angular velocity
@@ -68,16 +59,16 @@ namespace _2DEngine
             get { return direction; }
             set
             {
-                /*if (OnDirectionChange != null)
+                if (OnDirectionChange != null)
                 {
                     OnDirectionChange(direction, value);
-                }*/
+                }
 
                 direction = value;
             }
         }
 
-        //public event DirectionChangedEvent OnDirectionChange;
+        public event DirectionChangedEvent OnDirectionChange;
 
         #endregion
 
