@@ -2,8 +2,9 @@
 <WeaponData>
   <TextureAsset>Sprites\Weapons\Good_Old_Magnum</TextureAsset>
   <BulletDataAsset>Content\Data\Bullets\GoodOldMagnumBullet.xml</BulletDataAsset>
+  <BulletThumbnailTextureAsset>Sprites\Bullets\GoodOldMagnumBulletThumbnail</BulletThumbnailTextureAsset>
   <DisplayName>Good Old Magnum</DisplayName>
   <MagazineSize>6</MagazineSize>
   <TimeBetweenShots>1.1</TimeBetweenShots>
-  <ReloadTime>2.5</ReloadTime>
+  <ReloadTime>2</ReloadTime>
 </WeaponData>

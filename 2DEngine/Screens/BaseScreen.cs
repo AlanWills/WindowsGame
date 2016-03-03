@@ -186,12 +186,14 @@ namespace _2DEngine
 
             // Create the objects then lights first as our UI will probably depend on their values
             AddInitialGameObjects();
-            AddInitialLights();
-            AddInitialUI();
+            GameObjects.LoadContent();
 
+            AddInitialLights();
+
+            AddInitialUI();
+            // Should move this to before this - currently screwing up because we add the lights from the generation engine in AddInitialUI - probably should not do this
             Lights.LoadContent();
             EnvironmentObjects.LoadContent();
-            GameObjects.LoadContent();
             InGameUIObjects.LoadContent();
             ScreenUIObjects.LoadContent();
 

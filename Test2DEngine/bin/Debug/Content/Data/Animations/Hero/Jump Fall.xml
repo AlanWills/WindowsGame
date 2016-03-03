@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationData>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Jump Fall_000_1x1_Resized</AnimationTextureAsset>
+  <TextureFramesX>1</TextureFramesX>
+  <TextureFramesY>1</TextureFramesY>
+  <Continual>true</Continual>
+  <IsGlobal>true</IsGlobal>
+  <FixupX>0</FixupX>
+  <FixupY>0</FixupY>
+  <ColliderCentrePositionOffsetX>0</ColliderCentrePositionOffsetX>
+  <ColliderCentrePositionOffsetY>0</ColliderCentrePositionOffsetY>
+  <ColliderWidthProportion>0.5</ColliderWidthProportion>
+  <ColliderHeightProportion>1</ColliderHeightProportion>
+</AnimationData>

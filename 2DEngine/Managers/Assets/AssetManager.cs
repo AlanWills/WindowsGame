@@ -31,15 +31,22 @@ namespace _2DEngine
         public const string DefaultSpriteFontAsset = "SpriteFonts\\DefaultSpriteFont";
         public const string StartupLogoTextureAsset = "Sprites\\UI\\Logo";
 
+        // Buttons
         public const string DefaultButtonTextureAsset = "Sprites\\UI\\ColourButtonTrial1";
 
+        // Textboxes
         public const string DefaultTextBoxTextureAsset = "";
 
+        // Sliders
         public const string DefaultSliderBarTextureAsset = "Sprites\\UI\\SliderBar";
         public const string DefaultSliderHandleTextureAsset = "Sprites\\UI\\BlueSliderDown";
 
+        // Bars
         public const string DefaultBarForegroundTextureAsset = "Sprites\\UI\\BarBackground";
         public const string DefaultBarBackgroundTextureAsset = "Sprites\\UI\\BarBackground";
+
+        // Panels and Menus
+        public const string DefaultEmptyPanelTextureAsset = "Sprites\\UI\\EmptyPanelBackground";
 
         // Lights
         public const string DefaultPointLightTextureAsset = "Sprites\\Effects\\PointLightMask";

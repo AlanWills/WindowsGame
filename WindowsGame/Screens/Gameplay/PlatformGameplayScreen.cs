@@ -13,6 +13,11 @@ namespace WindowsGame
     {
         #region Properties and Fields
 
+        /// <summary>
+        /// A reference to our playable hero
+        /// </summary>
+        private Player Hero { get; set; }
+
         private Vector2 TileSize = new Vector2(128, 128);
 
         #endregion
@@ -35,6 +40,28 @@ namespace WindowsGame
         }
 
         /// <summary>
+        /// Add our initial game objects to the scene.
+        /// </summary>
+        protected override void AddInitialGameObjects()
+        {
+            base.AddInitialGameObjects();
+
+            Hero = AddGameObject(new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml")) as Player;
+            Hero.Name = "Hero";
+            AddCollisionObject(Hero);
+        }
+
+        /// <summary>
+        /// Add our initial game objects to the scene.
+        /// </summary>
+        protected override void AddInitialLights()
+        {
+            base.AddInitialLights();
+
+            AddLight(new AmbientLight(Color.White, 0.35f));
+        }
+
+        /// <summary>
         /// Deserialize our level and add the appropriate background/UI objects
         /// </summary>
         protected override void AddInitialUI()
@@ -47,32 +74,10 @@ namespace WindowsGame
 
             GenerationEngine generationEngine = new GenerationEngine(this, data.LevelGenerationDataAsset);
             generationEngine.GenerateLevel();
-        }
 
-        /// <summary>
-        /// Add our initial game objects to the scene.
-        /// </summary>
-        protected override void AddInitialGameObjects()
-        {
-            base.AddInitialGameObjects();
-
-            Player player = AddGameObject(new Player(ScreenCentre, "Content\\Data\\Character Data\\Hero.xml")) as Player;
-            player.Name = "Hero";
-            AddCollisionObject(player);
-        }
-
-        /// <summary>
-        /// Add our initial game objects to the scene.
-        /// </summary>
-        protected override void AddInitialLights()
-        {
-            base.AddInitialLights();
-
-            // Not being added at the moment
-            PointLight pointLight = new PointLight(new Vector2(1000, 1000), Vector2.Zero, Color.Red);
-            pointLight.SetParent(FindGameObject<GameObject>("Hero"));
-
-            AddLight(new AmbientLight(Color.White, 0.35f));
+            DebugUtils.AssertNotNull(Hero);
+            DebugUtils.AssertNotNull(Hero.Weapon);
+            HUD.Instance.AddObject(new WeaponStatusUI(Hero.Weapon));
         }
 
         #endregion

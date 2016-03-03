@@ -64,6 +64,9 @@ namespace _2DEngine
                 obj.Initialise();
             }
 
+            ActiveObjects.AddRange(ObjectsToAdd);
+            ObjectsToAdd.Clear();
+
             base.Initialise();
         }
 
@@ -76,7 +79,7 @@ namespace _2DEngine
 
             // Do not need to check whether begun has already been called - this is guaranteed
 
-            foreach (T obj in ObjectsToAdd)
+            foreach (T obj in ActiveObjects)
             {
                 // Call begin on the object
                 obj.Begin();

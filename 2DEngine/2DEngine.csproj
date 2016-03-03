@@ -97,6 +97,7 @@
     <Compile Include="UI\Bar.cs" />
     <Compile Include="UI\Button.cs" />
     <Compile Include="UI\ClickableImage.cs" />
+    <Compile Include="UI\FlashingLabel.cs" />
     <Compile Include="UI\HUD.cs" />
     <Compile Include="UI\Image.cs" />
     <Compile Include="UI\Label.cs" />

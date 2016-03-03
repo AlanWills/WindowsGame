@@ -51,6 +51,7 @@
     <Compile Include="Screens\Menus\MainMenuScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\WeaponStatusUI.cs" />
     <Compile Include="Weapons\Bullet.cs" />
     <Compile Include="Weapons\Weapon.cs" />
   </ItemGroup>
@@ -309,6 +310,9 @@
     <Content Include="Content\Data\Weapons\GoodOldMagnum.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Sprites\Bullets\GoodOldMagnumBulletThumbnail.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\Bullets\GoodOldMagnumBullet.png" />
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Idle_000_12x1_Resized.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -327,6 +331,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sprites\CharacterSpriteSheets\Hero\Walk_000_1x16_Resized.png" />
+    <Content Include="Content\Sprites\UI\EmptyPanelBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Sprites\Weapons\Good_Old_Magnum.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -818,6 +825,7 @@
     <None Include="Content\SpriteFonts\DefaultSpriteFont.xnb" />
     <None Include="Content\Sprites\Backgrounds\MainMenuScreen.xnb" />
     <None Include="Content\Sprites\Bullets\GoodOldMagnumBullet.xnb" />
+    <None Include="Content\Sprites\Bullets\GoodOldMagnumBulletThumbnail.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Balance_000_1x14_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Death_000_1x15_Resized.xnb" />
     <None Include="Content\Sprites\CharacterSpriteSheets\Hero\Dizzy_000_1x15_Resized.xnb" />
@@ -975,6 +983,9 @@
     <None Include="Content\Sprites\UI\ColourButtonTrial1.xnb" />
     <None Include="Content\Sprites\UI\Cursor.xnb" />
     <Content Include="Content\Sprites\UI\SliderBar.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\UI\EmptyPanelBackground.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Content\Sprites\UI\Logo.xnb" />

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationData>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Shoot_000_16x1_Resized</AnimationTextureAsset>
+  <TextureFramesX>16</TextureFramesX>
+  <TextureFramesY>1</TextureFramesY>
+  <Continual>false</Continual>
+  <IsGlobal>false</IsGlobal>
+  <FixupX>65</FixupX>
+  <FixupY>5</FixupY>
+  <ColliderCentrePositionOffsetX>0</ColliderCentrePositionOffsetX>
+  <ColliderCentrePositionOffsetY>0</ColliderCentrePositionOffsetY>
+  <ColliderWidthProportion>0.5</ColliderWidthProportion>
+  <ColliderHeightProportion>1</ColliderHeightProportion>
+</AnimationData>

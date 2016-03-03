@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<PlatformGameplayScreenData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BackgroundTextureAsset />
+  <LevelGenerationDataAsset>Content\Data\GenerationData\Level1GenerationData.xml</LevelGenerationDataAsset>
+</PlatformGameplayScreenData>

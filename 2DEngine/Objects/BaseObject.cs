@@ -312,6 +312,15 @@ namespace _2DEngine
             IsAlive.Connect(parent.IsAlive);
         }
 
+        /// <summary>
+        /// Returns our parent base object
+        /// </summary>
+        /// <returns></returns>
+        public BaseObject GetParent()
+        {
+            return Parent.Value;
+        }
+
         #endregion
     }
 }

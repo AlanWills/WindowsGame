@@ -46,6 +46,11 @@ namespace WindowsGame
         private float CurrentReloadTimer { get; set; }
 
         /// <summary>
+        /// The current number of bullets left in our magazine.
+        /// </summary>
+        public int CurrentBulletsInMagazine { get; private set; }
+
+        /// <summary>
         /// The current state of the weapon.
         /// </summary>
         public WeaponState CurrentWeaponState { get; private set; }
@@ -84,6 +89,8 @@ namespace WindowsGame
             WeaponData = AssetManager.GetData<WeaponData>(DataAsset);
             DebugUtils.AssertNotNull(WeaponData);
 
+            CurrentBulletsInMagazine = WeaponData.MagazineSize;
+
             BulletData = AssetManager.GetData<BulletData>(WeaponData.BulletDataAsset);
             DebugUtils.AssertNotNull(BulletData);
             DebugUtils.AssertNotNull(BulletData.TextureAsset);
@@ -112,7 +119,11 @@ namespace WindowsGame
             // Should only be able to fire or reload, not both
             if (GameMouse.Instance.IsClicked(InputMap.Fire))
             {
-                Fire();
+                if (CurrentBulletsInMagazine > 0)
+                { 
+                    // If we have enough bullets, then fire one
+                    Fire();
+                }
             }
             else if (GameKeyboard.IsKeyPressed(InputMap.Reload))
             {
@@ -128,20 +139,23 @@ namespace WindowsGame
         {
             base.Update(elapsedGameTime);
 
-            CurrentFireTimer += elapsedGameTime;
-
             switch (CurrentWeaponState)
             {
-                // If we are ready then do nothing here
+                // If we are ready then reload if we have no bullets left
                 case WeaponState.kReady:
+                    if (CurrentBulletsInMagazine == 0)
+                    {
+                        Reload();
+                    }
                     break;
 
                 // If we are firing, update the CurrentFireTimer and become ready to fire if we can
                 case WeaponState.kFiring:
                 {
+                    CurrentFireTimer += elapsedGameTime;
                     if (CurrentFireTimer >= WeaponData.TimeBetweenShots)
                     {
-                        CurrentWeaponState = WeaponState.kReady;
+                        FiringComplete();
                     }
                     break;
                 }
@@ -149,10 +163,10 @@ namespace WindowsGame
                 // If we are reloading, update the CurrentReloadTimer and become ready to fire if we can
                 case WeaponState.kReloading:
                 {
+                    CurrentReloadTimer += elapsedGameTime;
                     if (CurrentReloadTimer >= WeaponData.ReloadTime)
                     {
-                        CurrentWeaponState = WeaponState.kReady;
-                        CurrentFireTimer = WeaponData.TimeBetweenShots;
+                        ReloadComplete();
                     }
                     break;
                 }
@@ -172,11 +186,20 @@ namespace WindowsGame
 
             CurrentWeaponState = WeaponState.kFiring;
             CurrentFireTimer = 0;
+            CurrentBulletsInMagazine--;
 
             Bullet bullet = AddObject(new Bullet(ArmedCharacter.WorldPosition, BulletData.TextureAsset), true, true);
             DebugUtils.AssertNotNull(bullet.PhysicsBody);
 
             bullet.PhysicsBody.LinearVelocity = new Vector2(BulletData.Speed * ArmedCharacter.PhysicsBody.Direction, 0);
+        }
+
+        /// <summary>
+        /// A function which encapsulates all the behaviour that should happen when we have finished firing
+        /// </summary>
+        private void FiringComplete()
+        {
+            CurrentWeaponState = WeaponState.kReady;
         }
 
         /// <summary>
@@ -186,6 +209,16 @@ namespace WindowsGame
         {
             CurrentWeaponState = WeaponState.kReloading;
             CurrentReloadTimer = 0;
+        }
+
+        /// <summary>
+        /// A function which encapsulates all the behaviour that should happen when we have finished reloading
+        /// </summary>
+        private void ReloadComplete()
+        {
+            CurrentWeaponState = WeaponState.kReady;
+            CurrentFireTimer = WeaponData.TimeBetweenShots;
+            CurrentBulletsInMagazine = WeaponData.MagazineSize;
         }
 
         #endregion

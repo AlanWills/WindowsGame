@@ -13,7 +13,7 @@ namespace WindowsGame
         /// <summary>
         /// This character's weapon.
         /// </summary>
-        protected Weapon Weapon { get; private set; }
+        public Weapon Weapon { get; private set; }
 
         #endregion
 

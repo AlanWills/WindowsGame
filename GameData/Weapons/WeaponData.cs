@@ -13,6 +13,11 @@ namespace GameData
         public string BulletDataAsset { get; set; }
 
         /// <summary>
+        /// The full path for a sprite UI thumbnail used in our game HUD
+        /// </summary>
+        public string BulletThumbnailTextureAsset { get; set; }
+
+        /// <summary>
         /// The display name of our weapon
         /// </summary>
         public string DisplayName { get; set; }

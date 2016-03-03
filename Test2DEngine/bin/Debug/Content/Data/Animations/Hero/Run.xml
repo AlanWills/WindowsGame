@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationData>
+  <AnimationTextureAsset>Sprites\CharacterSpriteSheets\Hero\Run_000_14x1_Resized</AnimationTextureAsset>
+  <TextureFramesX>14</TextureFramesX>
+  <TextureFramesY>1</TextureFramesY>
+  <Continual>true</Continual>
+  <IsGlobal>false</IsGlobal>
+  <FixupX>0</FixupX>
+  <FixupY>20</FixupY>
+  <ColliderCentrePositionOffsetX>0</ColliderCentrePositionOffsetX>
+  <ColliderCentrePositionOffsetY>-0.1</ColliderCentrePositionOffsetY>
+  <ColliderWidthProportion>0.5</ColliderWidthProportion>
+  <ColliderHeightProportion>0.8</ColliderHeightProportion>
+</AnimationData>

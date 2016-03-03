@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BulletData>
+  <TextureAsset>Sprites\Bullets\GoodOldMagnumBullet</TextureAsset>
+  <Damage>20</Damage>
+  <Speed>1200</Speed>
+</BulletData>

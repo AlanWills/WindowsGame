@@ -6,8 +6,26 @@
     /// </summary>
     public class HUD : UIContainer
     {
+        #region Properties and Fields
+
+        private static HUD instance;
+        public static HUD Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new HUD();
+                }
+
+                return instance;
+            }
+        }
+
+        #endregion
+
         public HUD() :
-            base(ScreenManager.Instance.ScreenDimensions, ScreenManager.Instance.ScreenCentre, "")
+            base(ScreenManager.Instance.ScreenDimensions, ScreenManager.Instance.ScreenCentre)
         {
 
         }

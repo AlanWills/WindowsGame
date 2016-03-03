@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections;
+using System.Diagnostics;
 
 namespace _2DEngine
 {
@@ -25,7 +27,7 @@ namespace _2DEngine
 
         }
 
-        public UIContainer(Vector2 size, Vector2 localPosition, string textureAsset) :
+        public UIContainer(Vector2 size, Vector2 localPosition, string textureAsset = AssetManager.DefaultEmptyPanelTextureAsset) :
             base(size, localPosition, textureAsset)
         {
             UIObjects = new ObjectManager<UIObject>();
@@ -111,7 +113,10 @@ namespace _2DEngine
         /// <param name="initialise"></param>
         public UIObject AddObject(UIObject uiObjectToAdd, bool load = false, bool initialise = false)
         {
-            uiObjectToAdd.SetParent(this);
+            if (uiObjectToAdd.GetParent() == null)
+            {
+                uiObjectToAdd.SetParent(this);
+            }
 
             return UIObjects.AddObject(uiObjectToAdd, load, initialise);
         }
@@ -123,6 +128,29 @@ namespace _2DEngine
         IEnumerator IEnumerable.GetEnumerator()
         {
             return UIObjects.GetEnumerator();
+        }
+
+        /// <summary>
+        /// A function which expands this object to the size which contains all the objects inside of it plus an inputted border padding
+        /// </summary>
+        /// <param name="padding"></param>
+        protected void CalculateSize(Vector2 border)
+        {
+            // Should not call this function before we have loaded and initialised all our objects
+            Debug.Assert(ShouldLoad == false);
+            Debug.Assert(ShouldInitialise == false);
+
+            Vector2 size = Size;
+
+            // Because we sometimes cannot set the position before we set the size, all objects MUST be parented to this container if we are calling this function
+            foreach (UIObject uiObject in UIObjects)
+            {
+                Debug.Assert(uiObject.GetParent() == this);
+                size.X = MathHelper.Max(size.X, 2 * (Math.Abs(uiObject.LocalPosition.X) + border.X) + uiObject.Size.X);
+                size.Y = MathHelper.Max(size.Y, 2 * (Math.Abs(uiObject.LocalPosition.Y) + border.Y) + uiObject.Size.Y);
+            }
+
+            Size = size;
         }
 
         #endregion

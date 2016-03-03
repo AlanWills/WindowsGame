@@ -44,11 +44,26 @@ namespace _2DEngine
         /// </summary>
         private Vector2 TextDimensions { get { return SpriteFont.MeasureString(Text); } }
 
+        /// <summary>
+        /// An alternative way of changing the size of this text - normally, inputting a size is very hit and miss so a scale just multiplies the TextDimensions
+        /// </summary>
+        public float Scale { get; set; }
+
         #endregion
 
         public Label(string text, Vector2 localPosition, string spriteFontAsset = AssetManager.DefaultSpriteFontAsset, float lifeTime = float.MaxValue) :
+            this(1, text, localPosition, "", lifeTime)
+        {
+            Text = text;
+
+            // Labels do not need a collider
+            UsesCollider = false;
+        }
+
+        public Label(float scale, string text, Vector2 localPosition, string spriteFontAsset = AssetManager.DefaultSpriteFontAsset, float lifeTime = float.MaxValue) :
             base(localPosition, "", lifeTime)
         {
+            Scale = scale;
             Text = text;
 
             // Labels do not need a collider
@@ -99,7 +114,7 @@ namespace _2DEngine
                 Colour * Opacity, 
                 WorldRotation, 
                 TextCentre, 
-                Vector2.Divide(Size, TextDimensions), 
+                Vector2.Multiply(Vector2.Divide(Size, TextDimensions), Scale), 
                 SpriteEffects.None, 
                 0);
         }
